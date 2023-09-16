@@ -30,4 +30,5 @@ Take a peek at the goal-setting section, where you can start setting your financ
 
 ### How to acess
 
-Just click [here](https://www.figma.com/proto/0Z1Z2ZQZ2ZQZ2ZQZ2ZQZ2Z/Fine'sUp?node-id=1%3A2&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1) and try!
+Just click [here](https://www.figma.com/proto/aABYOzhc6SB5WGDJnLFXYO/Fine'sup?node-id=1-6&starting-point-node-id=1%3A6&mode=design&t=c36MIklNpQowXIfc-1) and try!
+
