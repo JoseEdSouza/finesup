@@ -33,7 +33,7 @@ Nosso protótipo está em desenvolvimento e foi projetado para proporcionar uma 
 
 3. Definição de Metas 🎯
 
-    Dê uma olhada na seção de definição de metas, onde você pode começar a estabelecer suas m(em forma de caixinhas 📦)etas financeiras e acompanhar seu progresso.
+    Dê uma olhada na seção de definição de metas, onde você pode começar a estabelecer suas metas financeiras e acompanhar seu progresso.
 
 ### Como acessar?
 
