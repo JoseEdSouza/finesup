@@ -2,32 +2,36 @@
 # Fine'sUp
 
 ![Fine'sUp](./logo.png)
-Fine'sUp is a project that aims to promote financial management and education for users. The project offers tools and content to help people plan, control and improve their personal finances. Fine'sUp aims to increase your confidence, security and quality of life through intelligent and effective financial management.
+Fine'sUp é um projeto que tem como objetivo promover a gestão financeira e educação financeira para os usuários. O projeto oferece ferramentas e conteúdo para ajudar as pessoas a planejar, controlar e melhorar suas finanças pessoais. O Fine'sUp visa aumentar sua confiança, segurança e qualidade de vida por meio de uma gestão financeira inteligente e eficaz.
 
-## Documentation
+---
 
-Here, you'll find essential documents that provide insight into our project's vision, scope, and requirements. These documents are integral to understanding how Fine'sUp aims to promote financial management and education.
+## 📝 [Documentação](./documentation)
 
-- [Vision and Scope](./documentation/Documento%20de%20Visão%20e%20Escopo%20-%20PI%201.pdf)
-- [Requirements](./documentation/Requisitos%20-%20PI%201.pdf)
+Aqui, você encontrará documentos essenciais que fornecem informações sobre a visão, escopo e requisitos do nosso projeto. Esses documentos são fundamentais para entender como o Fine'sUp busca promover a gestão financeira e a educação financeira.
 
-## Prototype
+- [Visão e Escopo](./documentation/Documento%20de%20Visão%20e%20Escopo%20-%20PI%201.pdf)
+- [Requisitos](./documentation/Documento%20de%20Requisitos%20-%20PI%201.pdf)
 
-Here we present the Fine'sUp early low-fidelity prototype! This is a sneak peek into the future of our financial management and education platform. While it's not the final product, it gives you a glimpse of the exciting features we're working on to help you take control of your finances.
+---
 
-### What to Expect
+## 🏗 Protótipo
 
-Our prototype is a work in progress, and it's designed to provide you with a basic understanding of how Fine'sUp will look and function. Here's what you can explore in this early version:
+Aqui apresentamos o protótipo inicial de baixa fidelidade do Fine'sUp! Esta é uma prévia do futuro da nossa plataforma de gestão financeira e educação. Embora não seja o produto final, ele oferece uma visão das emocionantes funcionalidades nas quais estamos trabalhando para ajudá-lo a controlar suas finanças.
 
-1. Dashboard
-Get a first look at the Fine'sUp dashboard, where you'll have an overview of your financial situation. See your income, expenses, savings goals, and more at a glance.
+### O que esperar?
 
-1. Expense Tracking
-Experience our preliminary expense tracking feature. Add your daily expenses, categorize them, and see how they impact your overall budget.
+Nosso protótipo está em desenvolvimento e foi projetado para proporcionar uma compreensão básica de como o Fine'sUp será em termos de aparência e funcionalidade. Aqui está o que você pode explorar nesta versão inicial:
 
-1. Goal Setting
-Take a peek at the goal-setting section, where you can start setting your financial goals and tracking your progress.
+1. Painel de Controle 📈
+Dê uma primeira olhada no painel de controle do Fine'sUp, onde você terá uma visão geral de sua situação financeira. Veja sua renda, despesas, metas de economia e muito mais em um piscar de olhos.
 
-### How to acess
+2. Acompanhamento de Despesas 💸
+Experimente nosso recurso preliminar de acompanhamento de despesas. Adicione suas despesas diárias, categorize-as e veja como elas afetam seu orçamento geral.
 
-Just click [here](https://www.figma.com/proto/aABYOzhc6SB5WGDJnLFXYO/Fine'sup?node-id=1-6&starting-point-node-id=1%3A6&mode=design&t=c36MIklNpQowXIfc-1) and try!
+3. Definição de Metas 🎯
+Dê uma olhada na seção de definição de metas, onde você pode começar a estabelecer suas metas financeiras e acompanhar seu progresso.
+
+### Como acessar?
+
+Basta clicar [aqui](https://www.figma.com/proto/aABYOzhc6SB5WGDJnLFXYO/Fine'sup?node-id=1-6&starting-point-node-id=1%3A6&mode=design&t=c36MIklNpQowXIfc-1) e experimentar! 🌟
