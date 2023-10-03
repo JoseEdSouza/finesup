@@ -2,7 +2,7 @@
 # Fine'sUp
 
 ![Fine'sUp](./logo.png)
-Fine'sUp é um projeto que tem como objetivo promover a gestão financeira e educação financeira para os usuários. O projeto oferece ferramentas e conteúdo para ajudar as pessoas a planejar, controlar e melhorar suas finanças pessoais. O Fine'sUp visa aumentar sua confiança, segurança e qualidade de vida por meio de uma gestão financeira inteligente e eficaz.
+Fine'sUp é um projeto que tem como objetivo promover a gestão e educação financeira para os usuários. O projeto oferece ferramentas e conteúdo para ajudar as pessoas a planejar, controlar e melhorar suas finanças pessoais. O Fine'sUp visa aumentar sua confiança, segurança e qualidade de vida por meio de uma gestão inteligente e eficaz.
 
 ---
 
