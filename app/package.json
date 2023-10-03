@@ -1,0 +1,33 @@
+{
+  "name": "finesup",
+  "version": "0.0.1",
+  "description": "Fine'sUp is a project that aims to promote financial management and education for users. The project offers tools and content to help people plan, control and improve their personal finances. Fine'sUp aims to increase your confidence, security and quality of life through intelligent and effective financial management.",
+  "main": "dist/main.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start":"electron .",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoseEdSouza/finesup.git"
+  },
+  "keywords": [
+    "finesup",
+    "finance",
+    "finances",
+    "management",
+    "up"
+  ],
+  "author": "José Souza, Pedro Henrique, Ítalo Kauã, Erick Gabriel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JoseEdSouza/finesup/issues"
+  },
+  "homepage": "https://github.com/JoseEdSouza/finesup#readme",
+  "devDependencies": {
+    "electron": "^26.2.4"
+  }
+}
