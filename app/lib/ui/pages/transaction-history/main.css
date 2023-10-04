@@ -145,3 +145,7 @@ body{
     cursor: pointer;
 }
 
+.ReturnLastPage{
+    align-items: center;
+    display: flex;
+}
