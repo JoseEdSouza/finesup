@@ -14,7 +14,8 @@ body{
 .NavBar{
     align-items: center;
     display: flex;
-    position: absolute;
+    position: fixed;
+    z-index: 1;
     background-color: #D1D3F1;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     top: 0;
@@ -51,8 +52,83 @@ body{
     right: 3%;
 }
 
+.ContainerOfContainers{
+    position: absolute;
+    width: 90%;
+    height: fit-content;
+    left: 10%;
+    top: 25%;
+}
+
+.LabelTransactionDate{
+    position: relative;
+    font-family: "Open Sans";
+    color: white;
+    font-size: 18px;
+}
+
+.Container{
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 90%;
+    height: fit-content;
+    top: 25%;
+    margin-top: 20px;
+}
+
+.LaunchContainer{
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    height: 48px;
+    margin-top: 10px;
+    background-color: #D1D3F1;
+    border-radius: 10px;
+    max-width: 850px;
+}
+
+.Icons{
+    position: absolute;
+    width: 50px;
+    left: 15px;
+}
+
+.NameTransaction{
+    position: absolute;
+    font-family: "Open Sans";
+    color: #2E1E43;
+    left: 80px;
+    top: 5px;
+}
+
+.TypeTransaction{
+    position: absolute;
+    font-family: "Open Sans";
+    font-size: 10px;
+    left: 80px;
+    bottom: 7px;
+}
+
+.ValueTransactionRevenue{
+    position: absolute;
+    font-family: "Open Sans";
+    color: #2d5e26;
+    right: 20px;
+}
+
+.ValueTransactionExpense{
+    position: absolute;
+    font-family: "Open Sans";
+    color: #A00318;
+    right: 20px;
+}
+
 .Warning{
     position: absolute;
+    display: none;
     font-family: "Open Sans";
     font-size: 3vh;
     color: #D1D3F1;
@@ -60,7 +136,7 @@ body{
 }
 
 .AddButton{
-    position: absolute;
+    position: fixed;
     font-size: 4vw;
     width: 5vw;
     aspect-ratio: 1/1;

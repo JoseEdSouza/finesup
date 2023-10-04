@@ -131,30 +131,64 @@ button{
     top: 33%;
 }
 
-.ExpenseButton{
-    background-color: #5e000c;
-    border-radius: 10px 0px 0px 10px;
-    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
-    transform: scaleY(0.9);
-    right: 50%;
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    top: 3%;
 }
 
-.ExpenseButton:focus{
-    background-color: #A00318;
-    transform: scaleY(1);
+.switch input {
+    display: none;
 }
 
-.RevenueButton{
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: #2d5e26;
-    border-radius: 0px 10px 10px 0px;
-    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
-    transform: scaleY(0.90);
-    left: 50%;
+    transition: 0.4s;
+    border-radius: 34px;
 }
 
-.RevenueButton:focus{
-    background-color: #62CB51;
-    transform: scaleY(1);
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.switch input:checked + .slider {
+    background-color: #A00318;
+}
+
+.switch input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.LabelRevenue{
+    position: relative;
+    font-family: "Open Sans";
+    margin-right: 3%;
+    top: 3%;
+    color: #2d5e26;
+}
+
+.LabelExpense{
+    position: relative;
+    font-family: "Open Sans";
+    margin-left: 3%;
+    top: 3%;
+    color: #A00318;
 }
 
 .LabelDescription{

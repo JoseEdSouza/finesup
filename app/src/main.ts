@@ -9,14 +9,12 @@ const createWindow = () => {
         height: 600,
         "minHeight":600,
         "minWidth":800,
-        "maxWidth":1280,
-        "maxHeight":720,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         }
     });
     win.setMenuBarVisibility(false)
-    win.loadFile("./lib/ui/pages/login/index.html");
+    win.loadFile("./lib/ui/pages/splash-screen/index.html");
 };
 
 

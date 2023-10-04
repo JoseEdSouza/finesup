@@ -23,12 +23,19 @@ body{
 
 }
 
+@media all and (max-width: 10000px) {
+    .Logo{
+        margin-left: 0px;
+        left: 2000px;
+    }
+}
+
 .Logo{
     position: absolute;
     height: 30vh;
     aspect-ratio: 1/1;
     flex-grow: 1;
-    left: 10%;
+    left: 2%;
     animation: logo_animation 1s linear;
 }
 
@@ -42,6 +49,7 @@ body{
     position: absolute;
     animation: text_animation 1s linear;
 }
+
 
 .text{
     font-family: "Open Sans";
@@ -78,10 +86,12 @@ body{
 @keyframes 
 logo_animation {
     from{
-        left: 0%;
+        left: -10%;
+        opacity: 25%;
     }
     to{
-        left: 10%;
+        left: 2%;
+        opacity: 100%;
     }
 }
 
@@ -89,9 +99,11 @@ logo_animation {
 text_animation {
     from{
         top: -40%;
+        opacity: 10%;
     }
     to{
         top: 35%;
+        opacity: 100%;
     }
 }
 
