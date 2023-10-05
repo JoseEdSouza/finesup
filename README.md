@@ -12,28 +12,47 @@ Aqui, você encontrará documentos essenciais que fornecem informações sobre a
 
 - [Visão e Escopo](./documentation/Documento%20de%20Visão%20e%20Escopo%20-%20PI%201.pdf)
 - [Requisitos](./documentation/Documento%20de%20Requisitos%20-%20PI%201.pdf)
+- [Banco de Dados](./documentation/database)
+  - [Modelo Conceitual](./documentation/database/DER.pdf)
+  - [Modelo Relacional](./documentation/database/Diagrama%20Relacional.pdf)
 
 ---
 
 ## 🏗 Protótipo
 
-Aqui apresentamos o protótipo inicial de baixa fidelidade do Fine'sUp! Esta é uma prévia do futuro da nossa plataforma de gestão financeira e educação. Embora não seja o produto final, ele oferece uma visão das funcionalidades incríveis nas quais estamos trabalhando para ajudá-lo a controlar suas finanças.
+Aqui apresentamos o protóripo de alta fidelidade do Fine'sUp! Esta é uma prévia do futuro da nossa plataforma de gestão financeira e educação. Ele oferece uma visão das funcionalidades incríveis nas quais estamos trabalhando para ajudá-lo a controlar suas finanças.
 
 ### O que esperar?
 
-Nosso protótipo está em desenvolvimento e foi projetado para proporcionar uma compreensão básica de como o Fine'sUp será em termos de aparência e funcionalidade. Aqui está o que você pode explorar nesta versão inicial:
+Nosso protótipo está em desenvolvimento e foi projetado para proporcionar uma compreensão básica de como o Fine'sUp será em termos de aparência e funcionalidade. Aqui está o que você pode explorar nesta segunda versão:
 
-1. Painel de Controle 📈
+1. Painel de Controle 📊
 
     Dê uma primeira olhada no painel de controle do Fine'sUp, onde você terá uma visão geral de sua situação financeira. Veja sua renda, despesas, metas de economia e muito mais em um piscar de olhos.
 
-2. Acompanhamento de Despesas 💸
+1. Acompanhamento de Despesas 💸
 
     Experimente nosso recurso preliminar de acompanhamento de despesas. Adicione suas despesas diárias, categorize-as e veja como elas afetam seu orçamento geral.
 
-3. Definição de Metas 🎯
+1. Definição de Metas 🎯
 
     Dê uma olhada na seção de definição de metas, onde você pode começar a estabelecer suas metas financeiras e acompanhar seu progresso.
+
+1. Gráficos 📈
+
+    Veja como os gráficos podem ajudá-lo a entender melhor sua situação financeira. Explore os diferentes tipos de gráficos que o Fine'sUp oferece para ajudá-lo a visualizar seus dados.
+
+1. Controle de lançamentos 📝
+
+    Teste o nosso recurso preliminar de controle de lançamentos. Adicione seus lançamentos, vincule a uma categoria,fixe-o repetindo em um determinado periodo e em uma determinada frequência e veja como eles afetam seu orçamento geral.
+
+1. Controle de orçamento 📊
+
+    Experimente nosso recurso preliminar de controle de orçamento. Adicione seus orçamentos, vincule a uma categoria e administre seus gastos nele.
+
+1. Calculadoras de juros 🧮
+
+    Veja como as calculadoras de juros podem ajudá-lo a calcular valores de rendimento a longo e curto prazo. Explore as calculadoras de juros simples e compostos que o Fine'sUp oferece para ajudá-lo a visualizar seus dados.
 
 ### Como acessar?
 
