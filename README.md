@@ -37,4 +37,4 @@ Nosso protótipo está em desenvolvimento e foi projetado para proporcionar uma 
 
 ### Como acessar?
 
-Basta clicar [aqui](https://www.figma.com/proto/aABYOzhc6SB5WGDJnLFXYO/Fine'sup?node-id=1-6&starting-point-node-id=1%3A6&mode=design&t=c36MIklNpQowXIfc-1) e experimentar! 🌟
+Basta clicar [aqui](https://www.figma.com/proto/aABYOzhc6SB5WGDJnLFXYO/Fine'sup?node-id=285-723&starting-point-node-id=285%3A723&mode=design&t=SuVWBsSgr50rBphO-1) e experimentar! 🌟
