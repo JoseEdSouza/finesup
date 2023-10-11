@@ -1,2 +1,6 @@
-# config files
+# local modules
 node_modules
+#python virtual environment
+venv
+#idea
+.idea
