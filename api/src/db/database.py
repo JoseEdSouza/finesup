@@ -15,7 +15,6 @@ class Database:
             user=DBSettings.USER.value,
             password=DBSettings.PASSWORD.value
         )
-        self._cursor = self._conn.cursor()
 
     @property
     def connection(self) -> pg._psycopg.connection | None:
