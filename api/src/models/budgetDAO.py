@@ -39,7 +39,7 @@ class BudgetDAOImp(BudgetDAO):
         values = (budget.cat.id, budget.final_value, budget.actual_value, budget.renewal_date)
         try:
             self.__cursor.execute('''
-            INSERT INTO users (ex_cat_id,final_value,actual_value,renewal_date,creation_date) VALUES
+            INSERT INTO budgets (ex_cat_id,final_value,actual_value,renewal_date,creation_date) VALUES
             (
             %s,%s,%s,%s,now()
             )
@@ -55,7 +55,7 @@ class BudgetDAOImp(BudgetDAO):
         values = (budget.cat.id, budget.final_value, budget.actual_value, budget.renewal_date, bud_id)
         try:
             self.__cursor.execute('''
-            UPDATE users SET 
+            UPDATE budgets SET 
             ex_cat_id = %s,
             final_value = %s,
             actual_value = %s,
@@ -72,7 +72,7 @@ class BudgetDAOImp(BudgetDAO):
     def remove(self, bud_id: int) -> bool:
         try:
             self.__cursor.execute('''
-            DELETE FROM users WHERE id = %s
+            DELETE FROM budgets WHERE id = %s
             ''', (bud_id,))
         except pg.ProgrammingError as e:
             print(e)
@@ -84,11 +84,15 @@ class BudgetDAOImp(BudgetDAO):
     def get(self, bud_id: int) -> Budget | None:
         try:
             self.__cursor.execute('''
-            SELECT * FROM users WHERE id = %s
+            SELECT * FROM budgets WHERE id = %s
             ''', (bud_id,))
             budget = self.__cursor.fetchone()
-            # todo colocar categoryDAO no budget[2]
-            return Budget(budget[0], budget[1], budget[2], budget[3], budget[4])
+            if budget is None:
+                return None
+            else:
+                # todo colocar categoryDAO no budget[2] e add user_id
+                #  id | actual_value | final_value | renewal_date | creation_date | user_id | ex_cat_id
+                return Budget(budget[0], budget[6], budget[3], budget[3], budget[1])
         except pg.ProgrammingError as e:
             print(e)
             return None
