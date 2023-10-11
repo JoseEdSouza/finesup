@@ -1,9 +1,12 @@
 import sqlalchemy as sqla
 import psycopg2 as pg
-from api.src.config.settings import DBSettings
+from settings import DBSettings
 
 
 class Database:
+    _eng = None
+    _conn = None
+
     def __init__(self):
         self._eng = sqla.create_engine(url=DBSettings.URL.value)
         self._conn = pg.connect(
