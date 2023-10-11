@@ -2,5 +2,6 @@
 node_modules
 #python virtual environment
 venv
-#idea
+#IDEs & text-editors
 .idea
+.vscode
