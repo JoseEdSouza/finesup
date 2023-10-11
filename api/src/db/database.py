@@ -1,9 +1,10 @@
 import sqlalchemy as sqla
 import psycopg2 as pg
 from settings import DBSettings
+from api.src.utils.singleton import Singleton
 
 
-class Database:
+class Database(metaclass=Singleton):
     _eng = None
     _conn = None
 
