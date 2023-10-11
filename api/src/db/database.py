@@ -17,8 +17,10 @@ class Database:
         )
         self._cursor = self._conn.cursor()
 
-    def get_connection(self) -> pg.connection:
+    @property
+    def connection(self) -> pg._psycopg.connection | None:
         return self._conn
 
-    def get_eng(self) -> sqla.engine:
+    @property
+    def engine(self) -> sqla.Engine | None:
         return self._eng

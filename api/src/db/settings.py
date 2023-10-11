@@ -5,5 +5,5 @@ class DBSettings(Enum):
     HOST = 'localhost'
     DBNAME = 'finesup'
     USER = 'postgres'
-    PASSWORD = 'Jose24122003'
+    PASSWORD = 'Oppenheimer'
     URL = f'postgresql+psycopg2://{USER}:{PASSWORD}@{HOST}/{DBNAME}'
