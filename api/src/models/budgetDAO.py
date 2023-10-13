@@ -1,13 +1,14 @@
 from abc import ABC, abstractmethod
-from budget import Budget
+from api.src.models.budget import Budget
 from api.src.db.database import Database
 import psycopg2 as pg
+from api.src.utils.singleton import Singleton
 
 
 class BudgetDAO(ABC):
 
     @abstractmethod
-    def add(self, budget: Budget) -> bool:
+    def add(self, user_id: int, budget: Budget) -> bool:
         pass
 
     @abstractmethod
@@ -35,13 +36,13 @@ class BudgetDAOImp(BudgetDAO):
     def __save(self):
         self.__conn.commit()
 
-    def add(self, budget: Budget) -> bool:
-        values = (budget.cat.id, budget.final_value, budget.actual_value, budget.renewal_date)
+    def add(self, user_id: int, budget: Budget) -> bool:
+        values = (user_id, budget.cat.id, budget.final_value, budget.actual_value, budget.renewal_date)
         try:
             self.__cursor.execute('''
-            INSERT INTO budgets (ex_cat_id,final_value,actual_value,renewal_date,creation_date) VALUES
+            INSERT INTO budgets (user_id,ex_cat_id,final_value,actual_value,renewal_date,creation_date) VALUES
             (
-            %s,%s,%s,%s,now()
+            %s,%s,%s,%s,%s,now()
             )
             ''', values)
         except pg.ProgrammingError as e:
@@ -92,7 +93,14 @@ class BudgetDAOImp(BudgetDAO):
             else:
                 # todo colocar categoryDAO no budget[2] e add user_id
                 #  id | actual_value | final_value | renewal_date | creation_date | user_id | ex_cat_id
-                return Budget(budget[0], budget[6], budget[3], budget[3], budget[1])
+                return Budget(budget[0], budget[5],budget[6], budget[3], budget[3], budget[1])
         except pg.ProgrammingError as e:
             print(e)
             return None
+
+
+if __name__ == '__main__':
+    from category import ExpenseCategory
+    from datetime import  date
+    x = BudgetDAOImp()
+    x.add(5,budget=Budget(None,None,ExpenseCategory(1,'Alimentação'),date.today(),3000))

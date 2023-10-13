@@ -1,6 +1,6 @@
 import sqlalchemy as sqla
 import psycopg2 as pg
-from settings import DBSettings
+from api.src.db.settings import DBSettings
 from api.src.utils.singleton import Singleton
 
 
@@ -12,7 +12,7 @@ class Database(metaclass=Singleton):
         self._eng = sqla.create_engine(url=DBSettings.URL.value)
         self._conn = pg.connect(
             host=DBSettings.HOST.value,
-            dbname=DBSettings.DBNAME.value,
+            dbname=DBSettings.DBNAME,
             user=DBSettings.USER.value,
             password=DBSettings.PASSWORD.value
         )
