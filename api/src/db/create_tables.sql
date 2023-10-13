@@ -51,27 +51,25 @@ CREATE TABLE IF NOT EXISTS fixed_expenses (
 );
 
 CREATE TABLE IF NOT EXISTS boxes (
-  id SERIAL NOT NULL,
+  user_id INT NOT NULL,
   name VARCHAR(30) NOT NULL,
   description VARCHAR(140),
   actual_value FLOAT NOT NULL,
   final_value FLOAT NOT NULL,
   concluded BOOLEAN NOT NULL,
   creation_date DATE NOT NULL,
-  user_id INT NOT NULL,
-  PRIMARY KEY (id),
+  PRIMARY KEY (user_id,name),
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS budgets (
-  id SERIAL NOT NULL,
+  user_id INT NOT NULL,
+  ex_cat_id INT NOT NULL,
   actual_value FLOAT NOT NULL,
   final_value FLOAT NOT NULL,
   renewal_date DATE NOT NULL,
   creation_date DATE NOT NULL,
-  user_id INT NOT NULL,
-  ex_cat_id INT NOT NULL,
-  PRIMARY KEY (id),
+  PRIMARY KEY (user_id,ex_cat_id),
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (ex_cat_id) REFERENCES expense_categories(id)
 );
