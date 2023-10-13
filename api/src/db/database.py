@@ -12,7 +12,7 @@ class Database(metaclass=Singleton):
         self._eng = sqla.create_engine(url=DBSettings.URL.value)
         self._conn = pg.connect(
             host=DBSettings.HOST.value,
-            dbname=DBSettings.DBNAME,
+            dbname=DBSettings.DBNAME.value,
             user=DBSettings.USER.value,
             password=DBSettings.PASSWORD.value
         )

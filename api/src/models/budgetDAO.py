@@ -45,25 +45,26 @@ class BudgetDAOImp(BudgetDAO):
             %s,%s,%s,%s,%s,now()
             )
             ''', values)
-        except pg.ProgrammingError as e:
+        except pg.Error as e:
             print(e)
+            print(e.__class__)
             return False
         finally:
             self.__save()
             return True
 
     def update(self, bud_id: int, budget: Budget) -> bool:
-        values = (budget.cat.id, budget.final_value, budget.actual_value, budget.renewal_date, bud_id)
+        values = (budget.cat, budget.final_value, budget.actual_value, budget.renewal_date, bud_id)
         try:
             self.__cursor.execute('''
             UPDATE budgets SET 
             ex_cat_id = %s,
             final_value = %s,
             actual_value = %s,
-            renewal_date = %s,
+            renewal_date = %s
             WHERE id = %s
             ''', values)
-        except pg.ProgrammingError as e:
+        except pg.Error as e:
             print(e)
             return False
         finally:
@@ -75,7 +76,7 @@ class BudgetDAOImp(BudgetDAO):
             self.__cursor.execute('''
             DELETE FROM budgets WHERE id = %s
             ''', (bud_id,))
-        except pg.ProgrammingError as e:
+        except pg.Error as e:
             print(e)
             return False
         finally:
@@ -93,14 +94,18 @@ class BudgetDAOImp(BudgetDAO):
             else:
                 # todo colocar categoryDAO no budget[2] e add user_id
                 #  id | actual_value | final_value | renewal_date | creation_date | user_id | ex_cat_id
-                return Budget(budget[0], budget[5],budget[6], budget[3], budget[3], budget[1])
-        except pg.ProgrammingError as e:
+                return Budget(budget[0], budget[5], budget[6], budget[3], budget[2], budget[1])
+        except pg.Error as e:
             print(e)
             return None
 
 
 if __name__ == '__main__':
     from category import ExpenseCategory
-    from datetime import  date
+    from datetime import datetime, date
+
     x = BudgetDAOImp()
-    x.add(5,budget=Budget(None,None,ExpenseCategory(1,'Alimentação'),date.today(),3000))
+    new_bud = x.get(1)
+    new_bud.renewal_date = datetime.strptime('2023-10-14', '%Y-%m-%d').date()
+    new_bud.deposit(20)
+    x.update(1, new_bud)
