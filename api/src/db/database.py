@@ -1,6 +1,6 @@
 import sqlalchemy as sqla
 import psycopg2 as pg
-from settings import DBSettings
+from api.src.db.settings import DBSettings
 from api.src.utils.singleton import Singleton
 
 

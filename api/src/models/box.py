@@ -1,7 +1,8 @@
 class Box:
-    def __init__(self, box_id: int | None, name: str, description: str, final_value: float, actual_value: float = 0,
+    def __init__(self, box_id: int | None, user_id: int, name: str, description: str, final_value: float, actual_value: float = 0,
                  concluded: bool = False):
         self._id = box_id
+        self.user_id = user_id
         self.name = name
         self.description = description
         self.final_value = final_value

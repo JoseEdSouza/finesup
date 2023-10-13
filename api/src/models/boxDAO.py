@@ -1,13 +1,14 @@
 from abc import ABC, abstractmethod
-from box import Box
-from api.src.db.database import Database
 import psycopg2 as pg
+from api.src.models.box import Box
+from api.src.db.database import Database
+
 
 
 class BoxDAO(ABC):
 
     @abstractmethod
-    def add(self, box: Box) -> bool:
+    def add(self, box: Box, user_id: int) -> bool:
         pass
 
     @abstractmethod
@@ -32,16 +33,16 @@ class BoxDAOImp(BoxDAO):
         self.__conn = db.connection
         self.__cursor = self.__conn.cursor()
 
-    def add(self, box: Box) -> bool:
+    def add(self, user_id: int, box: Box) -> bool:
 
-        values = (box.name, box.description, box.actual_value, box.final_value, box.concluded)
+        values = (box.name, box.description, box.actual_value, box.final_value, box.concluded, box.user_id  )
         try:
             self.__cursor.execute('''
             INSERT INTO boxes(name, description, actual_value, final_value, concluded, creation_date)
-             VALUES (%s, %s, %s, %s, now())
+             VALUES (%s, %s, %s, %s, now(), %s)
             ''', values)
 
-        except pg.ProgrammingError as e:
+        except pg.Error as e:
             print(e)
             return False
         finally:
@@ -59,7 +60,7 @@ class BoxDAOImp(BoxDAO):
             concluded = %s            
             WHERE id = %s
             ''', values)
-        except pg.ProgrammingError as e:
+        except pg.Error as e:
             print(e)
             return False
         finally:
@@ -70,7 +71,7 @@ class BoxDAOImp(BoxDAO):
             self.__cursor.execute('''
             DELETE FROM boxes WHERE id = %s
             ''', (box_id,))
-        except pg.ProgrammingError as e:
+        except pg.Error as e:
             print(e)
             return False
         finally:
