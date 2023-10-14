@@ -4,7 +4,6 @@ from api.src.models.budget import Budget
 from api.src.db.database import Database
 from api.src.models.category import ExpenseCategory
 
-
 class BudgetDAO(ABC):
 
     @abstractmethod
@@ -116,7 +115,7 @@ class BudgetDAOImp(BudgetDAO):
             FROM budgets WHERE user_id = %s
             ''', (user_id,))
             list_budgets = self.__cursor.fetchall()
-            if list_budgets is None:
+            if len(list_budgets) == 0:
                 return None
             buds = list(map(lambda bud: Budget(
                 user_id=bud[0],

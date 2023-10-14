@@ -118,7 +118,7 @@ class BoxDAOImp(BoxDAO):
                         ''', (box_id,))
             values = self.__cursor.fetchall()
 
-            if values is None:
+            if len(values) == 0:
                 return None
 
             b = list(map(lambda value: Box(

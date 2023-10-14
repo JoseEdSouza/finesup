@@ -94,8 +94,8 @@ class ExpenseCategoryDAOImp(CategoryDAO):
     def get_all(self) -> list[ExpenseCategory] | None:
         try:
             self.__cursor.execute('SELECT * FROM expense_categories')
-            cats = self.__cursor.fetchone()
-            if cats is None:
+            cats = self.__cursor.fetchall()
+            if len(cats) == 0:
                 return None
             return list(map(lambda c: ExpenseCategory(c[0], c[1]), cats))
         except pg.Error as e:
@@ -171,10 +171,14 @@ class RevenueCategoryDAOImp(CategoryDAO):
     def get_all(self) -> list[RevenueCategory] | None:
         try:
             self.__cursor.execute('SELECT * FROM revenue_categories')
-            cats = self.__cursor.fetchone()
-            if cats is None:
+            cats = self.__cursor.fetchall()
+            if len(cats) == 0:
                 return None
             return list(map(lambda c: RevenueCategory(c[0], c[1]), cats))
         except pg.Error as e:
             print(e)
             return None
+
+
+if __name__ == '__main__':
+    print(RevenueCategoryDAOImp().get_all())
