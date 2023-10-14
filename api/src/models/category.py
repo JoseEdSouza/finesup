@@ -4,7 +4,7 @@ from dataclasses import dataclass
 
 @dataclass(frozen=True)
 class Category(ABC):
-    id: int
+    id: int | None
     name: str
 
 

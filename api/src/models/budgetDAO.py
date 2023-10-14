@@ -51,7 +51,6 @@ class BudgetDAOImp(BudgetDAO):
             ''', values)
         except pg.Error as e:
             print(e)
-            print(e.__class__)
             return False
         finally:
             self.__save()
