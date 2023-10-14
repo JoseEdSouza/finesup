@@ -11,15 +11,15 @@ class UserDAO(ABC):
         pass
 
     @abstractmethod
-    def update(self, user_id: int, user: User)->bool:
+    def update(self, user_id: int, user: User) -> bool:
         pass
 
     @abstractmethod
-    def remove(self, user_id: int)->bool:
+    def remove(self, user_id: int) -> bool:
         pass
 
     @abstractmethod
-    def get(self, user_id: int) ->User | None:
+    def get(self, user_id: int) -> User | None:
         pass
 
 
@@ -100,10 +100,3 @@ class UserDAOImp(UserDAO):
         except pg.Error as e:
             print(e)
             return None
-
-if __name__ == '__main__':
-    x = UserDAOImp()
-    # a = User(None, 'mateus', 'matues@mail.com', 'senha123')
-    # print(x.get(3))
-    # x.remove(3)
-    print(x.get(2))
