@@ -78,7 +78,7 @@ class BudgetDAOImp(BudgetDAO):
     def remove(self, user_id: int, ex_cat: ExpenseCategory) -> bool:
         try:
             self.__cursor.execute('''
-            DELETE FROM budgets WHERE id = %s AND ex_cat_id = %s
+            DELETE FROM budgets WHERE user_id = %s AND ex_cat_id = %s
             ''', (user_id, ex_cat.id))
         except pg.Error as e:
             print(e)
@@ -97,7 +97,7 @@ class BudgetDAOImp(BudgetDAO):
             if bud is None:
                 return None
             else:
-                # todo colocar categoryDAO no budget[2] e add user_id
+                # todo put categoryDAO no budget[2] e add user_id
                 #  user_id | ex_cat_id | actual_value | final_value | renewal_date | creation_date
                 return Budget(
                     user_id=bud[0],
@@ -126,19 +126,9 @@ class BudgetDAOImp(BudgetDAO):
                 final_value=bud[3],
                 renewal_date=bud[4]
             ), list_budgets))
-            # todo colocar categoryDAO no budget[2] e add user_id
+            # todo put categoryDAO no budget[2] e add user_id
             #   user_id | ex_cat_id | actual_value | final_value | renewal_date | creation_date
             return buds
         except pg.Error as e:
             print(e)
             return None
-
-
-if __name__ == '__main__':
-    from datetime import datetime
-    x = BudgetDAOImp()
-    #x.add(1,Budget(None,ExpenseCategory(1,'Alimentação'),datetime.now().date(),2000))
-    new_bud = x.get(1, ExpenseCategory(1, 'Alimentação'))
-    new_bud.renewal_date = datetime.strptime('2023-10-14', '%Y-%m-%d').date()
-    new_bud.deposit(20)
-    #x.update(new_bud.user_id, ExpenseCategory(1, 'Alimentação'), new_bud)

@@ -28,8 +28,12 @@ class Budget:
 
     @property
     def progress(self) -> float:
-        return self.actual_value/self.final_value
+        return self.actual_value / self.final_value
 
     @property
     def category(self) -> ExpenseCategory:
         return self.__cat
+
+    def __str__(self) -> str:
+        return (f'''Budget(User ID: {self.user_id}, Category: {self.category}, Renewal Date: {self.renewal_date},
+                Final Value: {self.final_value}, Actual Value: {self.actual_value})''')
