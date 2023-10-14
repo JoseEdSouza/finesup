@@ -1,8 +1,8 @@
+import psycopg2 as pg
 from abc import ABC, abstractmethod
 from api.src.models.budget import Budget
 from api.src.db.database import Database
-import psycopg2 as pg
-from api.src.utils.singleton import Singleton
+from api.src.models.category import ExpenseCategory
 
 
 class BudgetDAO(ABC):
@@ -12,15 +12,19 @@ class BudgetDAO(ABC):
         pass
 
     @abstractmethod
-    def update(self, bud_id: int, budget: Budget) -> bool:
+    def update(self, user_id: int, ex_cat: ExpenseCategory, budget: Budget) -> bool:
         pass
 
     @abstractmethod
-    def remove(self, bud_id: int) -> bool:
+    def remove(self, user_id: int, ex_cat: ExpenseCategory) -> bool:
         pass
 
     @abstractmethod
-    def get(self, bud_id: int) -> Budget | None:
+    def get(self, user_id: int, ex_cat: ExpenseCategory) -> Budget | None:
+        pass
+
+    @abstractmethod
+    def get_all(self, user_id: int) -> list[Budget] | None:
         pass
 
 
@@ -37,7 +41,7 @@ class BudgetDAOImp(BudgetDAO):
         self.__conn.commit()
 
     def add(self, user_id: int, budget: Budget) -> bool:
-        values = (user_id, budget.cat.id, budget.final_value, budget.actual_value, budget.renewal_date)
+        values = (user_id, budget.category.id, budget.final_value, budget.actual_value, budget.renewal_date)
         try:
             self.__cursor.execute('''
             INSERT INTO budgets (user_id,ex_cat_id,final_value,actual_value,renewal_date,creation_date) VALUES
@@ -53,8 +57,8 @@ class BudgetDAOImp(BudgetDAO):
             self.__save()
             return True
 
-    def update(self, bud_id: int, budget: Budget) -> bool:
-        values = (budget.cat, budget.final_value, budget.actual_value, budget.renewal_date, bud_id)
+    def update(self, user_id: int, ex_cat: ExpenseCategory, budget: Budget) -> bool:
+        values = (budget.category.id, budget.final_value, budget.actual_value, budget.renewal_date, user_id, ex_cat.id)
         try:
             self.__cursor.execute('''
             UPDATE budgets SET 
@@ -62,7 +66,7 @@ class BudgetDAOImp(BudgetDAO):
             final_value = %s,
             actual_value = %s,
             renewal_date = %s
-            WHERE id = %s
+            WHERE user_id = %s AND ex_cat_id = %s
             ''', values)
         except pg.Error as e:
             print(e)
@@ -71,11 +75,11 @@ class BudgetDAOImp(BudgetDAO):
             self.__save()
             return True
 
-    def remove(self, bud_id: int) -> bool:
+    def remove(self, user_id: int, ex_cat: ExpenseCategory) -> bool:
         try:
             self.__cursor.execute('''
-            DELETE FROM budgets WHERE id = %s
-            ''', (bud_id,))
+            DELETE FROM budgets WHERE user_id = %s AND ex_cat_id = %s
+            ''', (user_id, ex_cat.id))
         except pg.Error as e:
             print(e)
             return False
@@ -83,29 +87,48 @@ class BudgetDAOImp(BudgetDAO):
             self.__save()
             return True
 
-    def get(self, bud_id: int) -> Budget | None:
+    def get(self, user_id: int, ex_cat: ExpenseCategory) -> Budget | None:
         try:
             self.__cursor.execute('''
-            SELECT * FROM budgets WHERE id = %s
-            ''', (bud_id,))
-            budget = self.__cursor.fetchone()
-            if budget is None:
+            SELECT user_id,ex_cat_id,actual_value,final_value,renewal_date
+             FROM budgets WHERE user_id = %s AND ex_cat_id = %s
+            ''', (user_id, ex_cat.id))
+            bud = self.__cursor.fetchone()
+            if bud is None:
                 return None
             else:
-                # todo colocar categoryDAO no budget[2] e add user_id
-                #  id | actual_value | final_value | renewal_date | creation_date | user_id | ex_cat_id
-                return Budget(budget[0], budget[5], budget[6], budget[3], budget[2], budget[1])
+                # todo put categoryDAO no budget[2] e add user_id
+                #  user_id | ex_cat_id | actual_value | final_value | renewal_date | creation_date
+                return Budget(
+                    user_id=bud[0],
+                    cat=bud[1],
+                    actual_value=bud[2],
+                    final_value=bud[3],
+                    renewal_date=bud[4]
+                )
         except pg.Error as e:
             print(e)
             return None
 
-
-if __name__ == '__main__':
-    from category import ExpenseCategory
-    from datetime import datetime, date
-
-    x = BudgetDAOImp()
-    new_bud = x.get(1)
-    new_bud.renewal_date = datetime.strptime('2023-10-14', '%Y-%m-%d').date()
-    new_bud.deposit(20)
-    x.update(1, new_bud)
+    def get_all(self, user_id: int) -> list[Budget] | None:
+        try:
+            self.__cursor.execute('''
+            SELECT user_id,ex_cat_id,actual_value,final_value,renewal_date
+            FROM budgets WHERE user_id = %s
+            ''', (user_id,))
+            list_budgets = self.__cursor.fetchall()
+            if list_budgets is None:
+                return None
+            buds = list(map(lambda bud: Budget(
+                user_id=bud[0],
+                cat=bud[1],
+                actual_value=bud[2],
+                final_value=bud[3],
+                renewal_date=bud[4]
+            ), list_budgets))
+            # todo put categoryDAO no budget[2] e add user_id
+            #   user_id | ex_cat_id | actual_value | final_value | renewal_date | creation_date
+            return buds
+        except pg.Error as e:
+            print(e)
+            return None

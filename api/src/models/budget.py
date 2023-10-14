@@ -3,26 +3,37 @@ from datetime import date
 
 
 class Budget:
-    def __init__(self, _id: int | None, user_id: int | None, cat: ExpenseCategory, renewal_date: date,
+    def __init__(self, user_id: int | None, cat: ExpenseCategory, renewal_date: date,
                  final_value: float,
                  actual_value: float = 0):
-        self._id = _id
-        self.user_id = user_id
-        self.cat = cat
+        self.__user_id = user_id
+        self.__cat = cat
         self.renewal_date = renewal_date
         self.final_value = final_value
         self.actual_value = actual_value
 
-    @property
-    def id(self):
-        return self._id
-
     def deposit(self, value: float):
         self.actual_value += value
-        # todo implement DAO
+        return self
 
     def withdraw(self, value: float):
         self.actual_value -= value
         if self.actual_value < 0:
             self.actual_value = 0
-        # todo implement DAO
+        return self
+
+    @property
+    def user_id(self) -> int:
+        return self.__user_id
+
+    @property
+    def progress(self) -> float:
+        return self.actual_value / self.final_value
+
+    @property
+    def category(self) -> ExpenseCategory:
+        return self.__cat
+
+    def __str__(self) -> str:
+        return (f'''Budget(User ID: {self.user_id}, Category: {self.category}, Renewal Date: {self.renewal_date},
+                Final Value: {self.final_value}, Actual Value: {self.actual_value})''')
