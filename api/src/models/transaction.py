@@ -41,8 +41,8 @@ class Expense(Transaction):
         return self._user_id
 
     def __str__(self) -> str:
-        return (
-            f'''Expense(ID: {self._id}, Name: {self.name}, Description: {self.description}, Value: {self.value}, Purchase Date: {self.purchase_date}, User ID: {self.user_id} Categorie ID: {self.cat.id})''')
+        return f'''Expense(ID: {self._id}, Name: {self.name}, Description: {self.description}, Value: {self.value}
+            ,Purchase Date: {self.purchase_date}, User ID: {self.user_id} Category ID: {self.cat.id})'''
 
 
 class Revenue(Transaction):
@@ -65,5 +65,5 @@ class Revenue(Transaction):
         return self._user_id
 
     def __str__(self) -> str:
-        return (
-            f'''Revenue(ID: {self._id}, Name: {self.name}, Description: {self.description}, Value: {self.value}, Purchase Date: {self.purchase_date}, User ID: {self.user_id} Categorie ID: {self.cat.id})''')
+        return f'''Revenue(ID: {self._id}, Name: {self.name}, Description: {self.description}, Value: {self.value},
+             Purchase Date: {self.purchase_date}, User ID: {self.user_id} Categorie ID: {self.cat.id})'''
