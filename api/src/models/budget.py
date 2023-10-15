@@ -35,5 +35,5 @@ class Budget:
         return self.actual_value / self.final_value
 
     def __str__(self) -> str:
-        return f'''Budget(User ID: {self.user_id}, Category: {self.category}, Renewal Date: {self.renewal_date},
-                Final Value: {self.final_value}, Actual Value: {self.actual_value})'''
+        return f'Budget(User ID: {self.user_id}, Category: {self.category}, Renewal Date: {self.renewal_date}'\
+               f', Final Value: {self.final_value}, Actual Value: {self.actual_value})'

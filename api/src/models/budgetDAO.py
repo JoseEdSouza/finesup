@@ -124,3 +124,9 @@ class BudgetDAOImp(BudgetDAO):
         except pg.Error as e:
             print(e)
             return None
+
+
+if __name__ == '__main__':
+    x = BudgetDAOImp(Database())
+    print(*x.get_all(1))
+    print(x.get(1, ExpenseCategory(2, '')).deposit(214).progress)
