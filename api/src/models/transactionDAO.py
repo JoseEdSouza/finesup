@@ -55,15 +55,16 @@ class ExpenseDAOImp(TransactionDAO):
             return True
 
     def update(self, t_id: int, transaction: Expense) -> bool:
+
         values = (transaction.name, transaction.description, transaction.value,
-                  transaction.purchase_date, transaction.cat.id)
+                  transaction.purchase_date, transaction.cat.id, t_id)
         try:
             self.__cursor.execute('''
             UPDATE expenses SET
-            name = %s
-            description = %s
-            value = %s
-            purchase_date = %s
+            name = %s,
+            description = %s,
+            value = %s,
+            purchase_date = %s,
             ex_cat_id = %s
             WHERE id = %s
             ''', values)
@@ -160,14 +161,14 @@ class RevenueDAOImp(TransactionDAO):
 
     def update(self, t_id: int, transaction: Revenue) -> bool:
         values = (transaction.name, transaction.description, transaction.value,
-                  transaction.purchase_date, transaction.cat.id)
+                  transaction.purchase_date, transaction.cat.id, t_id)
         try:
             self.__cursor.execute('''
             UPDATE revenues SET
-            name = %s
-            description = %s
-            value = %s
-            purchase_date = %s
+            name = %s,
+            description = %s,
+            value = %s,
+            purchase_date = %s,
             rev_cat_id = %s
             WHERE id = %s
             ''', values)

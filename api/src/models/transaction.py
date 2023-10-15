@@ -40,6 +40,10 @@ class Expense(Transaction):
     def user_id(self) -> int:
         return self._user_id
 
+    def __str__(self) -> str:
+        return (
+            f'''Expense(ID: {self._id}, Name: {self.name}, Description: {self.description}, Value: {self.value}, Purchase Date: {self.purchase_date}, User ID: {self.user_id} Categorie ID: {self.cat.id})''')
+
 
 class Revenue(Transaction):
     def __init__(self, t_id: int, user_id: int, name: str, description: str, value: float,
@@ -59,3 +63,7 @@ class Revenue(Transaction):
     @property
     def user_id(self) -> int:
         return self._user_id
+
+    def __str__(self) -> str:
+        return (
+            f'''Revenue(ID: {self._id}, Name: {self.name}, Description: {self.description}, Value: {self.value}, Purchase Date: {self.purchase_date}, User ID: {self.user_id} Categorie ID: {self.cat.id})''')
