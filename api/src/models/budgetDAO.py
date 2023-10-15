@@ -4,6 +4,7 @@ from api.src.models.budget import Budget
 from api.src.db.database import Database
 from api.src.models.category import ExpenseCategory
 
+
 class BudgetDAO(ABC):
 
     @abstractmethod
@@ -44,9 +45,7 @@ class BudgetDAOImp(BudgetDAO):
         try:
             self.__cursor.execute('''
             INSERT INTO budgets (user_id,ex_cat_id,final_value,actual_value,renewal_date,creation_date) VALUES
-            (
-            %s,%s,%s,%s,%s,now()
-            )
+            (%s,%s,%s,%s,%s,now())
             ''', values)
         except pg.Error as e:
             print(e)
@@ -89,7 +88,7 @@ class BudgetDAOImp(BudgetDAO):
         try:
             self.__cursor.execute('''
             SELECT user_id,ex_cat_id,actual_value,final_value,renewal_date
-             FROM budgets WHERE user_id = %s AND ex_cat_id = %s
+            FROM budgets WHERE user_id = %s AND ex_cat_id = %s
             ''', (user_id, ex_cat.id))
             bud = self.__cursor.fetchone()
             if bud is None:

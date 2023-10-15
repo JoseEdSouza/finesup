@@ -178,7 +178,3 @@ class RevenueCategoryDAOImp(CategoryDAO):
         except pg.Error as e:
             print(e)
             return None
-
-
-if __name__ == '__main__':
-    print(RevenueCategoryDAOImp().get_all())
