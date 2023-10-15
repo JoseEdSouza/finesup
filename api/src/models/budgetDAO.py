@@ -32,8 +32,7 @@ class BudgetDAOImp(BudgetDAO):
     __conn = None
     __cursor = None
 
-    def __init__(self):
-        db = Database()
+    def __init__(self, db: Database):
         self.__conn = db.connection
         self.__cursor = self.__conn.cursor()
 
@@ -44,14 +43,11 @@ class BudgetDAOImp(BudgetDAO):
         values = (user_id, budget.category.id, budget.final_value, budget.actual_value, budget.renewal_date)
         try:
             self.__cursor.execute('''
-            INSERT INTO budgets (user_id,ex_cat_id,final_value,actual_value,renewal_date,creation_date) VALUES
-            (
-            %s,%s,%s,%s,%s,now()
-            )
+            INSERT INTO budgets (user_id,ex_cat_id,final_value,actual_value,renewal_date,creation_date)
+            VALUES (%s,%s,%s,%s,%s,now())
             ''', values)
         except pg.Error as e:
             print(e)
-            print(e.__class__)
             return False
         finally:
             self.__save()
@@ -91,17 +87,15 @@ class BudgetDAOImp(BudgetDAO):
         try:
             self.__cursor.execute('''
             SELECT user_id,ex_cat_id,actual_value,final_value,renewal_date
-             FROM budgets WHERE user_id = %s AND ex_cat_id = %s
+            FROM budgets WHERE user_id = %s AND ex_cat_id = %s
             ''', (user_id, ex_cat.id))
             bud = self.__cursor.fetchone()
             if bud is None:
                 return None
             else:
-                # todo put categoryDAO no budget[2] e add user_id
-                #  user_id | ex_cat_id | actual_value | final_value | renewal_date | creation_date
                 return Budget(
                     user_id=bud[0],
-                    cat=bud[1],
+                    cat=ExpenseCategory(bud[1], ''),  # todo add CategoryDAO
                     actual_value=bud[2],
                     final_value=bud[3],
                     renewal_date=bud[4]
@@ -117,17 +111,15 @@ class BudgetDAOImp(BudgetDAO):
             FROM budgets WHERE user_id = %s
             ''', (user_id,))
             list_budgets = self.__cursor.fetchall()
-            if list_budgets is None:
+            if len(list_budgets) == 0:
                 return None
             buds = list(map(lambda bud: Budget(
                 user_id=bud[0],
-                cat=bud[1],
+                cat=ExpenseCategory(bud[1], ''),  # todo add CategoryDAO
                 actual_value=bud[2],
                 final_value=bud[3],
                 renewal_date=bud[4]
             ), list_budgets))
-            # todo put categoryDAO no budget[2] e add user_id
-            #   user_id | ex_cat_id | actual_value | final_value | renewal_date | creation_date
             return buds
         except pg.Error as e:
             print(e)
