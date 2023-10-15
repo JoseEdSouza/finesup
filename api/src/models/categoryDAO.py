@@ -30,8 +30,7 @@ class ExpenseCategoryDAOImp(CategoryDAO):
     __conn = None
     __cursor = None
 
-    def __init__(self):
-        db = Database()
+    def __init__(self, db: Database):
         self.__conn = db.connection
         self.__cursor = self.__conn.cursor()
 
@@ -107,8 +106,7 @@ class RevenueCategoryDAOImp(CategoryDAO):
     __conn = None
     __cursor = None
 
-    def __init__(self):
-        db = Database()
+    def __init__(self, db: Database):
         self.__conn = db.connection
         self.__cursor = self.__conn.cursor()
 

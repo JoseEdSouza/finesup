@@ -2,15 +2,19 @@ class Box:
     def __init__(self, user_id: int | None, name: str, description: str, final_value: float, actual_value: float = 0,
                  concluded: bool = False):
         self._user_id = user_id
-        self.name = name
+        self._name = name
         self.description = description
         self.final_value = final_value
         self.actual_value = actual_value
         self.concluded = concluded
 
     @property
-    def get_user_id(self):
+    def user_id(self) -> int:
         return self._user_id
+
+    @property
+    def name(self) -> str:
+        return self._name
 
     def deposit(self, value: float):
         # over limit value
