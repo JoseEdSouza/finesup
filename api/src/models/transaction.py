@@ -4,6 +4,14 @@ from api.src.models.category import Category, ExpenseCategory, RevenueCategory
 
 
 class Transaction(ABC):
+    _id: int | None
+    user_id: int
+    name: str
+    description: str
+    value: float
+    purchase_date: datetime
+    cat: Category
+
     @abstractmethod
     def __init__(self, t_id: int | None, user_id: int, name: str, description: str, value: float,
                  purchase_date: datetime, cat: Category):
