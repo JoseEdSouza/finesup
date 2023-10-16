@@ -1,5 +1,5 @@
-from api.src.models.category import ExpenseCategory
 from datetime import date
+from api.src.models.category import ExpenseCategory
 
 
 class Budget:
