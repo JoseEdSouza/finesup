@@ -90,8 +90,10 @@ class ExpenseDAOImp(TransactionDAO):
     def get(self, t_id: int) -> Expense | None:
         try:
             self.__cursor.execute('''
-            SELECT * FROM expenses
-            WHERE id = %s
+            SELECT ex.id,ex.name,ex.description,ex.value,ex.purchase_date,ex.user_id,ex.ex_cat_id,ec.name
+            FROM expenses ex
+            JOIN expense_categories ec ON ex.id = ec.id
+            WHERE ex.id = %s
             ''', (t_id,))
             exp = self.__cursor.fetchone()
             if exp is None:
@@ -103,7 +105,7 @@ class ExpenseDAOImp(TransactionDAO):
                 value=exp[3],
                 purchase_date=exp[4],
                 user_id=exp[5],
-                cat=ExpenseCategory(exp[6], '')  # todo add CategoryDAO
+                cat=ExpenseCategory(exp[6], exp[7])
             )
         except pg.Error as e:
             print(e)
@@ -112,8 +114,10 @@ class ExpenseDAOImp(TransactionDAO):
     def get_all(self, user_id: int) -> list[Expense] | None:
         try:
             self.__cursor.execute('''
-            SELECT * FROM expenses
-            WHERE user_id = %s
+            SELECT ex.id,ex.name,ex.description,ex.value,ex.purchase_date,ex.user_id,ex.ex_cat_id,ec.name
+            FROM expenses ex
+            JOIN expense_categories ec ON ex.id = ec.id
+            WHERE ex.user_id = %s
             ''', (user_id,))
             list_expenses = self.__cursor.fetchall()
             if len(list_expenses) == 0:
@@ -125,7 +129,7 @@ class ExpenseDAOImp(TransactionDAO):
                 value=exp[3],
                 purchase_date=exp[4],
                 user_id=exp[5],
-                cat=ExpenseCategory(exp[6], '')  # todo add CategoryDAO
+                cat=ExpenseCategory(exp[6], exp[7])
             ), list_expenses))
             return expenses
         except pg.Error as e:
@@ -194,8 +198,10 @@ class RevenueDAOImp(TransactionDAO):
     def get(self, t_id: int) -> Revenue | None:
         try:
             self.__cursor.execute('''
-            SELECT * FROM revenues
-            WHERE id = %s
+            SELECT rev.id,rev.name,rev.description,rev.value,rev.purchase_date,rev.user_id,rev.rev_cat_id,revc.name
+            FROM revenues rev
+            JOIN revenue_categories revc ON rev.id = revc.id
+            WHERE rev.id = %s
             ''', (t_id,))
             rev = self.__cursor.fetchone()
             if rev is None:
@@ -207,7 +213,7 @@ class RevenueDAOImp(TransactionDAO):
                 value=rev[3],
                 purchase_date=rev[4],
                 user_id=rev[5],
-                cat=RevenueCategory(rev[6], '')  # todo add CategoryDAO
+                cat=RevenueCategory(rev[6], rev[7])
             )
         except pg.Error as e:
             print(e)
@@ -216,8 +222,10 @@ class RevenueDAOImp(TransactionDAO):
     def get_all(self, user_id: int) -> list[Revenue] | None:
         try:
             self.__cursor.execute('''
-            SELECT * FROM revenues
-            WHERE user_id = %s
+            SELECT rev.id,rev.name,rev.description,rev.value,rev.purchase_date,rev.user_id,rev.rev_cat_id,revc.name
+            FROM revenues rev
+            JOIN revenue_categories revc ON rev.id = revc.id
+            WHERE rev.user_id = %s
             ''', (user_id,))
             list_revenues = self.__cursor.fetchall()
             if len(list_revenues) == 0:
@@ -229,7 +237,7 @@ class RevenueDAOImp(TransactionDAO):
                 value=rev[3],
                 purchase_date=rev[4],
                 user_id=rev[5],
-                cat=RevenueCategory(rev[6], '')  # todo add CategoryDAO
+                cat=RevenueCategory(rev[6], rev[7])
             ), list_revenues))
             return revenues
         except pg.Error as e:
