@@ -69,4 +69,3 @@ class Revenue(Transaction):
     @property
     def user_id(self) -> int:
         return self._user_id
-
