@@ -1,5 +1,3 @@
-import datetime
-
 import psycopg2 as pg
 from abc import ABC, abstractmethod
 from api.src.db.database import Database
@@ -96,16 +94,17 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
             return True
 
     def get(self, ft_id: int) -> FixedExpense | None:
-        # id | name | description | purchase_date | limit_date | frequency | value | user_id | ex_cat_id
         try:
             self.__cursor.execute('''
-            SELECT * FROM fixed_expenses
-            WHERE id = %s
+            SELECT fx.id, fx.name, fx.description, fx.purchase_date, fx.limit_date, fx.frequency, fx.value, fx.user_id, fx.ex_cat_id, ec.name 
+            FROM fixed_expenses fx 
+            JOIN expense_categories ec ON ec.id = fx.ex_cat_id 
+            WHERE fx.id = %s;
             ''', (ft_id,))
             exp = self.__cursor.fetchone()
             if exp is None:
                 return None
-            #  id | name | description | purchase_date | limit_date | frequency | value | user_id | ex_cat_id
+            # id | name | description | purchase_date | limit_date | frequency | value | user_id | ex_cat_id | id | name
             return FixedExpense(
                 ft_id=exp[0],
                 name=exp[1],
@@ -115,7 +114,7 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
                 frequency=Frequency(exp[5]),
                 value=exp[6],
                 user_id=exp[7],
-                cat=ExpenseCategory(exp[8], '')  # todo add CategoryDAO
+                cat=ExpenseCategory(exp[8], exp[9])  # todo add CategoryDAO
             )
         except pg.Error as e:
             print(e)
@@ -124,13 +123,15 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
     def get_all(self, user_id: int) -> list[FixedExpense] | None:
         try:
             self.__cursor.execute('''
-            SELECT * FROM fixed_expenses
+            SELECT fx.id, fx.name, fx.description, fx.purchase_date, fx.limit_date, fx.frequency, fx.value, fx.user_id, fx.ex_cat_id, ec.name 
+            FROM fixed_expenses fx
+            JOIN expense_categories ec ON ec.id = fx.ex_cat_id
             WHERE user_id = %s
             ''', (user_id,))
             list_fix_expenses = self.__cursor.fetchall()
             if len(list_fix_expenses) == 0:
                 return None
-            #  id | name | description | purchase_date | limit_date | frequency | value | user_id | ex_cat_id
+            #  id | name | description | purchase_date | limit_date | frequency | value | user_id | ex_cat_id | name
             expenses = list(map(lambda exp: FixedExpense(
                 ft_id=exp[0],
                 name=exp[1],
@@ -140,7 +141,7 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
                 frequency=Frequency(exp[5]),
                 value=exp[6],
                 user_id=exp[7],
-                cat=ExpenseCategory(exp[8], '')  # todo add CategoryDAO
+                cat=ExpenseCategory(exp[8], exp[9])  # todo add CategoryDAO
             ), list_fix_expenses))
             return expenses
         except pg.Error as e:
@@ -214,13 +215,15 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
     def get(self, t_id: int) -> FixedRevenue | None:
         try:
             self.__cursor.execute('''
-            SELECT * FROM fixed_revenues
-            WHERE id = %s
+            SELECT r.id, r.name, r.description, r.value, r.purchase_date, r.limit_date, r.frequency, r.user_id, rc.id, rc.name
+            FROM fixed_revenues r 
+            JOIN revenue_categories rc ON rc.id = r.rev_cat_id
+            WHERE r.id = %s
             ''', (t_id,))
             rev = self.__cursor.fetchone()
             if rev is None:
                 return None
-            # id |   name   |  description   | value | purchase_date | limit_date | frequency | user_id | rev_cat_id
+            # id | name | description | value | purchase_date | limit_date | frequency | user_id | rev_cat_id | | name
             return FixedRevenue(
                 ft_id=rev[0],
                 name=rev[1],
@@ -230,7 +233,7 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
                 limit_date=rev[5],
                 frequency=Frequency(rev[6]),
                 user_id=rev[7],
-                cat=RevenueCategory(rev[8], '')  # todo add CategoryDAO
+                cat=RevenueCategory(rev[8], rev[9])  # todo add CategoryDAO
             )
         except pg.Error as e:
             print(e)
@@ -239,7 +242,9 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
     def get_all(self, user_id: int) -> list[FixedRevenue] | None:
         try:
             self.__cursor.execute('''
-            SELECT * FROM fixed_revenues
+            SELECT r.id, r.name, r.description, r.value, r.purchase_date, r.limit_date, r.frequency, r.user_id, rc.id, rc.name
+            FROM fixed_revenues r 
+            JOIN revenue_categories rc ON rc.id = r.rev_cat_id
             WHERE user_id = %s
             ''', (user_id,))
             list_revenues = self.__cursor.fetchall()
@@ -255,7 +260,7 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
                 limit_date=rev[5],
                 frequency=Frequency(rev[6]),
                 user_id=rev[7],
-                cat=RevenueCategory(rev[8], '')  # todo add CategoryDAO
+                cat=RevenueCategory(rev[8], rev[9])  # todo add CategoryDAO
             ), list_revenues))
             return revenues
         except pg.Error as e:
