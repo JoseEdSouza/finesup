@@ -14,12 +14,12 @@ class FixedTransaction(ABC):
     value: float
     cat: Category
     purchase_date: datetime
-    limite_date: datetime
+    limit_date: datetime
     frequency: Frequency
 
     @abstractmethod
     def __init__(self, ft_id: int | None, user_id: int, name: str, description: str, value: float, cat: Category,
-                 purchase_date: datetime, limite_date: datetime, frequency: Frequency):
+                 purchase_date: datetime, limit_date: datetime, frequency: Frequency):
         pass
 
     @property
@@ -36,7 +36,7 @@ class FixedTransaction(ABC):
 class FixedExpense(FixedTransaction):
 
     def __init__(self, ft_id: int | None, user_id: int, name: str, description: str, value: float, cat: ExpenseCategory,
-                 purchase_date: datetime, limite_date: datetime, frequency: Frequency):
+                 purchase_date: datetime, limit_date: datetime, frequency: Frequency):
         self._id = ft_id
         self._user_id = user_id
         self.name = name
@@ -44,7 +44,7 @@ class FixedExpense(FixedTransaction):
         self.value = value
         self.cat = cat
         self.purchase_date = purchase_date
-        self.limite_date = limite_date
+        self.limit_date = limit_date
         self.frequency = frequency
 
     @property
@@ -59,7 +59,7 @@ class FixedExpense(FixedTransaction):
 class FixedRevenue(FixedTransaction):
 
     def __init__(self, ft_id: int | None, user_id: int, name: str, description: str, value: float, cat: RevenueCategory,
-                 purchase_date: datetime, limite_date: datetime, frequency: Frequency):
+                 purchase_date: datetime, limit_date: datetime, frequency: Frequency):
         self._id = ft_id
         self._user_id = user_id
         self.name = name
@@ -67,7 +67,7 @@ class FixedRevenue(FixedTransaction):
         self.value = value
         self.cat = cat
         self.purchase_date = purchase_date
-        self.limite_date = limite_date
+        self.limit_date = limit_date
         self.frequency = frequency
 
     @property

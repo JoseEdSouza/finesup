@@ -1,3 +1,5 @@
+import datetime
+
 import psycopg2 as pg
 from abc import ABC, abstractmethod
 from api.src.db.database import Database
@@ -42,7 +44,7 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
 
     def add(self, user_id: int, transaction: FixedExpense) -> bool:
         values = (user_id, transaction.name, transaction.description,
-                  transaction.purchase_date, transaction.limite_date, transaction.frequency,
+                  transaction.purchase_date, transaction.limit_date, transaction.frequency.value,
                   transaction.value, transaction.cat.id)
         try:
             # id | name | description | purchase_date | limit_date | frequency | value | user_id | ex_cat_id
@@ -60,7 +62,7 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
     def update(self, ft_id: int, transaction: FixedExpense) -> bool:
         # id | name | description | purchase_date | limit_date | frequency | value | user_id | ex_cat_id
         values = (transaction.name, transaction.description,
-                  transaction.purchase_date, transaction.limite_date, transaction.frequency,
+                  transaction.purchase_date, transaction.limit_date, transaction.frequency.value,
                   transaction.value, transaction.cat.id, ft_id)
         try:
             self.__cursor.execute('''
@@ -109,7 +111,7 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
                 name=exp[1],
                 description=exp[2],
                 purchase_date=exp[3],
-                limite_date=exp[4],
+                limit_date=exp[4],
                 frequency=Frequency(exp[5]),
                 value=exp[6],
                 user_id=exp[7],
@@ -134,7 +136,7 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
                 name=exp[1],
                 description=exp[2],
                 purchase_date=exp[3],
-                limite_date=exp[4],
+                limit_date=exp[4],
                 frequency=Frequency(exp[5]),
                 value=exp[6],
                 user_id=exp[7],
@@ -159,7 +161,7 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
 
     def add(self, user_id: int, transaction: FixedRevenue) -> bool:
         values = (user_id, transaction.name, transaction.description,
-                  transaction.purchase_date, transaction.limite_date, transaction.frequency,
+                  transaction.purchase_date, transaction.limit_date, transaction.frequency.value,
                   transaction.value, transaction.cat.id)
         # id | name | description | value | purchase_date | limit_date | frequency | user_id | rev_cat_id
         try:
@@ -176,7 +178,7 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
 
     def update(self, ft_id: int, transaction: FixedRevenue) -> bool:
         values = (transaction.name, transaction.description,
-                  transaction.purchase_date, transaction.limite_date, transaction.frequency,
+                  transaction.purchase_date, transaction.limit_date, transaction.frequency.value,
                   transaction.value, transaction.cat.id, ft_id)
         try:
             self.__cursor.execute('''
@@ -225,7 +227,7 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
                 description=rev[2],
                 value=rev[3],
                 purchase_date=rev[4],
-                limite_date=rev[5],
+                limit_date=rev[5],
                 frequency=Frequency(rev[6]),
                 user_id=rev[7],
                 cat=RevenueCategory(rev[8], '')  # todo add CategoryDAO
@@ -250,7 +252,7 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
                 description=rev[2],
                 value=rev[3],
                 purchase_date=rev[4],
-                limite_date=rev[5],
+                limit_date=rev[5],
                 frequency=Frequency(rev[6]),
                 user_id=rev[7],
                 cat=RevenueCategory(rev[8], '')  # todo add CategoryDAO

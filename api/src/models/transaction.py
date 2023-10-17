@@ -4,7 +4,7 @@ from datetime import datetime
 from api.src.models.category import Category, ExpenseCategory, RevenueCategory
 
 
-@dataclass
+@dataclass(init=False)
 class Transaction(ABC):
     _id: int | None
     user_id: int
