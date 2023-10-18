@@ -114,7 +114,7 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
                 frequency=Frequency(exp[5]),
                 value=exp[6],
                 user_id=exp[7],
-                cat=ExpenseCategory(exp[8], exp[9])  # todo add CategoryDAO
+                cat=ExpenseCategory(exp[8], exp[9])
             )
         except pg.Error as e:
             print(e)
@@ -141,7 +141,7 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
                 frequency=Frequency(exp[5]),
                 value=exp[6],
                 user_id=exp[7],
-                cat=ExpenseCategory(exp[8], exp[9])  # todo add CategoryDAO
+                cat=ExpenseCategory(exp[8], exp[9])
             ), list_fix_expenses))
             return expenses
         except pg.Error as e:
@@ -233,7 +233,7 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
                 limit_date=rev[5],
                 frequency=Frequency(rev[6]),
                 user_id=rev[7],
-                cat=RevenueCategory(rev[8], rev[9])  # todo add CategoryDAO
+                cat=RevenueCategory(rev[8], rev[9])
             )
         except pg.Error as e:
             print(e)
@@ -260,7 +260,7 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
                 limit_date=rev[5],
                 frequency=Frequency(rev[6]),
                 user_id=rev[7],
-                cat=RevenueCategory(rev[8], rev[9])  # todo add CategoryDAO
+                cat=RevenueCategory(rev[8], rev[9])
             ), list_revenues))
             return revenues
         except pg.Error as e:
