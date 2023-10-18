@@ -1,0 +1,58 @@
+.Container{
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 90%;
+    height: fit-content;
+    top: 25%;
+    margin-top: 20px;
+}
+
+.LaunchContainer{
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    height: 48px;
+    margin-top: 10px;
+    background-color: #D1D3F1;
+    border-radius: 10px;
+    max-width: 850px;
+}
+
+.Icons{
+    position: absolute;
+    width: 50px;
+    left: 15px;
+}
+
+.NameTransaction{
+    position: absolute;
+    font-family: "Open Sans";
+    color: #2E1E43;
+    left: 80px;
+    top: 5px;
+}
+
+.TypeTransaction{
+    position: absolute;
+    font-family: "Open Sans";
+    font-size: 10px;
+    left: 80px;
+    bottom: 7px;
+}
+
+.ValueTransactionRevenue{
+    position: absolute;
+    font-family: "Open Sans";
+    color: #2d5e26;
+    right: 20px;
+}
+
+.ValueTransactionExpense{
+    position: absolute;
+    font-family: "Open Sans";
+    color: #A00318;
+    right: 20px;
+}
