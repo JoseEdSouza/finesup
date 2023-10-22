@@ -8,7 +8,7 @@ import "./TransactionHistory.css";
 function TransactionHistory(){
     return(
         <>
-            <NavBar/>
+            <NavBar name="Histórico de Transações"/>
             <div id="valueContainer">
                 <Balance/>
                 <Revenue_expense/>

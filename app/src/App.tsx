@@ -1,10 +1,10 @@
-import Login from './pages/Login'
-import TransactionHistory from './pages/TransactionHistory'
+import CategoryExpense from "./pages/CategoryExpense";
+import CategoryRevenue from "./pages/CategoryRevenue";
 
 function App() {
   return (
-    <Login/>
-  )
+    <CategoryRevenue/>
+  );
 }
 
 export default App
