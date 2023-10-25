@@ -1,0 +1,129 @@
+.CategoryContainer{
+    background-color: #D1D3F1;
+    border-radius: 10px;
+    height: 10vh;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    margin-bottom: 1.5%;
+    cursor: pointer;
+}
+
+.IconCategory{
+    position: relative;
+    border-radius: 20px;
+    margin-left: 16%;
+    height: 7vh;
+    max-height: 70px;
+    width: 8.5vw;
+    max-width: 80px;
+    flex-shrink: 0; 
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.TypeCategory{
+    position: relative;
+    margin-left: 3.5%;
+    font-family: "Open Sans";
+    font-size: 3.5vh;
+    color: #2E1E43;
+    cursor: pointer;
+}
+
+#alimentation{
+    background: #CC2E43;
+}
+
+#leisure{
+    background: #F7FFA1;
+}
+
+#clothes{
+    background: #70B6F6;
+}
+
+#market{
+    background: #5AF961;
+}
+
+#transport{
+    background: #A2A0FA; 
+}
+
+#health{
+    background: #FF6928; 
+}
+
+#travel{
+    background: #C728FF; 
+}
+
+#pets{
+    background: #2D28FF; 
+}
+
+#home{
+    background: #28B2FF;
+}
+
+#accounts{
+    background: #28FF64;
+}
+
+#donation{
+    background: #AD3D3D; 
+}
+
+#education{
+    background: #4D91B8; 
+}
+
+#tax{
+    background: #FFEA28; 
+}
+
+#investment{
+    background: #FF6928; 
+}
+
+#exchange{
+    background: #0FBB00; 
+}
+
+#exitOthers{
+    background: #28FFBF; 
+}
+
+#cashback{
+    background: #CC2E2E; 
+}
+
+#sales{
+    background: #EBEE61;
+}
+
+#bonus{
+    background: #70B6F6; 
+}
+
+#reversal{
+    background: #A2A0FA; 
+}
+
+#income{
+    background: #C728FF; 
+}
+
+#performance{
+    background: #2D28FF; 
+}
+
+#balanceCorrection{
+background: #C4E977;
+}
+
+#entryOthers{
+    background: #A6EB15; 
+}

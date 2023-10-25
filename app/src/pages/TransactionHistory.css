@@ -1,0 +1,12 @@
+#valueContainer{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 40vh;
+    width: 100vw;
+    top: 6.5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
