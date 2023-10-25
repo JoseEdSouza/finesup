@@ -1,0 +1,20 @@
+.LoginButton{
+    position: absolute;
+    border-radius: 1cqmin;
+    border-style: hidden;
+    background-color: transparent;
+    border: solid 2px;
+    font-size: 3vh;
+    color: #2E1E43;
+    height: 12%;
+    width: 40%;
+    right: 30%;
+    bottom: 10%;
+    cursor: pointer;
+}
+
+button:hover{
+    transform: scale(1.05);
+    background-color: #2E1E43;
+    color: #D1D3F1;
+}

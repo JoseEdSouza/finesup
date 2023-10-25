@@ -1,33 +1,35 @@
 {
   "name": "finesup",
-  "version": "0.0.1",
-  "description": "Fine'sUp is a project that aims to promote financial management and education for users. The project offers tools and content to help people plan, control and improve their personal finances. Fine'sUp aims to increase your confidence, security and quality of life through intelligent and effective financial management.",
-  "main": "dist/main.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "private": true,
+  "version": "0.0.0",
   "scripts": {
-    "start": "electron .",
-    "test": "test"
+    "dev": "vite",
+    "build": "tsc && vite build && electron-builder",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JoseEdSouza/finesup.git"
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0",
+    "react-router-dom": "^6.17.0",
+    "yarn": "^1.22.19"
   },
-  "keywords": [
-    "finesup",
-    "finance",
-    "finances",
-    "management",
-    "up"
-  ],
-  "author": "José Souza, Pedro Henrique, Ítalo Kauã, Erick Gabriel",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/JoseEdSouza/finesup/issues"
-  },
-  "homepage": "https://github.com/JoseEdSouza/finesup#readme",
   "devDependencies": {
-    "electron": "^26.2.4"
-  }
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/parser": "^6.6.0",
+    "@vitejs/plugin-react": "^4.0.4",
+    "electron": "^26.1.0",
+    "electron-builder": "^24.6.4",
+    "eslint": "^8.48.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vite-plugin-electron": "^0.14.0",
+    "vite-plugin-electron-renderer": "^0.14.5"
+  },
+  "main": "dist-electron/main.js"
 }

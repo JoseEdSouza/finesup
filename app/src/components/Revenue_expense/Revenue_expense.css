@@ -1,0 +1,38 @@
+.RE{
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #D1D3F1;
+    border-radius: 1cqmin;
+    height: 11.5vh;
+    width: 48.6vw;
+    max-height: 100px;
+    max-width: 480px;
+}
+
+#Uarrow, #Darrow{
+    position: relative;
+    color: #62CB51;
+    font-size: 7.5vh;
+    margin-left: 10%;
+}
+
+#Darrow{
+    margin-left: 22%;
+    color: #CB5151;
+}
+
+#LabelR, #LabelValueR, #LabelE, #LabelValueE{
+    position: relative;
+    font-family: "Open Sans";
+    margin-left: 20%;
+}
+
+#LabelValueR{
+    color: #62CB51;
+}
+
+
+#LabelValueE{
+    color: #CB5151;
+}

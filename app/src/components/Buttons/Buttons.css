@@ -1,0 +1,46 @@
+.Buttons{
+    position: absolute;
+    height: fit-content;
+    width: fit-content;
+    justify-content: center;
+    display: flex;
+    top: 45%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#Import, #Fixed, #History{
+    position: relative;
+    font-family: "Open Sans";
+    font-size: 90%;
+    white-space: nowrap;
+    border-style: none;
+    border-radius: 1cqmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 24px;
+    padding: 1% 10%;
+    color: #2E1E43;
+    background-color: #D1D3F1;
+    cursor: pointer;
+}
+
+#Add{
+    position: relative;
+    font-family: "Open Sans";
+    font-size: 150%;
+    border-style: none;
+    border-radius: 1cqmin;
+    padding: 1% 4%;
+    color: #2E1E43;
+    background-color: #D1D3F1;
+    cursor: pointer;
+}
+
+#Import:hover, #Fixed:hover, #History:hover, #Add:hover{
+    transform: scale(1.03);
+    background-color: #2E1E43;
+    color: #D1D3F1;
+    border: solid 1px #D1D3F1;
+}
