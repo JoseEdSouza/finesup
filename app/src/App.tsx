@@ -3,7 +3,7 @@ import CategoryExpense from "./pages/CategoryExpense";
 
 function App() {
   return (
-    <></>
+    <CategoryExpense/>
   );
 }
 

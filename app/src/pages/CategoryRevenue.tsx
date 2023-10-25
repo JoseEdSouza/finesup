@@ -6,6 +6,10 @@ function CategoryRevenue(){
     return(
         <>
             <NavBar name="Categorias"/>
+            <div id="link">
+                <label id="entry" className="Active">Entrada</label>
+                <label id="out" className="Inactive">Saída</label>
+            </div>
             <div className="Container">
                 <Category typeIcon="cashback" icon="./icon_cashback.svg" label="Cashback"/>
                 <Category typeIcon="sales" icon="./icon_sales.svg" label="Vendas"/>

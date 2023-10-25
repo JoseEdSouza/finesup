@@ -5,7 +5,11 @@ import "./Categories.css";
 function CategoryExpense(){
     return(
         <>
-            <NavBar name="Categorias"/>
+            <NavBar name="Categorias"/>        
+            <div id="link">
+                <label id="entry" className="Inactive">Entrada</label>
+                <label id="out" className="Active">Saída</label>
+            </div>
             <div className="Container">
                 <Category typeIcon="alimentation" icon="./icon_alimentation.svg" label="Alimentação"/>
                 <Category typeIcon="leisure" icon="./icon_leisure.svg" label="Lazer"/>

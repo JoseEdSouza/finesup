@@ -1,7 +1,7 @@
-import "./Revenue_expense.css";
+import "./RevenueExpense.css";
 import {BsArrowUpCircleFill, BsArrowDownCircleFill} from 'react-icons/bs';
 
-function Revenue_expense(){
+function RevenueExpense(){
     return(
         <div className="RE">
             <BsArrowUpCircleFill id="Uarrow"/>
@@ -18,4 +18,4 @@ function Revenue_expense(){
     );
 }
 
-export default Revenue_expense;
+export default RevenueExpense;
