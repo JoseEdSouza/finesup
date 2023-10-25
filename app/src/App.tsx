@@ -1,9 +1,9 @@
-import CategoryExpense from "./pages/CategoryExpense";
 import CategoryRevenue from "./pages/CategoryRevenue";
+import CategoryExpense from "./pages/CategoryExpense";
 
 function App() {
   return (
-    <CategoryRevenue/>
+    <></>
   );
 }
 
