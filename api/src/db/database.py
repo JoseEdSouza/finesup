@@ -5,6 +5,7 @@ from api.src.utils.singleton import Singleton
 
 
 class Database(metaclass=Singleton):
+    # todo - connection pool
     _eng = None
     _conn = None
 
