@@ -1,0 +1,31 @@
+.Balance{
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    padding: 4%;
+}
+
+#Balance1, #BalanceValue1{
+    font-family: "Open Sans";
+    color: white;
+    font-size: 9vh;
+}
+
+#Balance1{
+    position: relative;
+    font-size: 6vh;
+    left: 2%;
+    top: 5%;
+}
+
+#Balance2, #BalanceValue2{
+    position: relative;
+    font-family: "Open Sans";
+    font-size: 3.5vh;
+    color: #6D96DC;
+    left: 2%;
+}
+
+#BalanceValue2{
+    color: white;
+}

@@ -1,0 +1,12 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #2E1E43;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
