@@ -24,7 +24,7 @@
 
 .LabelPage{
     font-family: "Open Sans";
-    font-size: max(5vh, 2vw);
+    font-size: 22px;
     color: #2E1E43;
     padding-left: 7.5vw;
 }

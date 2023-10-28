@@ -1,5 +1,6 @@
 import Category from "../components/Category/Category";
 import NavBar from "../components/NavBar/NavBar";
+import RenderingCategories from "../components/RenderCategories/RenderCategories";
 import "./Categories.css";
 
 function CategoryExpense(){

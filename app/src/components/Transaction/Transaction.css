@@ -23,8 +23,13 @@
 
 .Icons{
     position: absolute;
-    width: 50px;
-    left: 15px;
+    height: 7vh;
+    max-height: 40px;
+    width: 8.5vw;
+    max-width: 65px;
+    left: 1%;
+    background-color: #CC2E43;
+    border-radius: 20px;
 }
 
 .NameTransaction{

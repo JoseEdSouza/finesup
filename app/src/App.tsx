@@ -1,6 +1,8 @@
+
 import CategoryRevenue from "./pages/CategoryRevenue";
 import CategoryExpense from "./pages/CategoryExpense";
 import Calculator from "./pages/Calculators";
+
 
 function App() {
   return (
@@ -8,4 +10,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
