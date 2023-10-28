@@ -1,8 +1,8 @@
-import RenderingCategories from "./components/RenderCategories/RenderCategories";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <RenderingCategories/>
+    <Home/>
   );
 }
 

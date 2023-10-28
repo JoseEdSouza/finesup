@@ -1,0 +1,17 @@
+#budgetContainer{
+    position: absolute;
+    background-color: #D1D3F1;
+    border-radius: 10px;
+    display: inline-flex;
+    justify-content: center;
+    height: 30.6vh;
+    width: 43.9vw;
+    top: 56.3%;
+    left: 5.5%;
+}
+
+#labelBudget{
+    position: relative;
+    font-family: "Open Sans";
+    color: #2E1E43;
+}

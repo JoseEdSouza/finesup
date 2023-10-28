@@ -1,0 +1,17 @@
+#boxContainer{
+    position: absolute;
+    background-color: #D1D3F1;
+    border-radius: 10px;
+    display: inline-flex;
+    justify-content: center;
+    height: 30.6vh;
+    width: 43.9vw;
+    top: 23.1%;
+    left: 5.5%;
+}
+
+#labelBoxes{
+    position: relative;
+    font-family: "Open Sans";
+    color: #2E1E43;
+}
