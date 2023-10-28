@@ -1,9 +1,8 @@
-import CategoryRevenue from "./pages/CategoryRevenue";
-import CategoryExpense from "./pages/CategoryExpense";
+import RenderingCategories from "./components/RenderCategories/RenderCategories";
 
 function App() {
   return (
-    <CategoryExpense/>
+    <RenderingCategories/>
   );
 }
 
