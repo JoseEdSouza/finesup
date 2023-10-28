@@ -32,7 +32,6 @@ class BoxDAOImp(BoxDAO):
     __cursor = None
 
     def __init__(self, db: Database):
-        db = Database()
         self.__conn = db.connection
         self.__cursor = self.__conn.cursor()
 
