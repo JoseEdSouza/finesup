@@ -7,7 +7,6 @@
     top: 36vh;
     left: 50%;
     transform: translateX(-50%);
-
 }
 
 #simpleContainer, #compoundContainer{
@@ -23,12 +22,10 @@
 
 #simpleContainer{
     top: 0%;
-    
 }
 
 #compoundContainer{
     bottom: 0%;
-
 }
 
 #labelSimple, #labelCompound{
