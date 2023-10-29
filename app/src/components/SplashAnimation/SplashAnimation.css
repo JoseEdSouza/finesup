@@ -1,0 +1,103 @@
+.AnimationContainer{
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 55vw;
+    aspect-ratio: 1/0.5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+}
+
+@media all and (max-width: 10000px) {
+    .Logo{
+        margin-left: 0px;
+        left: 2000px;
+    }
+}
+
+.Logo{
+    position: absolute;
+    height: 30vh;
+    aspect-ratio: 1/1;
+    flex-grow: 1;
+    left: 2%;
+    animation: logo_animation 1s linear;
+}
+
+.texts{
+    justify-content: center;
+    display: flex;
+    width: 20vw;
+    aspect-ratio: 1/1;
+    top: 35%;
+    right: 9vh;
+    position: absolute;
+    animation: text_animation 1s linear;
+}
+
+
+.text{
+    font-family: "Open Sans";
+    position: absolute;
+    color: white;
+    font-size: 7vh;
+    width: max-content;
+    left: 0;
+}
+
+.text2{
+    font-family: "Open Sans";
+    font-style: oblique;
+    position: absolute;
+    color: white;
+    font-size: 2vh;
+    width: max-content;
+    top: 10vh;
+    left: 10%;
+}
+
+.load{
+    position: absolute;
+    border: transparent solid 3px;
+    border-top-color: white;
+    height: 5vh;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    animation: rotate 1s infinite;
+    bottom: 0%;
+    right: 50%;
+}
+
+@keyframes 
+logo_animation {
+    from{
+        left: -10%;
+        opacity: 25%;
+    }
+    to{
+        left: 2%;
+        opacity: 100%;
+    }
+}
+
+@keyframes 
+text_animation {
+    from{
+        top: -40%;
+        opacity: 10%;
+    }
+    to{
+        top: 35%;
+        opacity: 100%;
+    }
+}
+
+@keyframes rotate {
+    to{
+        transform: rotate(1turn);
+    }
+}
+

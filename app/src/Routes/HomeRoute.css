@@ -1,0 +1,19 @@
+#routeCategories, #routeCalculators{
+    position: absolute;
+    color: #2E1E43;
+    font-family: "Open Sans";
+    font-size: 3vh;
+    z-index: 3;
+    text-decoration: underline;
+    top: 5.85%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+#routeCategories{
+    right: 18%;
+}
+
+#routeCalculators{
+    right: 3%;
+}

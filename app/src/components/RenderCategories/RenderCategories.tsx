@@ -3,7 +3,7 @@ import "./RenderCategories.css";
 import CategoryExpense from "../../pages/CategoryExpense";
 import CategoryRevenue from "../../pages/CategoryRevenue";
 
-function RenderingCategories(){
+function RenderCategories(){
     const [categoryType, setType] = useState(0);
     
     const setTypeRevenue = () => {
@@ -31,4 +31,4 @@ function RenderingCategories(){
     );
 }
 
-export default RenderingCategories;
+export default RenderCategories;

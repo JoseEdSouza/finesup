@@ -1,3 +1,4 @@
+import HomeRoute from "../Routes/HomeRoute";
 import BoxContainerHome from "../components/BoxContainerHome/BoxContainerHome";
 import BudgetContainerHome from "../components/BudgetContainerHome/BudgetContainerHome";
 import NavBar from "../components/NavBar/NavBar";
@@ -7,9 +8,7 @@ function Home(){
     return(
         <>
             <NavBar name="Home"/>
-            <BoxContainerHome/>
-            <BudgetContainerHome/>
-            <TransactionContainerHome/>
+            <HomeRoute/>
         </>
     );
 }

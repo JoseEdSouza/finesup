@@ -16,7 +16,7 @@ function CategoryRevenue(){
                 <Category typeIcon="balanceCorrection" icon="./icon_balanceCorrection.svg" label="Correção do Saldo"/>
                 <Category typeIcon="investment" icon="./icon_investment.svg" label="Investimento entrada"/>
                 <Category typeIcon="exchange" icon="./icon_exchange.svg" label="Câmbio entrada"/>
-                <Category typeIcon="entryOthers" icon="./icon_entryOthers.svg" label="Outras Saídas"/>
+                <Category typeIcon="entryOthers" icon="./icon_entryOthers.svg" label="Outras Entradas"/>
             </div>
         </>
     );
