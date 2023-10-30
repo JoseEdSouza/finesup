@@ -26,7 +26,7 @@ class UserDAO(ABC):
 class UserDAOImp(UserDAO):
     __conn = None
     __cursor = None
-
+    
     def __init__(self, db: Database):
         self.__conn = db.connection
         self.__cursor = self.__conn.cursor()
