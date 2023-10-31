@@ -2,7 +2,6 @@ from pydantic import BaseModel
 from typing import Type, TypeVar
 from fastapi import APIRouter
 
-
 T = TypeVar('T', bound=BaseModel)
 
 
@@ -10,7 +9,9 @@ class RouteMeta(type):
     def __new__(cls, name: str, bases: tuple, attrs: dict):
         router = APIRouter()
         attrs['router'] = router
-        if 'Model' in attrs and 'DAO' in attrs and 'Key' in attrs:
+        if (all(key in attrs for key in ['Model', 'DAO', 'Key'])
+                and attrs['Model'] is not None and attrs['DAO'] is not None and attrs['Key'] is not None):
+            # Your code here
             key = attrs['Key']
             model: Type[T] = attrs['Model']
             dao = attrs['DAO']
@@ -63,5 +64,6 @@ class RouteMeta(type):
                                         model_cat_id: int = None, model_user_id: int = None):
                     args = list(filter(lambda x: x is not None, [model_id, model_name, model_cat_id, model_user_id]))
                     return dao.get_all(*args)
-
+        else:
+            raise ValueError("Missing required attributes: 'Model', 'DAO', 'Key'")
         return super().__new__(cls, name, bases, attrs)
