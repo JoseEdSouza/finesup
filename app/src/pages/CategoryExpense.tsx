@@ -1,12 +1,11 @@
 import Category from "../components/Category/Category";
 import NavBar from "../components/NavBar/NavBar";
-import RenderingCategories from "../components/RenderCategories/RenderCategories";
+import RenderingCategories from "../Routes/RenderCategories/RenderCategories";
 import "./Categories.css";
 
 function CategoryExpense(){
     return(
         <>
-            <NavBar name="Categorias"/>
             <div className="Container">
                 <Category typeIcon="alimentation" icon="./icon_alimentation.svg" label="Alimentação"/>
                 <Category typeIcon="leisure" icon="./icon_leisure.svg" label="Lazer"/>

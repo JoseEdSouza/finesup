@@ -1,4 +1,4 @@
-import HomeRoute from "../Routes/HomeRoute";
+import HomeRoute from "../Routes/RenderHome/HomeRoute";
 import BoxContainerHome from "../components/BoxContainerHome/BoxContainerHome";
 import BudgetContainerHome from "../components/BudgetContainerHome/BudgetContainerHome";
 import NavBar from "../components/NavBar/NavBar";
@@ -7,7 +7,6 @@ import TransactionContainerHome from "../components/TransactionContainerHome/Tra
 function Home(){
     return(
         <>
-            <NavBar name="Home"/>
             <HomeRoute/>
         </>
     );

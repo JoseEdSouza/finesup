@@ -1,5 +1,5 @@
-#routeCategories, #routeCalculators{
-    position: absolute;
+#routeCategories, #routeCalculators, #routeHome{
+    position: fixed;
     color: #2E1E43;
     font-family: "Open Sans";
     font-size: 3vh;
@@ -16,4 +16,8 @@
 
 #routeCalculators{
     right: 3%;
+}
+
+#routeHome{
+    right: 31%;
 }

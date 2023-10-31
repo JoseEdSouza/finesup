@@ -5,7 +5,6 @@ import "./Categories.css";
 function CategoryRevenue(){
     return(
         <>
-            <NavBar name="Categorias"/>
             <div className="Container">
                 <Category typeIcon="cashback" icon="./icon_cashback.svg" label="Cashback"/>
                 <Category typeIcon="sales" icon="./icon_sales.svg" label="Vendas"/>

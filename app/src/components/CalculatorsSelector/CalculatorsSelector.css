@@ -1,16 +1,15 @@
-#container{
-    display: flex;
+
+#containerOptions{
+    position: absolute;
     height: 28vh;
     width: 67vw;
-    align-items: center;
-    position: absolute;
     top: 36vh;
     left: 50%;
     transform: translateX(-50%);
-
 }
 
 #simpleContainer, #compoundContainer{
+    position: absolute;
     display: flex;
     align-items: center;
     background-color: #D1D3F1;
@@ -18,17 +17,14 @@
     height: 12.5vh;
     border-style: none;
     border-radius: 10px;
-    position: absolute;
 }
 
 #simpleContainer{
     top: 0%;
-    
 }
 
 #compoundContainer{
     bottom: 0%;
-
 }
 
 #labelSimple, #labelCompound{

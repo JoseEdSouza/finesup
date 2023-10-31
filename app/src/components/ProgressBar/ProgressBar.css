@@ -1,0 +1,28 @@
+#totalBar{
+    position: absolute;
+    background-color: #D1D3F1;
+    height: 6vh;
+    width: 60vw;
+    max-width: 600px;
+    top: 19.5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 15px;
+}
+
+#progressBar{
+    position: absolute;
+    background-color: blue;
+    height: 100%;
+    left: 0%;
+    border-radius: 15px;
+}
+
+#labelProgress{
+    position: absolute;
+    color: #2E1E43;
+    font-family: "Open Sans";
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
