@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from api.src.routes.route_test import Route
 from api.src.routes.box_route import BoxRoute
 from api.src.routes.user_route import UserRoute
 import uvicorn
@@ -7,12 +6,12 @@ import asyncio
 
 app = FastAPI()
 
-app.include_router(BoxRoute.router)
-app.include_router(UserRoute.router)
+app.include_router(BoxRoute.Router)
+app.include_router(UserRoute.Router)
 
 
 async def run_server():
-    uvicorn.run(app="app_test:app", reload=True, host="127.0.0.1", port=9000)
+    uvicorn.run(app="api.src.app_test:app", reload=True, host="192.168.5.129", port=9000)
 
 
 if __name__ == '__main__':
