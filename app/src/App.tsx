@@ -8,7 +8,5 @@ import SplashScreen from "./pages/SplashScreen";
 function App() {
   return (
     <Home/>
-  );
+  )
 }
-
-export default App;
