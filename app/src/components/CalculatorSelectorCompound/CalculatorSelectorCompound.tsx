@@ -1,10 +1,10 @@
 import NavBar from "../NavBar/NavBar";
-import "./CalculatorSelectorSimple.css"
+import "./CalculatorSelectorCompound.css"
 
-function CalculatorSelectorSimple(){
+function CalculatorSelectCompound(){
     return(
         <>
-            <NavBar name="Calculadora de Juros Simples"/>
+        <NavBar name="Calculadora de Juros Composto"/>
             <div id="container">
                 <label htmlFor="" id="labelInitial"><strong>Valor Inicial</strong></label>
                 <input type="number" id="numberInput"></input>
@@ -12,6 +12,8 @@ function CalculatorSelectorSimple(){
                 <input type="number" id="feesInput"></input>
                 <label htmlFor="" id="labelPeriod"><strong>Periodo em</strong></label>
                 <input type="number" id="periodInput"></input>
+                <label htmlFor="" id="labelTax"><strong>Taxas de Juros</strong></label>
+                <input type="number" id="taxInput"></input>
                 <select id="anosSelect">
                     <option value={"1"}>anos</option>
                     <option value={"2"}>meses</option>
@@ -19,9 +21,9 @@ function CalculatorSelectorSimple(){
                 </select>
                 <label htmlFor="" id="labelClear">Limpar</label>
                 <button id="buttonCalculate">Calcular</button>
-            </div>
+            </div>  
         </>
     );
 }
 
-export default CalculatorSelectorSimple;
+export default CalculatorSelectCompound;

@@ -11,7 +11,7 @@
     border-radius: 10px;
 }
 
-#labelInitial, #labelPeriod, #labelFees{
+#labelInitial, #labelPeriod, #labelFees, #labelTax{
     font-family: "Open Sans";
     font-size: 2.3vh;
     position: absolute;
@@ -29,10 +29,15 @@
 
 #labelPeriod{
     top: 16vh;
+    left: 39.59vw;
+}
+
+#labelTax{
+    top: 16vh;
     left: 4.7vw;
 }
 
-#numberInput, #feesInput, #periodInput{
+#numberInput, #feesInput, #periodInput, #taxInput{
     position: absolute;
     width: 25.69vw;
     height: 6.25vh;
@@ -53,8 +58,13 @@
 
 #periodInput{
     top: 20vh;
-    left: 4.72vw;
+    right: 14.72vw;
     width: 16vw;
+}
+
+#taxInput{
+    top: 20vh;
+    left: 4.72vw;
 }
 
 #anosSelect{
@@ -66,7 +76,7 @@
     border: none;
     border-radius: 8px;
     top: 20vh;
-    left: 18.5vw;
+    right: 4.72vw;
     font-size: 2.3vh;
     text-align: center;
 }
@@ -83,7 +93,7 @@
     cursor: pointer;
     right: 4.72vw;
     border-radius: 10px;
-    top: 21vh;
+    top: 30vh;
 }
 
 #buttonCalculate:hover{
@@ -99,7 +109,7 @@
     font-family: "Open Sans";
     font-size: 1.95vh;
     position: absolute;
-    top: 23vh;
+    top: 32vh;
     left: 45vw;
     cursor: pointer;
 }

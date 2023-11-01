@@ -1,11 +1,10 @@
-import CalculatorSelectorSimple from "./components/CalculatorSelectorSimple/CalculatorSelectorSimple";
-import CalculatorSimple from "./pages/CalculatorSimple";
-import Home from "./pages/Home";
+import AprensentationScreen from "./pages/ApesentationScreen";
+
 
 function App() {
   return (
-    <Home/>
-  )
+    <AprensentationScreen/>
+  );
 }
 
 export default App;
