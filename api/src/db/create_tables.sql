@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS fixed_revenues (
   user_id INT NOT NULL,
   rev_cat_id INT NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (rev_cat_id) REFERENCES revenue_categories(id)
 );
 
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS fixed_expenses (
   user_id INT NOT NULL,
   ex_cat_id INT NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (ex_cat_id) REFERENCES expense_categories(id)
 );
 
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS boxes (
   concluded BOOLEAN NOT NULL,
   creation_date DATE NOT NULL,
   PRIMARY KEY (user_id,name),
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS budgets (
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS budgets (
   renewal_date DATE NOT NULL,
   creation_date DATE NOT NULL,
   PRIMARY KEY (user_id,ex_cat_id),
-  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (ex_cat_id) REFERENCES expense_categories(id)
 );
 
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS revenues (
   user_id INT NOT NULL,
   rev_cat_id INT NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (rev_cat_id) REFERENCES revenue_categories(id)
 );
 
@@ -96,6 +96,6 @@ CREATE TABLE IF NOT EXISTS expenses (
   user_id INT NOT NULL,
   ex_cat_id INT NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (ex_cat_id) REFERENCES expense_categories(id)
 );
