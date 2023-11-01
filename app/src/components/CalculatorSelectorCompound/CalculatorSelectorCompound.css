@@ -1,7 +1,7 @@
-#container{
+#containerCompound{
     background-color: #D1D3F1;
     display: flex;
-    height: 60vh;
+    height: 38vh;
     width: 70vw;
     align-items: center;
     position: absolute;
@@ -11,63 +11,64 @@
     border-radius: 10px;
 }
 
-#labelInitial, #labelPeriod, #labelFees, #labelTax{
+#labelInitialCompound, #labelPeriodCompound, #labelFeesCompound, #labelTaxCompound{
     font-family: "Open Sans";
     font-size: 2.3vh;
     position: absolute;
 }
 
-#labelInitial{
+#labelInitialCompound{
     top: 2vh;
     left: 4.7vw;
 }
 
-#labelFees{
+#labelFeesCompound{
     top: 2vh;
     left: 39.59vw;
 }
 
-#labelPeriod{
+#labelPeriodCompound{
     top: 16vh;
     left: 39.59vw;
 }
 
-#labelTax{
+#labelTaxCompound{
     top: 16vh;
     left: 4.7vw;
 }
 
-#numberInput, #feesInput, #periodInput, #taxInput{
+#numberInputCompound, #feesInputCompound, #periodInputCompound, #taxInputCompound{
     position: absolute;
     width: 25.69vw;
     height: 6.25vh;
     border: none;
     border-radius: 8px;
     text-align: center;
+    font-size: 3vh;
 }
 
-#numberInput{
+#numberInputCompound{
     top: 6.15vh;
     left: 4.72vw;
 }
 
-#feesInput{
+#feesInputCompound{
     top: 6.15vh;
     right: 4.72vw;
 }
 
-#periodInput{
+#periodInputCompound{
     top: 20vh;
     right: 14.72vw;
     width: 16vw;
 }
 
-#taxInput{
+#taxInputCompound{
     top: 20vh;
     left: 4.72vw;
 }
 
-#anosSelect{
+#anosSelectCompound{
     position: absolute;
     background-color: #714C9F; 
     color: white;
@@ -81,7 +82,7 @@
     text-align: center;
 }
 
-#buttonCalculate{
+#buttonCalculateCompound{
     position: absolute;
     font-family: "Open Sans";
     font-size: 2.5vh;
@@ -96,14 +97,14 @@
     top: 30vh;
 }
 
-#buttonCalculate:hover{
+#buttonCalculateCompound:hover{
     transform: scale(1.03);
     background-color: #D1D3F1;
     color: #2E1E43;
     border: solid 3px #2E1E43;
 }
 
-#labelClear{
+#labelClearCompound{
     text-decoration: underline;
     color: var(--Roxo-escuro, #2E1E43);
     font-family: "Open Sans";

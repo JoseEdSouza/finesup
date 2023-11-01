@@ -6,11 +6,10 @@ import TransactionContainerHome from "../../components/TransactionContainerHome/
 import CalculatorsSelector from "../../components/CalculatorsSelector/CalculatorsSelector";
 import RenderCategories from "../RenderCategories/RenderCategories";
 import NavBar from "../../components/NavBar/NavBar";
-import BackIcon from "../../components/BackIcon/BackIcon";
 
 function HomeRoute() {
     const[isRoute, setRoute] = useState(0);
-
+    
     const setHomeRoute = () => {
         setRoute(0)
     }
@@ -22,7 +21,7 @@ function HomeRoute() {
     const setCalculatorsRoute = () => {
         setRoute(2)
     }
-    
+
     return (
         <>
             <NavBar name={isRoute === 0 ? "Home" : isRoute === 1 ? "Categorias" : isRoute === 2 ? "Calculadoras" : ""}/>

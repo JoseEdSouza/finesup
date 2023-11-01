@@ -1,13 +1,17 @@
 import { useState } from "react";
 import "./CalculatorsSelector.css"
-import CalculatorSelectorSimple from "../CalculatorSelectorSimple/CalculatorSelectorSimple";
 import CalculatorSimple from "../../pages/CalculatorSimple";
+import CalculatorCompound from "../../pages/CalculatorCompound";
 
 function CalculatorsSelector(){
     const [isRouteCalculator, setRouteCalculator] = useState(0)
 
     const setSimpleCalculator = () =>{
         setRouteCalculator(1)
+    }
+
+    const setCompoundCalculator = () =>{
+        setRouteCalculator(2)
     }
 
     return(
@@ -20,10 +24,10 @@ function CalculatorsSelector(){
                 </div>
                 <div id="compoundContainer">
                     <label htmlFor="" id="labelCompound"><strong>Calculadora Juros Compostos</strong></label>
-                    <button id="buttonCompound" >Calcular</button>
+                    <button id="buttonCompound" onClick={setCompoundCalculator}>Calcular</button>
                 </div>
             </div>
-            : isRouteCalculator === 1 ? <CalculatorSimple/> : <></>}
+            : isRouteCalculator === 1 ? <CalculatorSimple/> : isRouteCalculator === 2 ? <CalculatorCompound/> : ""}
         </>
     );
 }

@@ -1,27 +1,29 @@
+import CalculatorResult from "../CalculatorResult/CalculatorResult";
 import NavBar from "../NavBar/NavBar";
 import "./CalculatorSelectorCompound.css"
 
 function CalculatorSelectCompound(){
     return(
         <>
-        <NavBar name="Calculadora de Juros Composto"/>
-            <div id="container">
-                <label htmlFor="" id="labelInitial"><strong>Valor Inicial</strong></label>
-                <input type="number" id="numberInput"></input>
-                <label htmlFor="" id="labelFees"><strong>Taxa de Juros</strong></label>
-                <input type="number" id="feesInput"></input>
-                <label htmlFor="" id="labelPeriod"><strong>Periodo em</strong></label>
-                <input type="number" id="periodInput"></input>
-                <label htmlFor="" id="labelTax"><strong>Taxas de Juros</strong></label>
-                <input type="number" id="taxInput"></input>
-                <select id="anosSelect">
+            <NavBar name="Calculadora de Juros Composto"/>
+            <div id="containerCompound">
+                <label htmlFor="" id="labelInitialCompound"><strong>Valor Inicial</strong></label>
+                <input type="number" id="numberInputCompound"></input>
+                <label htmlFor="" id="labelFeesCompound"><strong>Taxa de Juros</strong></label>
+                <input type="number" id="feesInputCompound"></input>
+                <label htmlFor="" id="labelPeriodCompound"><strong>Periodo em</strong></label>
+                <input type="number" id="periodInputCompound"></input>
+                <label htmlFor="" id="labelTaxCompound"><strong>Taxas de Juros</strong></label>
+                <input type="number" id="taxInputCompound"></input>
+                <select id="anosSelectCompound">
                     <option value={"1"}>anos</option>
                     <option value={"2"}>meses</option>
                     <option value={"3"}>dias</option>
                 </select>
-                <label htmlFor="" id="labelClear">Limpar</label>
-                <button id="buttonCalculate">Calcular</button>
-            </div>  
+                <label htmlFor="" id="labelClearCompound">Limpar</label>
+                <button id="buttonCalculateCompound">Calcular</button>
+            </div>
+        
         </>
     );
 }

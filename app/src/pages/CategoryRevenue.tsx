@@ -1,6 +1,5 @@
 import { MagicMotion } from "react-magic-motion";
 import Category from "../components/Category/Category";
-import NavBar from "../components/NavBar/NavBar";
 import "./Categories.css";
 
 function CategoryRevenue(){

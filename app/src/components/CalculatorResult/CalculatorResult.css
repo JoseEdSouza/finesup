@@ -1,0 +1,63 @@
+#containerResults{
+    position: absolute;
+    background-color: #D1D3F1;
+    width: 65vw;
+    max-width: 750px;
+    height: 24.12vh;
+    bottom: 9.26%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 20px;
+}
+
+#labelResult{
+    position: absolute;
+    font-family: "Open Sans";
+    font-size: 3.5vh;
+    top: 2.99vh;
+    left: 2.083vw;
+}
+
+#valueTotal, #valueInvest, #valueTax{
+    position: absolute;
+    background-color: #D1D3F1;
+    height: 11.03vh;
+    width: 14.77vw;
+    min-width: 140px;
+    border-radius: 15px;
+    bottom: 3.22vh;
+    box-shadow: 3px 4px 4px 0px rgba(0, 0, 0, 0.25); 
+}
+
+#valueTotal{
+    left: 4.19vw;
+    border: 2px solid;
+}
+
+#valueInvest{
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid;
+}
+
+#valueTax{
+    right: 4.19vw;
+    border: 1px solid;
+    background-color: #D9D9D9;
+}
+
+#labelValueTotal, #labelValueInvest, #labelValueTax{
+    position: absolute;
+    font-family: "Open Sans";
+    font-size: 2.5vh;
+    left: 1vw;
+    top: 2vh;
+}
+
+#valueTo, #valueT, #valueI{
+    position: absolute;
+    font-family: "Open Sans";
+    font-size: 2.5vh;
+    left: 1vw;
+    bottom: 2vh;
+}

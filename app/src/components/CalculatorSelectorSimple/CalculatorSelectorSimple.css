@@ -1,7 +1,7 @@
 #container{
     background-color: #D1D3F1;
     display: flex;
-    height: 60vh;
+    height: 35vh;
     width: 70vw;
     align-items: center;
     position: absolute;
@@ -39,6 +39,7 @@
     border: none;
     border-radius: 8px;
     text-align: center;
+    font-size: 3vh;
 }
 
 #numberInput{
