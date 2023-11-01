@@ -1,0 +1,26 @@
+#container{
+    position: absolute;
+    border: 1px solid black;
+    width: 93.735vw;
+    height: fit-content;
+    justify-content: start;
+    display: flex;
+    flex-wrap: wrap;
+    top: 33.5vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#plus{
+    position: relative;
+    background-color: #D1D3F1;
+    width: 22.77vw;
+    height: 23.82vh;
+    margin: 0.3vw;
+    border-radius: 10px;
+    border-style: none;
+}
+
+#icon{
+    height: 7vh;
+}

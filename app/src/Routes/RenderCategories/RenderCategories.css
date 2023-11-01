@@ -1,0 +1,41 @@
+#link{
+    position: fixed;
+    z-index: 2;
+    background-color: #2E1E43;
+    width: 80%;
+    max-width: 820px;
+    height: 8%;
+    top: 11.7%;
+    display: flex;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#entry, #out{
+    position: relative;
+    font-family: "Open Sans";
+    left: 2%;
+}
+
+#out{
+    margin-left: 3%;
+}
+
+.Active{
+    color: white;
+}
+
+.Inactive{
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.651);
+}
+
+#select{
+    position: absolute;
+    background-color: #D1D3F1;
+    width: 100%;
+    max-width: 68px;
+    height: 13.5%;
+    bottom: -10%;
+}
