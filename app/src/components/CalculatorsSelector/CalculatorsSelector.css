@@ -1,0 +1,56 @@
+
+#containerOptions{
+    position: absolute;
+    height: 28vh;
+    width: 67vw;
+    top: 36vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#simpleContainer, #compoundContainer{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    background-color: #D1D3F1;
+    width: 67vw;
+    height: 12.5vh;
+    border-style: none;
+    border-radius: 10px;
+}
+
+#simpleContainer{
+    top: 0%;
+}
+
+#compoundContainer{
+    bottom: 0%;
+}
+
+#labelSimple, #labelCompound{
+    font-family: "Open Sans";
+    font-size: 3.1vh;
+    position: absolute;
+    left: 4.6vw;
+}
+
+#buttonSimple, #buttonCompound{
+    font-family: "Open Sans";
+    font-size: 2.5vh;
+    width: 19.93vw;
+    height: 5.95vh;
+    background-color: #2E1E43;
+    color: #D1D3F1;
+    border-style: none;
+    cursor: pointer;
+    position: absolute;
+    right: 4.6vw;
+    border-radius: 10px;
+}
+
+#buttonSimple:hover, #buttonCompound:hover{
+    transform: scale(1.03);
+    background-color: #D1D3F1;
+    color: #2E1E43;
+    border: solid 3px #2E1E43;
+}

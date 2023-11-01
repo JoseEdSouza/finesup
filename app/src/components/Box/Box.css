@@ -1,0 +1,26 @@
+#box{
+    position: relative;
+    background-color: #D1D3F1;
+    width: 22.77vw;
+    height: 23.82vh;
+    margin: 0.3vw;
+    border-radius: 10px;
+    border-style: none;
+}
+
+#labelBox{
+    position: absolute;
+    font-family: "Open Sans";
+    color: #2E1E43;
+    top: 2.2vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#iconBox{
+    position: absolute;
+    height: 11.13vh;
+    bottom: 5.76vh;
+    left: 50%;
+    transform: translateX(-50%);
+}

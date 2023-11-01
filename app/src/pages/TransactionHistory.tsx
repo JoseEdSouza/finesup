@@ -1,7 +1,7 @@
 import Balance from "../components/Balance/Balance";
 import Buttons from "../components/Buttons/Buttons";
 import NavBar from "../components/NavBar/NavBar";
-import Revenue_expense from "../components/Revenue_expense/Revenue_expense";
+import RevenueExpense from "../components/RevenueExpense/RevenueExpense";
 import TransactionContainer from "../components/TransactionContainer/TransactionContainer";
 import "./TransactionHistory.css";
 
@@ -11,7 +11,7 @@ function TransactionHistory(){
             <NavBar name="Histórico de Transações"/>
             <div id="valueContainer">
                 <Balance/>
-                <Revenue_expense/>
+                <RevenueExpense/>
             </div>
             <Buttons/>
             <TransactionContainer/>
