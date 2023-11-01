@@ -12,11 +12,11 @@ class Transaction(ABC):
     description: str
     value: float
     purchase_date: datetime
-    cat: Category
+    cat: int
 
     @abstractmethod
     def __init__(self, t_id: int | None, user_id: int, name: str, description: str, value: float,
-                 purchase_date: datetime, cat: Category):
+                 purchase_date: datetime, cat: int):
         pass
 
     @property
@@ -33,7 +33,7 @@ class Transaction(ABC):
 class Expense(Transaction):
 
     def __init__(self, t_id: int | None, user_id: int, name: str, description: str, value: float,
-                 purchase_date: datetime, cat: ExpenseCategory):
+                 purchase_date: datetime, cat: int):
         self._id = t_id
         self._user_id = user_id
         self.name = name
@@ -53,7 +53,7 @@ class Expense(Transaction):
 
 class Revenue(Transaction):
     def __init__(self, t_id: int | None, user_id: int, name: str, description: str, value: float,
-                 purchase_date: datetime, cat: RevenueCategory):
+                 purchase_date: datetime, cat: int):
         self._id = t_id
         self._user_id = user_id
         self.name = name

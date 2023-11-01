@@ -12,7 +12,7 @@ class FixedTransaction(ABC):
     name: str
     description: str
     value: float
-    cat: Category
+    cat: int
     purchase_date: datetime
     limit_date: datetime
     frequency: Frequency
@@ -35,7 +35,7 @@ class FixedTransaction(ABC):
 
 class FixedExpense(FixedTransaction):
 
-    def __init__(self, ft_id: int | None, user_id: int, name: str, description: str, value: float, cat: ExpenseCategory,
+    def __init__(self, ft_id: int | None, user_id: int, name: str, description: str, value: float, cat: int,
                  purchase_date: datetime, limit_date: datetime, frequency: Frequency):
         self._id = ft_id
         self._user_id = user_id
@@ -58,7 +58,7 @@ class FixedExpense(FixedTransaction):
 
 class FixedRevenue(FixedTransaction):
 
-    def __init__(self, ft_id: int | None, user_id: int, name: str, description: str, value: float, cat: RevenueCategory,
+    def __init__(self, ft_id: int | None, user_id: int, name: str, description: str, value: float, cat:int,
                  purchase_date: datetime, limit_date: datetime, frequency: Frequency):
         self._id = ft_id
         self._user_id = user_id

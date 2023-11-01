@@ -2,10 +2,9 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 from typing import Optional
 from api.src.models.userDAO import UserDAO, UserDAOImp
-from api.src.db.database import Database
 
 
-# user_dao: UserDAO = UserDAOImp(Database())
+# user_dao: UserDAO = UserDAOImp()
 # user_router = APIRouter()
 #
 #
