@@ -14,7 +14,7 @@ class ExpenseRoute(metaclass=RouteMeta):
         description: str
         value: float
         purchase_date: datetime
-        cat: ExpenseCategory
+        cat: int
 
     DAO = ExpenseDAOImp()
     Model = ExpenseTransaction

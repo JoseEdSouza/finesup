@@ -14,10 +14,10 @@ class FixedExpenseRoute(metaclass=RouteMeta):
         name: str
         description: str
         value: float
-        cat: ExpenseCategory
+        cat: int
         purchase_date: float
         limit_date: datetime
-        frequency: Frequency
+        frequency: int
 
     DAO = FixedExpenseDAOImp()
     Model = FixedExpenseTransaction
@@ -34,7 +34,7 @@ class FixedRevenueRoute(metaclass=RouteMeta):
         cat: int
         purchase_date: datetime
         limit_date: datetime
-        frequency: Frequency
+        frequency: int
 
     DAO = FixedRevenueDAOImp()
     Model = FixedRevenueTransaction
