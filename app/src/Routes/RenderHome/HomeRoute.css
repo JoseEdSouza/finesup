@@ -1,3 +1,13 @@
+#backIcon{
+    position: absolute;
+    width: 5vw;
+    height: 6vh;
+    top: 3%;
+    left: 2%;
+    cursor: pointer;
+    z-index: 7;
+}
+
 #routeCategories, #routeCalculators, #routeHome{
     position: fixed;
     color: #2E1E43;

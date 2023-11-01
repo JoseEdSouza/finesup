@@ -10,20 +10,17 @@ function CalculatorsSelector(){
         setRouteCalculator(1)
     }
 
-    const setCompoundCalculator = () =>{
-        setRouteCalculator(2)
-    }
     return(
         <>
             {isRouteCalculator === 0 ?
             <div id="containerOptions">
                 <div id="simpleContainer">
-                    <label htmlFor="" id="labelSimple" onClick={setSimpleCalculator}><strong>Calculadora Juros Simples</strong></label>
-                    <button id="buttonSimple">Calcular</button>
+                    <label htmlFor="" id="labelSimple"><strong>Calculadora Juros Simples</strong></label>
+                    <button id="buttonSimple" onClick={setSimpleCalculator}>Calcular</button>
                 </div>
                 <div id="compoundContainer">
                     <label htmlFor="" id="labelCompound"><strong>Calculadora Juros Compostos</strong></label>
-                    <button id="buttonCompound">Calcular</button>
+                    <button id="buttonCompound" >Calcular</button>
                 </div>
             </div>
             : isRouteCalculator === 1 ? <CalculatorSimple/> : <></>}
