@@ -6,8 +6,8 @@ import asyncio
 
 app = FastAPI()
 
-app.include_router(BoxRoute.Router)
-app.include_router(UserRoute.Router)
+app.include_router(BoxRoute.router)
+app.include_router(UserRoute.router)
 
 
 async def run_server():
