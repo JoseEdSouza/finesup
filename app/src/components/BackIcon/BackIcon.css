@@ -3,7 +3,8 @@
     width: 4vw;
     height: 7vh;
     left: 3%;
-    top: 11.7%;
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
-    z-index: 7;
+    z-index: 3;
 }

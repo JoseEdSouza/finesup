@@ -1,10 +1,10 @@
-import NavBar from "../NavBar/NavBar";
+import NavBarDefault from "../NavBarDefault/NavBarDefault";
 import "./CalculatorSelectorSimple.css"
 
 function CalculatorSelectorSimple(){
     return(
         <>
-            <NavBar name="Calculadora de Juros Simples"/>
+            <NavBarDefault name="Calculadora de Juros Simples"/>
             <div id="container">
                 <label htmlFor="" id="labelInitial"><strong>Valor Inicial</strong></label>
                 <input type="number" id="numberInput"></input>

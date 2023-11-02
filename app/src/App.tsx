@@ -1,12 +1,13 @@
-import AprensentationScreen from "./pages/ApesentationScreen";
-import CalculatorCompound from "./pages/CalculatorCompound";
-import CalculatorSimple from "./pages/CalculatorSimple";
-import Home from "./pages/Home";
+import NavBarHome from "./components/NavBarHome/NavBarHome";
 
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <Home/>
+    <>
+      <NavBarHome/>
+      <Outlet/>
+    </>
   );
 }
 

@@ -1,11 +1,10 @@
-import CalculatorResult from "../CalculatorResult/CalculatorResult";
-import NavBar from "../NavBar/NavBar";
+import NavBarDefault from "../NavBarDefault/NavBarDefault";
 import "./CalculatorSelectorCompound.css"
 
 function CalculatorSelectCompound(){
     return(
         <>
-            <NavBar name="Calculadora de Juros Composto"/>
+            <NavBarDefault name="Calculadora de Juros Compostos"/>
             <div id="containerCompound">
                 <label htmlFor="" id="labelInitialCompound"><strong>Valor Inicial</strong></label>
                 <input type="number" id="numberInputCompound"></input>

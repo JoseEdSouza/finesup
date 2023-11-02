@@ -1,5 +1,5 @@
 import BoxesGroup from "../components/BoxesGroup/BoxesGroup";
-import NavBar from "../components/NavBar/NavBar";
+import NavBar from "../components/NavBarHome/NavBarHome";
 import ProgressBar from "../components/ProgressBar/ProgressBar";
 
 function CRUDBoxes() {

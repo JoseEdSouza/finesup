@@ -1,6 +1,6 @@
 import Balance from "../components/Balance/Balance";
 import Buttons from "../components/Buttons/Buttons";
-import NavBar from "../components/NavBar/NavBar";
+import NavBar from "../components/NavBarHome/NavBarHome";
 import RevenueExpense from "../components/RevenueExpense/RevenueExpense";
 import TransactionContainer from "../components/TransactionContainer/TransactionContainer";
 import "./TransactionHistory.css";
