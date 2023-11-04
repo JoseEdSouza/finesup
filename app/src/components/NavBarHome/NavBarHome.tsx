@@ -4,18 +4,18 @@ import { useState } from "react";
 import BackIcon from "../BackIcon/BackIcon";
 
 function NavBarHome(){
-    const [isRouteNav, setRouteNav] = useState(0)
+    const [isRouteNav, setRouteNav] = useState("Home")
 
     const setHomeRouteNav = () =>{
-        setRouteNav(0)
+        setRouteNav("Home")
     }
 
     const setCategoriesRouteNav = () =>{
-        setRouteNav(1)
+        setRouteNav("Categorias")
     }
 
     const setCalculatorsRouteNav = () =>{
-        setRouteNav(2)
+        setRouteNav("Calculadoras")
     }
     
     return(
@@ -25,7 +25,7 @@ function NavBarHome(){
             <Link to="/categories" onClick={setCategoriesRouteNav}><label id="routeCategories" >Categorias</label></Link>
             <Link to="/calculators" onClick={setCalculatorsRouteNav}><label id="routeCalculators">Calculadoras</label></Link>
             <label className="LabelPage"><strong>
-                {isRouteNav === 0 ? "Home" : isRouteNav === 1 ? "Categories" : isRouteNav === 2 ? "Calculadoras" : ""}
+                {isRouteNav}
             </strong></label>
         </nav>
     );

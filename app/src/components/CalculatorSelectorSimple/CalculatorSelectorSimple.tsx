@@ -2,6 +2,8 @@ import NavBarDefault from "../NavBarDefault/NavBarDefault";
 import "./CalculatorSelectorSimple.css"
 
 function CalculatorSelectorSimple(){
+    
+    
     return(
         <>
             <NavBarDefault name="Calculadora de Juros Simples"/>

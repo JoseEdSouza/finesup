@@ -36,7 +36,6 @@
     font-family: "Open Sans";
     font-size: 3vh;
     z-index: 3;
-    text-decoration: underline;
     top: 5.85%;
     transform: translateY(-50%);
     cursor: pointer;
