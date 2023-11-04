@@ -18,8 +18,8 @@ function CalculatorSelectCompound(){
         setMonthlyValue('')
         setPeriodValue('')
         setTaxValue('')
-        setIsResult(false)
         setTimeValue("1")
+        setIsResult(false)
     }, [countClear])
 
     
@@ -90,7 +90,7 @@ function CalculatorSelectCompound(){
                 <label id="labelPeriodCompound"><strong>Periodo em</strong></label>
                 <input type="number" id="periodInputCompound" onChange={handleChangePeriod} value={periodValue}></input>
                 
-                <label id="labelTaxCompound"><strong>Taxas de Juros</strong></label>
+                <label id="labelTaxCompound"><strong>Taxas de Juros em Meses</strong></label>
                 <input type="number" id="taxInputCompound" onChange={handleChangeTax} value={taxValue}></input>
                 
                 <select id="anosSelectCompound" onChange={handleChangeTime} value={timeValue}>
