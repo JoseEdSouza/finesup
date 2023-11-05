@@ -1,4 +1,4 @@
-#container{
+#containerBoxes{
     position: absolute;
     border: 1px solid black;
     width: 93.735vw;
@@ -19,6 +19,7 @@
     margin: 0.3vw;
     border-radius: 10px;
     border-style: none;
+    cursor: pointer;
 }
 
 #icon{

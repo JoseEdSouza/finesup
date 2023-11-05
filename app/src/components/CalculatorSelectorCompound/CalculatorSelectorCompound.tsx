@@ -69,17 +69,17 @@ function CalculatorSelectCompound(){
         let tax = Number(taxValue)
 
         if(timeValue === "1"){
-            return (((initial+monthly) * (1 + (tax)/100)**(12*period)) - (initial+monthly*(12*(period+1)))).toFixed(2)
+            return ((initial+monthly) * ((1 + (tax)/100)**(12*period)) - (initial+monthly*(12*(period+1)))).toFixed(2)
         }
         else if(timeValue === "2"){
-            return (((initial+monthly) * (1 + (tax)/100)**period) - (initial+monthly*(period+1))).toFixed(2)
+            return ((initial+monthly) * ((1 + (tax)/100)**period) - (initial+monthly*(period+1))).toFixed(2)
         }
-        return (((initial+monthly) * (1 + (tax)/100)**(period)/30) - (initial+monthly*((period+1)/30))).toFixed(2)
+        return ((initial+monthly) * ((1 + (tax)/100)**(period)/30) - (initial+monthly*((period+1)/30))).toFixed(2)
     }
 
     return(
         <>
-            <NavBarDefault name="Calculadora de Juros Compostos"/>
+            <NavBarDefault name="Calculadora de Juros Compostos" backTo="1"/>
             <div id="containerCompound">
                 <label id="labelInitialCompound" ><strong>Valor Inicial</strong></label>
                 <input type="number" id="numberInputCompound" onChange={handleChangeInitial} value={initialValue}></input>

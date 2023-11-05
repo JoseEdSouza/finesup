@@ -20,7 +20,7 @@ function NavBarHome(){
     
     return(
         <nav className="NavBar">
-            <BackIcon/>
+            <img src="./icon-logo.png" id="homeLogo"/>
             <Link to="/" onClick={setHomeRouteNav}><label id="routeHome">Home</label></Link>
             <Link to="/categories" onClick={setCategoriesRouteNav}><label id="routeCategories" >Categorias</label></Link>
             <Link to="/calculators" onClick={setCalculatorsRouteNav}><label id="routeCalculators">Calculadoras</label></Link>

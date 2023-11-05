@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import BoxContainerHome from "../components/BoxContainerHome/BoxContainerHome"
 import BudgetContainerHome from "../components/BudgetContainerHome/BudgetContainerHome"
 import TransactionContainerHome from "../components/TransactionContainerHome/TransactionContainerHome"
@@ -5,7 +6,9 @@ import TransactionContainerHome from "../components/TransactionContainerHome/Tra
 function Home() {
     return (
         <>
-            <BoxContainerHome/>
+            <Link to="/1">
+                <BoxContainerHome/>
+            </Link>
             <TransactionContainerHome/>
             <BudgetContainerHome/>
         </>

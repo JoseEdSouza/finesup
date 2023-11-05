@@ -1,6 +1,5 @@
 import ApresentationComponents from "../components/ApresentationComponents/ApresentationComponents";
 
-
 function AprensentationScreen(){
     return(
         <>

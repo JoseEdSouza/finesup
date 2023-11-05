@@ -7,6 +7,9 @@ import RenderCategories from './Routes/RenderCategories/RenderCategories.tsx'
 import CalculatorsSelector from './components/CalculatorsSelector/CalculatorsSelector.tsx'
 import CalculatorsRoute from './Routes/CalculatorsRoute.tsx'
 import Home from './pages/Home.tsx'
+import HomeRoute from './Routes/HomeRoute.tsx'
+import AddBox from './pages/AddBox.tsx'
+import TransactionHistory from './pages/TransactionHistory.tsx'
 
 
 const router = createBrowserRouter([
@@ -29,6 +32,18 @@ const router = createBrowserRouter([
       {
         path: "/calculators/:id",
         element: <CalculatorsRoute/>
+      },
+      {
+        path: "/:id",
+        element: <HomeRoute/>
+      },
+      {
+        path: "/1/addBoxes",
+        element: <AddBox/>
+      },
+      {
+        path: "/2/transactionHistory",
+        element: <TransactionHistory/>
       }
     ]
   }

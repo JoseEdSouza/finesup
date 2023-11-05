@@ -14,5 +14,12 @@
     font-family: "Open Sans";
     font-size: 22px;
     color: #2E1E43;
-    padding-left: 7.5vw;
+    padding-left: 4vw;
+}
+
+#linkBackIcon{
+    position: relative;
+    height: 6vh;
+    width: 4vw;
+    left: 3%;
 }

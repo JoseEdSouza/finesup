@@ -10,8 +10,11 @@
     right: 5.5%;
 }
 
-#labelTransaction{
-    position: relative;
-    font-family: "Open Sans";
-    color: #2E1E43;
+#linkTransactionHistory{
+    position: absolute;
+    height: 5.95vh;
+    width: 32.63vw;
+    max-width: 350px;
+    bottom: 14.18vh;
+    cursor: pointer;
 }

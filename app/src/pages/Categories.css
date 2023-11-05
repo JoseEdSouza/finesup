@@ -1,4 +1,4 @@
-.Container{
+.ContainerExpenses, .ContainerRevenues{
     position: absolute;
     height: fit-content;
     width: 78vw;

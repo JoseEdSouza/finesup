@@ -59,8 +59,8 @@ function CalculatorSelectorSimple(){
     
     return(
         <>
-            <NavBarDefault name="Calculadora de Juros Simples"/>
-            <div id="container">
+            <NavBarDefault name="Calculadora de Juros Simples" backTo="1"/>
+            <div id="containerSimple">
                 <label id="labelInitial"><strong>Valor Inicial</strong></label>
                 <input type="number" id="numberInput" value={initialValue} onChange={handleChangeInitial}></input>
 
