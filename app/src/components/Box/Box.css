@@ -2,6 +2,7 @@
     position: relative;
     background-color: #D1D3F1;
     width: 22.77vw;
+    max-width: 250px;
     height: 23.82vh;
     margin: 0.3vw;
     border-radius: 10px;
@@ -23,4 +24,20 @@
     bottom: 5.76vh;
     left: 50%;
     transform: translateX(-50%);
+}
+
+#iconEdit{
+    position: absolute;
+    height: 2.4vh;
+    top: 1vh;
+    right: 3vw;
+    cursor: pointer;
+}
+
+#iconDelete{
+    position: absolute;
+    height: 2.4vh;
+    top: 1vh;
+    right: 0.8vw;
+    cursor: pointer;
 }

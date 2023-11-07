@@ -1,13 +1,3 @@
-.Container{
-    position: relative;
-    display: grid;
-    place-items: center;
-    width: 90%;
-    height: fit-content;
-    top: 25%;
-    margin-top: 20px;
-}
-
 .LaunchContainer{
     position: relative;
     align-items: center;

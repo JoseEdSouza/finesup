@@ -1,0 +1,49 @@
+#boxCreateButtons{
+    position: absolute;
+    width: 28.54vw;
+    height: 9.86vh;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 4.29vh;
+}
+
+#createButton{
+    position: absolute;
+    width: 28.54vw;
+    height: 5.95vh;
+    top: 0;
+    border-radius: 10px;
+    background-color: var(--primaryColor);
+    color: white;
+    box-shadow: 0px 4px 16px 0px rgba(113, 112, 112, 0.16);
+    border-style: none;
+    font-size: 2.3vh;
+    cursor: pointer;
+}
+
+#createButton:hover{
+    transform: scale(1.03);
+    background-color: #D1D3F1;
+    color: #2E1E43;
+    border: solid 3px #2E1E43;
+}
+
+#linkToCRUD{
+    position: absolute;
+    height: 2.34vh;
+    width: 5.83vw;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#cancelButton{
+    position: absolute;
+    font-family: "Open Sans";
+    color: var(--primaryColor);
+    font-size: 2.5vh;
+    top: 0;
+    cursor: pointer;
+}
