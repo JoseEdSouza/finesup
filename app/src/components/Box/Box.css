@@ -26,6 +26,16 @@
     transform: translateX(-50%);
 }
 
+#labelValueProgress{
+    position: absolute;
+    font-family: "Open-Sans";
+    font-size: 3vh;
+    color: var(--primaryColor);
+    left: 50%;
+    transform: translateX(-50%);
+    top: 12.10vh;
+}
+
 #iconEdit{
     position: absolute;
     height: 2.4vh;
