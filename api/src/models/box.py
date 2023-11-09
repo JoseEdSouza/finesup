@@ -16,21 +16,6 @@ class Box:
     def name(self) -> str:
         return self._name
 
-    def deposit(self, value: float):
-        # over limit value
-        self.actual_value += value
-
-        if not self.concluded and self.actual_value >= self.final_value:
-            self.concluded = True
-        return self
-
-    def withdraw(self, value: float):
-        self.actual_value -= value
-        if self.actual_value < 0:
-            self.actual_value = 0
-        if self.concluded and self.actual_value < self.final_value:
-            self.concluded = False
-        return self
 
     def __str__(self):
         return f"Box(user_id={self._user_id}, name='{self.name}', description='{self.description}',"\
