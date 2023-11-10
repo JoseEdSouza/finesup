@@ -1,9 +1,8 @@
 from abc import ABC
-from dataclasses import dataclass
+from pydantic import BaseModel
 
 
-@dataclass(frozen=True)
-class Category(ABC):
+class Category(ABC, BaseModel):
     id: int | None
     name: str
 
