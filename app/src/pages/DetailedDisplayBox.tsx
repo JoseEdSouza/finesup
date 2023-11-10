@@ -10,8 +10,8 @@ function DetailedDisplayBox() {
     return (
         <>
             <NavBarDefault name={data.name} backTo="2"/>
-            <BoxDetails/>
-            <BoxProgressDetails/>   
+            <BoxDetails valueMax={data.valueMax}/>
+            <BoxProgressDetails name={data.name} valueCurrent={data.valueCurrent} valueMax={data.valueMax}/>   
         </>
     )
 }
