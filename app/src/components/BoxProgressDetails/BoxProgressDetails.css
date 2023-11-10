@@ -1,0 +1,18 @@
+#BoxProgressDetails{
+    position: absolute;
+    height: 36.91vh;
+    width: 30.69vw;
+    left: 6.73vw;
+    top: 34.27vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#BoxDetailedName{
+    position: absolute;
+    font-family: "Open Sans";
+    color: white;
+    font-size: 3.5vh;
+    top: 3vh;
+}

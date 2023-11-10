@@ -1,7 +1,7 @@
 #containerBoxes{
     position: absolute;
-    width: 93.735vw;
-    max-width: 1033.5px;
+    width: 96.735vw;
+    max-width: 1068px;
     height: fit-content;
     justify-content: start;
     display: flex;
@@ -17,7 +17,7 @@
     width: 22.77vw;
     max-width: 250px;
     height: 23.82vh;
-    margin: 0.3vw;
+    margin: 0.6vw;
     border-radius: 10px;
     border-style: none;
     cursor: pointer;

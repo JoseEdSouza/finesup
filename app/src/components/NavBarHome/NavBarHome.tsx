@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import "./NavBarHome.css";
 import { useState } from "react";
-import BackIcon from "../BackIcon/BackIcon";
 
 function NavBarHome(){
     const [isRouteNav, setRouteNav] = useState("Home")

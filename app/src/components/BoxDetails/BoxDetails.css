@@ -1,0 +1,124 @@
+#detailsContainer{
+    position: absolute;
+    background-color: var(--secondaryColor);
+    width: 46.66vw;
+    max-width: 560px;
+    height: 54vh;
+    right: 6.73vw;
+    bottom: 19.92vh;
+    border-radius: 15px;
+}
+
+#boxValueDetail, #boxDescriptionDetails{
+    position: absolute;
+    font-family: "Open Sans";
+    font-size: 3vh;
+    left: 4.44vw;    
+}
+
+#boxValueDetail{
+    top: 4.84vh;
+}
+
+#boxDescriptionDetails{
+    top: 15.25vh;
+}
+
+#boxDescriptionDetailsText{
+    position: absolute;
+    outline: none;
+    resize: none;
+    border-style: none;
+    background: transparent;
+    font-size: 3vh;
+    height: 8.25vh;
+    width: 37.77vw;
+    max-width: 440px;
+    top: 19.45vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#boxMoneyInputGroup{
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    height: 10.35vh;
+    width: 37.77vw;
+    max-width: 450px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 13.82vh;
+}
+
+#Rs{
+    position: absolute;
+    font-size: 3vh;
+    font-family: "Open Sans";
+    top: 0;
+}
+
+#moneyText{
+    position: absolute;
+    height: 6.25vh;
+    width: 100%;
+    bottom: 0;
+    resize: none;
+    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    border-style: none;
+    outline: none;
+    border-radius: 10px;   
+    font-size: 3vh;
+    padding-left: 12px;
+    padding-top: 8px;
+}
+
+#GroupButtonsDetails{
+    position: absolute;
+    height: 5.95vh;
+    width: 35.83vw;
+    max-width: 400px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 4.51vh;
+}
+
+#drawButton, #depositButton{
+    position: absolute;
+    font-size: 2.5vh;
+    height: 5.95vh;
+    width: 16.80vw;
+    max-width: 180px;
+    position: absolute;
+    font-family: "Open Sans";
+    color: var(--primaryColor);
+    cursor: pointer;
+    border-style: none;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 16px 0px rgba(113, 112, 112, 0.16); 
+}
+
+#drawButton{
+    background-color: #D31010;
+    left: 0;
+}
+
+#depositButton{
+    background-color: #0BE748;
+    right: 0;
+}
+
+#depositButton:hover{
+    transform: scale(1.03);
+    background-color: #D1D3F1;
+    color: #0BE748;
+    border: solid 3px #0BE748;
+}
+
+#drawButton:hover{
+    transform: scale(1.03);
+    background-color: #D1D3F1;
+    color: #D31010;
+    border: solid 3px #D31010;
+}

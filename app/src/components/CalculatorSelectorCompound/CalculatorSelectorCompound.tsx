@@ -72,7 +72,7 @@ function CalculatorSelectCompound(){
             return ((initial+monthly) * ((1 + (tax)/100)**(12*period)) - (initial+monthly*(12*(period+1)))).toFixed(2)
         }
         else if(timeValue === "2"){
-            return ((initial+monthly) * ((1 + (tax)/100)**period) - (initial+monthly*(period+1))).toFixed(2)
+            return ((initial+monthly*(period+1)) - (initial+monthly) * ((1 + (tax)/100)**period)).toFixed(2)
         }
         return ((initial+monthly) * ((1 + (tax)/100)**(period)/30) - (initial+monthly*((period+1)/30))).toFixed(2)
     }
@@ -90,7 +90,7 @@ function CalculatorSelectCompound(){
                 <label id="labelPeriodCompound"><strong>Periodo em</strong></label>
                 <input type="number" id="periodInputCompound" onChange={handleChangePeriod} value={periodValue}></input>
                 
-                <label id="labelTaxCompound"><strong>Taxas de Juros em Meses</strong></label>
+                <label id="labelTaxCompound"><strong>Taxas de Juros % a.m</strong></label>
                 <input type="number" id="taxInputCompound" onChange={handleChangeTax} value={taxValue}></input>
                 
                 <select id="anosSelectCompound" onChange={handleChangeTime} value={timeValue}>

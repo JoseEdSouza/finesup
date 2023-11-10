@@ -4,7 +4,7 @@
     width: 22.77vw;
     max-width: 250px;
     height: 23.82vh;
-    margin: 0.3vw;
+    margin: 0.6vw;
     border-radius: 10px;
     border-style: none;
 }
@@ -24,16 +24,18 @@
     bottom: 5.76vh;
     left: 50%;
     transform: translateX(-50%);
+    cursor: pointer;
 }
 
 #labelValueProgress{
     position: absolute;
-    font-family: "Open-Sans";
+    font-family: "Open Sans";
     font-size: 3vh;
     color: var(--primaryColor);
     left: 50%;
     transform: translateX(-50%);
     top: 12.10vh;
+    cursor: pointer;
 }
 
 #iconEdit{

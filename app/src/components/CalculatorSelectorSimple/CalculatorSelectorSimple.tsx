@@ -64,7 +64,7 @@ function CalculatorSelectorSimple(){
                 <label id="labelInitial"><strong>Valor Inicial</strong></label>
                 <input type="number" id="numberInput" value={initialValue} onChange={handleChangeInitial}></input>
 
-                <label id="labelFees"><strong>Taxa de Juros em Meses</strong></label>
+                <label id="labelFees"><strong>Taxa de Juros % a.m</strong></label>
                 <input type="number" id="feesInput" value={taxValue} onChange={handleChangeTax}></input>
 
                 <label id="labelPeriod"><strong>Periodo em</strong></label>

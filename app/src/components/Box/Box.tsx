@@ -1,8 +1,16 @@
+import { Link } from "react-router-dom";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import "./Box.css";
+import { useState } from "react";
 
 function Box(props:{name:string, valueCurrent:number, valueMax:number}){
-    
+
+    const [DatasForLink] = useState({
+        name: props.name,
+        valueCurrent: props.valueCurrent,
+        valueMax: props.valueMax
+    })
+
     const setValueBar = () => {
         let valueBar = Number(((props.valueCurrent/props.valueMax)*100).toFixed(2));
         
@@ -16,8 +24,10 @@ function Box(props:{name:string, valueCurrent:number, valueMax:number}){
         <div id="box">
             <label id="labelBox">{props.name}</label>
 
-            <img src="icon_box.svg" id="iconBox"/>
-            <strong><label id="labelValueProgress">{setValueBar()}%</label></strong>
+            <Link to="/1/detailedDisplayBox" state={DatasForLink} >
+                <img src="icon_box.svg" id="iconBox"/>
+                <strong><label id="labelValueProgress">{setValueBar()}%</label></strong>
+            </Link>
 
             <img src="icon_edit.svg" id="iconEdit"/>
             <img src="icon_delete.svg" id="iconDelete"/>
