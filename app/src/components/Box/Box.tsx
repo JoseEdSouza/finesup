@@ -29,7 +29,9 @@ function Box(props:{name:string, valueCurrent:number, valueMax:number}){
                 <strong><label id="labelValueProgress">{setValueBar()}%</label></strong>
             </Link>
 
-            <img src="icon_edit.svg" id="iconEdit"/>
+            <Link to="/1/updateBox" state={DatasForLink}>
+                <img src="icon_edit.svg" id="iconEdit"/>
+            </Link>
             <img src="icon_delete.svg" id="iconDelete"/>
 
             <ProgressBar valueCurrent={props.valueCurrent} valueMax={props.valueMax} progress={0} width={6.73} height={1.75} top={18.84} backgroundStyle="var(--primaryColor)" labelStyle=""/>

@@ -5,8 +5,11 @@ function ProgressBar(props:{valueMax:number, valueCurrent:number, progress:numbe
     const setValueBar = (valueCurrent:number, valueMax:number) => {
         let valueBar = Number(((valueCurrent/valueMax)*100).toFixed(2));
         
-        if(valueBar > 100){
+        if(valueBar >= 100){
             valueBar = 100;
+        }
+        if(valueBar <= 0){
+            valueBar = 0;
         }
 
         return valueBar;
@@ -15,7 +18,7 @@ function ProgressBar(props:{valueMax:number, valueCurrent:number, progress:numbe
     const setColorBar = (valueCurrent:number, valueMax:number) => {
         let colorBar = Number(((valueCurrent/valueMax)*100).toFixed(2));
 
-        if(colorBar >= 0 && colorBar <= 10){
+        if(colorBar <= 10){
             return '#740101';
         }
         else if(colorBar > 10 && colorBar <= 30){

@@ -11,6 +11,7 @@ import HomeRoute from './Routes/HomeRoute.tsx'
 import AddBox from './pages/AddBox.tsx'
 import TransactionHistory from './pages/TransactionHistory.tsx'
 import DetailedDisplayBox from './pages/DetailedDisplayBox.tsx'
+import UpdateBox from './pages/UpdateBox.tsx'
 
 
 const router = createBrowserRouter([
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/1/detailedDisplayBox",
         element: <DetailedDisplayBox/>
+      },
+      {
+        path: "/1/updateBox",
+        element: <UpdateBox/>
       },
       {
         path: "/2/transactionHistory",

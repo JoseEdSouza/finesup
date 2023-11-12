@@ -10,7 +10,7 @@ function BoxCreateContainer() {
             <BoxNameInput/>
             <BoxValueInput/>
             <BoxDescriptionInput/>
-            <BoxCreateButtons/>
+            <BoxCreateButtons nameButton="Criar nova caixinha"/>
         </div>
     )
 }

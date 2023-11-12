@@ -13,9 +13,14 @@
     position: absolute;
     font-family: "Open Sans";
     color: #2E1E43;
+    width: 14vw;
     top: 2.2vh;
     left: 50%;
     transform: translateX(-50%);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #iconBox{

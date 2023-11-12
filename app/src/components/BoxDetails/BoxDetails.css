@@ -58,19 +58,18 @@
     top: 0;
 }
 
-#moneyText{
+#moneyInput{
     position: absolute;
     height: 6.25vh;
     width: 100%;
     bottom: 0;
-    resize: none;
     box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
     border-style: none;
     outline: none;
     border-radius: 10px;   
     font-size: 3vh;
     padding-left: 12px;
-    padding-top: 8px;
+    padding-top: 2px;
 }
 
 #GroupButtonsDetails{
