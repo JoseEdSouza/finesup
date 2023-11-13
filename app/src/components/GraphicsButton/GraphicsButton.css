@@ -1,4 +1,4 @@
-#buttonTransaction{
+#buttonGraphics{
     height: 5.95vh;
     width: 32.63vw;
     max-width: 350px;
@@ -12,11 +12,11 @@
     cursor: pointer;
 }
 
-#buttonTransaction:hover{
+#buttonGraphics:hover{
     transform: scale(1.02);
 }
 
-#buttonTransactionGroup{
+#buttonGraphicsGroup{
     position: absolute;
     height: 2.83vh;
     width: 24.91vw;
@@ -25,7 +25,7 @@
     align-items: center;
 }
 
-#labelButtonTransaction{
+#labelButtonGraphics{
     position: relative;
     font-family: "Open Sans";
     font-size: 16px;
@@ -34,7 +34,7 @@
     cursor: pointer;
 }
 
-#iconTransaction{
+#iconGraphics{
     position: relative;
     cursor: pointer;
 }

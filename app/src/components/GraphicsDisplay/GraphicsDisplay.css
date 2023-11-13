@@ -1,0 +1,36 @@
+#graphicsDisplay{
+    position: absolute;
+    width: 24.68vw;
+    height: 6.25vh;
+    top: 3.8vh;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 1px solid #714C9F;
+    border-radius: 7px 7px 7px 7px;
+}
+
+#pie, #bar, #line{
+    position: relative;
+    height: 6vh;
+    width: 8.143vw;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#pie{
+    border-radius: 5px 0px 0px 5px;
+} 
+
+#bar{
+    background-color: #714C9F;
+} 
+
+#line{
+    border-radius: 0px 5px 5px 0px;
+    background-color: #714C9F;
+
+}

@@ -10,11 +10,18 @@
     right: 5.5%;
 }
 
-#linkTransactionHistory{
+#linkTransactionHistory, #LinkGraphics{
     position: absolute;
     height: 5.95vh;
     width: 32.63vw;
     max-width: 350px;
-    bottom: 14.18vh;
     cursor: pointer;
+}
+
+#linkTransactionHistory{
+    bottom: 14.18vh;
+}
+
+#LinkGraphics{
+    bottom: 5.56vh;
 }
