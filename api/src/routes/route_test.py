@@ -29,7 +29,7 @@ class Route:
         __key = ('id','name')
 
     router = APIRouter()
-    _DAO = UserDAOImp(Database())
+    _DAO = UserDAOImp()
 
     @staticmethod
     @router.get('/user/{user_id}')

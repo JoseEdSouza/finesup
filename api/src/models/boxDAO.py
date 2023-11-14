@@ -134,3 +134,12 @@ class BoxDAOImp(BoxDAO):
         except pg.Error as e:
             print(e)
             return None
+
+
+if __name__ == '__main__':
+    print(BoxDAOImp().get(1, 'Box 1'))
+    print(Box(
+        name='Box teste',
+        description='teste',
+        final_value='20.1',
+    ).user_id)
