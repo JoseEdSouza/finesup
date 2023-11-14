@@ -3,16 +3,16 @@ import "./RenderCategories.css";
 import CategoryExpense from "../../pages/CategoryExpense";
 import CategoryRevenue from "../../pages/CategoryRevenue";
 
-function RenderCategories(){
-    const [categoryType, setType] = useState(0);
-    
-    const setTypeRevenue = () => {
-        setType(0)
-    }
+function RenderCategories() {
+	const [categoryType, setType] = useState(0);
 
-    const setTypeExpense = () => {
-        setType(1)
-    }
+	const setTypeRevenue = () => {
+		setType(0);
+	};
+
+	const setTypeExpense = () => {
+		setType(1);
+	};
 
     return(
         <>

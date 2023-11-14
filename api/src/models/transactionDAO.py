@@ -32,8 +32,9 @@ class ExpenseDAOImp(TransactionDAO):
     __conn = None
     __cursor = None
 
-    def __init__(self, db: Database):
-        self.__conn = db.connection
+    def __init__(self):
+        self.__db = Database()
+        self.__conn = self.__db.connection
         self.__cursor = self.__conn.cursor()
 
     def __save(self):
@@ -41,7 +42,7 @@ class ExpenseDAOImp(TransactionDAO):
 
     def add(self, user_id: int, transaction: Expense) -> bool:
         values = (user_id, transaction.name, transaction.description, transaction.value,
-                  transaction.purchase_date, transaction.cat.id)
+                  transaction.purchase_date, transaction.cat)
         try:
             self.__cursor.execute('''
             INSERT INTO expenses(user_id,name,description,value,purchase_date,ex_cat_id)
@@ -57,7 +58,7 @@ class ExpenseDAOImp(TransactionDAO):
     def update(self, t_id: int, transaction: Expense) -> bool:
 
         values = (transaction.name, transaction.description, transaction.value,
-                  transaction.purchase_date, transaction.cat.id, t_id)
+                  transaction.purchase_date, transaction.cat, t_id)
         try:
             self.__cursor.execute('''
             UPDATE expenses SET
@@ -90,8 +91,10 @@ class ExpenseDAOImp(TransactionDAO):
     def get(self, t_id: int) -> Expense | None:
         try:
             self.__cursor.execute('''
-            SELECT * FROM expenses
-            WHERE id = %s
+            SELECT ex.id,ex.name,ex.description,ex.value,ex.purchase_date,ex.user_id,ex.ex_cat_id,ec.name
+            FROM expenses ex
+            JOIN expense_categories ec ON ex.id = ec.id
+            WHERE ex.id = %s
             ''', (t_id,))
             exp = self.__cursor.fetchone()
             if exp is None:
@@ -103,7 +106,7 @@ class ExpenseDAOImp(TransactionDAO):
                 value=exp[3],
                 purchase_date=exp[4],
                 user_id=exp[5],
-                cat=ExpenseCategory(exp[6], '')  # todo add CategoryDAO
+                cat=exp[6]
             )
         except pg.Error as e:
             print(e)
@@ -112,8 +115,10 @@ class ExpenseDAOImp(TransactionDAO):
     def get_all(self, user_id: int) -> list[Expense] | None:
         try:
             self.__cursor.execute('''
-            SELECT * FROM expenses
-            WHERE user_id = %s
+            SELECT ex.id,ex.name,ex.description,ex.value,ex.purchase_date,ex.user_id,ex.ex_cat_id,ec.name
+            FROM expenses ex
+            JOIN expense_categories ec ON ex.id = ec.id
+            WHERE ex.user_id = %s
             ''', (user_id,))
             list_expenses = self.__cursor.fetchall()
             if len(list_expenses) == 0:
@@ -125,7 +130,7 @@ class ExpenseDAOImp(TransactionDAO):
                 value=exp[3],
                 purchase_date=exp[4],
                 user_id=exp[5],
-                cat=ExpenseCategory(exp[6], '')  # todo add CategoryDAO
+                cat=exp[6]
             ), list_expenses))
             return expenses
         except pg.Error as e:
@@ -137,8 +142,9 @@ class RevenueDAOImp(TransactionDAO):
     __conn = None
     __cursor = None
 
-    def __init__(self, db: Database):
-        self.__conn = db.connection
+    def __init__(self):
+        self.__db = Database()
+        self.__conn = self.__db.connection
         self.__cursor = self.__conn.cursor()
 
     def __save(self):
@@ -146,7 +152,7 @@ class RevenueDAOImp(TransactionDAO):
 
     def add(self, user_id: int, transaction: Revenue) -> bool:
         values = (user_id, transaction.name, transaction.description, transaction.value,
-                  transaction.purchase_date, transaction.cat.id)
+                  transaction.purchase_date, transaction.cat)
         try:
             self.__cursor.execute('''
             INSERT INTO revenues(user_id,name,description,value,purchase_date,rev_cat_id)
@@ -161,7 +167,7 @@ class RevenueDAOImp(TransactionDAO):
 
     def update(self, t_id: int, transaction: Revenue) -> bool:
         values = (transaction.name, transaction.description, transaction.value,
-                  transaction.purchase_date, transaction.cat.id, t_id)
+                  transaction.purchase_date, transaction.cat, t_id)
         try:
             self.__cursor.execute('''
             UPDATE revenues SET
@@ -194,8 +200,9 @@ class RevenueDAOImp(TransactionDAO):
     def get(self, t_id: int) -> Revenue | None:
         try:
             self.__cursor.execute('''
-            SELECT * FROM revenues
-            WHERE id = %s
+            SELECT rev.id,rev.name,rev.description,rev.value,rev.purchase_date,rev.user_id,rev.rev_cat_id
+            FROM revenues rev
+            WHERE rev.id = %s
             ''', (t_id,))
             rev = self.__cursor.fetchone()
             if rev is None:
@@ -207,7 +214,7 @@ class RevenueDAOImp(TransactionDAO):
                 value=rev[3],
                 purchase_date=rev[4],
                 user_id=rev[5],
-                cat=RevenueCategory(rev[6], '')  # todo add CategoryDAO
+                cat=rev[6]
             )
         except pg.Error as e:
             print(e)
@@ -216,8 +223,9 @@ class RevenueDAOImp(TransactionDAO):
     def get_all(self, user_id: int) -> list[Revenue] | None:
         try:
             self.__cursor.execute('''
-            SELECT * FROM revenues
-            WHERE user_id = %s
+            SELECT rev.id,rev.name,rev.description,rev.value,rev.purchase_date,rev.user_id,rev.rev_cat_id
+            FROM revenues rev
+            WHERE rev.user_id = %s
             ''', (user_id,))
             list_revenues = self.__cursor.fetchall()
             if len(list_revenues) == 0:
@@ -229,7 +237,7 @@ class RevenueDAOImp(TransactionDAO):
                 value=rev[3],
                 purchase_date=rev[4],
                 user_id=rev[5],
-                cat=RevenueCategory(rev[6], '')  # todo add CategoryDAO
+                cat=rev[6]
             ), list_revenues))
             return revenues
         except pg.Error as e:

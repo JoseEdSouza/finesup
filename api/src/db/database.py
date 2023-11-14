@@ -22,5 +22,5 @@ class Database(metaclass=Singleton):
         return self._conn
 
     @property
-    def engine(self) -> sqla.Engine | None:
+    def engine(self) -> sqla.engine.Engine | None:
         return self._eng

@@ -1,9 +1,9 @@
-from api.src.models.category import ExpenseCategory
 from datetime import date
+from api.src.models.category import ExpenseCategory
 
 
 class Budget:
-    def __init__(self, user_id: int | None, cat: ExpenseCategory, renewal_date: date,
+    def __init__(self, user_id: int | None, cat: int, renewal_date: date,
                  final_value: float,
                  actual_value: float = 0):
         self._user_id = user_id
@@ -27,7 +27,7 @@ class Budget:
         return self._user_id
 
     @property
-    def category(self) -> ExpenseCategory:
+    def category(self) -> int:
         return self._cat
 
     @property
