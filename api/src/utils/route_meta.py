@@ -30,13 +30,13 @@ class RouteMeta(type):
                 key_path += f'/{key_dict.get(k)}'
 
             if 'get' in methods:
-                @router.get(f'/{route_base_name}/{key_path}')
+                @router.get(f'/api/{route_base_name}/{key_path}')
                 async def get(id: int = None, m_name: str = None,
                               category: int = None, user: int = None):
                     args = list(filter(lambda x: x is not None, [id, user, m_name, category]))
                     return dao.get(*args)
             if 'add' in methods:
-                url = f'/{route_base_name}/add' + ('' if len(key) == 1 else f'/{key_dict.get(key[0])}')
+                url = f'/api/{route_base_name}/add' + ('' if len(key) == 1 else f'/{key_dict.get(key[0])}')
 
                 @router.post(url)
                 async def post(mod: model, id: int = None, user=None):
@@ -44,14 +44,14 @@ class RouteMeta(type):
                     dao.add(*args, mod) if len(args) != 0 else dao.add(mod)
                     return mod
             if 'update' in methods:
-                @router.put(f'/{route_base_name}/{key_path}')
+                @router.put(f'/api/{route_base_name}/{key_path}')
                 async def put(mod: model, id: int = None, m_name: str = None,
                               category: int = None, user: int = None):
                     args = list(filter(lambda x: x is not None, [id, user, m_name, category]))
                     dao.update(*args, mod)
                     return mod
             if 'remove' in methods:
-                @router.delete(f'/{route_base_name}/{key_path}')
+                @router.delete(f'/api/{route_base_name}/{key_path}')
                 async def delete(id: int = None, m_name: str = None,
                                  category: int = None, user: int = None):
                     args = list(filter(lambda x: x is not None, [id, user, m_name, category]))
@@ -59,7 +59,7 @@ class RouteMeta(type):
             if 'get_all' in methods:
                 partial_key_path = f'{key_dict.get(key[0])}'
 
-                @router.get(f'/{route_base_name}/all/{partial_key_path}')
+                @router.get(f'/api/{route_base_name}/all/{partial_key_path}')
                 async def get_all(id: int = None, m_name: str = None,
                                   category: int = None, user: int = None):
                     args = list(filter(lambda x: x is not None, [id, user, m_name, category]))
