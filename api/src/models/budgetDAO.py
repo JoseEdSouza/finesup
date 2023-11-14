@@ -2,7 +2,6 @@ import psycopg2 as pg
 from abc import ABC, abstractmethod
 from api.src.models.budget import Budget
 from api.src.db.database import Database
-from api.src.models.category import ExpenseCategory
 
 
 class BudgetDAO(ABC):
