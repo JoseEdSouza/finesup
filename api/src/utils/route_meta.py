@@ -36,7 +36,7 @@ class RouteMeta(type):
                     args = list(filter(lambda x: x is not None, [id, user, m_name, category]))
                     return dao.get(*args)
             if 'add' in methods:
-                url = f'/{route_base_name}/add' + ('' if len(key) == 1 else f'/{key_dict.get(key[0])}')
+                url = f'/{route_base_name}' + ('' if len(key) == 1 else f'/{key_dict.get(key[0])}')
 
                 @router.post(url)
                 async def post(mod: model, id: int = None, user=None):
