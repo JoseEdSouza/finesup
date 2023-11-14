@@ -140,7 +140,7 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
                 return None
             #  id | name | description | purchase_date | limit_date | frequency | value | user_id | ex_cat_id
             expenses = list(map(lambda exp: FixedExpense(
-                ft_id=exp[0],
+                id=exp[0],
                 name=exp[1],
                 description=exp[2],
                 purchase_date=exp[3],
@@ -238,7 +238,7 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
                 return None
             # id | name | description | value | purchase_date | limit_date | frequency | user_id | rev_cat_id
             return FixedRevenue(
-                ft_id=rev[0],
+                id=rev[0],
                 name=rev[1],
                 description=rev[2],
                 value=rev[3],
@@ -264,7 +264,7 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
                 return None
             # id |   name   |  description   | value | purchase_date | limit_date | frequency | user_id | rev_cat_id
             revenues = list(map(lambda rev: FixedRevenue(
-                ft_id=rev[0],
+                id=rev[0],
                 name=rev[1],
                 description=rev[2],
                 value=rev[3],

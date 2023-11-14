@@ -5,7 +5,7 @@ from typing import Optional
 
 class Budget(BaseModel):
     user_id: Optional[int]
-    cat: int
+    category: int
     renewal_date: date
     final_value: float
     actual_value: float

@@ -2,7 +2,6 @@ import psycopg2 as pg
 from abc import ABC, abstractmethod
 from api.src.db.database import Database
 from api.src.models.transaction import Transaction, Expense, Revenue
-from api.src.models.category import ExpenseCategory, RevenueCategory
 
 
 class TransactionDAO(ABC):
@@ -100,7 +99,7 @@ class ExpenseDAOImp(TransactionDAO):
             if exp is None:
                 return None
             return Expense(
-                t_id=exp[0],
+                id=exp[0],
                 name=exp[1],
                 description=exp[2],
                 value=exp[3],
@@ -124,7 +123,7 @@ class ExpenseDAOImp(TransactionDAO):
             if len(list_expenses) == 0:
                 return None
             expenses = list(map(lambda exp: Expense(
-                t_id=exp[0],
+                id=exp[0],
                 name=exp[1],
                 description=exp[2],
                 value=exp[3],
@@ -208,7 +207,7 @@ class RevenueDAOImp(TransactionDAO):
             if rev is None:
                 return None
             return Revenue(
-                t_id=rev[0],
+                id=rev[0],
                 name=rev[1],
                 description=rev[2],
                 value=rev[3],
@@ -231,7 +230,7 @@ class RevenueDAOImp(TransactionDAO):
             if len(list_revenues) == 0:
                 return None
             revenues = list(map(lambda rev: Revenue(
-                t_id=rev[0],
+                id=rev[0],
                 name=rev[1],
                 description=rev[2],
                 value=rev[3],
