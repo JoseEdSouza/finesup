@@ -17,7 +17,7 @@ app.include_router(FixedRevenueRoute.router)
 
 
 async def run_server():
-    uvicorn.run(app="api.src.app_test:app", reload=True, host="127.0.0.1", port=9000)
+    uvicorn.run(app="api.src.main:app", reload=True, host="127.0.0.1", port=9000)
 
 
 if __name__ == '__main__':
