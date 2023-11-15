@@ -25,9 +25,9 @@ class RouteMeta(type):
                 'user_id': 'user'
             }
 
-            key_path = f'{key_dict.get(key[0])}'
+            key_path = f'{{{key_dict.get(key[0])}}}'
             for k in key[1:]:
-                key_path += f'/{key_dict.get(k)}'
+                key_path += f'/{{{key_dict.get(k)}}}'
 
             if 'get' in methods:
                 @router.get(f'/api/{route_base_name}/{key_path}')
@@ -36,7 +36,7 @@ class RouteMeta(type):
                     args = list(filter(lambda x: x is not None, [id, user, m_name, category]))
                     return dao.get(*args)
             if 'add' in methods:
-                url = f'/api/{route_base_name}/add' + ('' if len(key) == 1 else f'/{key_dict.get(key[0])}')
+                url = f'/api/{route_base_name}' + ('' if len(key) == 1 else f'/{key_dict.get(key[0])}')
 
                 @router.post(url)
                 async def post(mod: model, id: int = None, user=None):
@@ -57,7 +57,7 @@ class RouteMeta(type):
                     args = list(filter(lambda x: x is not None, [id, user, m_name, category]))
                     return dao.remove(*args)
             if 'get_all' in methods:
-                partial_key_path = f'{key_dict.get(key[0])}'
+                partial_key_path = f'{{{key_dict.get(key[0])}}}'
 
                 @router.get(f'/api/{route_base_name}/all/{partial_key_path}')
                 async def get_all(id: int = None, m_name: str = None,
