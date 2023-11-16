@@ -47,13 +47,12 @@ class BoxDAOImp(BoxDAO):
             INSERT INTO boxes(user_id, name, description, actual_value, final_value, concluded, creation_date)
              VALUES (%s, %s, %s, %s, %s, %s, now())
             ''', values)
+            self.__save()
+            return True
 
         except pg.Error as e:
             print(e)
             return False
-        finally:
-            self.__save()
-            return True
 
     def update(self, user_id: int, name_box: str, box: Box) -> bool:
         values = (box.name, box.description, box.actual_value, box.final_value, box.concluded, user_id, name_box)
@@ -67,24 +66,22 @@ class BoxDAOImp(BoxDAO):
             concluded = %s            
             WHERE user_id = %s AND name = %s
             ''', values)
+            self.__save()
+            return True
         except pg.Error as e:
             print(e)
             return False
-        finally:
-            self.__save()
-            return True
 
     def remove(self, user_id: int, name: str) -> bool:
         try:
             self.__cursor.execute('''
             DELETE FROM boxes WHERE user_id = %s AND name = %s
             ''', (user_id, name))
+            self.__save()
+            return True
         except pg.Error as e:
             print(e)
             return False
-        finally:
-            self.__save()
-            return True
 
     def get(self, user_id: int, name: str) -> Box | None:
         try:
@@ -134,12 +131,3 @@ class BoxDAOImp(BoxDAO):
         except pg.Error as e:
             print(e)
             return None
-
-
-if __name__ == '__main__':
-    print(BoxDAOImp().get(1, 'Box 1'))
-    print(Box(
-        name='Box teste',
-        description='teste',
-        final_value='20.1',
-    ).user_id)

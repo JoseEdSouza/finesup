@@ -2,7 +2,6 @@ import psycopg2 as pg
 from abc import ABC, abstractmethod
 from api.src.db.database import Database
 from api.src.models.fixed_transaction import FixedTransaction, FixedRevenue, FixedExpense
-from api.src.models.category import ExpenseCategory, RevenueCategory
 from api.src.utils.frequency import Frequency
 
 
@@ -51,15 +50,14 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
             INSERT INTO fixed_expenses(user_id, name,description,purchase_date,limit_date,frequency,value,ex_cat_id)
             VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
             ''', values)
+            self.__save()
+            return True
         except pg.Error as e:
             print(e)
             return False
         except ValueError as val:
             print(val)
             return False
-        finally:
-            self.__save()
-            return True
 
     def update(self, ft_id: int, transaction: FixedExpense) -> bool:
         # id | name | description | purchase_date | limit_date | frequency | value | user_id | ex_cat_id
@@ -78,24 +76,22 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
             ex_cat_id = %s
             WHERE id = %s
             ''', values)
+            self.__save()
+            return True
         except pg.Error as e:
             print(e)
             return False
-        finally:
-            self.__save()
-            return True
 
     def remove(self, ft_id: int) -> bool:
         try:
             self.__cursor.execute('''
             DELETE FROM fixed_expenses WHERE id = %s
             ''', (ft_id,))
+            self.__save()
+            return True
         except pg.Error as e:
             print(e)
             return False
-        finally:
-            self.__save()
-            return True
 
     def get(self, ft_id: int) -> FixedExpense | None:
         try:
@@ -204,27 +200,25 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
             rev_cat_id = %s
             WHERE id = %s
             ''', values)
+            self.__save()
+            return True
         except pg.Error as e:
             print(e)
             return False
         except ValueError as val:
             print(val)
             return False
-        finally:
-            self.__save()
-            return True
 
     def remove(self, ft_id: int) -> bool:
         try:
             self.__cursor.execute('''
             DELETE FROM fixed_revenues WHERE id = %s
             ''', (ft_id,))
+            self.__save()
+            return True
         except pg.Error as e:
             print(e)
             return False
-        finally:
-            self.__save()
-            return True
 
     def get(self, t_id: int) -> FixedRevenue | None:
         try:

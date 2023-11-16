@@ -46,12 +46,11 @@ class BudgetDAOImp(BudgetDAO):
             INSERT INTO budgets (user_id,ex_cat_id,final_value,actual_value,renewal_date,creation_date)
             VALUES (%s,%s,%s,%s,%s,now())
             ''', values)
+            self.__save()
+            return True
         except pg.Error as e:
             print(e)
             return False
-        finally:
-            self.__save()
-            return True
 
     def update(self, user_id: int, ex_cat_id: int, budget: Budget) -> bool:
         values = (budget.category, budget.final_value, budget.actual_value, budget.renewal_date, user_id, ex_cat_id)
@@ -64,24 +63,22 @@ class BudgetDAOImp(BudgetDAO):
             renewal_date = %s
             WHERE user_id = %s AND ex_cat_id = %s
             ''', values)
+            self.__save()
+            return True
         except pg.Error as e:
             print(e)
             return False
-        finally:
-            self.__save()
-            return True
 
     def remove(self, user_id: int, ex_cat_id: int) -> bool:
         try:
             self.__cursor.execute('''
             DELETE FROM budgets WHERE user_id = %s AND ex_cat_id = %s
             ''', (user_id, ex_cat_id))
+            self.__save()
+            return True
         except pg.Error as e:
             print(e)
             return False
-        finally:
-            self.__save()
-            return True
 
     def get(self, user_id: int, ex_cat_id: int) -> Budget | None:
         try:

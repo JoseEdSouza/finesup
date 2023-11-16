@@ -18,7 +18,7 @@ class CategoryDAO(ABC):
         pass
 
     @abstractmethod
-    def get(self, cat_id) -> Category | None:
+    def get(self, cat_id: int) -> Category | None:
         pass
 
     @abstractmethod
@@ -45,12 +45,13 @@ class ExpenseCategoryDAOImp(CategoryDAO):
             INSERT INTO expense_categories (name)
             VALUES (%s)
             ''', values)
+
+            self.__save()
+
+            return True
         except pg.Error as e:
             print(e)
             return False
-        finally:
-            self.__save()
-            return True
 
     def update(self, cat_id: int, category: ExpenseCategory) -> bool:
         values = (category.name, cat_id)
@@ -60,33 +61,35 @@ class ExpenseCategoryDAOImp(CategoryDAO):
             SET name = %s
             WHERE id = %s
             ''', values)
+
+            self.__save()
+
+            return True
         except pg.Error as e:
             print(e)
             return False
-        finally:
-            self.__save()
-            return True
 
     def remove(self, cat_id: int) -> bool:
         try:
             self.__cursor.execute('''
             DELETE FROM expense_categories WHERE id=%s
             ''', (cat_id,))
+
+            self.__save()
+
+            return True
         except pg.Error as e:
             print(e)
             return False
-        finally:
-            self.__save()
-            return True
 
-    def get(self, cat_id) -> ExpenseCategory | None:
+    def get(self, cat_id: int) -> ExpenseCategory | None:
         try:
             self.__cursor.execute('''
             SELECT * FROM expense_categories
             WHERE id = %s
             ''', (cat_id,))
             cat = self.__cursor.fetchone()
-            return None if cat is None else ExpenseCategory(cat[0], cat[1])
+            return None if cat is None else ExpenseCategory(id=cat[0], name=cat[1])
         except pg.Error as e:
             print(e)
             return None
@@ -97,7 +100,7 @@ class ExpenseCategoryDAOImp(CategoryDAO):
             cats = self.__cursor.fetchall()
             if len(cats) == 0:
                 return None
-            return list(map(lambda c: ExpenseCategory(c[0], c[1]), cats))
+            return list(map(lambda c: ExpenseCategory(id=c[0], name=c[1]), cats))
         except pg.Error as e:
             print(e)
             return None
@@ -122,12 +125,13 @@ class RevenueCategoryDAOImp(CategoryDAO):
             INSERT INTO revenue_categories (name)
             VALUES (%s)
             ''', values)
+
+            self.__save()
+
+            return True
         except pg.Error as e:
             print(e)
             return False
-        finally:
-            self.__save()
-            return True
 
     def update(self, cat_id: int, category: RevenueCategory) -> bool:
         values = (category.name, cat_id)
@@ -137,33 +141,35 @@ class RevenueCategoryDAOImp(CategoryDAO):
             SET name = %s
             WHERE id = %s
             ''', values)
+
+            self.__save()
+
+            return True
         except pg.Error as e:
             print(e)
             return False
-        finally:
-            self.__save()
-            return True
 
     def remove(self, cat_id: int) -> bool:
         try:
             self.__cursor.execute('''
             DELETE FROM revenue_categories WHERE id=%s
             ''', (cat_id,))
+
+            self.__save()
+
+            return True
         except pg.Error as e:
             print(e)
             return False
-        finally:
-            self.__save()
-            return True
 
-    def get(self, cat_id) -> RevenueCategory | None:
+    def get(self, cat_id: int) -> RevenueCategory | None:
         try:
             self.__cursor.execute('''
             SELECT * FROM revenue_categories
             WHERE id = %s
             ''', (cat_id,))
             cat = self.__cursor.fetchone()
-            return None if cat is None else RevenueCategory(cat[0], cat[1])
+            return None if cat is None else RevenueCategory(id=cat[0], name=cat[1])
         except pg.Error as e:
             print(e)
             return None
@@ -174,7 +180,7 @@ class RevenueCategoryDAOImp(CategoryDAO):
             cats = self.__cursor.fetchall()
             if len(cats) == 0:
                 return None
-            return list(map(lambda c: RevenueCategory(c[0], c[1]), cats))
+            return list(map(lambda c: RevenueCategory(id=c[0], name=c[1]), cats))
         except pg.Error as e:
             print(e)
             return None
