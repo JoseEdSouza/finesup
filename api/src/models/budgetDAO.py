@@ -7,7 +7,7 @@ from api.src.db.database import Database
 class BudgetDAO(ABC):
 
     @abstractmethod
-    def add(self, user_id: int, budget: Budget) -> bool:
+    def add(self, budget: Budget) -> bool:
         pass
 
     @abstractmethod
@@ -39,8 +39,8 @@ class BudgetDAOImp(BudgetDAO):
     def __save(self):
         self.__conn.commit()
 
-    def add(self, user_id: int, budget: Budget) -> bool:
-        values = (user_id, budget.category, budget.final_value, budget.actual_value, budget.renewal_date)
+    def add(self, budget: Budget) -> bool:
+        values = (budget.user_id, budget.category, budget.final_value, budget.actual_value, budget.renewal_date)
         try:
             self.__cursor.execute('''
             INSERT INTO budgets (user_id,ex_cat_id,final_value,actual_value,renewal_date,creation_date)

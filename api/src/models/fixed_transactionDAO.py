@@ -8,7 +8,7 @@ from api.src.utils.frequency import Frequency
 class FixedTransactionDAO(ABC):
 
     @abstractmethod
-    def add(self, user_id: int, transaction: FixedTransaction) -> bool:
+    def add(self, transaction: FixedTransaction) -> bool:
         pass
 
     @abstractmethod
@@ -40,8 +40,8 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
     def __save(self):
         self.__conn.commit()
 
-    def add(self, user_id: int, transaction: FixedExpense) -> bool:
-        values = (user_id, transaction.name, transaction.description,
+    def add(self, transaction: FixedExpense) -> bool:
+        values = (transaction.user_id, transaction.name, transaction.description,
                   transaction.purchase_date, transaction.limit_date, Frequency(transaction.frequency).value,
                   transaction.value, transaction.cat)
         try:
@@ -164,8 +164,8 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
     def __save(self):
         self.__conn.commit()
 
-    def add(self, user_id: int, transaction: FixedRevenue) -> bool:
-        values = (user_id, transaction.name, transaction.description,
+    def add(self, transaction: FixedRevenue) -> bool:
+        values = (transaction.user_id, transaction.name, transaction.description,
                   transaction.purchase_date, transaction.limit_date, Frequency(transaction.frequency).value,
                   transaction.value, transaction.cat)
         # id | name | description | value | purchase_date | limit_date | frequency | user_id | rev_cat_id

@@ -7,7 +7,7 @@ from api.src.models.transaction import Transaction, Expense, Revenue
 class TransactionDAO(ABC):
 
     @abstractmethod
-    def add(self, user_id: int, transaction: Transaction) -> bool:
+    def add(self, transaction: Transaction) -> bool:
         pass
 
     @abstractmethod
@@ -39,8 +39,8 @@ class ExpenseDAOImp(TransactionDAO):
     def __save(self):
         self.__conn.commit()
 
-    def add(self, user_id: int, transaction: Expense) -> bool:
-        values = (user_id, transaction.name, transaction.description, transaction.value,
+    def add(self, transaction: Expense) -> bool:
+        values = (transaction.user_id, transaction.name, transaction.description, transaction.value,
                   transaction.purchase_date, transaction.cat)
         try:
             self.__cursor.execute('''
@@ -146,8 +146,8 @@ class RevenueDAOImp(TransactionDAO):
     def __save(self):
         self.__conn.commit()
 
-    def add(self, user_id: int, transaction: Revenue) -> bool:
-        values = (user_id, transaction.name, transaction.description, transaction.value,
+    def add(self, transaction: Revenue) -> bool:
+        values = (transaction.user_id, transaction.name, transaction.description, transaction.value,
                   transaction.purchase_date, transaction.cat)
         try:
             self.__cursor.execute('''
