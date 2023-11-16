@@ -62,4 +62,5 @@ class BoxController {
 }
 exports.BoxController = BoxController;
 const c = new BoxController();
-setTimeout(()=> {console.log(c.get(1, "Box 1"))} , 5000);
+
+c.get(1, "Box 1").then(value => console.log(value))
