@@ -69,9 +69,8 @@ class RouteMeta(type):
                         raise HTTPException(status_code=404, detail="Item not found")
                     return dao.remove(*args)
             if 'get_all' in methods:
-                partial_key_path = f'{{{key_dict.get(key[0])}}}'
 
-                @router.get(f'/api/{route_base_name}/all/{partial_key_path}')
+                @router.get(f'/api/{route_base_name}/all/{{user}}')
                 async def get_all(id: int = None, m_name: str = None,
                                   category: int = None, user: int = None):
                     args = list(filter(lambda x: x is not None, [id, user, m_name, category]))
