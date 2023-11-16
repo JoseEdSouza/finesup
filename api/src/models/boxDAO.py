@@ -7,7 +7,7 @@ from api.src.db.database import Database
 class BoxDAO(ABC):
 
     @abstractmethod
-    def add(self, user_id: int, box: Box) -> bool:
+    def add(self, box: Box) -> bool:
         pass
 
     @abstractmethod
@@ -39,9 +39,9 @@ class BoxDAOImp(BoxDAO):
     def __save(self):
         self.__conn.commit()
 
-    def add(self, user_id: int, box: Box) -> bool:
+    def add(self, box: Box) -> bool:
 
-        values = (user_id, box.name, box.description, box.actual_value, box.final_value, box.concluded)
+        values = (box.user_id, box.name, box.description, box.actual_value, box.final_value, box.concluded)
         try:
             self.__cursor.execute('''
             INSERT INTO boxes(user_id, name, description, actual_value, final_value, concluded, creation_date)

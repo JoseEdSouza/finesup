@@ -1,9 +1,10 @@
 from abc import ABC
 from pydantic import BaseModel
+from typing import Optional
 
 
 class Category(ABC, BaseModel):
-    id: int | None
+    id: Optional[int]
     name: str
 
 
