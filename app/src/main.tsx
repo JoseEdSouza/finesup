@@ -13,6 +13,7 @@ import TransactionHistory from './pages/TransactionHistory.tsx'
 import DetailedDisplayBox from './pages/DetailedDisplayBox.tsx'
 import UpdateBox from './pages/UpdateBox.tsx'
 import Graphics from './pages/Graphics.tsx'
+import AddBudget from './pages/addBudget.tsx'
 
 
 const router = createBrowserRouter([
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "/2/graphics",
         element: <Graphics/>
+      },
+      {
+        path: "/3/addbudget",
+        element: <AddBudget/>
       }
     ]
   }
