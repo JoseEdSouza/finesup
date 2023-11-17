@@ -1,76 +1,30 @@
-import * as http from 'http';
-import Box from "../models/Box";
-import ApiSettings from "../config/ApiSettings";
+import { fetch, Response, Request } from 'undici'
+import Box from '../models/Box'
+import ApiSettings from "../config/ApiSettings"
+
+type Nullable<T> = T | null
 
 export class BoxController {
-
-    baseUrl = ApiSettings.BASEURL + "/box"
-    ///api/box/user
-    getOptions = (m: string, box: Box) => {
-        return {
-            hostname: ApiSettings.HOST,
-            port: ApiSettings.PORT,
-            path: ApiSettings.BASEPATH + '/box/user',
-            method: m,
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(box)
-        };
+    async get(userId: number, name: string): Promise<Nullable<Box>> {
+        const response = await fetch(`${ApiSettings.BASEURL}/box/${userId}/${name}`)
+        if (response.status !== 200) {
+            throw new Error('Box not found')
+        }
+        const box:any = await response.json()
+        return new Box(box.user_id, box.name, box.description, box.actual_value, box.final_value, box.concluded)
     }
 
-    async add(box: Box): Promise<boolean> {
-        let ok = false;
-
-        const options = this.getOptions('POST', box);
-        const req = http.request(options, res => {
-            if (res.statusCode === 200)
-                ok = true;
-            console.log(`statusCode: ${res.statusCode}`);
-        });
-
-        req.on('error', error => {
-            console.error(error);
-        });
-
-        req.end(JSON.stringify(box));
-
-        return new Promise((resolve, reject) => {
-            req.on('error', reject);
-            req.on('close', () => resolve(ok));
-        });
+    async getAll(userId: number): Promise<Box[]> {
+        const response = await fetch(`${ApiSettings.BASEURL}/box/all/${userId}`)
+        if (response.status !== 200) {
+            throw new Error('user not found')
+        }
+        const boxes:any= await response.json()
+        return boxes.map((box:any) => new Box(box.user_id, box.name, box.description, box.actual_value, box.final_value, box.concluded))
     }
-    async get(userId: number, name: string): Promise<Box | null> {
-        const url = `${this.baseUrl}/${userId}/${name}`;
-        let box: Box | null = null;
-        const req = http.get(url, res => {
-            let data = '';
-            res.on('data', chunk => {
-                data += chunk;
-            });
-            res.on('end', () => {
-                if (res.statusCode === 200) {
-                    const { id, name, description, actualValue, finalValue, concluded } = JSON.parse(data);
-                    box = new Box(id, name, description, actualValue, finalValue, concluded);
-                }
-            });
-        });
-
-        req.on('error', error => {
-            console.error(error);
-        });
-
-        return new Promise((resolve, reject) => {
-            req.on('error', reject);
-            req.on('close', () => resolve(box));
-        });
-    }
-
 }
 
+export default BoxController
 
 const c = new BoxController()
-console.log(c.get(1, "Box 1"))
-
-
-
+c.getAll(1).then(console.log).catch(console.error)

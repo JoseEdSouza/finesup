@@ -39,7 +39,7 @@ class RouteMeta(type):
                         raise HTTPException(status_code=404, detail="Item not found")
                     return ret
             if 'add' in methods:
-                url = f'/api/{route_base_name}' + ('' if len(key) == 1 else f'/{{{key_dict.get(key[0])}}}')
+                url = f'/api/{route_base_name}'
 
                 @router.post(url)
                 async def post(mod: model, id: int = None, user=None):

@@ -126,7 +126,6 @@ class BoxDAOImp(BoxDAO):
                 final_value=value[4],
                 concluded=value[5]
             ), values))
-
             return b
         except pg.Error as e:
             print(e)
