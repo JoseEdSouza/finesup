@@ -1,8 +1,7 @@
 #addbudget{
     position: absolute;
     background-color: var(--secondaryColor);
-    width: 69.93vw;
-    max-width: 750px;
+    width: 52vw;
     height: 73.63vh;
     left: 50%;
     transform: translateX(-50%);

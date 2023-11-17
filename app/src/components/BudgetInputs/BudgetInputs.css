@@ -1,0 +1,28 @@
+#divInputs{
+    position: absolute;
+    left: 50%;
+    transform: translateY(-50%);
+}
+
+#valueInput, #renovationInput, #categoriesSelect{
+    position: absolute;
+    width: 38vw;
+    height: 6.25vh;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Open Sans";
+    font-size: 2.3vh;
+}
+
+#valueInput{
+    top: 16vh;
+}
+
+#renovationInput{
+    top: 28vh;
+}
+
+#categoriesSelect{
+    top: 40vh;
+}
