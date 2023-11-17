@@ -4,7 +4,7 @@ import "./Box.css";
 import { useState } from "react";
 
 function Box(props:{name:string, valueCurrent:number, valueMax:number}){
-
+    
     const [DatasForLink] = useState({
         name: props.name,
         valueCurrent: props.valueCurrent,

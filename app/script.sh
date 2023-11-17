@@ -1,7 +1,7 @@
 #!/bin/bash
 
 activate_venv() {
- . /home/erick/Área\ de\ Trabalho/finesup/api/venv/bin/activate
+    . /home/erick/Área\ de\ Trabalho/finesup/api/venv/bin/activate
 }
 
 activate_venv
