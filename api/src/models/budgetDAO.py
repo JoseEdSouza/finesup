@@ -93,7 +93,7 @@ class BudgetDAOImp(BudgetDAO):
             else:
                 return Budget(
                     user_id=bud[0],
-                    cat=bud[1],
+                    category=bud[1],
                     actual_value=bud[2],
                     final_value=bud[3],
                     renewal_date=bud[4]
@@ -114,7 +114,7 @@ class BudgetDAOImp(BudgetDAO):
                 return None
             buds = list(map(lambda bud: Budget(
                 user_id=bud[0],
-                cat=bud[1],
+                category=bud[1],
                 actual_value=bud[2],
                 final_value=bud[3],
                 renewal_date=bud[4]

@@ -67,7 +67,7 @@ var BoxController = /** @class */ (function () {
             var response, boxes;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, (0, undici_1.fetch)("".concat(ApiSettings_1.default.BASEURL, "/box/all/").concat(userId))];
+                    case 0: return [4 /*yield*/, (0, undici_1.fetch)("".concat(ApiSettings_1.default.BASEURL, "/all/box/").concat(userId))];
                     case 1:
                         response = _a.sent();
                         if (response.status !== 200) {
@@ -81,9 +81,41 @@ var BoxController = /** @class */ (function () {
             });
         });
     };
+    BoxController.prototype.add = function (box) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response, addedBox;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, (0, undici_1.fetch)("".concat(ApiSettings_1.default.BASEURL, "/box"), {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                user_id: box.userId,
+                                name: box.name,
+                                description: box.description,
+                                actual_value: box.actualValue,
+                                final_value: box.finalValue,
+                                concluded: box.concluded
+                            }),
+                            headers: { 'Content-Type': 'application/json' }
+                        })];
+                    case 1:
+                        response = _a.sent();
+                        if (response.status !== 200) {
+                            throw new Error('Failed to add box');
+                        }
+                        return [4 /*yield*/, response.json()];
+                    case 2:
+                        addedBox = _a.sent();
+                        return [2 /*return*/, new Box_1.default(addedBox.user_id, addedBox.name, addedBox.description, addedBox.actual_value, addedBox.final_value, addedBox.concluded)];
+                }
+            });
+        });
+    };
     return BoxController;
 }());
 exports.BoxController = BoxController;
 exports.default = BoxController;
 var c = new BoxController();
 c.getAll(1).then(console.log).catch(console.error);
+var myNewBox = new Box_1.default(1, 'My new box', 'My new box description', 0, 0, false);
+c.add(myNewBox).then(console.log).catch(console.error);
