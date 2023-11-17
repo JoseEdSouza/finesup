@@ -1,5 +1,5 @@
 import NavBarDefault from "../components/NavBarDefault/NavBarDefault"
-import AddBudgetComp from "../components/addBudgetComp/addBudgetComp"
+import AddBudgetComp from "../components/addBudgetComp/AddBudgetComp"
 
 function AddBudget(){
     return(
