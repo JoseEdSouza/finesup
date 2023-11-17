@@ -2,11 +2,10 @@ from pydantic import BaseModel
 from typing import TypeVar
 from fastapi import APIRouter, HTTPException
 
-T = TypeVar('T', bound=BaseModel)
-
 
 class RouteMeta(type):
     def __new__(cls, name: str, bases: tuple, attrs: dict):
+        T = TypeVar('T', bound=BaseModel)
         router = APIRouter()
         attrs['router'] = router
         if (all(key in attrs for key in ['Model', 'DAO', 'Key'])
@@ -70,7 +69,7 @@ class RouteMeta(type):
                     return dao.remove(*args)
             if 'get_all' in methods:
 
-                @router.get(f'/api/{route_base_name}/all/{{user}}')
+                @router.get(f'/api/all/{route_base_name}/{{user}}')
                 async def get_all(id: int = None, m_name: str = None,
                                   category: int = None, user: int = None):
                     args = list(filter(lambda x: x is not None, [id, user, m_name, category]))
