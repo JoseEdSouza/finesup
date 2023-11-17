@@ -107,12 +107,12 @@ class BoxDAOImp(BoxDAO):
             print(e)
             return None
 
-    def get_all(self, box_id: int) -> list[Box] | None:
+    def get_all(self, user_id: int) -> list[Box] | None:
         try:
             self.__cursor.execute('''
                         SELECT user_id, name, description, actual_value, final_value, concluded 
                         FROM boxes WHERE user_id = %s
-                        ''', (box_id,))
+                        ''', (user_id,))
             values = self.__cursor.fetchall()
 
             if len(values) == 0:
@@ -126,6 +126,7 @@ class BoxDAOImp(BoxDAO):
                 final_value=value[4],
                 concluded=value[5]
             ), values))
+
             return b
         except pg.Error as e:
             print(e)

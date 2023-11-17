@@ -42,7 +42,7 @@ class RouteMeta(type):
                 url = f'/api/{route_base_name}'
 
                 @router.post(url)
-                async def post(mod: model, id: int = None, user=None):
+                async def post(mod: model, id: int = None, user: int = None):
                     args = list(filter(lambda x: x is not None, [id, user]))
                     added = dao.add(*args, mod) if len(args) != 0 else dao.add(mod)
                     print(added)
