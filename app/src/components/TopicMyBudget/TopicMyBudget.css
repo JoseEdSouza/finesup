@@ -1,0 +1,56 @@
+#topicDiv{
+    position: absolute;
+    background-color: var(--secondaryColor);
+    width: 30.48vw;
+    max-width: 400px;
+    height: 16.79vh;
+    bottom: 8.39vh;
+    border-radius: 1.2vw;
+    left: 27.36vw;
+    top: 29.10vh;
+}
+
+#alimentation, #leisure, #clothes{
+    position: absolute;
+    color: black;
+    font-family: "Open Sans";
+    background-color: transparent;
+    left: 8.125vw;
+    font-size: 2.92vh;
+}
+
+#alimentation{
+    top: 2.34vh;
+}
+
+#leisure{
+    top: 6.64vh;
+}  
+
+#clothes{
+    top: 10.93vh;
+}
+
+#first, #second, #third{
+    position: absolute;
+    color: black;
+    font-family: "Open Sans";
+    background-color: transparent;
+    left: 3.472vw;
+    font-size: 2.34vh;
+}
+
+#first{
+    top: 2.6vh;
+    background-color: #62CB51;
+}
+
+#second{
+    top: 6.91vh;
+    background-color: #E0F656;
+}
+
+#third{
+    top: 11.3vh;
+    background-color: #D44242;
+}
