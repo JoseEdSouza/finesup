@@ -3,7 +3,7 @@ import "./BudgetContainerHome.css";
 
 function BudgetContainerHome(){
     return(
-        <Link to="/3/addbudget">
+        <Link to="/3/mybudget">
             <div id="budgetContainer">
                 <label id="labelBudget"><strong>Meus orçamentos</strong></label>
             </div>
