@@ -5,7 +5,7 @@ function BudgetButtons(props:{nameButton:string}){
     return(
         <div id="budbuttons">
             <button id="createButton">{props.nameButton}</button>
-            <Link to="/" id="linkToCRUD"><label id="cancelButton">Cancelar</label></Link>
+            <Link to="/3" id="linkToCRUDB"><label id="cancelButtonB">Cancelar</label></Link>
         </div>
     )
 }

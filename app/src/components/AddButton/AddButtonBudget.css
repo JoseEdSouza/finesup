@@ -1,0 +1,18 @@
+#plusB{
+    position: absolute;
+    background-color: #D1D3F1;
+    width: 4.44vw;
+    max-width: 250px;
+    height: 6.25vh;
+    margin: 0.6vw;
+    border-radius: 1.5px;
+    border-style: none;
+    cursor: pointer;
+    top: 52.14vh;
+    right: 2.77vw;
+}
+
+#iconPlus{
+    height: 5vh;
+    align-items: center;
+}

@@ -1,10 +1,10 @@
-import NavBarDefault from "../NavBarDefault/NavBarDefault"
+import AddButtonBudget from "../AddButton/AddButtonBudget"
 import "./MyBudgetComp.css"
 
 function MyBudgetComp(){
     return(
         <>
-          
+            <AddButtonBudget/>
         </>
     )
 }

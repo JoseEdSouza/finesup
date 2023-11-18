@@ -4,7 +4,7 @@ import AddBudgetComp from "../components/addBudgetComp/AddBudgetComp"
 function AddBudget(){
     return(
         <>
-            <NavBarDefault name="Criar Orçamento" backTo="0"/>
+            <NavBarDefault name="Criar Orçamento" backTo="3"/>
             <AddBudgetComp/>
         </>
     )

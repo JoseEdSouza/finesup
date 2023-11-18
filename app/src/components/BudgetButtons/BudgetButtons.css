@@ -7,7 +7,7 @@
     bottom: 4.29vh;
 }
 
-#linkToCRUD{
+#linkToCRUDB{
     position: absolute;
     height: 2.34vh;
     width: 5.83vw;
@@ -18,7 +18,7 @@
     justify-content: center;
 }
 
-#cancelButton{
+#cancelButtonB{
     position: absolute;
     font-family: "Open Sans";
     color: var(--primaryColor);
