@@ -6,9 +6,9 @@ import BudgetLabels from "../BudgetLabels/BudgetLabels";
 function AddBudgetComp(){
     return(
         <div id="addbudget">
-            <BudgetButtons nameButton="Salvar"/>
             <BudgetLabels/>
             <BudgetInputs/>
+            <BudgetButtons nameButton="Salvar"/>
         </div>
     );
 }
