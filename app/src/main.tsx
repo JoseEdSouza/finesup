@@ -15,6 +15,8 @@ import UpdateBox from './pages/UpdateBox.tsx'
 import Graphics from './pages/Graphics.tsx'
 import AddBudget from './pages/AddBudget.tsx'
 import MyBudget from './pages/MyBudget.tsx'
+import BudgetDetail from './pages/BudgetDetail.tsx'
+import BudgetEdit from './pages/BudgetEdit.tsx'
 
 
 const router = createBrowserRouter([
@@ -69,6 +71,14 @@ const router = createBrowserRouter([
       {
         path: "/3/addbudget",
         element: <AddBudget/>
+      },
+      {
+        path: "/3/budgetdetail",
+        element: <BudgetDetail/>
+      },
+      {
+        path: "/3/budgetedit",
+        element: <BudgetEdit/>
       }
     ]
   }
