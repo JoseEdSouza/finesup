@@ -39,6 +39,9 @@ class BoxDAOImp(BoxDAO):
     def __save(self):
         self.__conn.commit()
 
+    def __rollback(self):
+        self.__conn.rollback()
+
     def add(self, box: Box) -> bool:
 
         values = (box.user_id, box.name, box.description, box.actual_value, box.final_value, box.concluded)
@@ -52,7 +55,7 @@ class BoxDAOImp(BoxDAO):
 
         except pg.Error as e:
             print(e)
-            self.__save()
+            self.__rollback()
             return False
 
     def update(self, user_id: int, name_box: str, box: Box) -> bool:
