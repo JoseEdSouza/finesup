@@ -1,10 +1,9 @@
-import { fetch, Response, Request } from 'undici'
 import Box from '../models/Box'
 import ApiSettings from "../config/ApiSettings"
 
 type Nullable<T> = T | null
 
-export class BoxController {
+export class BoxDAO {
 
     async get(userId: number, name: string): Promise<Nullable<Box>> {
         const req:Request = new Request(`${ApiSettings.BASEURL}/box/${userId}/${name}`)
@@ -99,4 +98,4 @@ export class BoxController {
 }
 
 
-export default BoxController
+export default BoxDAO
