@@ -52,6 +52,7 @@ class BoxDAOImp(BoxDAO):
 
         except pg.Error as e:
             print(e)
+            self.__save()
             return False
 
     def update(self, user_id: int, name_box: str, box: Box) -> bool:
