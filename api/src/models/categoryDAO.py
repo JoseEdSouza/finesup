@@ -116,6 +116,9 @@ class RevenueCategoryDAOImp(CategoryDAO):
     def __save(self):
         self.__conn.commit()
 
+    def __rollback(self):
+        self.__conn.rollback()
+
     def add(self, category: RevenueCategory) -> bool:
         values = (category.name,)
         try:
@@ -127,6 +130,7 @@ class RevenueCategoryDAOImp(CategoryDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def update(self, cat_id: int, category: RevenueCategory) -> bool:
@@ -141,6 +145,7 @@ class RevenueCategoryDAOImp(CategoryDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def remove(self, cat_id: int) -> bool:
@@ -152,6 +157,7 @@ class RevenueCategoryDAOImp(CategoryDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def get(self, cat_id: int) -> RevenueCategory | None:

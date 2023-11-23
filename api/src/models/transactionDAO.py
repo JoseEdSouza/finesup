@@ -39,6 +39,9 @@ class ExpenseDAOImp(TransactionDAO):
     def __save(self):
         self.__conn.commit()
 
+    def __rollback(self):
+        self.__conn.rollback()
+
     def add(self, transaction: Expense) -> bool:
         values = (transaction.user_id, transaction.name, transaction.description, transaction.value,
                   transaction.purchase_date, transaction.cat)
@@ -51,6 +54,7 @@ class ExpenseDAOImp(TransactionDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def update(self, t_id: int, transaction: Expense) -> bool:
@@ -71,6 +75,7 @@ class ExpenseDAOImp(TransactionDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def remove(self, t_id: int) -> bool:
@@ -82,6 +87,7 @@ class ExpenseDAOImp(TransactionDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def get(self, t_id: int) -> Expense | None:
@@ -146,6 +152,9 @@ class RevenueDAOImp(TransactionDAO):
     def __save(self):
         self.__conn.commit()
 
+    def __rollback(self):
+        self.__conn.rollback()
+
     def add(self, transaction: Revenue) -> bool:
         values = (transaction.user_id, transaction.name, transaction.description, transaction.value,
                   transaction.purchase_date, transaction.cat)
@@ -158,6 +167,7 @@ class RevenueDAOImp(TransactionDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def update(self, t_id: int, transaction: Revenue) -> bool:
@@ -177,6 +187,7 @@ class RevenueDAOImp(TransactionDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def remove(self, t_id: int) -> bool:
@@ -188,6 +199,7 @@ class RevenueDAOImp(TransactionDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def get(self, t_id: int) -> Revenue | None:

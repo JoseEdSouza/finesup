@@ -74,6 +74,7 @@ class BoxDAOImp(BoxDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def remove(self, user_id: int, name: str) -> bool:
@@ -85,6 +86,7 @@ class BoxDAOImp(BoxDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def get(self, user_id: int, name: str) -> Box | None:

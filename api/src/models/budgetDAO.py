@@ -39,6 +39,9 @@ class BudgetDAOImp(BudgetDAO):
     def __save(self):
         self.__conn.commit()
 
+    def __rollback(self):
+        self.__conn.rollback()
+
     def add(self, budget: Budget) -> bool:
         values = (budget.user_id, budget.category, budget.final_value, budget.actual_value, budget.renewal_date)
         try:
@@ -50,6 +53,7 @@ class BudgetDAOImp(BudgetDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def update(self, user_id: int, ex_cat_id: int, budget: Budget) -> bool:
@@ -67,6 +71,7 @@ class BudgetDAOImp(BudgetDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def remove(self, user_id: int, ex_cat_id: int) -> bool:
@@ -78,6 +83,7 @@ class BudgetDAOImp(BudgetDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def get(self, user_id: int, ex_cat_id: int) -> Budget | None:

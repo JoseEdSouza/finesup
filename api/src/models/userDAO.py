@@ -35,6 +35,9 @@ class UserDAOImp(UserDAO):
     def __save(self):
         self.__conn.commit()
 
+    def __rollback(self):
+        self.__conn.rollback()
+
     def add(self, user: User) -> bool:
         values = (user.name, user.email, user.password)
         try:
@@ -44,9 +47,9 @@ class UserDAOImp(UserDAO):
             ''', values)
             self.__save()
             return True
-
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def update(self, user_id: int, user: User) -> bool:
@@ -58,9 +61,9 @@ class UserDAOImp(UserDAO):
             ''', values)
             self.__save()
             return True
-
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def remove(self, user_id: int) -> bool:
@@ -70,9 +73,9 @@ class UserDAOImp(UserDAO):
             ''', (user_id,))
             self.__save()
             return True
-
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def get(self, user_id: int) -> User | None:

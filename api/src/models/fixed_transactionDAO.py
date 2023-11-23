@@ -40,6 +40,9 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
     def __save(self):
         self.__conn.commit()
 
+    def __rollback(self):
+        self.__conn.rollback()
+
     def add(self, transaction: FixedExpense) -> bool:
         values = (transaction.user_id, transaction.name, transaction.description,
                   transaction.purchase_date, transaction.limit_date, Frequency(transaction.frequency).value,
@@ -54,6 +57,7 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
         except ValueError as val:
             print(val)
@@ -80,6 +84,10 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
+            return False
+        except ValueError as val:
+            print(val)
             return False
 
     def remove(self, ft_id: int) -> bool:
@@ -91,6 +99,7 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def get(self, ft_id: int) -> FixedExpense | None:
@@ -164,6 +173,9 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
     def __save(self):
         self.__conn.commit()
 
+    def __rollback(self):
+        self.__conn.rollback()
+
     def add(self, transaction: FixedRevenue) -> bool:
         values = (transaction.user_id, transaction.name, transaction.description,
                   transaction.purchase_date, transaction.limit_date, Frequency(transaction.frequency).value,
@@ -178,6 +190,7 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
         except ValueError as val:
             print(val)
@@ -203,6 +216,7 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
         except ValueError as val:
             print(val)
@@ -217,6 +231,7 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def get(self, t_id: int) -> FixedRevenue | None:
