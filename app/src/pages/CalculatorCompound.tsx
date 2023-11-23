@@ -1,10 +1,10 @@
 import CalculatorSelectCompound from "../components/CalculatorSelectorCompound/CalculatorSelectorCompound";
-import NavBar from "../components/NavBar/NavBar";
+import NavBar from "../components/NavBarHome/NavBarHome";
 
 function CalculatorCompound(){
     return (
         <>
-            <NavBar name="Calculadora de Juros Composto"/>
+            <NavBar/>
             <CalculatorSelectCompound/>
         </>
     );

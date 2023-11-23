@@ -26,7 +26,7 @@ class UserDAO(ABC):
 class UserDAOImp(UserDAO):
     __conn = None
     __cursor = None
-    
+
     def __init__(self):
         self.__db = Database()
         self.__conn = self.__db.connection
@@ -42,14 +42,12 @@ class UserDAOImp(UserDAO):
             INSERT INTO users (name, email, password, creation_date) 
             VALUES (%s, %s, MD5(%s), now())
             ''', values)
+            self.__save()
+            return True
 
         except pg.Error as e:
             print(e)
             return False
-
-        finally:
-            self.__save()
-            return True
 
     def update(self, user_id: int, user: User) -> bool:
         values = (user.name, user.email, user.password, user_id)
@@ -58,28 +56,24 @@ class UserDAOImp(UserDAO):
             self.__cursor.execute('''
             UPDATE users SET name = %s, email = %s, password = MD5(%s) WHERE id = %s
             ''', values)
+            self.__save()
+            return True
 
         except pg.Error as e:
             print(e)
             return False
-
-        finally:
-            self.__save()
-            return True
 
     def remove(self, user_id: int) -> bool:
         try:
             self.__cursor.execute('''
             DELETE FROM users WHERE id = %s
             ''', (user_id,))
+            self.__save()
+            return True
 
         except pg.Error as e:
             print(e)
             return False
-
-        finally:
-            self.__save()
-            return True
 
     def get(self, user_id: int) -> User | None:
         try:

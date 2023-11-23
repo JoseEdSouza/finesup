@@ -1,0 +1,9 @@
+#graphicsContainer{
+    position: absolute;
+    background-color: var(--secondaryColor);
+    height: 77.05vh;
+    width: 38.68vw;
+    bottom: 6.05vh;
+    left: 6.18vw;
+    border-radius: 20px;
+}

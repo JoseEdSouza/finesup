@@ -1,0 +1,31 @@
+#boxDescriptionEditable{
+    position: absolute;
+    height: 26vh;
+    width: 53.33vw;
+    max-width: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 31.44vh;
+}
+
+#boxlabelDescriptionEditable{
+    position: absolute;
+    font-family: "Open Sans";
+    font-size: 3vh;
+    color: var(--primaryColor);
+    top: 0;
+}
+
+#boxInputDescriptionEditable{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 20.70vh;
+    border-radius: 2cqmin;
+    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    border-style: none;
+    outline: none;
+    padding: 12px;
+    font-size: 2.5vh;
+    resize: none;
+}

@@ -3,7 +3,7 @@ import "./TransactionGroup.css";
 
 function TransactionGroup(){
     return(
-        <section className="Container">
+        <section className="TransactionGroupContainer">
             <label className="LabelTransactionDate">Hoje, 04</label>
             <Transaction/>
         </section>

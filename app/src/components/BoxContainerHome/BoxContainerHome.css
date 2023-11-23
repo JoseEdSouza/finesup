@@ -8,10 +8,13 @@
     width: 43.9vw;
     top: 23.1%;
     left: 5.5%;
+    cursor: pointer;
 }
 
 #labelBoxes{
     position: relative;
     font-family: "Open Sans";
+    top: 3.90vh;
+    height: 3vh;
     color: #2E1E43;
 }

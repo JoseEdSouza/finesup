@@ -8,10 +8,13 @@
     width: 43.9vw;
     top: 56.3%;
     left: 5.5%;
+    cursor: pointer;
 }
 
 #labelBudget{
     position: relative;
     font-family: "Open Sans";
+    height: 3vh;
+    top: 3.90vh;
     color: #2E1E43;
 }

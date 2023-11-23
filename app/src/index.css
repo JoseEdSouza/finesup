@@ -1,11 +1,20 @@
+:root{
+  --primaryColor: #2E1E43;
+  --secondaryColor: #D1D3F1;
+}
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
+  font-family: "Open Sans";
 }
+
 body {
-  background-color: #2E1E43;
+  background-color: var(--primaryColor);
 }
+
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent;
