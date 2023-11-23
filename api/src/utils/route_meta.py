@@ -16,6 +16,7 @@ class RouteMeta(type):
             dao = attrs['DAO']
             methods = list(filter(lambda x: callable(getattr(dao, x)) and not x.startswith('__'), dir(dao)))
             route_base_name = model.__name__.lower()
+            tag = route_base_name
 
             key_dict = {
                 'id': 'id',
@@ -29,7 +30,7 @@ class RouteMeta(type):
                 key_path += f'/{{{key_dict.get(k)}}}'
 
             if 'get' in methods:
-                @router.get(f'/api/{route_base_name}/{key_path}')
+                @router.get(f'/api/{route_base_name}/{key_path}', tags=[tag])
                 async def get(id: int = None, m_name: str = None,
                               category: int = None, user: int = None):
                     args = list(filter(lambda x: x is not None, [id, user, m_name, category]))
@@ -40,7 +41,7 @@ class RouteMeta(type):
             if 'add' in methods:
                 url = f'/api/{route_base_name}'
 
-                @router.post(url)
+                @router.post(url, tags=[tag, 'post'])
                 async def post(mod: model, id: int = None, user: int = None):
                     args = list(filter(lambda x: x is not None, [id, user]))
                     added = dao.add(*args, mod) if len(args) != 0 else dao.add(mod)
@@ -48,7 +49,7 @@ class RouteMeta(type):
                         raise HTTPException(status_code=404, detail="Item not found or already exists")
                     return mod
             if 'update' in methods:
-                @router.put(f'/api/{route_base_name}/{key_path}')
+                @router.put(f'/api/{route_base_name}/{key_path}', tags=[tag])
                 async def put(mod: model, id: int = None, m_name: str = None,
                               category: int = None, user: int = None):
                     args = list(filter(lambda x: x is not None, [id, user, m_name, category]))
@@ -59,7 +60,7 @@ class RouteMeta(type):
                         raise HTTPException(status_code=404, detail="Internal Server Error")
                     return mod
             if 'remove' in methods:
-                @router.delete(f'/api/{route_base_name}/{key_path}')
+                @router.delete(f'/api/{route_base_name}/{key_path}', tags=[tag])
                 async def delete(id: int = None, m_name: str = None,
                                  category: int = None, user: int = None):
                     args = list(filter(lambda x: x is not None, [id, user, m_name, category]))
@@ -68,7 +69,7 @@ class RouteMeta(type):
                     return dao.remove(*args)
             if 'get_all' in methods:
 
-                @router.get(f'/api/all/{route_base_name}/{{user}}')
+                @router.get(f'/api/all/{route_base_name}/{{user}}', tags=[tag])
                 async def get_all(id: int = None, m_name: str = None,
                                   category: int = None, user: int = None):
                     args = list(filter(lambda x: x is not None, [id, user, m_name, category]))

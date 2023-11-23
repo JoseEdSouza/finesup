@@ -1,9 +1,10 @@
-from pydantic import BaseModel
+from dataclasses import dataclass
 from typing import Optional
 
 
-class User(BaseModel):
-    user_id: Optional[int]
+@dataclass
+class User:
     name: str
     email: str
     password: str
+    user_id: Optional[int] = 0
