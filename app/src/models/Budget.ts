@@ -41,3 +41,5 @@ class Budget {
         return JSON.stringify(this.toJson())
     }
 }
+
+export default Budget
