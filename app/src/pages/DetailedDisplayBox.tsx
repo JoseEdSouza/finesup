@@ -39,9 +39,7 @@ function DetailedDisplayBox() {
       />
       <BoxDetails
         valueMax={data.valueMax}
-        onValueBox={(value:number) =>
-          handleValueBox(value)
-        }
+        onValueBox={(value:number) => handleValueBox(value)}
         currentValue = {data.valueCurrent}
       />
     </>

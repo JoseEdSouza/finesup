@@ -13,21 +13,28 @@ function PieChart(props:{labels:Array<string>, data:Array<number>, colors:Array<
             borderWidth: 0,
             borderColor: 'black',
             fill: true
-        }]
+        }],
+    }
+    const options = {
+        plugins:{
+            legend:{
+                display:false
+            }
+        }
+    }
+    
+    const style:React.CSSProperties = {
+        position: "absolute", 
+        height: "39.45vh", 
+        maxHeight: "330px",
+        width: "6vw", 
+        maxWidth: "500px", 
+        left: "50%",
+        transform: "translateX(-50%)"
     }
     
     return (
-        <Pie data={data} style={
-            {
-                position: "absolute", 
-                height: "39.45vh", 
-                maxHeight: "350px",
-                width: "6vw", 
-                maxWidth: "500px", 
-                left: "50%",
-                transform: "translateX(-50%)"
-            }
-        }/>
+        <Pie data={data} style={style} options={options}/>
     )
 }
 

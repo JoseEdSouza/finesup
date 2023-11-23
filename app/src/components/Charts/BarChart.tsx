@@ -15,6 +15,13 @@ function BarChart(props:{labels:Array<string>, data:Array<number>, colors:Array<
             fill: true
         }]
     }
+    const options = {
+        plugins:{
+            legend:{
+                display:false
+            }
+        }
+    }
     
     return (
         <Bar data={data} style={
@@ -25,7 +32,7 @@ function BarChart(props:{labels:Array<string>, data:Array<number>, colors:Array<
                 width: "100%",
                 left: "0%"
             }
-        }/>
+        } options={options}/>
     )
 }
 

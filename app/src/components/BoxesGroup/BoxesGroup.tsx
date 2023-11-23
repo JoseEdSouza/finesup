@@ -41,7 +41,7 @@ function BoxesGroup(){
             }
             <Link to="/1/addBoxes">
                 <button id="plus">
-                    <img src="./plus_icon.svg" id="icon"/>
+                    <img src="/plus_icon.svg" id="icon"/>
                 </button>
             </Link>
         </div>
