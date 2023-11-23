@@ -1,0 +1,34 @@
+#divInputs{
+    position: absolute;
+    left: 50%;
+    transform: translateY(-50%);
+}
+
+#valueInput, #renovationInput, #categoriesSelect{
+    position: absolute;
+    width: 38vw;
+    height: 6.25vh;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Open Sans";
+    font-size: 2.3vh;
+    border-radius: 1.5cqmin;
+    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    border-style: hidden;
+    outline: none;
+    padding: 1.2px;
+    font-size: 2.5vh;
+}
+
+#valueInput{
+    top: 16vh;
+}
+
+#renovationInput{
+    top: 28vh;
+}
+
+#categoriesSelect{
+    top: 40vh;
+}

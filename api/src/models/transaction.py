@@ -1,10 +1,11 @@
 from abc import ABC
 from datetime import date
 from pydantic import BaseModel
+from typing import Optional
 
 
 class Transaction(ABC, BaseModel):
-    id: int | None
+    id: Optional[int]
     user_id: int
     name: str
     description: str

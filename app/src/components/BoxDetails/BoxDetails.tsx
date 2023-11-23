@@ -23,17 +23,23 @@ function BoxDetails(props:{ valueMax:Number, onValueBox: (prevValue:number) => n
             <label id="boxDescriptionDetails"><strong>Descrição:</strong></label>
             <textarea id="boxDescriptionDetailsText" spellCheck="false"></textarea>
 
-            <div id="boxMoneyInputGroup">
-                <label id="Rs"><strong>R$: </strong></label>
-                <input id="moneyInput" type="number" onChange={handleOnChangeMoney}></input>
-            </div>
-            
-            <div id="GroupButtonsDetails">
-                <button id="drawButton" onClick={handleClickDraw}>Sacar</button>
-                <button id="depositButton" onClick={handleClickDeposit}>Depositar</button>
-            </div>
-        </div>
-    )
+			<div id="boxMoneyInputGroup">
+				<label id="Rs">
+					<strong>R$: </strong>
+				</label>
+				<input id="moneyInput" type="number" onChange={handleOnChangeMoney}></input>
+			</div>
+
+			<div id="GroupButtonsDetails">
+				<button id="drawButton" onClick={handleClickDraw}>
+					Sacar
+				</button>
+				<button id="depositButton" onClick={handleClickDeposit}>
+					Depositar
+				</button>
+			</div>
+		</div>
+	);
 }
 
-export default BoxDetails
+export default BoxDetails;

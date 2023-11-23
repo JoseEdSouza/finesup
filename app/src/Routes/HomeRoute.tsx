@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import CRUDBoxes from "../pages/CRUDBoxes";
 import TransactionHistory from "../pages/TransactionHistory";
+import MyBudget from "../pages/MyBudget";
 
 const HomeRoute = () => {
     
@@ -8,7 +9,7 @@ const HomeRoute = () => {
     
     return (
         <>
-            {id === "1" ? <CRUDBoxes/> : id === "2" ? <TransactionHistory/> : <></>}
+            {id === "1" ? <CRUDBoxes/> : id === "2" ? <TransactionHistory/> : <MyBudget/>}
         </>
     )
 }

@@ -1,12 +1,11 @@
 from pydantic import BaseModel
 from typing import TypeVar
-from fastapi import APIRouter
-
-T = TypeVar('T', bound=BaseModel)
+from fastapi import APIRouter, HTTPException
 
 
 class RouteMeta(type):
     def __new__(cls, name: str, bases: tuple, attrs: dict):
+        T = TypeVar('T', bound=BaseModel)
         router = APIRouter()
         attrs['router'] = router
         if (all(key in attrs for key in ['Model', 'DAO', 'Key'])
@@ -25,45 +24,58 @@ class RouteMeta(type):
                 'user_id': 'user'
             }
 
-            key_path = f'{key_dict.get(key[0])}'
+            key_path = f'{{{key_dict.get(key[0])}}}'
             for k in key[1:]:
-                key_path += f'/{key_dict.get(k)}'
+                key_path += f'/{{{key_dict.get(k)}}}'
 
             if 'get' in methods:
                 @router.get(f'/api/{route_base_name}/{key_path}')
                 async def get(id: int = None, m_name: str = None,
                               category: int = None, user: int = None):
                     args = list(filter(lambda x: x is not None, [id, user, m_name, category]))
-                    return dao.get(*args)
+                    ret = dao.get(*args)
+                    if ret is None:
+                        raise HTTPException(status_code=404, detail="Item not found")
+                    return ret
             if 'add' in methods:
-                url = f'/api/{route_base_name}/add' + ('' if len(key) == 1 else f'/{key_dict.get(key[0])}')
+                url = f'/api/{route_base_name}'
 
                 @router.post(url)
-                async def post(mod: model, id: int = None, user=None):
+                async def post(mod: model, id: int = None, user: int = None):
                     args = list(filter(lambda x: x is not None, [id, user]))
-                    dao.add(*args, mod) if len(args) != 0 else dao.add(mod)
+                    added = dao.add(*args, mod) if len(args) != 0 else dao.add(mod)
+                    if not added:
+                        raise HTTPException(status_code=404, detail="Item not found or already exists")
                     return mod
             if 'update' in methods:
                 @router.put(f'/api/{route_base_name}/{key_path}')
                 async def put(mod: model, id: int = None, m_name: str = None,
                               category: int = None, user: int = None):
                     args = list(filter(lambda x: x is not None, [id, user, m_name, category]))
-                    dao.update(*args, mod)
+                    if dao.get(*args) is None:
+                        raise HTTPException(status_code=404, detail="Item not found")
+                    updated = dao.update(*args, mod)
+                    if not updated:
+                        raise HTTPException(status_code=404, detail="Internal Server Error")
                     return mod
             if 'remove' in methods:
                 @router.delete(f'/api/{route_base_name}/{key_path}')
                 async def delete(id: int = None, m_name: str = None,
                                  category: int = None, user: int = None):
                     args = list(filter(lambda x: x is not None, [id, user, m_name, category]))
+                    if dao.get(*args) is None:
+                        raise HTTPException(status_code=404, detail="Item not found")
                     return dao.remove(*args)
             if 'get_all' in methods:
-                partial_key_path = f'{key_dict.get(key[0])}'
 
-                @router.get(f'/api/{route_base_name}/all/{partial_key_path}')
+                @router.get(f'/api/all/{route_base_name}/{{user}}')
                 async def get_all(id: int = None, m_name: str = None,
                                   category: int = None, user: int = None):
                     args = list(filter(lambda x: x is not None, [id, user, m_name, category]))
-                    return dao.get_all(*args)
+                    ret = dao.get_all(*args)
+                    if ret is None:
+                        raise HTTPException(status_code=404, detail="Item not found")
+                    return ret
         else:
             raise ValueError("Missing required attributes: 'Model', 'DAO', 'Key'")
         return super().__new__(cls, name, bases, attrs)

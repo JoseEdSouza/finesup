@@ -1,0 +1,26 @@
+#divLabels{
+    position: absolute;
+    width: 80vw;
+    height: 200vh;
+    left: 25%;
+    transform: translatex(-14.25%);
+}
+
+#labelValue, #labelRenovation, #labelCategorie{
+    position: absolute;
+    font-family: "Open Sans";
+    left: 5.4vw;
+    font-size: 2.3vh;
+}
+
+#labelValue{
+    top: 12.5vh;
+}
+
+#labelRenovation{
+    top: 24.5vh;
+}
+
+#labelCategorie{
+    top: 36.5vh;
+}
