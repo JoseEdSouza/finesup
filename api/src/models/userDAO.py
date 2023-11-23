@@ -22,6 +22,10 @@ class UserDAO(ABC):
     def get(self, user_id: int) -> User | None:
         pass
 
+    @abstractmethod
+    def check(self, email: str, password: str) -> bool:
+        pass
+
 
 class UserDAOImp(UserDAO):
     __conn = None
@@ -97,3 +101,14 @@ class UserDAOImp(UserDAO):
         except pg.Error as e:
             print(e)
             return None
+
+    def check(self, email: str, password: str) -> bool:
+        try:
+            self.__cursor.execute('''
+            SELECT * FROM users WHERE email = %s AND password = MD5(%s)
+            ''', email, password)
+            result = self.__cursor.fetchone()
+            return result is None
+        except pg.Error as e:
+            print(e)
+            return False
