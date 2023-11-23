@@ -7,7 +7,7 @@ from api.src.db.database import Database
 class BudgetDAO(ABC):
 
     @abstractmethod
-    def add(self, user_id: int, budget: Budget) -> bool:
+    def add(self, budget: Budget) -> bool:
         pass
 
     @abstractmethod
@@ -39,19 +39,18 @@ class BudgetDAOImp(BudgetDAO):
     def __save(self):
         self.__conn.commit()
 
-    def add(self, user_id: int, budget: Budget) -> bool:
-        values = (user_id, budget.category, budget.final_value, budget.actual_value, budget.renewal_date)
+    def add(self, budget: Budget) -> bool:
+        values = (budget.user_id, budget.category, budget.final_value, budget.actual_value, budget.renewal_date)
         try:
             self.__cursor.execute('''
             INSERT INTO budgets (user_id,ex_cat_id,final_value,actual_value,renewal_date,creation_date)
             VALUES (%s,%s,%s,%s,%s,now())
             ''', values)
+            self.__save()
+            return True
         except pg.Error as e:
             print(e)
             return False
-        finally:
-            self.__save()
-            return True
 
     def update(self, user_id: int, ex_cat_id: int, budget: Budget) -> bool:
         values = (budget.category, budget.final_value, budget.actual_value, budget.renewal_date, user_id, ex_cat_id)
@@ -64,24 +63,22 @@ class BudgetDAOImp(BudgetDAO):
             renewal_date = %s
             WHERE user_id = %s AND ex_cat_id = %s
             ''', values)
+            self.__save()
+            return True
         except pg.Error as e:
             print(e)
             return False
-        finally:
-            self.__save()
-            return True
 
     def remove(self, user_id: int, ex_cat_id: int) -> bool:
         try:
             self.__cursor.execute('''
             DELETE FROM budgets WHERE user_id = %s AND ex_cat_id = %s
             ''', (user_id, ex_cat_id))
+            self.__save()
+            return True
         except pg.Error as e:
             print(e)
             return False
-        finally:
-            self.__save()
-            return True
 
     def get(self, user_id: int, ex_cat_id: int) -> Budget | None:
         try:
@@ -96,7 +93,7 @@ class BudgetDAOImp(BudgetDAO):
             else:
                 return Budget(
                     user_id=bud[0],
-                    cat=bud[1],
+                    category=bud[1],
                     actual_value=bud[2],
                     final_value=bud[3],
                     renewal_date=bud[4]
@@ -117,7 +114,7 @@ class BudgetDAOImp(BudgetDAO):
                 return None
             buds = list(map(lambda bud: Budget(
                 user_id=bud[0],
-                cat=bud[1],
+                category=bud[1],
                 actual_value=bud[2],
                 final_value=bud[3],
                 renewal_date=bud[4]
