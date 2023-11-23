@@ -8,17 +8,17 @@ function GraphicDetails(props: { chartType: number, pieChartType: number }) {
                 props.pieChartType === 0 ?
                     <div className="pieChartDetails">
                         <div className="chartCategoriesGroup">
-                            <GraphicsCategory categorie="sales" categorieType="revenue" value={89898.00} />
-                            <GraphicsCategory categorie="bonus" categorieType="revenue" value={89898.00} />
-                            <GraphicsCategory categorie="cashback" categorieType="revenue" value={89898.00} />
+                            <GraphicsCategory category="sales" categoryType="revenue" value={89898.00} />
+                            <GraphicsCategory category="bonus" categoryType="revenue" value={89898.00} />
+                            <GraphicsCategory category="cashback" categoryType="revenue" value={89898.00} />
                         </div>
                     </div>
                     :
                     <div className="pieChartDetails">
                         <div className="chartCategoriesGroup">
-                            <GraphicsCategory categorie="alimentation" categorieType="expense" value={89898.00} />
-                            <GraphicsCategory categorie="leisure" categorieType="expense" value={89898.00} />
-                            <GraphicsCategory categorie="donation" categorieType="expense" value={89898.00} />
+                            <GraphicsCategory category="alimentation" categoryType="expense" value={89898.00} />
+                            <GraphicsCategory category="leisure" categoryType="expense" value={89898.00} />
+                            <GraphicsCategory category="donation" categoryType="expense" value={89898.00} />
                         </div>
                     </div>
                 : props.chartType === 1 ?
