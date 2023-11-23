@@ -5,16 +5,16 @@ function CategoryRevenue(){
     return(
         <>
             <div className="ContainerRevenues">
-                <Category typeIcon="cashback" icon="/icon_cashback.svg" label="Cashback"/>
-                <Category typeIcon="sales" icon="/icon_sales.svg" label="Vendas"/>
-                <Category typeIcon="bonus" icon="/icon_bonus.svg" label="Bônus"/>
-                <Category typeIcon="reversal" icon="/icon_reversal.svg" label="Estorno"/>
-                <Category typeIcon="income" icon="/icon_income.svg" label="Renda"/>
-                <Category typeIcon="performance" icon="/icon_performance.svg" label="Rendimento"/>
-                <Category typeIcon="balanceCorrection" icon="/icon_balanceCorrection.svg" label="Correção do Saldo"/>
-                <Category typeIcon="investment" icon="/icon_investment.svg" label="Investimento entrada"/>
-                <Category typeIcon="exchange" icon="/icon_exchange.svg" label="Câmbio entrada"/>
-                <Category typeIcon="entryOthers" icon="/icon_entryOthers.svg" label="Outras Entradas"/>
+                <Category typeIcon="cashbackCategory" icon="/icon_cashback.svg" label="Cashback"/>
+                <Category typeIcon="salesCategory" icon="/icon_sales.svg" label="Vendas"/>
+                <Category typeIcon="bonusCategory" icon="/icon_bonus.svg" label="Bônus"/>
+                <Category typeIcon="reversalCategory" icon="/icon_reversal.svg" label="Estorno"/>
+                <Category typeIcon="incomeCategory" icon="/icon_income.svg" label="Renda"/>
+                <Category typeIcon="performanceCategory" icon="/icon_performance.svg" label="Rendimento"/>
+                <Category typeIcon="balanceCorrectionCategory" icon="/icon_balanceCorrection.svg" label="Correção do Saldo"/>
+                <Category typeIcon="investmentCategory" icon="/icon_investment.svg" label="Investimento entrada"/>
+                <Category typeIcon="exchangeCategory" icon="/icon_exchange.svg" label="Câmbio entrada"/>
+                <Category typeIcon="entryOthersCategory" icon="/icon_entryOthers.svg" label="Outras Entradas"/>
             </div>
         </>
     );

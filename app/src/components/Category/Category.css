@@ -32,98 +32,98 @@
     cursor: pointer;
 }
 
-#alimentation{
+#alimentationCategory{
     background: #CC2E43;
 }
 
-#leisure{
+#leisureCategory{
     background: #F7FFA1;
 }
 
-#clothes{
+#clothesCategory{
     background: #70B6F6;
 }
 
-#market{
+#marketCategory{
     background: #5AF961;
 }
 
-#transport{
+#transportCategory{
     background: #A2A0FA; 
 }
 
-#health{
+#healthCategory{
     background: #FF6928; 
 }
 
-#travel{
+#travelCategory{
     background: #C728FF; 
 }
 
-#pets{
+#petsCategory{
     background: #2D28FF; 
 }
 
-#home{
+#homeCategory{
     background: #28B2FF;
 }
 
-#accounts{
+#accountsCategory{
     background: #28FF64;
 }
 
-#donation{
+#donationCategory{
     background: #AD3D3D; 
 }
 
-#education{
+#educationCategory{
     background: #4D91B8; 
 }
 
-#tax{
+#taxCategory{
     background: #FFEA28; 
 }
 
-#investment{
+#investmentCategory{
     background: #FF6928; 
 }
 
-#exchange{
+#exchangeCategory{
     background: #0FBB00; 
 }
 
-#exitOthers{
+#exitOthersCategory{
     background: #28FFBF; 
 }
 
-#cashback{
+#cashbackCategory{
     background: #CC2E2E; 
 }
 
-#sales{
+#salesCategory{
     background: #EBEE61;
 }
 
-#bonus{
+#bonusCategory{
     background: #70B6F6; 
 }
 
-#reversal{
+#reversalCategory{
     background: #A2A0FA; 
 }
 
-#income{
+#incomeCategory{
     background: #C728FF; 
 }
 
-#performance{
+#performanceCategory{
     background: #2D28FF; 
 }
 
-#balanceCorrection{
-background: #C4E977;
+#balanceCorrectionCategory{
+    background: #C4E977;
 }
 
-#entryOthers{
+#entryOthersCategory{
     background: #A6EB15; 
 }
