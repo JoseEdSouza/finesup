@@ -16,6 +16,7 @@ class Database(metaclass=Singleton):
             user=DBSettings.USER.value,
             password=DBSettings.PASSWORD.value
         )
+        self._conn.autocommit = False
 
     @property
     def connection(self) -> pg._psycopg.connection | None:
