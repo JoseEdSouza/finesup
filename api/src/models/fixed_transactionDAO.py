@@ -72,6 +72,7 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
         except pg.Error as e:
             print(e)
             self.__rollback()
+            self.__save()
             return None
         except ValueError as val:
             print(val)
@@ -109,6 +110,7 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
         except pg.Error as e:
             print(e)
             self.__rollback()
+            self.__save()
             return None
         except ValueError as val:
             print(val)
@@ -124,6 +126,7 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
         except pg.Error as e:
             print(e)
             self.__rollback()
+            self.__save()
             return False
 
     def get(self, ft_id: int) -> FixedExpense | None:
@@ -285,7 +288,7 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
     def get(self, t_id: int) -> FixedRevenue | None:
         try:
             self.__cursor.execute('''
-            SELECT r.id, r.name, r.description, r.value, r.purchase_date, r.limit_date, r.frequency, r.user_id, rc.id
+            SELECT r.id, r.name, r.description, r.value, r.purchase_date, r.limit_date, r.frequency, r.user_id, r.rev_cat_id
             FROM fixed_revenues r 
             WHERE r.id = %s
             ''', (t_id,))
@@ -311,7 +314,7 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
     def get_all(self, user_id: int) -> list[FixedRevenue] | None:
         try:
             self.__cursor.execute('''
-            SELECT r.id, r.name, r.description, r.value, r.purchase_date, r.limit_date, r.frequency, r.user_id, rc.id
+            SELECT r.id, r.name, r.description, r.value, r.purchase_date, r.limit_date, r.frequency, r.user_id, r.rev_cat_id
             FROM fixed_revenues r 
             WHERE user_id = %s
             ''', (user_id,))
