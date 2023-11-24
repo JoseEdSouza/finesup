@@ -23,3 +23,15 @@
     width: 4vw;
     left: 3%;
 }
+
+#routeHomeD{
+    position: fixed;
+    color: #2E1E43;
+    font-size: 3vh;
+    z-index: 3;
+    top: 5.85%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    right: 3%;
+    text-decoration: underline;
+}
