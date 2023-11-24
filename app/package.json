@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "back":"sh ./script.sh",
+    "back": "sh ./script.sh",
     "dev": "vite",
     "test": "jest",
     "build": "tsc && vite build && electron-builder",

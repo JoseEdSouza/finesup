@@ -5,7 +5,7 @@ import NavBarDefault from "../components/NavBarDefault/NavBarDefault"
 function BudgetEdit(){
     return(
         <>
-            <NavBarDefault name="Editar Orçamento" backTo="/3/budgetdetail"/>
+            <NavBarDefault name="Editar Orçamento" backTo="5"/>
             <BudgetEditComp/>
         </>
     )
