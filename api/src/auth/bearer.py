@@ -1,5 +1,6 @@
 from fastapi import Request, HTTPException
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from api.src.auth.auth import Auth
 
 
 class Bearer(HTTPBearer):
@@ -8,6 +9,12 @@ class Bearer(HTTPBearer):
 
     async def __call__(self, request: Request):
         credentials: HTTPAuthorizationCredentials = await super(Bearer, self).__call__(request)
-        if not credentials or credentials.scheme != 'Bearer':
+        if credentials is None or credentials.scheme != 'Bearer':
             raise HTTPException(403, 'Invalid or Expired Token')
         return credentials.credentials
+
+    @staticmethod
+    def verify_token(token: str):
+        payload = Auth.decode(token)
+        return payload is not None
+

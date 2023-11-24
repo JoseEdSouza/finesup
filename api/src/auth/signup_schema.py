@@ -5,3 +5,4 @@ class SignupSchema(BaseModel):
     name: str
     email: EmailStr
     password: str
+

@@ -138,7 +138,7 @@ class UserDAOImp(UserDAO):
             SELECT * FROM users WHERE email = %s AND password = MD5(%s)
             ''', (email, password))
             result = self.__cursor.fetchone()
-            return result is None
+            return result is not None
         except pg.Error as e:
             print(e)
             return False
