@@ -12,9 +12,19 @@
 }
 
 #labelBoxes{
-    position: relative;
+    position: absolute;
     font-family: "Open Sans";
     top: 3.90vh;
     height: 3vh;
     color: #2E1E43;
+}
+
+#boxLess{
+    position: relative;
+    color: var(--primaryColor);
+    text-align: center;
+    height: 35%;
+    width: 90%;
+    font-size: 2.5vh;
+    top: 60%;
 }

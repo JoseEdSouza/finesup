@@ -4,7 +4,7 @@
     height: 6.25vh;
     top: 3.8vh;
     left: 50%;
-    transform: translate(-50%);
+    transform: translateX(-50%);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -13,9 +13,9 @@
 }
 
 #pie, #bar, #line{
-    position: relative;
+    position: absolute;
     height: 6vh;
-    width: 8.143vw;
+    width: 8.29vw;
     align-items: center;
     display: flex;
     justify-content: center;
@@ -23,6 +23,7 @@
 
 #pie{
     border-radius: 5px 0px 0px 5px;
+    left: 0;
 } 
 
 #bar{
@@ -32,5 +33,5 @@
 #line{
     border-radius: 0px 5px 5px 0px;
     background-color: #714C9F;
-
+    right: 0;
 }

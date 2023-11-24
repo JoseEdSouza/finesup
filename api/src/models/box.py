@@ -1,9 +1,8 @@
 from pydantic import BaseModel
-from typing import Optional
 
 
 class Box(BaseModel):
-    user_id: Optional[int]
+    user_id: int
     name: str
     description: str
     final_value: float

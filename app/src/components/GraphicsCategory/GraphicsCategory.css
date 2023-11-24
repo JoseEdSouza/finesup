@@ -1,0 +1,46 @@
+#graphicsCategory{
+    position: relative;
+    height: 7vh;
+    max-height: 40px;
+    width: 18vw;
+    max-width: 155px;
+    margin: 3px;
+    margin-top: 10px;
+    margin-left: 3px;
+}
+
+#graphicsCategoryIcon{
+    position: relative;
+    height: 7vh;
+    max-height: 40px;
+    width: 8.5vw;
+    max-width: 65px;
+    border-radius: 15.12px;
+}
+
+#graphicsCategoryLabel{
+    position: absolute;
+    color: var(--primaryColor);
+    font-size: 2vh;
+    left: 5.5vw;
+    top: -5%;
+}
+
+#graphicsCategoryValue{
+    position: absolute;
+    color: var(--primaryColor);
+    font-size: 2vh;
+    left: 5.5vw;
+    bottom: -5%;
+}
+
+@media (max-width: 800px){
+    #graphicsCategoryLabel{
+        left: 50%;
+        top: 0;
+    }
+    #graphicsCategoryValue{
+        left: 50%;
+        bottom: 0;
+    }
+}
