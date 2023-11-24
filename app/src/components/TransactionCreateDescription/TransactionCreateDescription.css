@@ -1,0 +1,27 @@
+#TransactionCreateDescription {
+    position: absolute;
+    width: 53.33vw;
+    height: 25vh;
+    bottom: 31.5vh;
+}
+
+#transactionDescriptionLabel {
+    position: absolute;
+    color: var(--primaryColor);
+    font-size: 2.5vh;
+    top: 0;
+}
+
+#transactionDescriptionTextArea {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 20.70vh;
+    border-radius: 2cqmin;
+    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    border-style: none;
+    outline: none;
+    padding: 12px;
+    font-size: 2.5vh;
+    resize: none;
+}

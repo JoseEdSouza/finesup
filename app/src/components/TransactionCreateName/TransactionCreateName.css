@@ -1,26 +1,25 @@
-#transactionCreateCategory{
+#transactionCreateName{
     position: absolute;
-    height: 10.44vh;
     width: 53.33vw;
-    bottom: 18.34vh;
+    height: 10.44vh;
+    top: 4.49vh;
 }
 
-#transactionCategoryLabel{
+#TransactionNameLabel{
     position: absolute;
     color: var(--primaryColor);
     font-size: 2.5vh;
+    top: 0;
 }
 
-#transactionSelectCategories{
+#TransactionNameInput{
     position: absolute;
     font-size: 2.5vh;
-    height: 6.25vh;
-    width: 53.33vw;
+    width: 100%;
     bottom: 0;
-    border-radius: 1.5cqmin;
-    padding: 2px;
-    border-style: hidden;
+    padding: 12px;
+    border-radius: 2cqmin;
     outline: none;
+    border-style: none;
     box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
-    cursor: pointer;
 }
