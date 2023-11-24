@@ -1,5 +1,7 @@
 import sqlalchemy as sqla
 import psycopg2 as pg
+from psycopg2.extensions import connection
+from sqlalchemy.engine import Engine
 from api.src.db.db_settings import DBSettings
 from api.src.utils.singleton import Singleton
 
@@ -19,9 +21,9 @@ class Database(metaclass=Singleton):
         self._conn.autocommit = False
 
     @property
-    def connection(self) -> pg._psycopg.connection | None:
+    def connection(self) -> connection:
         return self._conn
 
     @property
-    def engine(self) -> sqla.engine.Engine | None:
+    def engine(self) -> Engine:
         return self._eng
