@@ -14,8 +14,9 @@ class Auth:
         }
 
     @staticmethod
-    def sign(email: str):
+    def sign(id: int, email: str):
         payload = {
+            "user_id": id,
             "user_email": email,
             "expiry": time() + 3600
         }

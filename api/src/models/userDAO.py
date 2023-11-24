@@ -136,7 +136,7 @@ class UserDAOImp(UserDAO):
         try:
             self.__cursor.execute('''
             SELECT * FROM users WHERE email = %s AND password = MD5(%s)
-            ''', email, password)
+            ''', (email, password))
             result = self.__cursor.fetchone()
             return result is None
         except pg.Error as e:
