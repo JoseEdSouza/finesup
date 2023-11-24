@@ -23,16 +23,16 @@ function Box(props: { name: string; valueCurrent: number; valueMax: number }) {
 			<label id="labelBox">{props.name}</label>
 
 			<Link to="/1/detailedDisplayBox" state={DatasForLink}>
-				<img src="icon_box.svg" id="iconBox" />
+				<img src="/icon_box.svg" id="iconBox" />
 				<strong>
 					<label id="labelValueProgress">{setValueBar()}%</label>
 				</strong>
 			</Link>
 
 			<Link to="/1/updateBox" state={DatasForLink}>
-				<img src="icon_edit.svg" id="iconEdit" />
+				<img src="/icon_edit.svg" id="iconEdit" />
 			</Link>
-			<img src="icon_delete.svg" id="iconDelete" />
+			<img src="/icon_delete.svg" id="iconDelete" />
 
 			<ProgressBar
 				valueCurrent={props.valueCurrent}

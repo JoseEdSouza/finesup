@@ -28,6 +28,30 @@ function BoxesGroup(){
             valueCurrent: 1500,
             valueMax: 4000
         },
+        {
+            id:4,
+            name: "Mesa",
+            valueCurrent: 1500,
+            valueMax: 4000
+        },
+        {
+            id:4,
+            name: "Mesa",
+            valueCurrent: 1500,
+            valueMax: 4000
+        },
+        {
+            id:4,
+            name: "Mesa",
+            valueCurrent: 1500,
+            valueMax: 4000
+        },
+        {
+            id:4,
+            name: "Mesa",
+            valueCurrent: 1500,
+            valueMax: 4000
+        }
     ]
 
     return(

@@ -9,7 +9,7 @@
     transform: translateX(-50%);
 }
 
-#Import, #Fixed, #History{
+#Fixed, #History{
     position: relative;
     font-family: "Open Sans";
     font-size: 90%;
@@ -31,12 +31,12 @@
     position: relative;
     font-family: "Open Sans";
     font-size: 150%;
-    border-style: none;
     border-radius: 1cqmin;
     padding: 1% 4%;
     color: #2E1E43;
     background-color: #D1D3F1;
     cursor: pointer;
+    text-decoration: none;
 }
 
 #Import:hover, #Fixed:hover, #History:hover, #Add:hover{
