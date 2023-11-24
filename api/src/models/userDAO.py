@@ -7,11 +7,11 @@ from api.src.db.database import Database
 class UserDAO(ABC):
 
     @abstractmethod
-    def add(self, user: User) -> bool:
+    def add(self, user: User) -> User | None:
         pass
 
     @abstractmethod
-    def update(self, user_id: int, user: User) -> bool:
+    def update(self, user_id: int, user: User) -> User | None:
         pass
 
     @abstractmethod
@@ -42,21 +42,27 @@ class UserDAOImp(UserDAO):
     def __rollback(self):
         self.__conn.rollback()
 
-    def add(self, user: User) -> bool:
+    def add(self, user: User) -> User | None:
         values = (user.name, user.email, user.password)
         try:
-            self.__cursor.execute('''
+            query = self.__cursor.execute('''
             INSERT INTO users (name, email, password, creation_date) 
             VALUES (%s, %s, MD5(%s), now())
+            RETURNING id;
             ''', values)
             self.__save()
-            return True
+            res = self.__cursor.fetchone()
+            if res is None:
+                return None
+            id = res[0]
+            return User(user.name, user.email, user.password, id)
+
         except pg.Error as e:
             print(e)
             self.__rollback()
-            return False
+            return None
 
-    def update(self, user_id: int, user: User) -> bool:
+    def update(self, user_id: int, user: User) -> User | None:
         values = (user.name, user.email, user.password, user_id)
 
         try:
@@ -64,11 +70,11 @@ class UserDAOImp(UserDAO):
             UPDATE users SET name = %s, email = %s, password = MD5(%s) WHERE id = %s
             ''', values)
             self.__save()
-            return True
+            return User(user.name, user.email, user.password, user_id)
         except pg.Error as e:
             print(e)
             self.__rollback()
-            return False
+            return None
 
     def remove(self, user_id: int) -> bool:
         try:

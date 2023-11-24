@@ -41,13 +41,13 @@ class RouteMeta(type):
             if 'add' in methods:
                 url = f'/api/{route_base_name}'
 
-                @router.post(url, tags=[tag, 'post'])
+                @router.post(url, tags=[tag])
                 async def post(mod: model, id: int = None, user: int = None):
                     args = list(filter(lambda x: x is not None, [id, user]))
                     added = dao.add(*args, mod) if len(args) != 0 else dao.add(mod)
-                    if not added:
+                    if added is None:
                         raise HTTPException(status_code=404, detail="Item not found or already exists")
-                    return mod
+                    return added
             if 'update' in methods:
                 @router.put(f'/api/{route_base_name}/{key_path}', tags=[tag])
                 async def put(mod: model, id: int = None, m_name: str = None,
@@ -56,9 +56,9 @@ class RouteMeta(type):
                     if dao.get(*args) is None:
                         raise HTTPException(status_code=404, detail="Item not found")
                     updated = dao.update(*args, mod)
-                    if not updated:
+                    if updated is None:
                         raise HTTPException(status_code=404, detail="Internal Server Error")
-                    return mod
+                    return updated
             if 'remove' in methods:
                 @router.delete(f'/api/{route_base_name}/{key_path}', tags=[tag])
                 async def delete(id: int = None, m_name: str = None,
