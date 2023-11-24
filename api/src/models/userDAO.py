@@ -23,6 +23,10 @@ class UserDAO(ABC):
         pass
 
     @abstractmethod
+    def get_by_email(self, email: str):
+        pass
+
+    @abstractmethod
     def check(self, email: str, password: str) -> bool:
         pass
 
@@ -93,6 +97,26 @@ class UserDAOImp(UserDAO):
             self.__cursor.execute('''
             SELECT * FROM users WHERE id = %s
             ''', (user_id,))
+            # id | name | email | password | creation_date
+            result = self.__cursor.fetchone()
+            if result is None:
+                return None
+            else:
+                return User(
+                    user_id=result[0],
+                    name=result[1],
+                    email=result[2],
+                    password=result[3]
+                )
+        except pg.Error as e:
+            print(e)
+            return None
+
+    def get_by_email(self, email: str) -> User | None:
+        try:
+            self.__cursor.execute('''
+            SELECT * FROM users WHERE email = %s
+            ''', (email,))
             # id | name | email | password | creation_date
             result = self.__cursor.fetchone()
             if result is None:

@@ -11,10 +11,7 @@ class UserController(metaclass=Singleton):
 
     # faz o sign addicionar o usuário se n existir e retornar o model introduzido no bd.
     def sign(self, signup: SignupSchema):
-        if self._exists(signup.email, signup.password):
-            raise
-    # lança uma exceção
-        return
+        pass
 
-    def _exists(self, email: str, password: str) -> bool:
+    def _check(self, email: str, password: str) -> bool:
         return self._DAO.check(email, password)
