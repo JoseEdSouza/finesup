@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BoxCreateButtons from "../BoxCreateButtons/BoxCreateButtons";
+import BoxCreateButtons from "../CreateButtons/CreateButtons";
 import BoxDescriptionInput from "../BoxDescriptionInput/BoxDescriptionInput";
 import BoxNameInput from "../BoxNameInput/BoxNameInput";
 import BoxValueInput from "../BoxValueInput/BoxValueInput";
@@ -12,10 +12,10 @@ function BoxCreateContainer() {
 
     return (
         <div id="createBoxContainer">
-            <BoxNameInput onSubmit={(e:string) => setNameBox(e)}/>
-            <BoxValueInput onSubmit={(e:number) => setValueBox(e)}/>
-            <BoxDescriptionInput onSubmit={(e:string) => setDescriptionBox(e)}/>
-            <BoxCreateButtons nameButton="Criar Caixinha"/>
+            <BoxNameInput onSubmit={(e: string) => setNameBox(e)} />
+            <BoxValueInput onSubmit={(e: number) => setValueBox(e)} />
+            <BoxDescriptionInput onSubmit={(e: string) => setDescriptionBox(e)} />
+            <BoxCreateButtons nameButton="Criar Caixinha" backTo="/1"/>
         </div>
     )
 }

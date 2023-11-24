@@ -1,0 +1,28 @@
+#transactionCreatePeriod{
+    position: absolute;
+    width: 25.69vw;
+    height: 10.44vh;
+    top: 31.44vh;
+    right: 5.9vw;
+}
+
+#transactionPeriodLabel{
+    position: absolute;
+    color: var(--primaryColor);
+    font-size: 2.5vh;
+    top: 0;
+}
+
+#transactionPeriodSelect{
+    position: absolute;
+    font-size: 2.5vh;
+    height: 6.25vh;
+    width: 100%;
+    bottom: 0;
+    border-radius: 1.5cqmin;
+    padding: 6px;
+    border-style: hidden;
+    outline: none;
+    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}

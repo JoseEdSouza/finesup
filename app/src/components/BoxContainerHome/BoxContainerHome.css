@@ -28,3 +28,15 @@
     font-size: 2.5vh;
     top: 60%;
 }
+
+#boxGridHome{
+    position: absolute;
+    height: 17vh;
+    width: 40vw;
+    max-width: 450px;
+    top: 13vh;
+    justify-content: start;
+    align-items: center;
+    display: flex;
+    overflow-x: scroll;
+}

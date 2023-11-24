@@ -49,7 +49,7 @@ function GraphicsContainer(props: { setChartType: (chartType: number) => void, s
                                 expenseData={[1, 20, 4, 20, 19, 1, 29.78, 3, 40, 5, 10, 14, 1, 29, 3, 40, 5, 10, 14, 1, 29, 12, 32, 5, 10, 14, 1, 29, 12, 32]}
                                 onValues={(e: { revenue: number, expense: number }) => setValuesTransactions(e)} />
                 }
-                {display === 0 ? <DisplayReveneExpense setTypeTransactions={handleTypePieChart} /> : display === 2 ? <LineChartValues valuesTransaction={valuesTransactions} /> : <></>}
+                {display === 0 ? <DisplayReveneExpense setTypeTransactions={handleTypePieChart} bottom="2.69"/> : display === 2 ? <LineChartValues valuesTransaction={valuesTransactions} /> : <></>}
             </div>
         </>
     )

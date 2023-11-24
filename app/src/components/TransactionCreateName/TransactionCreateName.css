@@ -1,0 +1,26 @@
+#transactionCreateName{
+    position: absolute;
+    width: 53.33vw;
+    height: 10.44vh;
+    top: 4.49vh;
+}
+
+#TransactionNameLabel{
+    position: absolute;
+    color: var(--primaryColor);
+    font-size: 2.5vh;
+    top: 0;
+}
+
+#TransactionNameInput{
+    position: absolute;
+    font-size: 2.5vh;
+    height: 6.25vh;
+    width: 100%;
+    bottom: 0;
+    padding: 12px;
+    border-radius: 2cqmin;
+    outline: none;
+    border-style: none;
+    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+}

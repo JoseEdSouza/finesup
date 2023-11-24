@@ -15,6 +15,7 @@ import UpdateBox from './pages/UpdateBox.tsx'
 import Graphics from './pages/Graphics.tsx'
 import AddBudget from './pages/AddBudget.tsx'
 import MyBudget from './pages/MyBudget.tsx'
+import AddTransaction from './pages/AddTransaction.tsx'
 import BudgetDetail from './pages/BudgetDetail.tsx'
 import BudgetEdit from './pages/BudgetEdit.tsx'
 
@@ -59,7 +60,11 @@ const router = createBrowserRouter([
       {
         path: "/2/transactionHistory",
         element: <TransactionHistory/>
-      },     
+      },
+      {
+        path: "/2/transactionHistory/addTransaction",
+        element: <AddTransaction/>
+      },
       {
         path: "/2/graphics",
         element: <Graphics/>
