@@ -8,11 +8,11 @@ from api.src.utils.frequency import Frequency
 class FixedTransactionDAO(ABC):
 
     @abstractmethod
-    def add(self, transaction: FixedTransaction) -> bool:
+    def add(self, transaction: FixedTransaction) -> FixedTransaction | None:
         pass
 
     @abstractmethod
-    def update(self, ft_id: int, transaction: FixedTransaction) -> bool:
+    def update(self, ft_id: int, transaction: FixedTransaction) -> FixedTransaction | None:
         pass
 
     @abstractmethod
@@ -43,7 +43,7 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
     def __rollback(self):
         self.__conn.rollback()
 
-    def add(self, transaction: FixedExpense) -> bool:
+    def add(self, transaction: FixedExpense) -> FixedExpense | None:
         values = (transaction.user_id, transaction.name, transaction.description,
                   transaction.purchase_date, transaction.limit_date, Frequency(transaction.frequency).value,
                   transaction.value, transaction.cat)
@@ -52,18 +52,32 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
             self.__cursor.execute('''
             INSERT INTO fixed_expenses(user_id, name,description,purchase_date,limit_date,frequency,value,ex_cat_id)
             VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
+            RETURNING id;
             ''', values)
             self.__save()
-            return True
+            res = self.__cursor.fetchone()
+            if res is None:
+                return None
+            return FixedExpense(
+                ft_id=res[0],
+                name=transaction.name,
+                description=transaction.description,
+                purchase_date=transaction.purchase_date,
+                limit_date=transaction.limit_date,
+                frequency=Frequency(transaction.frequency).value,
+                value=transaction.value,
+                user_id=transaction.user_id,
+                cat=transaction.cat
+            )
         except pg.Error as e:
             print(e)
             self.__rollback()
-            return False
+            return None
         except ValueError as val:
             print(val)
-            return False
+            return None
 
-    def update(self, ft_id: int, transaction: FixedExpense) -> bool:
+    def update(self, ft_id: int, transaction: FixedExpense) -> FixedExpense | None:
         # id | name | description | purchase_date | limit_date | frequency | value | user_id | ex_cat_id
         values = (transaction.name, transaction.description,
                   transaction.purchase_date, transaction.limit_date, Frequency(transaction.frequency).value,
@@ -81,14 +95,24 @@ class FixedExpenseDAOImp(FixedTransactionDAO):
             WHERE id = %s
             ''', values)
             self.__save()
-            return True
+            return FixedExpense(
+                ft_id=ft_id,
+                name=transaction.name,
+                description=transaction.description,
+                purchase_date=transaction.purchase_date,
+                limit_date=transaction.limit_date,
+                frequency=Frequency(transaction.frequency).value,
+                value=transaction.value,
+                user_id=transaction.user_id,
+                cat=transaction.cat
+            )
         except pg.Error as e:
             print(e)
             self.__rollback()
-            return False
+            return None
         except ValueError as val:
             print(val)
-            return False
+            return None
 
     def remove(self, ft_id: int) -> bool:
         try:
@@ -176,7 +200,7 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
     def __rollback(self):
         self.__conn.rollback()
 
-    def add(self, transaction: FixedRevenue) -> bool:
+    def add(self, transaction: FixedRevenue) -> FixedRevenue | None:
         values = (transaction.user_id, transaction.name, transaction.description,
                   transaction.purchase_date, transaction.limit_date, Frequency(transaction.frequency).value,
                   transaction.value, transaction.cat)
@@ -185,18 +209,32 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
             self.__cursor.execute('''
             INSERT INTO fixed_revenues(user_id,name,description,purchase_date,limit_date,frequency,value,rev_cat_id)
             VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
+            RETURNING id;
             ''', values)
             self.__save()
-            return True
+            res = self.__cursor.fetchone()
+            if res is None:
+                return None
+            return FixedRevenue(
+                ft_id=res[0],
+                name=transaction.name,
+                description=transaction.description,
+                purchase_date=transaction.purchase_date,
+                limit_date=transaction.limit_date,
+                frequency=Frequency(transaction.frequency).value,
+                value=transaction.value,
+                user_id=transaction.user_id,
+                cat=transaction.cat
+            )
         except pg.Error as e:
             print(e)
             self.__rollback()
-            return False
+            return None
         except ValueError as val:
             print(val)
-            return False
+            return None
 
-    def update(self, ft_id: int, transaction: FixedRevenue) -> bool:
+    def update(self, ft_id: int, transaction: FixedRevenue) -> FixedRevenue | None:
         values = (transaction.name, transaction.description,
                   transaction.purchase_date, transaction.limit_date, Frequency(transaction.frequency).value,
                   transaction.value, transaction.cat, ft_id)
@@ -213,14 +251,24 @@ class FixedRevenueDAOImp(FixedTransactionDAO):
             WHERE id = %s
             ''', values)
             self.__save()
-            return True
+            return FixedRevenue(
+                ft_id=ft_id,
+                name=transaction.name,
+                description=transaction.description,
+                purchase_date=transaction.purchase_date,
+                limit_date=transaction.limit_date,
+                frequency=Frequency(transaction.frequency).value,
+                value=transaction.value,
+                user_id=transaction.user_id,
+                cat=transaction.cat
+            )
         except pg.Error as e:
             print(e)
             self.__rollback()
-            return False
+            return None
         except ValueError as val:
             print(val)
-            return False
+            return None
 
     def remove(self, ft_id: int) -> bool:
         try:

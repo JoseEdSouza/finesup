@@ -7,11 +7,11 @@ from api.src.db.database import Database
 class BudgetDAO(ABC):
 
     @abstractmethod
-    def add(self, budget: Budget) -> bool:
+    def add(self, budget: Budget) -> Budget | None:
         pass
 
     @abstractmethod
-    def update(self, user_id: int, ex_cat_id: int, budget: Budget) -> bool:
+    def update(self, user_id: int, ex_cat_id: int, budget: Budget) -> Budget | None:
         pass
 
     @abstractmethod
@@ -42,7 +42,7 @@ class BudgetDAOImp(BudgetDAO):
     def __rollback(self):
         self.__conn.rollback()
 
-    def add(self, budget: Budget) -> bool:
+    def add(self, budget: Budget) -> Budget | None:
         values = (budget.user_id, budget.category, budget.final_value, budget.actual_value, budget.renewal_date)
         try:
             self.__cursor.execute('''
@@ -50,13 +50,18 @@ class BudgetDAOImp(BudgetDAO):
             VALUES (%s,%s,%s,%s,%s,now())
             ''', values)
             self.__save()
-            return True
+            return Budget(
+                user_id=budget.user_id,
+                category=budget.category,
+                renewal_date=budget.renewal_date,
+                actual_value=budget.actual_value,
+                final_value=budget.final_value)
         except pg.Error as e:
             print(e)
             self.__rollback()
-            return False
+            return None
 
-    def update(self, user_id: int, ex_cat_id: int, budget: Budget) -> bool:
+    def update(self, user_id: int, ex_cat_id: int, budget: Budget) -> Budget | None:
         values = (budget.category, budget.final_value, budget.actual_value, budget.renewal_date, user_id, ex_cat_id)
         try:
             self.__cursor.execute('''
@@ -68,11 +73,16 @@ class BudgetDAOImp(BudgetDAO):
             WHERE user_id = %s AND ex_cat_id = %s
             ''', values)
             self.__save()
-            return True
+            return Budget(
+                user_id=budget.user_id,
+                category=budget.category,
+                renewal_date=budget.renewal_date,
+                actual_value=budget.actual_value,
+                final_value=budget.final_value)
         except pg.Error as e:
             print(e)
             self.__rollback()
-            return False
+            return None
 
     def remove(self, user_id: int, ex_cat_id: int) -> bool:
         try:
