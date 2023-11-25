@@ -38,7 +38,6 @@ class Session {
 
     private decodeJWT() {
         const decodedToken = jwt.decode(this.token) as DecodedToken
-        console.log(decodedToken)
         return decodedToken
     }
 

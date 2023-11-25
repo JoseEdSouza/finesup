@@ -3,18 +3,19 @@ import Session from '../services/Session'
 import Endpoints from '../utils/Endpoints'
 
 export class BoxDAO {
-
-    get session(){
+    private headers = {
+        'accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.session.token}`
+    }
+    get session() {
         return Session.getInstance()
     }
 
     async get(name: string): Promise<Box> {
         const req: Request = new Request(`${Endpoints.BOX}/${name}`, {
             method: 'GET',
-            headers: {
-                contentType: 'application/json',
-                Authorization: `Bearer ${this.session.token}`
-            }
+            headers: this.headers
 
         })
         const response: Response = await fetch(req)
@@ -30,10 +31,7 @@ export class BoxDAO {
     async getAll(): Promise<Box[]> {
         const req: Request = new Request(Endpoints.BOX_ALL, {
             method: 'GET',
-            headers: {
-                contentType: 'application/json',
-                Authorization: `Bearer ${this.session.token}`
-            }
+            headers: this.headers
         })
         const response: Response = await fetch(req)
         if (response.status === 404) {
@@ -49,10 +47,7 @@ export class BoxDAO {
         const req: Request = new Request(Endpoints.BOX, {
             method: 'POST',
             body: box.toString(),
-            headers: {
-                contentType: 'application/json',
-                Authorization: `Bearer ${this.session.token}`
-            }
+            headers: this.headers
         })
         const response: Response = await fetch(req)
         if (response.status !== 200) {
@@ -66,10 +61,7 @@ export class BoxDAO {
         const req: Request = new Request(`${Endpoints.BOX}/${name}`, {
             method: 'PUT',
             body: JSON.stringify(box.toJson()),
-            headers: {
-                contentType: 'application/json',
-                Authorization: `Bearer ${this.session.token}`
-            }
+            headers: this.headers
         })
         const response: Response = await fetch(req)
         if (response.status !== 200) {
@@ -82,10 +74,7 @@ export class BoxDAO {
     async remove(name: string): Promise<boolean> {
         const req: Request = new Request(`${Endpoints.BOX}/${name}`, {
             method: 'DELETE',
-            headers: {
-                contentType: 'application/json',
-                Authorization: `Bearer ${this.session.token}`
-            }
+            headers: this.headers
         })
         const response: Response = await fetch(req)
         console.log(response.status, response.statusText)
