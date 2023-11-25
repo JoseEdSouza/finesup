@@ -1,0 +1,50 @@
+#transactionCreateRepeat{
+    position: absolute;
+    width: 25.69vw;
+    height: 10.44vh;
+    top: 31.44vh;
+    left: 5.9vw;
+}
+
+#transactionRepeatLabel{
+    position: absolute;
+    color: var(--primaryColor);
+    font-size: 2.5vh;
+    top: 0;
+}
+
+#transactionRepeatInput{
+    position: absolute;
+    font-size: 2.5vh;
+    height: 6.25vh;
+    width: 100%;
+    bottom: 0;
+    border-radius: 1.5cqmin;
+    padding: 12px;
+    border-style: hidden;
+    outline: none;
+    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+#infinitlyContainer{
+    position: absolute;
+    height: 3vh;
+    width: 20vw;
+    bottom: -40%;
+    align-items: center;
+    display: flex;
+}
+
+#checkboxInfinitely{
+    position: absolute;
+    height: 3vh;
+    width: 3vw;
+    cursor: pointer;
+}
+
+#labelInfinitely{
+    position: absolute;
+    font-size: 2vh;
+    left: 3vw;
+}

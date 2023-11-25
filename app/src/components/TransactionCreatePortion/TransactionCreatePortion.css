@@ -1,0 +1,50 @@
+#transactionCreatePortion{
+    position: absolute;
+    width: 53.33vw;
+    height: 10.44vh;
+    top: 48.91vh;
+}
+
+#transactionPortionLabel{
+    position: absolute;
+    color: var(--primaryColor);
+    font-size: 2.5vh;
+    top: 0;
+}
+
+#transactionPortionInput{
+    position: absolute;
+    font-size: 2.5vh;
+    height: 6.25vh;
+    width: 25.69vw;
+    bottom: 0;
+    border-radius: 1.5cqmin;
+    padding: 12px;
+    border-style: hidden;
+    outline: none;
+    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+#portionValue{
+    position: absolute;
+    height: 80%;
+    width: 25.69vw;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    display: flex;
+}
+
+#labelPortion{
+    position: absolute;
+    color: var(--primaryColor);
+    font-size: 3vh;
+}
+
+#labelValuePortion{
+    position: absolute;
+    color: var(--thirdColor);
+    font-size: 3vh;
+    bottom: 0;
+}

@@ -1,6 +1,5 @@
 #containerAux{
     position: absolute;
-    height: 125vh;
     width: 65.13vw;
     left: 50%;
     transform: translateX(-50%);
@@ -10,7 +9,6 @@
 #transactionCreateconatiner{
     position: absolute;
     background-color: var(--secondaryColor);
-    height: 117vh;
     width: 65.13vw;
     border-radius: 10px;
     justify-content: center;
