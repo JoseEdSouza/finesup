@@ -1,34 +1,58 @@
 import Box from './Box'
-import ApiSettings from "../config/ApiSettings"
-import { Nullable } from "../types"
+import Session from '../services/Session'
+import Endpoints from '../utils/Endpoints'
 
 export class BoxDAO {
 
-    async get(userId: number, name: string): Promise<Nullable<Box>> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/box/${userId}/${name}`)
+    get session(){
+        return Session.getInstance()
+    }
+
+    async get(name: string): Promise<Box> {
+        const req: Request = new Request(`${Endpoints.BOX}/${name}`, {
+            method: 'GET',
+            headers: {
+                contentType: 'application/json',
+                Authorization: `Bearer ${this.session.token}`
+            }
+
+        })
         const response: Response = await fetch(req)
-        if (response.status !== 200) {
-            throw new Error('Box not found')
+        if (response.status === 404) {
+            throw new Error('Item not found')
+        } else if (response.status !== 200) {
+            throw new Error(response.statusText)
         }
         const box: any = await response.json()
         return Box.fromJson(box)
     }
 
-    async getAll(userId: number): Promise<Box[]> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/all/box/${userId}`)
+    async getAll(): Promise<Box[]> {
+        const req: Request = new Request(Endpoints.BOX_ALL, {
+            method: 'GET',
+            headers: {
+                contentType: 'application/json',
+                Authorization: `Bearer ${this.session.token}`
+            }
+        })
         const response: Response = await fetch(req)
-        if (response.status !== 200) {
-            throw new Error('user not found')
+        if (response.status === 404) {
+            throw new Error('Item not found')
+        } else if (response.status !== 200) {
+            throw new Error(response.statusText)
         }
         const boxes: any = await response.json()
         return Box.fromJsonArray(boxes)
     }
 
-    async add(box: Box): Promise<Nullable<Box>> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/box`, {
+    async add(box: Box): Promise<Box> {
+        const req: Request = new Request(Endpoints.BOX, {
             method: 'POST',
             body: box.toString(),
-            headers: { 'Content-Type': 'application/json' }
+            headers: {
+                contentType: 'application/json',
+                Authorization: `Bearer ${this.session.token}`
+            }
         })
         const response: Response = await fetch(req)
         if (response.status !== 200) {
@@ -38,11 +62,14 @@ export class BoxDAO {
         return Box.fromJson(addedBox)
     }
 
-    async update(userId: number, name: string, box: Box): Promise<Nullable<Box>> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/box/${userId}/${name}`, {
+    async update(name: string, box: Box): Promise<Box> {
+        const req: Request = new Request(`${Endpoints.BOX}/${name}`, {
             method: 'PUT',
             body: JSON.stringify(box.toJson()),
-            headers: { 'Content-Type': 'application/json' }
+            headers: {
+                contentType: 'application/json',
+                Authorization: `Bearer ${this.session.token}`
+            }
         })
         const response: Response = await fetch(req)
         if (response.status !== 200) {
@@ -52,9 +79,13 @@ export class BoxDAO {
         return Box.fromJson(updatedBox)
     }
 
-    async remove(userId: number, name: string): Promise<boolean> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/box/${userId}/${name}`, {
-            method: 'DELETE'
+    async remove(name: string): Promise<boolean> {
+        const req: Request = new Request(`${Endpoints.BOX}/${name}`, {
+            method: 'DELETE',
+            headers: {
+                contentType: 'application/json',
+                Authorization: `Bearer ${this.session.token}`
+            }
         })
         const response: Response = await fetch(req)
         console.log(response.status, response.statusText)

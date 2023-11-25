@@ -80,7 +80,7 @@ class RouteMeta(type):
                         raise HTTPException(status_code=404, detail="Item not found")
                     updated = dao.update(*args, mod)
                     if updated is None:
-                        raise HTTPException(status_code=404, detail="Internal Server Error")
+                        raise HTTPException(status_code=404, detail="Already Exists")
                     return updated
             if 'remove' in methods:
                 @router.delete(f'/api/{route_base_name}/{key_path_without_user}',
