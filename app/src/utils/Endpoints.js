@@ -1,0 +1,21 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var ApiSettings_1 = require("../config/ApiSettings");
+var Endpoints;
+(function (Endpoints) {
+    Endpoints["SIGNUP"] = "http://127.0.0.1:9000/api/user/signup";
+    Endpoints["LOGIN"] = "http://127.0.0.1:9000/api/user/login";
+    Endpoints["BOX"] = "http://127.0.0.1:9000/api/box";
+    Endpoints["BOX_ALL"] = "http://127.0.0.1:9000/api/all/box";
+    Endpoints["BUDGET"] = "http://127.0.0.1:9000/api/budget";
+    Endpoints["BUDGET_ALL"] = "http://127.0.0.1:9000/api/all/budget";
+    Endpoints["EXPENSE"] = "http://127.0.0.1:9000/api/expense";
+    Endpoints["EXPENSE_ALL"] = "http://127.0.0.1:9000/api/all/expense";
+    Endpoints["REVENUE"] = "http://127.0.0.1:9000/api/revenue";
+    Endpoints["REVENUE_ALL"] = "http://127.0.0.1:9000/api/all/revenue";
+    Endpoints["FIXED_EXPENSE"] = "http://127.0.0.1:9000/api/fixedexpense";
+    Endpoints["FIXED_EXPENSE_ALL"] = "http://127.0.0.1:9000/api/all/fixedexpense";
+    Endpoints["FIXED_REVENUE"] = "http://127.0.0.1:9000/api/fixedrevenue";
+    Endpoints["FIXED_REVENUE_ALL"] = "http://127.0.0.1:9000/api/all/fixedrevenue";
+})(Endpoints || (Endpoints = {}));
+exports.default = Endpoints;

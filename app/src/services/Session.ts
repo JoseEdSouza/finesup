@@ -15,7 +15,8 @@ class Session {
     private constructor(token: string, password: string) {
         this.token = token;
         const decodedToken = this.decodeJWT();
-        this.user = new User(decodedToken.user_id,
+        this.user = new User(
+            decodedToken.user_id,
             decodedToken.user_email,
             decodedToken.user_name,
             password)
@@ -37,6 +38,7 @@ class Session {
 
     private decodeJWT() {
         const decodedToken = jwt.decode(this.token) as DecodedToken
+        console.log(decodedToken)
         return decodedToken
     }
 

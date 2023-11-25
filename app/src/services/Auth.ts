@@ -2,7 +2,7 @@ import Endpoints from "../utils/Endpoints";
 
 class Auth {
 
-    static login(email: string, password: string): Promise<any> {
+    static async login(email: string, password: string): Promise<any> {
 
         const req = new Request(Endpoints.LOGIN, {
             method: 'POST',
@@ -15,19 +15,19 @@ class Auth {
             })
         })
 
-        return fetch(req)
-            .then(res => res.json())
+        const response = await fetch(req)
             .then(res => {
-                if (res.status === 'ok') {
-                    return res.body.acess_token;
-                } else {
-                    throw new Error(res.error);
+                if (res.status === 200)
+                    return res
+                else {
+                    throw new Error('Invalid credentials')
                 }
-            });
-
+            })
+        const res = await response.json()
+        return await res.access_token;
     }
 
-    static signup(name: string, email: string, password: string): Promise<any> {
+    static async signup(name: string, email: string, password: string): Promise<any> {
         const req = new Request(Endpoints.SIGNUP, {
             method: 'POST',
             headers: {
@@ -40,15 +40,16 @@ class Auth {
             })
         })
 
-        return fetch(req)
-            .then(res => res.json())
+        const response = await fetch(req)
             .then(res => {
-                if (res.status === 'ok') {
-                    return res.token;
-                } else {
-                    throw new Error(res.error);
+                if (res.status === 200)
+                    return res
+                else {
+                    throw new Error('Already registered')
                 }
-            });
+            })
+        const res = await response.json()
+        return await res.access_token;
 
     }
 }

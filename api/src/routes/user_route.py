@@ -14,7 +14,7 @@ class UserRoute:
     controller = UserController()
 
     @staticmethod
-    @router.post('/user/signup', response_model=Auth.AuthResponse)
+    @router.post('/api/user/signup', response_model=Auth.AuthResponse)
     def signup(signup: SignupSchema):
         try:
             user = UserRoute.controller.signup(signup)
@@ -23,7 +23,7 @@ class UserRoute:
         return Auth.sign(user.user_id, user.email, user.name)
 
     @staticmethod
-    @router.post('/user/login', response_model=Auth.AuthResponse)
+    @router.post('/api/user/login', response_model=Auth.AuthResponse)
     def login(login: LoginSchema):
         try:
             user = UserRoute.controller.signin(login)
