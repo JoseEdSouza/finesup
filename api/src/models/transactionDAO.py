@@ -113,9 +113,8 @@ class ExpenseDAOImp(TransactionDAO):
     def get(self, t_id: int) -> Expense | None:
         try:
             self.__cursor.execute('''
-            SELECT ex.id,ex.name,ex.description,ex.value,ex.purchase_date,ex.user_id,ex.ex_cat_id,ec.name
+            SELECT ex.id,ex.name,ex.description,ex.value,ex.purchase_date,ex.user_id,ex.ex_cat_id
             FROM expenses ex
-            JOIN expense_categories ec ON ex.id = ec.id
             WHERE ex.id = %s
             ''', (t_id,))
             exp = self.__cursor.fetchone()
@@ -137,9 +136,8 @@ class ExpenseDAOImp(TransactionDAO):
     def get_all(self, user_id: int) -> list[Expense] | None:
         try:
             self.__cursor.execute('''
-            SELECT ex.id,ex.name,ex.description,ex.value,ex.purchase_date,ex.user_id,ex.ex_cat_id,ec.name
+            SELECT ex.id,ex.name,ex.description,ex.value,ex.purchase_date,ex.user_id,ex.ex_cat_id
             FROM expenses ex
-            JOIN expense_categories ec ON ex.id = ec.id
             WHERE ex.user_id = %s
             ''', (user_id,))
             list_expenses = self.__cursor.fetchall()
