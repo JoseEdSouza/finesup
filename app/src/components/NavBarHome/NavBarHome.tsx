@@ -7,7 +7,8 @@ function NavBarHome(){
     const [underlineNav, setUnderlineNav] = useState({
         home: "underline",
         categories: "none",
-        calculators: "none"
+        calculators: "none",
+        user: "none"
     })
 
     const setHomeRouteNav = () =>{
@@ -15,7 +16,8 @@ function NavBarHome(){
         setUnderlineNav({
             home: "underline",
             categories: "none",
-            calculators: "none"
+            calculators: "none",
+            user: "none"
         })
     }
 
@@ -24,7 +26,8 @@ function NavBarHome(){
         setUnderlineNav({
             home: "none",
             categories: "underline",
-            calculators: "none"
+            calculators: "none",
+            user: "none"
         })
     }
 
@@ -33,7 +36,18 @@ function NavBarHome(){
         setUnderlineNav({
             home: "none",
             categories: "none",
-            calculators: "underline"
+            calculators: "underline",
+            user: "none"
+        })
+    }
+
+    const setUserRouteNav = () =>{
+        setRouteNav("Usuário")
+        setUnderlineNav({
+            home: "none",
+            categories: "none",
+            calculators: "none",
+            user: "underline"
         })
     }
     
@@ -43,6 +57,7 @@ function NavBarHome(){
             <Link to="/" onClick={setHomeRouteNav}><label id="routeHome" style={{textDecorationLine: underlineNav.home}}>Home</label></Link>
             <Link to="/categories" onClick={setCategoriesRouteNav}><label id="routeCategories" style={{textDecorationLine: underlineNav.categories}}>Categorias</label></Link>
             <Link to="/calculators" onClick={setCalculatorsRouteNav}><label id="routeCalculators" style={{textDecorationLine: underlineNav.calculators}}>Calculadoras</label></Link>
+            <Link to="/user" onClick={setUserRouteNav}><label id="routeUser" style={{textDecorationLine: underlineNav.calculators}}>Usuário</label></Link>
             <label className="LabelPage"><strong>
                 {isRouteNav}
             </strong></label>

@@ -18,6 +18,7 @@ import MyBudget from './pages/MyBudget.tsx'
 import AddTransaction from './pages/AddTransaction.tsx'
 import BudgetDetail from './pages/BudgetDetail.tsx'
 import BudgetEdit from './pages/BudgetEdit.tsx'
+import UserScreen from './pages/UserScreen.tsx'
 
 
 const router = createBrowserRouter([
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
       {
         path: "/3/budgetedit",
         element: <BudgetEdit/>
+      },
+      {
+        path: "/user",
+        element: <UserScreen/>
       }
     ]
   }
