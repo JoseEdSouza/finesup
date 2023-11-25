@@ -8,6 +8,8 @@ function TransactionCreatePeriod() {
                 <option value="Diariamente">Diariamente</option>
                 <option value="Semanalmente">Semanalmente</option>
                 <option value="Mensalmente">Mensalmente</option>
+                <option value="Bimensalmente">Bimensalmente</option>
+                <option value="Semestralmente">Semestralmente</option>
                 <option value="Anualmente">Anualmente</option>
             </select>
         </div>

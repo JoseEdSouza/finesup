@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom"
-import BoxCreateButtons from "../CreateButtons/CreateButtons"
+import CreateButtons from "../CreateButtons/CreateButtons"
 import BoxDescriptionEditable from "../BoxDescriptionEditable/BoxDescriptionEditable"
 import BoxNameEditable from "../BoxNameEditable/BoxNameEditable"
 import BoxValueEditable from "../BoxValueEditable/BoxValueEditable"
@@ -14,7 +14,7 @@ function BoxEditableContainer() {
             <BoxNameEditable boxNameCurrent={data.name} />
             <BoxValueEditable valueMax={data.valueMax} />
             <BoxDescriptionEditable descriptionCurrent={"Descrição da caixinha " + data.name} />
-            <BoxCreateButtons nameButton="Editar caixinha" />
+            <CreateButtons nameButton="Editar caixinha" backTo="/1"/>
         </div>
     )
 }
