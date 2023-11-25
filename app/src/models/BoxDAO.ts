@@ -8,7 +8,7 @@ export class BoxDAO {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${this.session.token}`
     }
-    get session() {
+    private get session() {
         return Session.getInstance()
     }
 

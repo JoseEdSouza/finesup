@@ -1,35 +1,54 @@
-import ApiSettings from "../config/ApiSettings";
 import { Expense, Revenue } from "./Transaction";
-import { Nullable } from "../types"
+import Endpoints from "../utils/Endpoints";
+import Session from "../services/Session";
 
 
 class RevenueDAO {
+    private get session() {
+        return Session.getInstance()
+    }
 
-    async get(id: number): Promise<Nullable<Revenue>> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/revenue/${id}`)
+    private headers = {
+        'accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.session.token}`
+    }
+
+    async get(id: number): Promise<Revenue> {
+        const req: Request = new Request(`${Endpoints.REVENUE}/${id}`, {
+            method: 'GET',
+            headers: this.headers
+        })
         const response: Response = await fetch(req)
-        if (response.status !== 200) {
-            throw new Error('Revenue not found')
+        if (response.status === 404) {
+            throw new Error('Item not found')
+        } else if (response.status !== 200) {
+            throw new Error(response.statusText)
         }
         const revenue: any = await response.json()
         return Revenue.fromJson(revenue)
     }
 
-    async getAll(userId: number): Promise<Revenue[]> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/all/revenue/${userId}`)
+    async getAll(): Promise<Revenue[]> {
+        const req: Request = new Request(Endpoints.REVENUE_ALL, {
+            method: 'GET',
+            headers: this.headers
+        })
         const response: Response = await fetch(req)
-        if (response.status !== 200) {
-            throw new Error('user not found')
+        if (response.status === 404) {
+            throw new Error('Item not found')
+        } else if (response.status !== 200) {
+            throw new Error(response.statusText)
         }
         const revenues: any = await response.json()
         return Revenue.fromJsonArray(revenues)
     }
 
-    async add(revenue: Revenue): Promise<Nullable<Revenue>> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/revenue`, {
+    async add(revenue: Revenue): Promise<Revenue> {
+        const req: Request = new Request(Endpoints.REVENUE, {
             method: 'POST',
             body: revenue.toString(),
-            headers: { 'Content-Type': 'application/json' }
+            headers: this.headers
         })
         const response: Response = await fetch(req)
         if (response.status !== 200) {
@@ -39,11 +58,11 @@ class RevenueDAO {
         return Revenue.fromJson(addedRevenue)
     }
 
-    async update(id: number, revenue: Revenue): Promise<Nullable<Revenue>> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/revenue/${id}`, {
+    async update(id: number, revenue: Revenue): Promise<Revenue> {
+        const req: Request = new Request(`${Endpoints.REVENUE}/${id}`, {
             method: 'PUT',
             body: revenue.toString(),
-            headers: { 'Content-Type': 'application/json' }
+            headers: this.headers
         })
         const response: Response = await fetch(req)
         if (response.status !== 200) {
@@ -54,7 +73,7 @@ class RevenueDAO {
     }
 
     async delete(id: number): Promise<Boolean> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/revenue/${id}`, {
+        const req: Request = new Request(`${Endpoints.REVENUE}/${id}`, {
             method: 'DELETE'
         })
         const response: Response = await fetch(req)
@@ -64,32 +83,51 @@ class RevenueDAO {
 }
 
 class ExpenseDAO {
+    private get session() {
+        return Session.getInstance()
+    }
 
-    async get(id: number): Promise<Nullable<Expense>> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/expense/${id}`)
+    private headers = {
+        'accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.session.token}`
+    }
+
+    async get(id: number): Promise<Expense> {
+        const req: Request = new Request(`${Endpoints.EXPENSE}/${id}`, {
+            method: 'GET',
+            headers: this.headers
+        })
         const response: Response = await fetch(req)
-        if (response.status !== 200) {
-            throw new Error('Expense not found')
+        if (response.status === 404) {
+            throw new Error('Item not found')
+        } else if (response.status !== 200) {
+            throw new Error(response.statusText)
         }
         const expense: any = await response.json()
         return Expense.fromJson(expense)
     }
 
-    async getAll(userId: number): Promise<Expense[]> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/all/expense/${userId}`)
+    async getAll(): Promise<Expense[]> {
+        const req: Request = new Request(Endpoints.EXPENSE_ALL, {
+            method: 'GET',
+            headers: this.headers
+        })
         const response: Response = await fetch(req)
-        if (response.status !== 200) {
-            throw new Error('user not found')
+        if (response.status === 404) {
+            throw new Error('Item not found')
+        } else if (response.status !== 200) {
+            throw new Error(response.statusText)
         }
         const expenses: any = await response.json()
         return Expense.fromJsonArray(expenses)
     }
 
-    async add(expense: Expense): Promise<Nullable<Expense>> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/expense`, {
+    async add(expense: Expense): Promise<Expense> {
+        const req: Request = new Request(Endpoints.EXPENSE, {
             method: 'POST',
             body: expense.toString(),
-            headers: { 'Content-Type': 'application/json' }
+            headers: this.headers
         })
         const response: Response = await fetch(req)
         if (response.status !== 200) {
@@ -99,11 +137,11 @@ class ExpenseDAO {
         return Expense.fromJson(addedExpense)
     }
 
-    async update(id: number, expense: Expense): Promise<Nullable<Expense>> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/expense/${id}`, {
+    async update(id: number, expense: Expense): Promise<Expense> {
+        const req: Request = new Request(`${Endpoints.EXPENSE}/${id}`, {
             method: 'PUT',
             body: expense.toString(),
-            headers: { 'Content-Type': 'application/json' }
+            headers: this.headers
         })
         const response: Response = await fetch(req)
         if (response.status !== 200) {
@@ -114,7 +152,7 @@ class ExpenseDAO {
     }
 
     async delete(id: number): Promise<Boolean> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/expense/${id}`, {
+        const req: Request = new Request(`${Endpoints.EXPENSE}/${id}`, {
             method: 'DELETE'
         })
         const response: Response = await fetch(req)
