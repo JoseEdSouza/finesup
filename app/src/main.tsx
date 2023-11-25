@@ -18,7 +18,10 @@ import MyBudget from './pages/MyBudget.tsx'
 import AddTransaction from './pages/AddTransaction.tsx'
 import BudgetDetail from './pages/BudgetDetail.tsx'
 import BudgetEdit from './pages/BudgetEdit.tsx'
-
+import Login from './pages/Login.tsx'
+import NavBarHome from './components/NavBarHome/NavBarHome.tsx'
+import AprensentationScreen from './pages/ApesentationScreen.tsx'
+import ApresentationRoute from './Routes/ApresentationRoute.tsx'
 
 const router = createBrowserRouter([
   {
@@ -27,15 +30,27 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home/>
+        element: <ApresentationRoute/>
+      },
+      {
+        path: "/login",
+        element: <Login/>
+      }, 
+      {
+        path: "/register",
+        element: <AprensentationScreen/>
+      },
+      {
+        path: "/home",
+        element: [<Home/>, <NavBarHome/>]
       },
       {
         path: "/categories",
-        element: <RenderCategories/>
+        element: [<RenderCategories/>, <NavBarHome/>]
       },
       {
         path: "/calculators",
-        element: <CalculatorsSelector/>
+        element: [<CalculatorsSelector/>, <NavBarHome/>]
       },
       {
         path: "/calculators/:id",
