@@ -40,7 +40,7 @@ function NavBarHome(){
     return(
         <nav className="NavBar">
             <img src="/icon-logo.png" id="homeLogo"/>
-            <Link to="/" onClick={setHomeRouteNav}><label id="routeHome" style={{textDecorationLine: underlineNav.home}}>Home</label></Link>
+            <Link to="/home" onClick={setHomeRouteNav} ><label id="routeHome" style={{textDecorationLine: underlineNav.home}}>Home</label></Link>
             <Link to="/categories" onClick={setCategoriesRouteNav}><label id="routeCategories" style={{textDecorationLine: underlineNav.categories}}>Categorias</label></Link>
             <Link to="/calculators" onClick={setCalculatorsRouteNav}><label id="routeCalculators" style={{textDecorationLine: underlineNav.calculators}}>Calculadoras</label></Link>
             <label className="LabelPage"><strong>

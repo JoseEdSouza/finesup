@@ -1,4 +1,4 @@
-.Logo{
+.LogoApresentation{
     position: absolute;
     width: 24.44vw;
     aspect-ratio: 1/1;
@@ -16,7 +16,7 @@
     left: 14.5vw;
 }
 
-#container{
+#containerApresentation{
     position: absolute;
     top: 29.88vh;
     right: 12.29vw;
@@ -27,7 +27,7 @@
     justify-content: center;
 }
 
-#labelInitial, #labelQuestion{
+#labelInitialApresentation, #labelQuestionApresentation{
     position: absolute;
     height: 8.2vh;
     width: 37vw;
@@ -40,15 +40,15 @@
     transform: translateX(-50%);
 }
 
-#labelInitial{
+#labelInitialApresentation{
     top:0%;
 }
 
-#labelQuestion{
+#labelQuestionApresentation{
     top: 25.87vh;
 }
 
-#createAccButton{
+#createAccButtonApresentation{
     font-family: "Open Sans";
     font-size: 2.5vh;
     width: 19.93vw;
@@ -62,10 +62,9 @@
     border-radius: 10px;
     left: 50%;
     transform: translateX(-50%);
-    border: 2px solid black;
 }
 
-#createAccButton:hover{
+#createAccButtonApresentation:hover{
     transform: scale(1.03);
     transform: translateX(-50%);
     background-color: #2E1E43;
@@ -73,7 +72,7 @@
     border: solid 1px #D1D3F1;
 }
 
-#loginButton{
+#loginButtonApresentation{
     font-family: "Open Sans";
     font-size: 2.5vh;
     width: 19.93vw;
@@ -90,7 +89,7 @@
     border: 1px solid #D1D3F1;
 }
 
-#loginButton:hover{
+#loginButtonApresentation:hover{
     transform: scale(1.03);
     transform: translateX(-50%);
     background-color: #D1D3F1;
@@ -98,7 +97,7 @@
     border: solid 3px #2E1E43;
 }
 
-#linha{
+#linhaApresentation{
     width: 110%; 
     color: white;
     size: 1;

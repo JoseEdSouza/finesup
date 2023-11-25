@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import "./ApresentationComponents.css"
 
 function ApresentationComponents(){
     return(
         <>
-            <img className="Logo" src="icon-logo.png" alt="Logo" />;
+            <img className="LogoRegister" src="icon-logo.png" alt="Logo" />;
             <label id="logoName">Fine's Up</label>
             <label id="labelUP">Dê um <strong>UP</strong> nas suas finanças!</label>
 
@@ -20,9 +21,11 @@ function ApresentationComponents(){
 
                 <label id="labelConfirm"><strong><strong>Confirmar senha</strong></strong></label>
                 <input type="confirmPassword" placeholder="••••••••" name="confirmPassword" className="inputConfirm" required></input>
-                <hr id="line"></hr>
-                <button id="buttonSubmit">Crie sua conta</button>
-                <label id="labelQuestion">Já passui cadastro? <a id="login" href="">Faça login</a></label>
+                <hr id="lineRegister"></hr>
+                <Link to="/home">
+                    <button id="buttonSubmit">Crie sua conta</button>
+                </Link>
+                <label id="labelQuestion">Já passui cadastro? <Link to="/login" id="login">Faça login</Link></label>
             </div>
         </>
     );

@@ -1,16 +1,21 @@
+import { Link } from "react-router-dom";
 import "./HomeApresentation.css"
 
 function HomeApresentation(){
     return(
         <>
-            <img className="Logo" src="icon-logo.png" alt="Logo" />;
+            <img className="LogoApresentation" src="/icon-logo.png" alt="Logo" />
             <label id="logoName">Fine's Up</label>
-            <div id="container">
-                <label id="labelInitial">Comece <strong>agora</strong> a se organizar financeiramente!</label>
-                <button id="createAccButton">Crie sua conta</button>
-                <hr id="linha"></hr>
-                <label id="labelQuestion">Já possui cadastro?</label>
-                <button id="loginButton">Faça login</button>
+            <div id="containerApresentation">
+                <label id="labelInitialApresentation">Comece <strong>agora</strong> a se organizar financeiramente!</label>
+                <Link to="/register">
+                    <button id="createAccButtonApresentation">Crie sua conta</button>
+                </Link>
+                <hr id="linhaApresentation"></hr>
+                <label id="labelQuestionApresentation">Já possui cadastro?</label>
+                <Link to="/login">
+                    <button id="loginButtonApresentation">Faça login</button>
+                </Link>
             </div>
         </>
     );
