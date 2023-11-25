@@ -1,5 +1,6 @@
 import AddButtonBudget from "../AddButton/AddButtonBudget"
 import DivCategoriesBud from "../DivCategoriesBud/DivCategoriesBud"
+import GraphicsMyBudgets from "../GraphicsMyBudgets/GraphicsMyBudgets"
 import TopicMyBudget from "../TopicMyBudget/TopicMyBudget"
 import "./MyBudgetComp.css"
 
@@ -12,6 +13,7 @@ function MyBudgetComp(){
                 <label id="totalBud"><strong>Orçamento total</strong></label>
             </div>
             <DivCategoriesBud/>
+            <GraphicsMyBudgets GraphicValues={[1, 2]}/>
         </>
     )
 }
