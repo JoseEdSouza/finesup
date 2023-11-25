@@ -10,7 +10,7 @@ class Auth:
 
     class AuthResponse(BaseModel):
         access_token: str
-    
+
     @staticmethod
     def token_response(token: str):
         return {
@@ -18,10 +18,11 @@ class Auth:
         }
 
     @staticmethod
-    def sign(id: int, email: str):
+    def sign(id: int, email: str, name: str):
         payload = {
             "user_id": id,
             "user_email": email,
+            "user_name": name,
             "expiry": time() + 3600
         }
         token = jwt.encode(payload, Auth._SECRET, algorithm=Auth._ALGORITHM)

@@ -20,7 +20,7 @@ class UserRoute:
             user = UserRoute.controller.signup(signup)
         except AlreadyExistsError:
             raise HTTPException(403, 'Already Exists')
-        return Auth.sign(user.user_id, user.email)
+        return Auth.sign(user.user_id, user.email, user.name)
 
     @staticmethod
     @router.post('/user/login', response_model=Auth.AuthResponse)
@@ -29,4 +29,4 @@ class UserRoute:
             user = UserRoute.controller.signin(login)
         except NotFoundError:
             raise HTTPException(404, 'Not Found')
-        return Auth.sign(user.user_id, user.email)
+        return Auth.sign(user.user_id, user.email, user.name)
