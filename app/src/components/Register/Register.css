@@ -26,6 +26,7 @@
 }
 
 #container{
+    justify-content: center;
     display: flex;
     position: absolute;
     background-color: #D1D3F1;
@@ -110,12 +111,11 @@
     color: #D1D3F1;
     border-style: none;
     cursor: pointer;
-    top: 34.17vh;
     border-radius: 8px;
     left: 50%;
     transform: translateX(-50%);
     border: 1px solid #D1D3F1;
-    top: 66.79vh;
+    top: 68.79vh;
 }
 
 #buttonSubmit:hover{
@@ -154,4 +154,11 @@
     color: #2E1E43;
     text-decoration: underline;
     cursor: pointer;
+}
+
+#registerError{
+    position: absolute;
+    font-size: 2.5vh;
+    color: #9E1313; 
+    bottom: 32.5%;
 }

@@ -22,7 +22,7 @@ function Register(){
     const onClickSignupButton = async () => {
         await register()
         .then((res) => setAccepted(res))
-        .catch((err) => setError(err.msg))
+        .catch((err) => setError(err.message))
     }
 
 
@@ -74,8 +74,8 @@ function Register(){
                     onChange={(inp) => setConfirmPassword(inp.target.value)}
                 />
                 <hr id="lineRegister"></hr>
+                {error === "" ? <></> : <div id="registerError">{error}</div>}
                 <button id="buttonSubmit" onClick={onClickSignupButton}>Crie sua conta</button>
-                {error === "" ? <></> : <div id="divError">{error}</div>}
                 <label id="labelQuestion">Já passui cadastro? <Link to="/login" id="login">Faça login</Link></label>
             </div>
         </>
