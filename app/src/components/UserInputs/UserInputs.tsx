@@ -4,7 +4,7 @@ function UserInputs(){
     return(
         <div id="divUserI">
             <label id="nameU"><strong>Nome</strong></label>
-            <input type="text" id="nameUser"/>
+            <input id="nameUser"/>
 
             <label id="emailU"><strong>E-mail</strong></label>
             <input type="email" id="emailUser" placeholder="myemail@example.com"/>

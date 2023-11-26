@@ -1,7 +1,7 @@
 #divUserButtons{
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 38vw;
+    height: 25%;
     bottom: 4.29vh;
     left: 50%;
     transform: translateX(-50%);
@@ -9,7 +9,7 @@
 
 
 #linkToCancel{
-    position: absolute;
+    position: relative;
     height: 2.34vh;
     width: 20vw;
     left: 50%;
@@ -17,15 +17,15 @@
     bottom: 0;
     display: flex;
     justify-content: center;
+    top: 14vh;
 }
 
 #deleteButton{
-    position: absolute;
+    position: relative;
     left: 50%;
     transform: translateX(-50%);
     width: 34.54vw;
     height: 5.95vh;
-    top: 100.7vh;
     border-radius: 10px;
     background-color: var(--primaryColor);
     color: white;
@@ -33,6 +33,8 @@
     border-style: none;
     font-size: 2.3vh;
     cursor: pointer;
+    bottom: 0px;
+    top: 2vh;
 }
 
 #deleteButton:hover{
@@ -55,12 +57,11 @@
 }
 
 #createButtonU{
-    position: absolute;
+    position: relative;
     left: 50%;
     transform: translateX(-50%);
     width: 28.54vw;
     height: 5.95vh;
-    top: 115.7vh;
     border-radius: 10px;
     background-color: var(--primaryColor);
     color: white;
@@ -68,6 +69,8 @@
     border-style: none;
     font-size: 2.3vh;
     cursor: pointer;
+    bottom: 0px;
+    top: 12vh;
 }
 
 #createButtonU:hover{

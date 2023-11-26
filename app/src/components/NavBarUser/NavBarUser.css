@@ -1,3 +1,15 @@
+#navBarUser{
+    align-items: center;
+    display: flex;
+    position: fixed;
+    z-index: 4;
+    background-color: #D1D3F1;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    top: 0;
+    height: 11.7%;
+    width: 100vw;
+}
+
 #outButton{
     position: relative;
     width: 16.25vw;
@@ -17,4 +29,11 @@
     background-color: #D1D3F1;
     color: #2E1E43;
     border: solid 3px #2E1E43;
+}
+
+#labelPageUser{
+    font-family: "Open Sans";
+    font-size: 22px;
+    color: #2E1E43;
+    padding-left: 4vw;
 }
