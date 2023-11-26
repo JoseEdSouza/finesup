@@ -42,9 +42,7 @@ class Session {
     }
 
     static createInstance(token: string, password: string): Session {
-        if (Session.instance === null) {
-            Session.instance = new Session(token, password)
-        }
+        Session.instance = new Session(token, password)
         return Session.instance
     }
 }
