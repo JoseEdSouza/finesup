@@ -7,11 +7,11 @@ from api.src.models.transaction import Transaction, Expense, Revenue
 class TransactionDAO(ABC):
 
     @abstractmethod
-    def add(self, transaction: Transaction) -> bool:
+    def add(self, transaction: Transaction) -> Transaction | None:
         pass
 
     @abstractmethod
-    def update(self, t_id: int, transaction: Transaction) -> bool:
+    def update(self, t_id: int, transaction: Transaction) -> Transaction | None:
         pass
 
     @abstractmethod
@@ -39,21 +39,37 @@ class ExpenseDAOImp(TransactionDAO):
     def __save(self):
         self.__conn.commit()
 
-    def add(self, transaction: Expense) -> bool:
+    def __rollback(self):
+        self.__conn.rollback()
+
+    def add(self, transaction: Expense) -> Expense | None:
         values = (transaction.user_id, transaction.name, transaction.description, transaction.value,
                   transaction.purchase_date, transaction.cat)
         try:
             self.__cursor.execute('''
             INSERT INTO expenses(user_id,name,description,value,purchase_date,ex_cat_id)
             VALUES (%s,%s,%s,%s,%s,%s)
+            RETURNING id;
             ''', values)
             self.__save()
-            return True
+            res = self.__cursor.fetchone()
+            if res is None:
+                return None
+            return Expense(
+                id=res[0],
+                name=transaction.name,
+                description=transaction.description,
+                value=transaction.value,
+                purchase_date=transaction.purchase_date,
+                user_id=transaction.user_id,
+                cat=transaction.cat
+            )
         except pg.Error as e:
             print(e)
-            return False
+            self.__rollback()
+            return None
 
-    def update(self, t_id: int, transaction: Expense) -> bool:
+    def update(self, t_id: int, transaction: Expense) -> Expense | None:
 
         values = (transaction.name, transaction.description, transaction.value,
                   transaction.purchase_date, transaction.cat, t_id)
@@ -68,10 +84,19 @@ class ExpenseDAOImp(TransactionDAO):
             WHERE id = %s
             ''', values)
             self.__save()
-            return True
+            return Expense(
+                id=t_id,
+                name=transaction.name,
+                description=transaction.description,
+                value=transaction.value,
+                purchase_date=transaction.purchase_date,
+                user_id=transaction.user_id,
+                cat=transaction.cat
+            )
         except pg.Error as e:
             print(e)
-            return False
+            self.__rollback()
+            return None
 
     def remove(self, t_id: int) -> bool:
         try:
@@ -82,14 +107,14 @@ class ExpenseDAOImp(TransactionDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def get(self, t_id: int) -> Expense | None:
         try:
             self.__cursor.execute('''
-            SELECT ex.id,ex.name,ex.description,ex.value,ex.purchase_date,ex.user_id,ex.ex_cat_id,ec.name
+            SELECT ex.id,ex.name,ex.description,ex.value,ex.purchase_date,ex.user_id,ex.ex_cat_id
             FROM expenses ex
-            JOIN expense_categories ec ON ex.id = ec.id
             WHERE ex.id = %s
             ''', (t_id,))
             exp = self.__cursor.fetchone()
@@ -111,9 +136,8 @@ class ExpenseDAOImp(TransactionDAO):
     def get_all(self, user_id: int) -> list[Expense] | None:
         try:
             self.__cursor.execute('''
-            SELECT ex.id,ex.name,ex.description,ex.value,ex.purchase_date,ex.user_id,ex.ex_cat_id,ec.name
+            SELECT ex.id,ex.name,ex.description,ex.value,ex.purchase_date,ex.user_id,ex.ex_cat_id
             FROM expenses ex
-            JOIN expense_categories ec ON ex.id = ec.id
             WHERE ex.user_id = %s
             ''', (user_id,))
             list_expenses = self.__cursor.fetchall()
@@ -146,21 +170,37 @@ class RevenueDAOImp(TransactionDAO):
     def __save(self):
         self.__conn.commit()
 
-    def add(self, transaction: Revenue) -> bool:
+    def __rollback(self):
+        self.__conn.rollback()
+
+    def add(self, transaction: Revenue) -> Revenue | None:
         values = (transaction.user_id, transaction.name, transaction.description, transaction.value,
                   transaction.purchase_date, transaction.cat)
         try:
             self.__cursor.execute('''
             INSERT INTO revenues(user_id,name,description,value,purchase_date,rev_cat_id)
             VALUES (%s,%s,%s,%s,%s,%s)
+            RETURNING id;
             ''', values)
             self.__save()
-            return True
+            res = self.__cursor.fetchone()
+            if res is None:
+                return None
+            return Revenue(
+                id=res[0],
+                name=transaction.name,
+                description=transaction.description,
+                value=transaction.value,
+                purchase_date=transaction.purchase_date,
+                user_id=transaction.user_id,
+                cat=transaction.cat
+            )
         except pg.Error as e:
             print(e)
-            return False
+            self.__rollback()
+            return None
 
-    def update(self, t_id: int, transaction: Revenue) -> bool:
+    def update(self, t_id: int, transaction: Revenue) -> Revenue | None:
         values = (transaction.name, transaction.description, transaction.value,
                   transaction.purchase_date, transaction.cat, t_id)
         try:
@@ -174,10 +214,19 @@ class RevenueDAOImp(TransactionDAO):
             WHERE id = %s
             ''', values)
             self.__save()
-            return True
+            return Revenue(
+                id=t_id,
+                name=transaction.name,
+                description=transaction.description,
+                value=transaction.value,
+                purchase_date=transaction.purchase_date,
+                user_id=transaction.user_id,
+                cat=transaction.cat
+            )
         except pg.Error as e:
             print(e)
-            return False
+            self.__rollback()
+            return None
 
     def remove(self, t_id: int) -> bool:
         try:
@@ -188,6 +237,7 @@ class RevenueDAOImp(TransactionDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def get(self, t_id: int) -> Revenue | None:

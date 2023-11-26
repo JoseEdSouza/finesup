@@ -20,8 +20,8 @@ export class Box {
             json.user_id,
             json.name,
             json.description,
-            json.actual_value,
             json.final_value,
+            json.actual_value,
             json.concluded)
     }
 
@@ -34,8 +34,8 @@ export class Box {
             user_id: this.userId,
             name: this.name,
             description: this.description,
-            actual_value: this.actualValue,
             final_value: this.finalValue,
+            actual_value: this.actualValue,
             concluded: this.concluded
         }
     }

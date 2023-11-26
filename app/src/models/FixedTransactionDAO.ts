@@ -1,95 +1,54 @@
-import ApiSettings from "../config/ApiSettings";
 import { FixedExpense, FixedRevenue } from "./FixedTransaction";
-import { Nullable } from "../types"
+import Session from "../services/Session";
+import Endpoints from "../utils/Endpoints";
 
 
 class FixedRevenueDAO {
-
-    async get(id: number): Promise<Nullable<FixedRevenue>> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/fixedrevenue/${id}`)
-        const response: Response = await fetch(req)
-        if (response.status !== 200) {
-            throw new Error('FixedRevenue not found')
-        }
-        const fixed_revenue: any = await response.json()
-        return FixedRevenue.fromJson(fixed_revenue)
+    private get session() {
+        return Session.getInstance()
     }
 
-    async getAll(userId: number): Promise<FixedRevenue[]> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/all/fixedrevenue/${userId}`)
-        const response: Response = await fetch(req)
-        if (response.status !== 200) {
-            throw new Error('user not found')
-        }
-        const fixed_revenues: any = await response.json()
-        return FixedRevenue.fromJsonArray(fixed_revenues)
+    private headers = {
+        'accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.session.token}`
     }
 
-    async add(fixed_revenue: FixedRevenue): Promise<Nullable<FixedRevenue>> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/fixedrevenue`, {
-            method: 'POST',
-            body: fixed_revenue.toString(),
-            headers: { 'Content-Type': 'application/json' }
+    async get(id: number): Promise<FixedRevenue> {
+        const req: Request = new Request(`${Endpoints.FIXED_REVENUE}/${id}`, {
+            method: 'GET',
+            headers: this.headers
         })
         const response: Response = await fetch(req)
-        if (response.status !== 200) {
+        if (response.status === 404) {
+            throw new Error('Item not found')
+        } else if (response.status !== 200) {
             throw new Error(response.statusText)
         }
-        const addedFixedRevenue: any = await response.json()
-        return FixedRevenue.fromJson(addedFixedRevenue)
+        const fixedexpense: any = await response.json()
+        return FixedExpense.fromJson(fixedexpense)
     }
 
-    async update(id: number, fixed_revenue: FixedRevenue): Promise<Nullable<FixedRevenue>> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/fixedrevenue/${id}`, {
-            method: 'PUT',
-            body: fixed_revenue.toString(),
-            headers: { 'Content-Type': 'application/json' }
+    async getAll(): Promise<FixedRevenue[]> {
+        const req: Request = new Request(Endpoints.FIXED_REVENUE_ALL, {
+            method: 'GET',
+            headers: this.headers
         })
         const response: Response = await fetch(req)
-        if (response.status !== 200) {
+        if (response.status === 404) {
+            throw new Error('Item not found')
+        } else if (response.status !== 200) {
             throw new Error(response.statusText)
         }
-        const updatedFixedRevenue: any = await response.json()
-        return FixedRevenue.fromJson(updatedFixedRevenue)
+        const fixedexpenses: any = await response.json()
+        return FixedExpense.fromJsonArray(fixedexpenses)
     }
 
-    async delete(id: number): Promise<Boolean> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/fixedrevenue/${id}`, {
-            method: 'DELETE'
-        })
-        const response: Response = await fetch(req)
-        console.log(response.status, response.statusText)
-        return response.status === 200
-    }
-}
-
-class FixedExpenseDAO {
-
-    async get(id: number): Promise<Nullable<FixedExpense>> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/fixedexpense/${id}`)
-        const response: Response = await fetch(req)
-        if (response.status !== 200) {
-            throw new Error('FixedExpense not found')
-        }
-        const fixed_expense: any = await response.json()
-        return FixedExpense.fromJson(fixed_expense)
-    }
-
-    async getAll(userId: number): Promise<FixedExpense[]> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/all/fixedexpense/${userId}`)
-        const response: Response = await fetch(req)
-        if (response.status !== 200) {
-            throw new Error('user not found')
-        }
-        const fixed_expenses: any = await response.json()
-        return FixedExpense.fromJsonArray(fixed_expenses)
-    }
-
-    async add(fixed_expense: FixedExpense): Promise<Nullable<FixedExpense>> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/fixedexpense`, {
+    async add(fixedexpense: FixedRevenue): Promise<FixedRevenue> {
+        const req: Request = new Request(Endpoints.FIXED_REVENUE, {
             method: 'POST',
-            body: fixed_expense.toString(),
-            headers: { 'Content-Type': 'application/json' }
+            body: fixedexpense.toString(),
+            headers: this.headers
         })
         const response: Response = await fetch(req)
         if (response.status !== 200) {
@@ -99,11 +58,11 @@ class FixedExpenseDAO {
         return FixedExpense.fromJson(addedFixedExpense)
     }
 
-    async update(id: number, fixed_expense: FixedExpense): Promise<Nullable<FixedExpense>> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/fixedexpense/${id}`, {
+    async update(id: number, fixedexpense: FixedRevenue): Promise<FixedRevenue> {
+        const req: Request = new Request(`${Endpoints.FIXED_REVENUE}/${id}`, {
             method: 'PUT',
-            body: fixed_expense.toString(),
-            headers: { 'Content-Type': 'application/json' }
+            body: fixedexpense.toString(),
+            headers: this.headers
         })
         const response: Response = await fetch(req)
         if (response.status !== 200) {
@@ -114,8 +73,89 @@ class FixedExpenseDAO {
     }
 
     async delete(id: number): Promise<Boolean> {
-        const req: Request = new Request(`${ApiSettings.BASEURL}/fixedexpense/${id}`, {
-            method: 'DELETE'
+        const req: Request = new Request(`${Endpoints.FIXED_REVENUE}/${id}`, {
+            method: 'DELETE',
+            headers: this.headers
+        })
+        const response: Response = await fetch(req)
+        console.log(response.status, response.statusText)
+        return response.status === 200
+    }
+}
+
+class FixedExpenseDAO {
+    private get session() {
+        return Session.getInstance()
+    }
+
+    private headers = {
+        'accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.session.token}`
+    }
+
+    async get(id: number): Promise<FixedExpense> {
+        const req: Request = new Request(`${Endpoints.FIXED_EXPENSE}/${id}`, {
+            method: 'GET',
+            headers: this.headers
+        })
+        const response: Response = await fetch(req)
+        if (response.status === 404) {
+            throw new Error('Item not found')
+        } else if (response.status !== 200) {
+            throw new Error(response.statusText)
+        }
+        const fixedexpense: any = await response.json()
+        return FixedExpense.fromJson(fixedexpense)
+    }
+
+    async getAll(): Promise<FixedExpense[]> {
+        const req: Request = new Request(Endpoints.FIXED_EXPENSE_ALL, {
+            method: 'GET',
+            headers: this.headers
+        })
+        const response: Response = await fetch(req)
+        if (response.status === 404) {
+            throw new Error('Item not found')
+        } else if (response.status !== 200) {
+            throw new Error(response.statusText)
+        }
+        const fixedexpenses: any = await response.json()
+        return FixedExpense.fromJsonArray(fixedexpenses)
+    }
+
+    async add(fixedexpense: FixedExpense): Promise<FixedExpense> {
+        const req: Request = new Request(Endpoints.FIXED_EXPENSE, {
+            method: 'POST',
+            body: fixedexpense.toString(),
+            headers: this.headers
+        })
+        const response: Response = await fetch(req)
+        if (response.status !== 200) {
+            throw new Error(response.statusText)
+        }
+        const addedFixedExpense: any = await response.json()
+        return FixedExpense.fromJson(addedFixedExpense)
+    }
+
+    async update(id: number, fixedexpense: FixedExpense): Promise<FixedExpense> {
+        const req: Request = new Request(`${Endpoints.FIXED_EXPENSE}/${id}`, {
+            method: 'PUT',
+            body: fixedexpense.toString(),
+            headers: this.headers
+        })
+        const response: Response = await fetch(req)
+        if (response.status !== 200) {
+            throw new Error(response.statusText)
+        }
+        const updatedFixedExpense: any = await response.json()
+        return FixedExpense.fromJson(updatedFixedExpense)
+    }
+
+    async delete(id: number): Promise<Boolean> {
+        const req: Request = new Request(`${Endpoints.FIXED_EXPENSE}/${id}`, {
+            method: 'DELETE',
+            headers: this.headers
         })
         const response: Response = await fetch(req)
         console.log(response.status, response.statusText)
