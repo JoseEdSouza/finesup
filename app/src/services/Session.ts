@@ -1,4 +1,4 @@
-import * as jwt from 'jsonwebtoken';
+import { jwtDecode } from 'jwt-decode'
 import Auth from './Auth';
 import { Nullable, DecodedToken } from '../types';
 import User from '../models/User';
@@ -37,7 +37,7 @@ class Session {
     }
 
     private decodeJWT() {
-        const decodedToken = jwt.decode(this.token) as DecodedToken
+        const decodedToken = jwtDecode(this.token) as DecodedToken
         return decodedToken
     }
 
