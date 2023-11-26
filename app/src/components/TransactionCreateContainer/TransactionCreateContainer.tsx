@@ -11,19 +11,18 @@ import TransactionCreatePeriod from "../TransactionCreatePeriod/TransactionCreat
 import TransactionCreateTime from "../TransactionCreateRepeat/TransactionCreateRepeat"
 import TransactionCreatePortion from "../TransactionCreatePortion/TransactionCreatePortion"
 
-function TransactionCreateContainer() {
+function TransactionCreateContainer(props:{value:number}) {
     const [typeTransacttion, setTypeTransacttion] = useState(0)
-    const [valueTransaction, setValueTransaction] = useState(0)
 
     return (
         <div id="containerAux" style={typeTransacttion === 1 ? { height: "141.89vh" } : { height: "125vh" }}>
             <div id="transactionCreateconatiner" style={typeTransacttion === 1 ? { height: "129.58vh" } : { height: "117vh" }}>
-                <TransactionCreateName />
-                <TransactionCreateValue handleValue={setValueTransaction}/>
+                <TransactionCreateName editable={0} name=""/>
+                <TransactionCreateValue/>
                 <TransactionCreateDate />
                 <TransactionCreateTime />
                 {typeTransacttion === 1 ?
-                    <TransactionCreatePortion transactionValue={valueTransaction}/>
+                    <TransactionCreatePortion transactionValue={props.value}/>
                     : <></>}
                 <TransactionCreatePeriod />
                 <DisplayReveneExpense setTypeTransactions={setTypeTransacttion} bottom="59.5" />

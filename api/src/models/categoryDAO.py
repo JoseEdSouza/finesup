@@ -6,11 +6,11 @@ from api.src.models.category import Category, ExpenseCategory, RevenueCategory
 
 class CategoryDAO(ABC):
     @abstractmethod
-    def add(self, category: Category) -> bool:
+    def add(self, category: Category) -> Category | None:
         pass
 
     @abstractmethod
-    def update(self, cat_id: int, category: Category) -> bool:
+    def update(self, cat_id: int, category: Category) -> Category | None:
         pass
 
     @abstractmethod
@@ -38,22 +38,27 @@ class ExpenseCategoryDAOImp(CategoryDAO):
     def __save(self):
         self.__conn.commit()
 
-    def add(self, category: ExpenseCategory) -> bool:
+    def add(self, category: ExpenseCategory) -> ExpenseCategory | None:
         values = (category.name,)
         try:
             self.__cursor.execute('''
             INSERT INTO expense_categories (name)
             VALUES (%s)
+            RETURNING id
             ''', values)
-
             self.__save()
-
-            return True
+            res = self.__cursor.fetone()
+            if res is None:
+                return None
+            return ExpenseCategory(
+                id=res[0],
+                name=category.name
+            )
         except pg.Error as e:
             print(e)
-            return False
+            return None
 
-    def update(self, cat_id: int, category: ExpenseCategory) -> bool:
+    def update(self, cat_id: int, category: ExpenseCategory) -> ExpenseCategory | None:
         values = (category.name, cat_id)
         try:
             self.__cursor.execute('''
@@ -62,10 +67,13 @@ class ExpenseCategoryDAOImp(CategoryDAO):
             WHERE id = %s
             ''', values)
             self.__save()
-            return True
+            return ExpenseCategory(
+                id=cat_id,
+                name=category.name
+            )
         except pg.Error as e:
             print(e)
-            return False
+            return None
 
     def remove(self, cat_id: int) -> bool:
         try:
@@ -116,20 +124,29 @@ class RevenueCategoryDAOImp(CategoryDAO):
     def __save(self):
         self.__conn.commit()
 
-    def add(self, category: RevenueCategory) -> bool:
+    def __rollback(self):
+        self.__conn.rollback()
+
+    def add(self, category: RevenueCategory) -> RevenueCategory | None:
         values = (category.name,)
         try:
             self.__cursor.execute('''
             INSERT INTO revenue_categories (name)
             VALUES (%s)
+            RETURNING id
             ''', values)
             self.__save()
-            return True
+            res = self.__cursor.fetchone()
+            return RevenueCategory(
+                id=res[0],
+                name=category.name
+            )
         except pg.Error as e:
             print(e)
-            return False
+            self.__rollback()
+            return None
 
-    def update(self, cat_id: int, category: RevenueCategory) -> bool:
+    def update(self, cat_id: int, category: RevenueCategory) -> RevenueCategory | None:
         values = (category.name, cat_id)
         try:
             self.__cursor.execute('''
@@ -138,10 +155,14 @@ class RevenueCategoryDAOImp(CategoryDAO):
             WHERE id = %s
             ''', values)
             self.__save()
-            return True
+            return RevenueCategory(
+                id=cat_id,
+                name=category.name
+            )
         except pg.Error as e:
             print(e)
-            return False
+            self.__rollback()
+            return None
 
     def remove(self, cat_id: int) -> bool:
         try:
@@ -152,6 +173,7 @@ class RevenueCategoryDAOImp(CategoryDAO):
             return True
         except pg.Error as e:
             print(e)
+            self.__rollback()
             return False
 
     def get(self, cat_id: int) -> RevenueCategory | None:

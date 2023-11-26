@@ -1,53 +1,89 @@
-import ApiSettings from "../config/ApiSettings";
 import Budget from "./Budget";
-import { Nullable } from "../types";
+import Session from "../services/Session";
+import Endpoints from "../utils/Endpoints";
 
 class BudgetDAO {
-    async get(userId: number, categoryId: number): Promise<Nullable<Budget>> {
-        const response = await fetch(`${ApiSettings.BASEURL}/budget/${userId}/${categoryId}`)
-        const json = await response.json()
-        return Budget.fromJson(json)
+    private headers = {
+        'accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.session.token}`
+    }
+    private get session() {
+        return Session.getInstance()
     }
 
-    async getAll(userId: number): Promise<Budget[]> {
-        const response = await fetch(`${ApiSettings.BASEURL}/budget/${userId}`)
-        const json = await response.json()
-        return Budget.fromJsonArray(json)
+    async get(cat_id:number): Promise<Budget> {
+        const req: Request = new Request(`${Endpoints.BUDGET}/${cat_id}`, {
+            method: 'GET',
+            headers: this.headers
+
+        })
+        const response: Response = await fetch(req)
+        if (response.status === 404) {
+            throw new Error('Item not found')
+        } else if (response.status !== 200) {
+            throw new Error(response.statusText)
+        }
+        const budget: any = await response.json()
+        return Budget.fromJson(budget)
     }
+
+    async getAll(): Promise<Budget[]> {
+        const req: Request = new Request(Endpoints.BUDGET_ALL, {
+            method: 'GET',
+            headers: this.headers
+        })
+        const response: Response = await fetch(req)
+        if (response.status === 404) {
+            throw new Error('Item not found')
+        } else if (response.status !== 200) {
+            throw new Error(response.statusText)
+        }
+        const budgets: any = await response.json()
+        return Budget.fromJsonArray(budgets)
+    } 
 
     async add(budget: Budget): Promise<Budget> {
-        const req = new Request(`${ApiSettings.BASEURL}/budget`, {
+        const req: Request = new Request(Endpoints.BUDGET, {
             method: 'POST',
             body: budget.toString(),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            headers: this.headers
         })
-        const response = await fetch(req)
-        const json = await response.json()
-        return Budget.fromJson(json)
+        const response: Response = await fetch(req)
+        if (response.status !== 200) {
+            throw new Error(response.statusText)
+        }
+        const addedBudget: any = await response.json()
+        return Budget.fromJson(addedBudget)
     }
 
-    async update(userId: number, categoryId: number, budget: Budget): Promise<Budget> {
-        const req = new Request(`${ApiSettings.BASEURL}/budget/${userId}/${categoryId}`, {
+    async update(cat_id: number, budget: Budget): Promise<Budget> {
+        const req: Request = new Request(`${Endpoints.BUDGET}/${cat_id}`, {
             method: 'PUT',
             body: budget.toString(),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            headers: this.headers
         })
-        const response = await fetch(req)
-        const json = await response.json()
-        return Budget.fromJson(json)
+        const response: Response = await fetch(req)
+        if (response.status !== 200) {
+            throw new Error(response.statusText)
+        }
+        const updatedBudget: any = await response.json()
+        return Budget.fromJson(updatedBudget)
     }
 
-    async delete(userId: number, categoryId: number): Promise<Boolean> {
-        const req = new Request(`${ApiSettings.BASEURL}/budget/${userId}/${categoryId}`, {
-            method: 'DELETE'
+    async delete(cat_id: number): Promise<Budget> {
+        const req: Request = new Request(`${Endpoints.BUDGET}/${cat_id}`, {
+            method: 'DELETE',
+            headers: this.headers
         })
-        const response = await fetch(req)
-        return response.status === 200
+        const response: Response = await fetch(req)
+        if (response.status !== 200) {
+            throw new Error(response.statusText)
+        }
+        const deletedBudget: any = await response.json()
+        return Budget.fromJson(deletedBudget)
     }
+
 }
 
 export default BudgetDAO

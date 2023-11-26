@@ -32,6 +32,7 @@
 
 .TypeTransaction{
     position: absolute;
+    color: var(--primaryColor);
     font-family: "Open Sans";
     font-size: 10px;
     left: 80px;

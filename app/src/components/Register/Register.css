@@ -1,0 +1,164 @@
+.LogoRegister{
+    position: absolute;
+    width: 24.44vw;
+    aspect-ratio: 1/1;
+    top: 16.40vh;
+    left: 12.77vw;
+
+}
+
+#logoName{
+    position: absolute;
+    color: white;
+    font-family: "Open Sans";
+    font-size: 6.8vh;
+    top: 60vh;
+    left: 14.5vw;
+}
+
+#labelUP{
+    position: absolute;
+    color: white;
+    font-family: "Open Sans";
+    font-size: 2.83vh;
+    top: 75.48vh;
+    left: 11.31vw;
+}
+
+#container{
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    background-color: #D1D3F1;
+    height: 100%;
+    width: 50%;
+    left: 50%;
+    top: 0;
+}
+
+#labelSlogan{
+    position: absolute;
+    top: 5.93vh;
+    left: 4.5vw;
+    font-family: "Open Sans";
+    font-size: 3.12vh;
+    width: 31vw;
+    height: 10vh;
+}
+
+#labelName, #labelEmail, #labelPassword, #labelConfirm{
+    position: absolute;
+    font-size: 2.34vh;
+    font-family: "Open Sans";
+}
+
+#labelName{
+    top: 16.40vh;
+    left: 4.5vw;
+}
+
+#labelEmail{
+    top: 28.41vh;
+    left: 4.5vw;
+}
+
+#labelPassword{
+    top: 40.42vh;
+    left: 4.5vw;
+}
+
+#labelConfirm{
+    top: 52.44vh;
+    left: 4.5vw;
+}
+
+.inputName, .inputEmail, .inputPassword, .inputConfirm{
+    height:6.25vh;
+    width: 40.83vw;
+    font-family: "Open Sans";
+    border: 3px;
+    border-radius: 8px;
+    position: absolute;
+}
+
+.inputName{
+    top: 20.60vh;
+    left: 4.5vw;
+}
+
+.inputEmail{
+    top: 32.61vh;
+    left: 4.5vw;
+}
+
+.inputPassword{
+    top: 44.62vh;
+    left: 4.5vw;
+}
+
+.inputConfirm{
+    top: 56.64vh;
+    left: 4.5vw;
+}
+
+#buttonSubmit{
+    position: absolute;
+    font-family: "Open Sans";
+    font-size: 2.5vh;
+    width: 24.86vw;
+    height: 5.95vh;
+    background-color: #2E1E43;
+    color: #D1D3F1;
+    border-style: none;
+    cursor: pointer;
+    border-radius: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #D1D3F1;
+    top: 68.79vh;
+}
+
+#buttonSubmit:hover{
+    transform: scale(1.03);
+    background-color: #D1D3F1;
+    color: #2E1E43;
+    border: solid 1px #2E1E43;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#lineRegister{
+    width: 38.19vw;
+    border: none;
+    border-top: 1px solid black;
+    color: black;
+    size: 1;
+    position: absolute;
+    top: 77.14vh;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#labelQuestion{
+    position: absolute;
+    font-size: 3.12vh;
+    width: 31vw;
+    font-family: "Open Sans";
+    top: 81.01vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#login{
+    color: #2E1E43;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#registerError{
+    position: absolute;
+    font-size: 2.5vh;
+    color: #9E1313; 
+    bottom: 32.5%;
+}
