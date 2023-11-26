@@ -9,7 +9,7 @@ class ValidateLoginEmail extends AuthBaseHandler {
         const validateEmail = (email: string) => {
             return regex.test(email.toLowerCase())
         };
-        if (validateEmail(email) === false)
+        if (!validateEmail(email))
             throw new Error('Email inválido')
         if (this.next === null)
             return true

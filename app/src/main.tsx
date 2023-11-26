@@ -20,7 +20,7 @@ import BudgetDetail from './pages/BudgetDetail.tsx'
 import BudgetEdit from './pages/BudgetEdit.tsx'
 import Login from './pages/Login.tsx'
 import NavBarHome from './components/NavBarHome/NavBarHome.tsx'
-import AprensentationScreen from './pages/ApesentationScreen.tsx'
+import RegisterScreen from './pages/RegisterScreen.tsx'
 import ApresentationRoute from './Routes/ApresentationRoute.tsx'
 import DetailedTransaction from './pages/DetailedTransaction.tsx'
 
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
       }, 
       {
         path: "/register",
-        element: <AprensentationScreen/>
+        element: <RegisterScreen/>
       },
       {
         path: "/home",

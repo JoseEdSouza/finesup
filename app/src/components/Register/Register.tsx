@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
-import "./ApresentationComponents.css"
+import "./Register.css"
 import UserController from "../../controllers/UserController";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ApresentationComponents(){
+function Register(){
     const [name,setName] = useState("")
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
     const [confirmPassword,setConfirmPassword] = useState("")
     const [isAccepted, setAccepted] = useState(false);
+    const [error, setError] = useState("");
     const navigate = useNavigate();
     const register = () => UserController.signup(name,email,password,confirmPassword)
     
@@ -19,8 +20,11 @@ function ApresentationComponents(){
     }
 
     const onClickSignupButton = async () => {
-        await register().then((res) => setAccepted(res));
+        await register()
+        .then((res) => setAccepted(res))
+        .catch((err) => setError(err.msg))
     }
+
 
     useEffect(() => {
         redirect();
@@ -71,10 +75,11 @@ function ApresentationComponents(){
                 />
                 <hr id="lineRegister"></hr>
                 <button id="buttonSubmit" onClick={onClickSignupButton}>Crie sua conta</button>
+                {error === "" ? <></> : <div id="divError">{error}</div>}
                 <label id="labelQuestion">Já passui cadastro? <Link to="/login" id="login">Faça login</Link></label>
             </div>
         </>
     );
 }
 
-export default ApresentationComponents;
+export default Register;
