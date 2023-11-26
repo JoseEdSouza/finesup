@@ -5,19 +5,19 @@ import Session from "../services/Session";
 
 class UserController {
 
-
-    static login(email: string, password: string):boolean {
+    static async login(email: string, password: string): Promise<boolean> {
         const handler = new LoginHandler()
         handler.setNextHandler(new ValidateUserEmail())
             .setNextHandler(new ValidateUserPassword())
         if (handler.handle(email, password)) {
-            let logged = false
-            Auth.login(email, password)
-            .then(res =>{
+            try {
+                const res = await Auth.login(email, password)
                 Session.createInstance(res, password)
-                logged = true
-            }).catch(console.log)
-            return logged
+                return true
+            } catch (error) {
+                console.log(error)
+                return false
+            }
         }
         return false
     }

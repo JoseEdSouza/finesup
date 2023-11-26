@@ -16,9 +16,7 @@ function LoginScreen() {
             <img src="/icon-logo.png" style={{ position: "relative", top: "-80%", height: "25vh" }} />
             <EmailGroup setEmail={setEmail} />
             <PasswordGroup setPassword={setPassword}/>
-            <Link to="/home">
-                <LoginButton login={login} />
-            </Link>
+            <LoginButton login={login} />
             <label id="loginToRegisterLabel"> Não tem Conta ? <Link to="/register" style={{ color: "var(--primaryColor)" }}>Cadastre-se</Link></label>
         </div>
     );
