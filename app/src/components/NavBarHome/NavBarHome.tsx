@@ -57,7 +57,8 @@ function NavBarHome(){
             <Link to="/home" onClick={setHomeRouteNav} ><label id="routeHome" style={{textDecorationLine: underlineNav.home}}>Home</label></Link>
             <Link to="/categories" onClick={setCategoriesRouteNav}><label id="routeCategories" style={{textDecorationLine: underlineNav.categories}}>Categorias</label></Link>
             <Link to="/calculators" onClick={setCalculatorsRouteNav}><label id="routeCalculators" style={{textDecorationLine: underlineNav.calculators}}>Calculadoras</label></Link>
-            <Link to="/user" onClick={setUserRouteNav}><label id="routeUser" style={{textDecorationLine: underlineNav.calculators}}>Usuário</label></Link>
+            <Link to="/user" onClick={setUserRouteNav}><img src="./icon_u.svg" id="routeUser" style={{textDecorationLine: underlineNav.user}}/></Link>
+                                                        
             <label className="LabelPage"><strong>
                 {isRouteNav}
             </strong></label>

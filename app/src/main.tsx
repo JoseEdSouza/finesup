@@ -23,6 +23,7 @@ import NavBarHome from './components/NavBarHome/NavBarHome.tsx'
 import RegisterScreen from './pages/RegisterScreen.tsx'
 import ApresentationRoute from './Routes/ApresentationRoute.tsx'
 import DetailedTransaction from './pages/DetailedTransaction.tsx'
+import UserScreen from './pages/UserScreen.tsx'
 
 const router = createBrowserRouter([
   {
