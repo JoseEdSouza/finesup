@@ -1,9 +1,6 @@
 .BackIcon{
     position: absolute;
-    width: 4vw;
-    height: 7vh;
-    left: 3%;
-    top: 11.7%;
+    height: 6vh;
     cursor: pointer;
-    z-index: 7;
+    z-index: 4;
 }

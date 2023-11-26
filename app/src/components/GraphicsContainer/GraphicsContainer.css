@@ -1,0 +1,12 @@
+#graphicsContainer{
+    position: absolute;
+    background-color: var(--secondaryColor);
+    height: 77.05vh;
+    width: 45.55vw;
+    bottom: 6.05vh;
+    left: 5.55vw;
+    border-radius: 20px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}

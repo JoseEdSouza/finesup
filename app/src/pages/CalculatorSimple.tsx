@@ -1,10 +1,10 @@
-import NavBar from "../components/NavBar/NavBar";
+import NavBar from "../components/NavBarHome/NavBarHome";
 import CalculatorSelectorSimple from "../components/CalculatorSelectorSimple/CalculatorSelectorSimple";
 
 function CalculatorSimple(){
     return(
         <>
-            <NavBar name="Calculadora de Juros Simples"/>
+            <NavBar/>
             <CalculatorSelectorSimple/>
         </>
     );

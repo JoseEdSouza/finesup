@@ -1,0 +1,47 @@
+.NavBar{
+    align-items: center;
+    display: flex;
+    position: fixed;
+    z-index: 3;
+    background-color: #D1D3F1;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    top: 0;
+    height: 11.7%;
+    width: 100vw;
+}
+
+#homeLogo{
+    position: relative;
+    height: 8vh;
+    left: 3%;
+}
+
+.LabelPage{
+    font-family: "Open Sans";
+    font-size: 22px;
+    color: #2E1E43;
+    padding-left: 4vw;
+}
+
+#routeCategories, #routeCalculators, #routeHome{
+    position: fixed;
+    color: #2E1E43;
+    font-family: "Open Sans";
+    font-size: 3vh;
+    z-index: 3;
+    top: 5.85%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+#routeCategories{
+    right: 18%;
+}
+
+#routeCalculators{
+    right: 3%;
+}
+
+#routeHome{
+    right: 31%;
+}

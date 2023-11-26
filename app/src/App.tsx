@@ -1,13 +1,11 @@
-import AprensentationScreen from "./pages/ApesentationScreen";
-import CalculatorCompound from "./pages/CalculatorCompound";
-import CalculatorSimple from "./pages/CalculatorSimple";
-import Home from "./pages/Home";
-
+import { Outlet } from "react-router-dom";
 
 function App() {
-  return (
-    <Home/>
-  );
+	return (
+		<>
+			<Outlet/>
+		</>
+	);
 }
 
 export default App;

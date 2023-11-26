@@ -1,71 +1,22 @@
-from abc import ABC, abstractmethod
-from dataclasses import dataclass
-from datetime import datetime
-from api.src.models.category import Category, ExpenseCategory, RevenueCategory
+from abc import ABC
+from datetime import date
+from pydantic import BaseModel
+from typing import Optional
 
 
-@dataclass(init=False)
-class Transaction(ABC):
-    _id: int | None
+class Transaction(ABC, BaseModel):
+    id: Optional[int]
     user_id: int
     name: str
     description: str
     value: float
-    purchase_date: datetime
+    purchase_date: date
     cat: int
-
-    @abstractmethod
-    def __init__(self, t_id: int | None, user_id: int, name: str, description: str, value: float,
-                 purchase_date: datetime, cat: int):
-        pass
-
-    @property
-    @abstractmethod
-    def id(self) -> int:
-        pass
-
-    @property
-    @abstractmethod
-    def user_id(self) -> int:
-        pass
 
 
 class Expense(Transaction):
-
-    def __init__(self, t_id: int | None, user_id: int, name: str, description: str, value: float,
-                 purchase_date: datetime, cat: int):
-        self._id = t_id
-        self._user_id = user_id
-        self.name = name
-        self.description = description
-        self.value = value
-        self.purchase_date = purchase_date
-        self.cat = cat
-
-    @property
-    def id(self) -> int:
-        return self._id
-
-    @property
-    def user_id(self) -> int:
-        return self._user_id
+    pass
 
 
 class Revenue(Transaction):
-    def __init__(self, t_id: int | None, user_id: int, name: str, description: str, value: float,
-                 purchase_date: datetime, cat: int):
-        self._id = t_id
-        self._user_id = user_id
-        self.name = name
-        self.description = description
-        self.value = value
-        self.purchase_date = purchase_date
-        self.cat = cat
-
-    @property
-    def id(self) -> int:
-        return self._id
-
-    @property
-    def user_id(self) -> int:
-        return self._user_id
+    pass

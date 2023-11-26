@@ -1,0 +1,24 @@
+#DisplayReveneExpense{
+    position: absolute;
+    height: 5.46vh;
+    width: 25.55vw;
+}
+
+#displayRevenue, #displayExpense{
+    position: absolute;
+    height: 5.46vh;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 10px 0px 0px 10px;
+}
+
+#displayExpense{
+    left: 50%;
+    border-radius: 0px 10px 10px 0px;
+}
+
+#displayRevenueLabel, #displayExpenseLabel{
+    color: white;
+}

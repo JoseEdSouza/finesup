@@ -1,10 +1,10 @@
 from abc import ABC
-from dataclasses import dataclass
+from pydantic import BaseModel
+from typing import Optional
 
 
-@dataclass(frozen=True)
-class Category(ABC):
-    id: int | None
+class Category(ABC, BaseModel):
+    id: Optional[int]
     name: str
 
 

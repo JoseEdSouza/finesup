@@ -2,8 +2,9 @@
     position: relative;
     background-color: #D1D3F1;
     width: 22.77vw;
+    max-width: 250px;
     height: 23.82vh;
-    margin: 0.3vw;
+    margin: 0.6vw;
     border-radius: 10px;
     border-style: none;
 }
@@ -12,9 +13,14 @@
     position: absolute;
     font-family: "Open Sans";
     color: #2E1E43;
+    width: 14vw;
     top: 2.2vh;
     left: 50%;
     transform: translateX(-50%);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #iconBox{
@@ -23,4 +29,32 @@
     bottom: 5.76vh;
     left: 50%;
     transform: translateX(-50%);
+    cursor: pointer;
+}
+
+#labelValueProgress{
+    position: absolute;
+    font-family: "Open Sans";
+    font-size: 3vh;
+    color: var(--primaryColor);
+    left: 50%;
+    transform: translateX(-50%);
+    top: 12.10vh;
+    cursor: pointer;
+}
+
+#iconEdit{
+    position: absolute;
+    height: 2.4vh;
+    top: 1vh;
+    right: 3vw;
+    cursor: pointer;
+}
+
+#iconDelete{
+    position: absolute;
+    height: 2.4vh;
+    top: 1vh;
+    right: 0.8vw;
+    cursor: pointer;
 }

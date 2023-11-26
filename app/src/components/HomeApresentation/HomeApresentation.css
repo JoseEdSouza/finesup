@@ -1,0 +1,104 @@
+.LogoApresentation{
+    position: absolute;
+    width: 24.44vw;
+    aspect-ratio: 1/1;
+    top: 24vh;
+    left: 12.3vw;
+
+}
+
+#logoName{
+    position: absolute;
+    color: white;
+    font-family: "Open Sans";
+    font-size: 6.8vh;
+    top: 67.67vh;
+    left: 14.5vw;
+}
+
+#containerApresentation{
+    position: absolute;
+    top: 29.88vh;
+    right: 12.29vw;
+    height: 42vh;
+    width: 38vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#labelInitialApresentation, #labelQuestionApresentation{
+    position: absolute;
+    height: 8.2vh;
+    width: 37vw;
+    text-align: center;
+    font-size: 3.4vh;
+    font-family: "Open Sans";
+    color: white;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#labelInitialApresentation{
+    top:0%;
+}
+
+#labelQuestionApresentation{
+    top: 25.87vh;
+}
+
+#createAccButtonApresentation{
+    font-family: "Open Sans";
+    font-size: 2.5vh;
+    width: 19.93vw;
+    height: 5.95vh;
+    background-color: #D1D3F1;
+    color: #2E1E43;
+    border-style: none;
+    cursor: pointer;
+    position: absolute;
+    top: 12.10vh;
+    border-radius: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#createAccButtonApresentation:hover{
+    transform: scale(1.03);
+    transform: translateX(-50%);
+    background-color: #2E1E43;
+    color: #D1D3F1;
+    border: solid 1px #D1D3F1;
+}
+
+#loginButtonApresentation{
+    font-family: "Open Sans";
+    font-size: 2.5vh;
+    width: 19.93vw;
+    height: 5.95vh;
+    background-color: #2E1E43;
+    color: #D1D3F1;
+    border-style: none;
+    cursor: pointer;
+    position: absolute;
+    top: 34.17vh;
+    border-radius: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #D1D3F1;
+}
+
+#loginButtonApresentation:hover{
+    transform: scale(1.03);
+    transform: translateX(-50%);
+    background-color: #D1D3F1;
+    color: #2E1E43;
+    border: solid 3px #2E1E43;
+}
+
+#linhaApresentation{
+    width: 110%; 
+    color: white;
+    size: 1;
+}

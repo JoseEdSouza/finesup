@@ -7,11 +7,11 @@ from api.src.db.database import Database
 class BoxDAO(ABC):
 
     @abstractmethod
-    def add(self, user_id: int, box: Box) -> bool:
+    def add(self, box: Box) -> Box | None:
         pass
 
     @abstractmethod
-    def update(self, user_id: int, name: str, box: Box) -> bool:
+    def update(self, user_id: int, name: str, box: Box) -> Box | None:
         pass
 
     @abstractmethod
@@ -39,23 +39,33 @@ class BoxDAOImp(BoxDAO):
     def __save(self):
         self.__conn.commit()
 
-    def add(self, user_id: int, box: Box) -> bool:
+    def __rollback(self):
+        self.__conn.rollback()
 
-        values = (user_id, box.name, box.description, box.actual_value, box.final_value, box.concluded)
+    def add(self, box: Box) -> Box | None:
+
+        values = (box.user_id, box.name, box.description, box.actual_value, box.final_value, box.concluded)
         try:
             self.__cursor.execute('''
             INSERT INTO boxes(user_id, name, description, actual_value, final_value, concluded, creation_date)
              VALUES (%s, %s, %s, %s, %s, %s, now())
             ''', values)
+            self.__save()
+
+            return Box(
+                user_id=box.user_id,
+                name=box.name,
+                description=box.description,
+                final_value=box.final_value,
+                actual_value=box.actual_value,
+                concluded=box.concluded)
 
         except pg.Error as e:
             print(e)
-            return False
-        finally:
-            self.__save()
-            return True
+            self.__rollback()
+            return None
 
-    def update(self, user_id: int, name_box: str, box: Box) -> bool:
+    def update(self, user_id: int, name_box: str, box: Box) -> Box | None:
         values = (box.name, box.description, box.actual_value, box.final_value, box.concluded, user_id, name_box)
         try:
             self.__cursor.execute('''
@@ -67,24 +77,30 @@ class BoxDAOImp(BoxDAO):
             concluded = %s            
             WHERE user_id = %s AND name = %s
             ''', values)
+            self.__save()
+            return Box(
+                name=box.name,
+                description=box.description,
+                actual_value=box.actual_value,
+                final_value=box.final_value,
+                concluded=box.concluded,
+                user_id=user_id)
         except pg.Error as e:
             print(e)
-            return False
-        finally:
-            self.__save()
-            return True
+            self.__rollback()
+            return None
 
     def remove(self, user_id: int, name: str) -> bool:
         try:
             self.__cursor.execute('''
             DELETE FROM boxes WHERE user_id = %s AND name = %s
             ''', (user_id, name))
-        except pg.Error as e:
-            print(e)
-            return False
-        finally:
             self.__save()
             return True
+        except pg.Error as e:
+            print(e)
+            self.__rollback()
+            return False
 
     def get(self, user_id: int, name: str) -> Box | None:
         try:
@@ -110,12 +126,12 @@ class BoxDAOImp(BoxDAO):
             print(e)
             return None
 
-    def get_all(self, box_id: int) -> list[Box] | None:
+    def get_all(self, user_id: int) -> list[Box] | None:
         try:
             self.__cursor.execute('''
                         SELECT user_id, name, description, actual_value, final_value, concluded 
                         FROM boxes WHERE user_id = %s
-                        ''', (box_id,))
+                        ''', (user_id,))
             values = self.__cursor.fetchall()
 
             if len(values) == 0:

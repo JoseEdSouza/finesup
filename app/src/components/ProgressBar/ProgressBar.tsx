@@ -1,12 +1,15 @@
 import "./ProgressBar.css";
 
-function ProgressBar(props:{valueMax:number, valueCurrent:number, progress:number}){
+function ProgressBar(props:{valueMax:number, valueCurrent:number, progress:number, width:number, height:number, top:number, backgroundStyle:string, labelStyle:string}){
     
     const setValueBar = (valueCurrent:number, valueMax:number) => {
         let valueBar = Number(((valueCurrent/valueMax)*100).toFixed(2));
         
-        if(valueBar > 100){
+        if(valueBar >= 100){
             valueBar = 100;
+        }
+        if(valueBar <= 0){
+            valueBar = 0;
         }
 
         return valueBar;
@@ -15,7 +18,7 @@ function ProgressBar(props:{valueMax:number, valueCurrent:number, progress:numbe
     const setColorBar = (valueCurrent:number, valueMax:number) => {
         let colorBar = Number(((valueCurrent/valueMax)*100).toFixed(2));
 
-        if(colorBar >= 0 && colorBar <= 10){
+        if(colorBar <= 10){
             return '#740101';
         }
         else if(colorBar > 10 && colorBar <= 30){
@@ -34,11 +37,12 @@ function ProgressBar(props:{valueMax:number, valueCurrent:number, progress:numbe
 
     const getLabelProgress = (progress:number) => {
         if(progress === 1){
-            return <label id="labelProgress"><strong>{setValueBar(props.valueCurrent, props.valueMax)}%</strong></label>
+            return <label id="labelProgress" style={{color: props.labelStyle}}><strong>{setValueBar(props.valueCurrent, props.valueMax)}%</strong></label>
         }
     }
+    
     return(
-        <div id="totalBar">
+        <div id="totalBar" style={{width: props.width + 'vw', height: props.height + 'vh', top: props.top + 'vh', backgroundColor: props.backgroundStyle}}>
             <div id="progressBar" style={{width: setValueBar(props.valueCurrent, props.valueMax)+'%', backgroundColor: setColorBar(props.valueCurrent, props.valueMax)}}></div>
             {getLabelProgress(props.progress)}
         </div>

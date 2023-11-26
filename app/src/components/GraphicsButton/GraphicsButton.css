@@ -1,0 +1,40 @@
+#buttonGraphics{
+    height: 5.95vh;
+    width: 32.63vw;
+    max-width: 350px;
+    bottom: 14.18vh;
+    border-radius: 10px;
+    border: 2px solid var(--primaryColor);
+    box-shadow: 0px 4px 16px 0px rgba(113, 112, 112, 0.16);
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#buttonGraphics:hover{
+    transform: scale(1.02);
+}
+
+#buttonGraphicsGroup{
+    position: absolute;
+    height: 2.83vh;
+    width: 24.91vw;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+#labelButtonGraphics{
+    position: relative;
+    font-family: "Open Sans";
+    font-size: 16px;
+    color: var(--primaryColor);
+    padding-left: 1vw;
+    cursor: pointer;
+}
+
+#iconGraphics{
+    position: relative;
+    cursor: pointer;
+}

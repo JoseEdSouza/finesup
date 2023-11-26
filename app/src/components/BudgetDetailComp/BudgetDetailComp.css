@@ -1,0 +1,9 @@
+#editDiv{
+    position: absolute;
+    width: 6.25vh;
+    height: 6.25vh;
+    background-color: var(--secondaryColor);
+    top: 15.72vh;
+    right: 3.263vw;
+    border-radius: 1vh;
+}

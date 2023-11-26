@@ -1,4 +1,4 @@
-import HomeApresentationC from "../components/HomeApresentationC/HomeApresentationC"
+import HomeApresentationC from "../components/HomeApresentation/HomeApresentation"
 
 function HomeApresentation(){
     return(

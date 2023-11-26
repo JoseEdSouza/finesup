@@ -8,10 +8,35 @@
     width: 43.9vw;
     top: 23.1%;
     left: 5.5%;
+    cursor: pointer;
 }
 
 #labelBoxes{
-    position: relative;
+    position: absolute;
     font-family: "Open Sans";
+    top: 3.90vh;
+    height: 3vh;
     color: #2E1E43;
+}
+
+#boxLess{
+    position: relative;
+    color: var(--primaryColor);
+    text-align: center;
+    height: 35%;
+    width: 90%;
+    font-size: 2.5vh;
+    top: 60%;
+}
+
+#boxGridHome{
+    position: absolute;
+    height: 17vh;
+    width: 40vw;
+    max-width: 450px;
+    top: 13vh;
+    justify-content: start;
+    align-items: center;
+    display: flex;
+    overflow-x: scroll;
 }

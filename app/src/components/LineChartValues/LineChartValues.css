@@ -1,0 +1,61 @@
+#lineChartValues{
+    position: absolute;
+    width: 30.97vw;
+    height: 9.27vh;
+    bottom: 8.10vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#up, #down{
+    position: absolute;
+    font-size: 8vh;
+}
+
+#up{
+    color: #34A853;
+    left: 0;
+}
+
+#down{
+    color: #CB5151;
+    right: 50%;
+    transform: translateX(100%);
+}
+
+#labelUp, #upValue{
+    left: 6vw;
+    position: absolute;
+    font-family: "Open Sans";
+    font-size: 2vh;
+}
+
+#labelUp{
+    bottom: 35%;
+    transform: translateY(-50%);
+}
+
+#upValue{
+    top: 35%;
+    transform: translateY(50%);
+    color: #34A853; 
+}
+
+#labelDown, #downValue{
+    left: 22vw;
+    position: absolute;
+    font-family: "Open Sans";
+    font-size: 2vh;
+}
+
+#labelDown{
+    bottom: 35%;
+    transform: translateY(-50%);
+}
+
+#downValue{
+    top: 35%;
+    transform: translateY(50%);
+    color: #CB5151;
+}

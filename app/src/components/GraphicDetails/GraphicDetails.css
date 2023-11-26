@@ -1,0 +1,50 @@
+.pieChartDetails, #barChartDetails {
+    position: absolute;
+    background-color: var(--secondaryColor);
+    width: 40.55vw;
+    height: 57.61vh;
+    right: 5.55vw;
+    bottom: 9.66vh;
+    border-radius: 20px;
+}
+
+.chartCategoriesGroup{
+    position: absolute;
+    width: 37.94vw;
+    height: fit-content;
+    max-height: 87%;
+    top: 3vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+#lineChartDetails {
+    position: absolute;
+    width: 40.55vw;
+    height: 57.61vh;
+    right: 5.55vw;
+    bottom: 9.66vh;
+    border-radius: 20px;
+}
+
+#lineChartRevenueDetails,
+#lineChartExpenseDetails {
+    position: absolute;
+    background-color: var(--secondaryColor);
+    height: 27.63vh;
+    width: 40.55vw;
+    border-radius: 20px;
+}
+
+#lineChartRevenueDetails {
+    top: 0;
+}
+
+#lineChartExpenseDetails {
+    bottom: 0;
+}
+

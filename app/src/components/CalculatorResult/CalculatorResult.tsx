@@ -1,6 +1,6 @@
 import "./CalculatorResult.css";
 
-function CalculatorResult(props:{total:number, invest:number, tax:number}) {
+function CalculatorResult(props:{total:string, invest:string, tax:string}) {
     return (
         <div id="containerResults">
             <label id="labelResult"><strong>Resultado</strong></label>

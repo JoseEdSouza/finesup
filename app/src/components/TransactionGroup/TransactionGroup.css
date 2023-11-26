@@ -1,3 +1,13 @@
+.TransactionGroupContainer{
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 90%;
+    height: fit-content;
+    top: 25%;
+    margin-top: 20px;
+}
+
 .LabelTransactionDate{
     position: relative;
     font-family: "Open Sans";

@@ -1,12 +1,15 @@
 import "./Transaction.css";
 
-function Transaction(){
+function Transaction(props:{transactionName:string, transactionValue:number, transactionType:number}){
+    let type = props.transactionType === 0 ? "ValueTransactionRevenue" :"ValueTransactionExpense"
+    let value = (Number(props.transactionValue)).toFixed(2)
+
     return(
         <div className="LaunchContainer">
-            <img src="./icon_alimentation.svg" className="Icons" alt=""/>
-            <label className="NameTransaction"><strong>Pizza</strong></label>
+            <img src="/icon_alimentation.svg" id="iconInTransaction"/>
+            <label className="NameTransaction"><strong>{props.transactionName}</strong></label>
             <label className="TypeTransaction">Alimentação</label>
-            <label className="ValueTransactionExpense">R$900,00</label>
+            <label className={type}>R${value}</label>
         </div>
     );
 }

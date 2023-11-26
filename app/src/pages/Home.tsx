@@ -1,15 +1,18 @@
-import HomeRoute from "../Routes/RenderHome/HomeRoute";
-import BoxContainerHome from "../components/BoxContainerHome/BoxContainerHome";
-import BudgetContainerHome from "../components/BudgetContainerHome/BudgetContainerHome";
-import NavBar from "../components/NavBar/NavBar";
-import TransactionContainerHome from "../components/TransactionContainerHome/TransactionContainerHome";
+import { Link } from "react-router-dom"
+import BoxContainerHome from "../components/BoxContainerHome/BoxContainerHome"
+import BudgetContainerHome from "../components/BudgetContainerHome/BudgetContainerHome"
+import TransactionContainerHome from "../components/TransactionContainerHome/TransactionContainerHome"
 
-function Home(){
-    return(
+function Home() {
+    return (
         <>
-            <HomeRoute/>
+            <Link to="/1">
+                <BoxContainerHome/>
+            </Link>
+            <TransactionContainerHome/>
+            <BudgetContainerHome/>
         </>
-    );
+    )
 }
 
-export default Home;
+export default Home

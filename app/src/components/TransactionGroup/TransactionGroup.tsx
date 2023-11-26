@@ -3,9 +3,9 @@ import "./TransactionGroup.css";
 
 function TransactionGroup(){
     return(
-        <section className="Container">
+        <section className="TransactionGroupContainer">
             <label className="LabelTransactionDate">Hoje, 04</label>
-            <Transaction/>
+            <Transaction transactionType={1} transactionValue={900} transactionName="Pizza"/>
         </section>
     );
 }

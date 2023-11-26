@@ -1,0 +1,10 @@
+#divEdit{
+    position: absolute;
+    background-color: var(--secondaryColor);
+    width: 52vw;
+    height: 73.63vh;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 8.39vh;
+    border-radius: 15px;
+}

@@ -1,0 +1,29 @@
+#budbuttonsE{
+    position: absolute;
+    width: 28.54vw;
+    height: 9.86vh;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 4.29vh;
+}
+
+#linkToDetail{
+    position: absolute;
+    height: 2.34vh;
+    width: 5.83vw;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#cancelButtonE{
+    position: absolute;
+    font-family: "Open Sans";
+    color: var(--primaryColor);
+    font-size: 2.5vh;
+    top: 0;
+    cursor: pointer;
+    text-decoration: underline;
+}

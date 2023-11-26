@@ -1,0 +1,30 @@
+#div1, #div2, #div3{
+    position: absolute;
+    background-color: var(--secondaryColor);
+    width: 30.76vw;
+    height: 16.40vh;
+    border-radius: 1.2vw;
+    bottom: 8.39;
+    cursor: pointer;
+    top: 61.52vh;
+}
+
+#div1{
+    left: 2.77vw;
+}
+
+#div2{
+    left: 34.58vw;
+}
+
+#div3{
+    left: 66.45vw;
+}
+
+#label1, #label2, #label3{
+    position: absolute;
+    color: black;
+    left: 3.83vw;
+    font-size: 2.34vh;
+    font-family: "Open Sans";
+}

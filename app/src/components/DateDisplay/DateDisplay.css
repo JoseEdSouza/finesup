@@ -1,0 +1,92 @@
+#DateDisplay{
+    position: absolute;
+    height: 6.25vh;
+    width: 40.55vw;
+    right: 5.55vw;
+    top: 19.62vh;
+    background-color: var(--secondaryColor);
+    border-radius: 12px 12px 12px 12px;
+}
+
+#displayYear{
+    position: absolute;
+    height: 4.68vh;
+    width: 26.05vw;
+    background-color: var(--secondaryColor);
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 6.20vh;
+    z-index: 3;
+    border-bottom: 1px solid #B3B4C7;
+    border-radius: 10px 10px 0px 0px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#year{
+    color: var(--thirdColor);
+}
+
+#prevMonth, #nextMonth{
+    position: absolute;
+    height: 6.25vh;
+    width: 7.28vw;
+    background-color: var(--thirdColor);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    cursor: pointer;
+    z-index: 3;
+}
+
+#prevMonth{
+    left: 0;
+    border-radius: 10px 0px 0px 10px
+}
+
+#nextMonth{
+    right: 0;
+    border-radius: 0px 10px 10px 0px
+}
+
+#prevMonth:hover, #nextMonth:hover{
+    transform: scale(1.03);
+}
+
+#prevMonth:active, #nextMonth:active{
+    background-color: #4a306d;
+}
+
+#month1, #month2, #month3{
+    position: absolute;
+    height: 6.25vh;    
+    width: 8.704vw;
+    font-size: 2.5vh;
+    text-align: center;
+    background-color: var(--secondaryColor);
+    color: var(--thirdColor);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+#month1{
+    left: 7.28vw;
+}
+
+#month2{
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#month3{
+    right: 7.28vw;
+}
+
+#arrowBack, #arrowForward{
+    color: white;
+    font-size: 4.5vh;
+    cursor: pointer;
+}
+

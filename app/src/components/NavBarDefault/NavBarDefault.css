@@ -1,0 +1,37 @@
+#navBarDefault{
+    align-items: center;
+    display: flex;
+    position: fixed;
+    z-index: 4;
+    background-color: #D1D3F1;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    top: 0;
+    height: 11.7%;
+    width: 100vw;
+}
+
+#labelPageDefault{
+    font-family: "Open Sans";
+    font-size: 22px;
+    color: #2E1E43;
+    padding-left: 4vw;
+}
+
+#linkBackIcon{
+    position: relative;
+    height: 6vh;
+    width: 4vw;
+    left: 3%;
+}
+
+#routeHomeD{
+    position: fixed;
+    color: #2E1E43;
+    font-size: 3vh;
+    z-index: 3;
+    top: 5.85%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    right: 3%;
+    text-decoration: underline;
+}
