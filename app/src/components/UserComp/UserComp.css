@@ -1,0 +1,13 @@
+#divUser{
+    position: absolute;
+    height: fit-content;
+    background-color: var(--secondaryColor);
+    width: 53.54vw;
+    height: 128.58vh;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 8.39vh;
+    border-radius: 15px;
+    top: 19.53vh;
+    display: flex;
+}

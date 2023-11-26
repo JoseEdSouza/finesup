@@ -6,7 +6,7 @@ function UserScreen(){
     return(
         <>
             <UserComp/>
-            <NavBarUser name="Editar Perfil" backTo="/"/>
+            <NavBarUser name="Editar Perfil" backTo="/home"/>
         </>
     )
 }

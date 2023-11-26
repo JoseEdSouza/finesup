@@ -1,0 +1,59 @@
+#profileLB, #accLB{
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3vh;
+    font-family: "Open Sans";
+}
+
+#profileLB{
+    top: 32.97vh;
+}
+
+#accLB{
+    top: 54.07vh;
+}
+
+#hr1, #hr2, #hr3, #hr4{
+    position: absolute;
+    color: black;
+    border: 1px solid;
+    width: 17.36vw;
+}
+
+#hr1{
+    top: 34.79vh;
+    left: 2.22vw;
+}
+
+#hr2{
+    top: 34.79vh;
+    right: 2.22vw;
+}
+
+#hr3{
+    top: 55.89vh;
+    left: 2.22vw;
+}
+
+#hr4{
+    top: 55.89vh;
+    right: 2.22vw;
+}
+
+#hr5{
+    position: absolute;
+    width: 93%;
+    top: 105.53vh;
+    color: black;
+    border: 1px solid;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#deleteACC{
+    position: absolute;
+    top: 88.93vh;
+    left: 7.77vw;
+}

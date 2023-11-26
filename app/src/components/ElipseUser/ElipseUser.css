@@ -1,0 +1,12 @@
+#elipse{
+    position: absolute;
+    top: 3.32vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 13.88vw;
+    height: 13.88vw;
+    border-radius: 50%;
+    overflow: hidden;
+    color: white;
+    border: solid black 5px;
+}
