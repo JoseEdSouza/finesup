@@ -22,6 +22,7 @@ import Login from './pages/Login.tsx'
 import NavBarHome from './components/NavBarHome/NavBarHome.tsx'
 import AprensentationScreen from './pages/ApesentationScreen.tsx'
 import ApresentationRoute from './Routes/ApresentationRoute.tsx'
+import DetailedTransaction from './pages/DetailedTransaction.tsx'
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
       {
         path: "/2/transactionHistory/addTransaction",
         element: <AddTransaction/>
+      },
+      {
+        path: "/2/transactionHistory/detailedTransaction",
+        element: <DetailedTransaction/>
       },
       {
         path: "/2/graphics",

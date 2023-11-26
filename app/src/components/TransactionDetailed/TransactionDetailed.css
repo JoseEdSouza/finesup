@@ -1,0 +1,13 @@
+#transactionDetailed{
+    position: absolute;
+    background-color: var(--secondaryColor);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 10px;
+    height: 74.12vh;
+    width: 65.13vw;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 17.96vh;
+}
