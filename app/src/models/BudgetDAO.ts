@@ -50,6 +50,7 @@ class BudgetDAO {
             headers: this.headers
         })
         const response: Response = await fetch(req)
+        
         if (response.status !== 200) {
             throw new Error(response.statusText)
         }

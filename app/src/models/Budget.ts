@@ -17,10 +17,11 @@ class Budget {
     static fromJson(json: any): Budget {
         return new Budget(
             json.user_id,
-            json.category_id,
-            json.renewal_date,
+            json.category,
+            new Date(json.renewal_date),
             json.final_value,
-            json.actual_value)
+            json.actual_value
+        )
     }
 
     static fromJsonArray(json: any[]): Budget[] {
@@ -30,8 +31,8 @@ class Budget {
     toJson(): any {
         return {
             user_id: this.userId,
-            category_id: this.categoryId,
-            renewal_date: this.renewalDate,
+            category: this.categoryId,
+            renewal_date: this.renewalDate.toISOString().slice(0,10),
             final_value: this.finalValue,
             actual_value: this.actualValue
         }

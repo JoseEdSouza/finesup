@@ -25,8 +25,8 @@ class FixedRevenueDAO {
         } else if (response.status !== 200) {
             throw new Error(response.statusText)
         }
-        const fixedexpense: any = await response.json()
-        return FixedExpense.fromJson(fixedexpense)
+        const fixedrevenue: any = await response.json()
+        return FixedRevenue.fromJson(fixedrevenue)
     }
 
     async getAll(): Promise<FixedRevenue[]> {
@@ -40,36 +40,36 @@ class FixedRevenueDAO {
         } else if (response.status !== 200) {
             throw new Error(response.statusText)
         }
-        const fixedexpenses: any = await response.json()
-        return FixedExpense.fromJsonArray(fixedexpenses)
+        const fixedrevenues: any = await response.json()
+        return FixedRevenue.fromJsonArray(fixedrevenues)
     }
 
-    async add(fixedexpense: FixedRevenue): Promise<FixedRevenue> {
+    async add(fixedrevenue: FixedRevenue): Promise<FixedRevenue> {
         const req: Request = new Request(Endpoints.FIXED_REVENUE, {
             method: 'POST',
-            body: fixedexpense.toString(),
+            body: fixedrevenue.toString(),
             headers: this.headers
         })
         const response: Response = await fetch(req)
         if (response.status !== 200) {
             throw new Error(response.statusText)
         }
-        const addedFixedExpense: any = await response.json()
-        return FixedExpense.fromJson(addedFixedExpense)
+        const addedFixedRevenue: any = await response.json()
+        return FixedRevenue.fromJson(addedFixedRevenue)
     }
 
-    async update(id: number, fixedexpense: FixedRevenue): Promise<FixedRevenue> {
+    async update(id: number, fixedrevenue: FixedRevenue): Promise<FixedRevenue> {
         const req: Request = new Request(`${Endpoints.FIXED_REVENUE}/${id}`, {
             method: 'PUT',
-            body: fixedexpense.toString(),
+            body: fixedrevenue.toString(),
             headers: this.headers
         })
         const response: Response = await fetch(req)
         if (response.status !== 200) {
             throw new Error(response.statusText)
         }
-        const updatedFixedExpense: any = await response.json()
-        return FixedExpense.fromJson(updatedFixedExpense)
+        const updatedFixedRevenue: any = await response.json()
+        return FixedRevenue.fromJson(updatedFixedRevenue)
     }
 
     async delete(id: number): Promise<Boolean> {
@@ -82,6 +82,7 @@ class FixedRevenueDAO {
         return response.status === 200
     }
 }
+
 
 class FixedExpenseDAO {
     private get session() {
