@@ -8,35 +8,35 @@ import { ValidateSignupName,ValidateSignupEmail,ValidateSignupPassword } from ".
 class UserController {
 
     static async login(email: string, password: string): Promise<boolean> {
+        const lowerCaseEmail = email.toLowerCase() 
         const handler = new LoginHandler()
         handler.setNextHandler(new ValidateLoginEmail())
             .setNextHandler(new ValidateLoginPassword())
-        if (handler.handle(email, password)) {
+        if (handler.handle(lowerCaseEmail, password)) {
             try {
-                const res = await Auth.login(email, password)
-                Session.createInstance(res, password)
+                const token = await Auth.login(lowerCaseEmail, password)
+                Session.createInstance(token, password)
                 return true
             } catch (error) {
-                console.log(error)
-                return false
+                throw new Error("Email ou senha incorretos")
             }
         }
         return false
     }
 
     static async signup(name: string, email: string, password: string,confirmPassword:string): Promise<boolean> {
+        const lowerCaseEmail = email.toLowerCase()
         const handler = new SignupHandler()
         handler.setNextHandler(new ValidateSignupName())
             .setNextHandler(new ValidateSignupEmail())
             .setNextHandler(new ValidateSignupPassword())
-        if (handler.handle(name, email, password,confirmPassword)) {
+        if (handler.handle(name, lowerCaseEmail, password,confirmPassword)) {
             try {
-                const res = await Auth.signup(name, email, password)
-                Session.createInstance(res, password)
+                const token = await Auth.signup(name, lowerCaseEmail, password)
+                Session.createInstance(token, password)
                 return true
             } catch (error) {
-                console.log(error)
-                return false
+                throw new Error("Já existe um cadastro com o email informado")
             }
         }
         return false
