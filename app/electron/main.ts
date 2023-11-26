@@ -1,4 +1,4 @@
-import { app, BrowserWindow,shell } from 'electron'
+import { app, BrowserWindow, shell } from 'electron'
 import path from 'node:path'
 
 // The built directory structure
@@ -21,16 +21,25 @@ const VITE_DEV_SERVER_URL = process.env['VITE_DEV_SERVER_URL']
 function createWindow() {
   win = new BrowserWindow({
     icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
-    width:800,
-    height:600,
-    minWidth:800,
-    minHeight:600,
+    width: 800,
+    height: 600,
+    minWidth: 800,
+    minHeight: 600,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
   })
   win.setMenuBarVisibility(false)
 
+  win.webContents.executeJavaScript(`
+      document.addEventListener('click', (event) => {
+        // Check if the Ctrl key is pressed
+        if (event.ctrlKey) {
+          // Prevent the default behavior
+          event.preventDefault();
+        }
+      });
+    `);
 
   // Test active push message to Renderer-process.
   win.webContents.on('did-finish-load', () => {
