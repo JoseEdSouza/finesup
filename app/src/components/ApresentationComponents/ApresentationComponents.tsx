@@ -62,7 +62,7 @@ function ApresentationComponents(){
 
                 <label id="labelConfirm"><strong><strong>Confirmar senha</strong></strong></label>
                 <input 
-                    type="confirmPassword" 
+                    type="password" 
                     placeholder="••••••••" 
                     name="confirmPassword" 
                     className="inputConfirm" 
