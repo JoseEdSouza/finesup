@@ -1,14 +1,12 @@
 import Auth from "../services/Auth"
-import LoginHandler from "../handler/LoginHandler";
-import SignupHandler from "../handler/SignupHandler";
-import { ValidateLoginEmail, ValidateLoginPassword } from "../handler/ValidateLogin";
+import { ValidateLoginEmail, ValidateLoginPassword, LoginHandler } from "../handler/LoginHandler";
 import Session from "../services/Session";
-import { ValidateSignupName,ValidateSignupEmail,ValidateSignupPassword } from "../handler/ValidateSignup";
+import { ValidateSignupName, ValidateSignupEmail, ValidateSignupPassword, SignupHandler } from "../handler/SignupHandler";
 
 class UserController {
 
     static async login(email: string, password: string): Promise<boolean> {
-        const lowerCaseEmail = email.toLowerCase() 
+        const lowerCaseEmail = email.toLowerCase()
         const handler = new LoginHandler()
         handler.setNextHandler(new ValidateLoginEmail())
             .setNextHandler(new ValidateLoginPassword())
@@ -24,13 +22,13 @@ class UserController {
         return false
     }
 
-    static async signup(name: string, email: string, password: string,confirmPassword:string): Promise<boolean> {
+    static async signup(name: string, email: string, password: string, confirmPassword: string): Promise<boolean> {
         const lowerCaseEmail = email.toLowerCase()
         const handler = new SignupHandler()
         handler.setNextHandler(new ValidateSignupName())
             .setNextHandler(new ValidateSignupEmail())
             .setNextHandler(new ValidateSignupPassword())
-        if (handler.handle(name, lowerCaseEmail, password,confirmPassword)) {
+        if (handler.handle(name, lowerCaseEmail, password, confirmPassword)) {
             try {
                 const token = await Auth.signup(name, lowerCaseEmail, password)
                 Session.createInstance(token, password)

@@ -1,22 +1,28 @@
 import Box from "../models/Box";
 import BoxDAO from "../models/BoxDAO";
-
+import { CreateBoxHandler, ValidateBoxFinalValue, ValidateBoxDescription, ValidateBoxName, ValidateBoxActualValue } from "../handler/BoxHandler";
 class BoxController {
 
     private dao: BoxDAO
-    
-    constructor() { 
+
+    private handler: CreateBoxHandler
+
+    constructor() {
         this.dao = new BoxDAO()
+        this.handler = new CreateBoxHandler()
+            .setNextHandler(new ValidateBoxName())
+            .setNextHandler(new ValidateBoxDescription())
+            .setNextHandler(new ValidateBoxFinalValue())
+            .setNextHandler(new ValidateBoxActualValue())
     }
 
-
     createBox(name: string, description: string, final_value: number, actual_value: number, concluded: boolean): Box {
-
-        return new Box(name, description, final_value, 0, actual_value, concluded)
+        const box = new Box(name, description, final_value, 0, actual_value)
+        this.handler.handle(box)
+        return box
     }
 
     async addBox(name: string, description: string, final_value: number): Promise<Box> {
-
         return await this.dao.add(this.createBox(name, description, final_value, 0, false))
     }
 
@@ -29,6 +35,7 @@ class BoxController {
     }
 
     async update(name: string, box: Box): Promise<Box> {
+        this.handler.handle(box)
         return await this.dao.update(name, box)
     }
 
