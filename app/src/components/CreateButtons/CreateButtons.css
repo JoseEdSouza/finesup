@@ -48,3 +48,9 @@
     cursor: pointer;
     text-decoration-line: underline;
 }
+
+#createError{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}

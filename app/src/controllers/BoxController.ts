@@ -23,36 +23,36 @@ class BoxController {
     }
 
     async addBox(name: string, description: string, final_value: number): Promise<Box> {
-        return await this.dao.add(this.createBox(name, description, final_value, 0, false))
+        return this.dao.add(this.createBox(name, description, final_value, 0, false))
     }
 
     async get(name: string): Promise<Box> {
-        return await this.dao.get(name)
+        return this.dao.get(name)
     }
 
     async getAll(): Promise<Box[]> {
-        return await this.dao.getAll()
+        return this.dao.getAll()
     }
 
     async update(name: string, box: Box): Promise<Box> {
         this.handler.handle(box)
-        return await this.dao.update(name, box)
+        return this.dao.update(name, box)
     }
 
     async remove(name: string): Promise<boolean> {
-        return await this.dao.remove(name)
+        return this.dao.remove(name)
     }
 
     async deposit(name: string, value: number): Promise<Box> {
         let box = await this.dao.get(name)
         box.deposit(value)
-        return await this.dao.update(name, box)
+        return  this.dao.update(name, box)
     }
 
     async withdraw(name: string, value: number): Promise<Box> {
         let box = await this.dao.get(name)
         box.withdraw(value)
-        return await this.dao.update(name, box)
+        return this.dao.update(name, box)
     }
 
 }

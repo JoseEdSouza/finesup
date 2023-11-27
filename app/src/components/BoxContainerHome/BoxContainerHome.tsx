@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import "./BoxContainerHome.css";
 import BoxHome from "../BoxHome/BoxHome";
@@ -11,27 +11,32 @@ function BoxContainerHome() {
 	const [sumActualValue, setSumActualValue] = useState(0)
 	const [sumTotalValue, setSumTotalValue] = useState(0)
 
+
 	const boxController = new BoxController();
 
-	const fecthData = async () => {
-		try {
-			const boxes = await boxController.getAll();
-			const boxesElements = boxes.map((box) => createBoxComponent(box))
-			setBoxList(boxesElements)
-			setBoxFlag(true)
+	const effectRan = useRef(false)
 
-			const totalFinalValue = sumAllTotalValue(boxes)
-			setSumTotalValue(totalFinalValue)
-			const totalActualValue = sumAllActualValue(boxes)
-			setSumActualValue(totalActualValue)
-		}
-		catch (error) {
-			console.log(error)
-			setBoxFlag(false)
-		}
-	}
 	useEffect(() => {
-		fecthData()
+		if (effectRan.current === false) {
+			const fecthData = async () => {
+				try {
+					const boxes = await boxController.getAll();
+					const slicedBoxes = boxes.slice(0, 4)
+					const boxesElements = slicedBoxes.map((box) => createBoxComponent(box))
+					setBoxList(boxesElements)
+					setBoxFlag(true)
+
+					setSumTotalValue(sumAllTotalValue(boxes))
+					setSumActualValue(sumAllActualValue(boxes))
+				}
+				catch (error) {
+					console.log(error)
+					setBoxFlag(false)
+				}
+			}
+			fecthData()
+			effectRan.current = true
+		}
 	}, [])
 
 	const createBoxComponent = (box: Box) => {
@@ -40,7 +45,7 @@ function BoxContainerHome() {
 
 	const sumAllActualValue = (boxList: Box[]): number => {
 		let sum = 0
-		boxList.forEach((box) =>{
+		boxList.forEach((box) => {
 			sum += box.actualValue
 		})
 		return sum
@@ -48,12 +53,12 @@ function BoxContainerHome() {
 
 	const sumAllTotalValue = (boxList: Box[]): number => {
 		let sum = 0
-		boxList.forEach((box) =>{
+		boxList.forEach((box) => {
 			sum += box.finalValue
 		})
 		return sum
 	}
-	
+
 	return (
 		<div id="boxContainer">
 			<label id="labelBoxes">
