@@ -26,7 +26,7 @@ class Session {
     static getInstance(): Session {
         if (Session.instance === null)
             throw new Error('Session not initialized');
-        else if (Session.instance.expiry < Date.now()) {
+        else if (Session.instance.expiry < Date.now()/1000) {
             let user = Session.instance.user
             Auth.login(user.email, user.password)
                 .then(token => Session.instance = Session.createInstance(token, user.password))
