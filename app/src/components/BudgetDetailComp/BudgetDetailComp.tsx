@@ -5,7 +5,9 @@ function BudgetDetailComp(){
     return(
         <>
             <Link to = "/3/budgetedit">
-                <div id="editDiv"></div>
+                <div id="editDiv">
+                    <img src="/icon_edit.svg" className="EditBud"/>
+                </div>
             </Link>
         </>
     )
