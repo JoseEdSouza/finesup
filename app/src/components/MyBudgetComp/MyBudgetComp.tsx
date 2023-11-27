@@ -13,7 +13,7 @@ function MyBudgetComp(){
                 <label id="totalBud"><strong>Orçamento total</strong></label>
             </div>
             <DivCategoriesBud/>
-            <GraphicsMyBudgets GraphicValues={[1, 2]}/>
+            <GraphicsMyBudgets GraphicValues={[1, 1, 1,1]}/>
         </>
     )
 }
