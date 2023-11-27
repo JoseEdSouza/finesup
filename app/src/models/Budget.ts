@@ -1,25 +1,18 @@
 class Budget {
-    userId: number
-    categoryId: number
-    renewalDate: Date
-    finalValue: number
-    actualValue: number
 
-    constructor(userId: number, categoryId: number, renewalDate: Date, 
-        finalValue: number, actualValue: number) {
-        this.userId = userId
-        this.categoryId = categoryId
-        this.renewalDate = renewalDate
-        this.finalValue = finalValue
-        this.actualValue = actualValue
-    }
+    constructor(
+        public categoryId: number, 
+        public renewalDate: Date, 
+        public finalValue: number, 
+        public userId: number = 0, 
+        public actualValue: number = 0) {}
 
     static fromJson(json: any): Budget {
         return new Budget(
-            json.user_id,
             json.category_id,
             json.renewal_date,
             json.final_value,
+            json.user_id,
             json.actual_value)
     }
 
