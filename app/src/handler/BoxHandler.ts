@@ -2,7 +2,7 @@ import Box from "../models/Box";
 import { Nullable } from "../types";
 
 interface BoxHandler {
-    handle(box: Box): void;
+    handle(box: Box): boolean;
 }
 
 
@@ -49,7 +49,7 @@ class ValidateBoxActualValue extends BoxBaseHandler {
             box.actualValue = 0
             box.concluded = false
         }
-        else if (box.actualValue > box.finalValue)
+        else if (box.actualValue >= box.finalValue)
             box.concluded = true
         else
             box.concluded = false
