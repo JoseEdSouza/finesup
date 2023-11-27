@@ -4,26 +4,32 @@ import { CreateBoxHandler, ValidateBoxFinalValue, ValidateBoxDescription, Valida
 class BoxController {
 
     private dao: BoxDAO
-
     private handler: CreateBoxHandler
-
     constructor() {
         this.dao = new BoxDAO()
         this.handler = new CreateBoxHandler()
-            .setNextHandler(new ValidateBoxName())
+        this.handler.setNextHandler(new ValidateBoxName())
             .setNextHandler(new ValidateBoxDescription())
             .setNextHandler(new ValidateBoxFinalValue())
             .setNextHandler(new ValidateBoxActualValue())
+
     }
 
     createBox(name: string, description: string, final_value: number, actual_value: number, concluded: boolean): Box {
         const box = new Box(name, description, final_value, 0, actual_value)
-        this.handler.handle(box)
-        return box
+        if (this.handler.handle(box)) {
+            return box
+        } else
+            throw new Error("Erro ao criar caixa")
     }
 
     async addBox(name: string, description: string, final_value: number): Promise<Box> {
-        return this.dao.add(this.createBox(name, description, final_value, 0, false))
+        let box = this.createBox(name, description, final_value, 0, false)
+        try {
+            return await this.dao.add(box)
+        } catch (error) {
+            throw new Error("Nome já existente")
+        }
     }
 
     async get(name: string): Promise<Box> {
@@ -35,8 +41,14 @@ class BoxController {
     }
 
     async update(name: string, box: Box): Promise<Box> {
-        this.handler.handle(box)
-        return this.dao.update(name, box)
+        if (this.handler.handle(box)) {
+            try {
+                return this.dao.update(name, box)
+            } catch (error) {
+                throw new Error("Nome já existente")
+            }
+        } else
+            throw new Error("Erro ao atualizar caixa")
     }
 
     async remove(name: string): Promise<boolean> {
@@ -46,7 +58,7 @@ class BoxController {
     async deposit(name: string, value: number): Promise<Box> {
         let box = await this.dao.get(name)
         box.deposit(value)
-        return  this.dao.update(name, box)
+        return this.dao.update(name, box)
     }
 
     async withdraw(name: string, value: number): Promise<Box> {
