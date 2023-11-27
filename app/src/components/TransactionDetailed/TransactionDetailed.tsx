@@ -1,4 +1,3 @@
-import { useLocation } from "react-router-dom"
 import TransactionCreateName from "../TransactionCreateName/TransactionCreateName"
 import "./TransactionDetailed.css"
 import TransactionCreateDate from "../TransactionCreateDate/TransactionCreateDate"
@@ -6,12 +5,12 @@ import TransactionCreateValue from "../TransactionCreateValue/TransactionCreateV
 import TransactionCreateDescription from "../TransactionCreateDescription/TransactionCreateDescription"
 import TransactionCreateCategory from "../TransactionCreateCategory/TransactionCreateCategory"
 
-function TransactionDetailed(props:{data:{name: string, Date: Date, Value: number, Description: string, Category: string}}) {
+function TransactionDetailed() {
 
     
     return (
         <div id="transactionDetailed">
-            <TransactionCreateName editable={1} name={props.data.name}/>
+            <TransactionCreateName editable={1} name={"teste"}/>
             <TransactionCreateValue/>
             <TransactionCreateDescription/>
             <TransactionCreateCategory categoryType={1}/>
