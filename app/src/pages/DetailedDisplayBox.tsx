@@ -2,45 +2,70 @@ import { useLocation } from "react-router-dom";
 import BoxDetails from "../components/BoxDetails/BoxDetails";
 import BoxProgressDetails from "../components/BoxProgressDetails/BoxProgressDetails";
 import NavBarDefault from "../components/NavBarDefault/NavBarDefault";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import BoxController from "../controllers/BoxController";
+import Box from "../models/Box";
 
 function DetailedDisplayBox() {
   const location = useLocation();
   const data = location.state;
+  const [box, setBox] = useState<Box>()
+  const [actualValue, setActualValue] = useState(0)
+  const [finalalValue, setFinalValue] = useState(0)
+  const [description, setDescription] = useState('')
+  
+  const boxController = new BoxController()
 
-  const [valueBoxChange, setValueBox] = useState<number>(0);
-
-  const handleValueBox = (valueBox: number) => {
-    let valueToUpdate = valueBox
-
-    if (valueToUpdate > data.valueMax) valueToUpdate = data.valueMax;
-    else if (valueToUpdate < 0) valueToUpdate = 0;
-    return updateBoxValue(valueToUpdate)
-  };
-
-
-  const updateBoxValue = (value:number):number => {
-    setValueBox(value)
-    data.valueCurrent = value
-    return value
+  const fecthData = async () => {
+    try {
+      const box = await boxController.get(data.name)
+      setBox(box)
+      setActualValue(box.actualValue === null ? 0 : box.actualValue)
+      setFinalValue(box.finalValue === null ? 0 : box.finalValue)
+      setDescription(box.description === null ? "" : box.description)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
-  const updateProgress = (): number => {
-    return data.valueCurrent;
-  };
+  useEffect(() => {
+    fecthData()
+  }, [])
+
+  const deposit = async (num: number) => {
+    try {
+      const newBox = await boxController.deposit(data.name, num)
+      setBox(newBox)
+      setActualValue(newBox.actualValue === null ? 0 : newBox.actualValue)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const draw = async (num: number) => {
+    try {
+      const newBox = await boxController.withdraw(data.name, num)
+      setBox(newBox)
+      setActualValue(newBox.actualValue === null ? 0 : newBox.actualValue)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <>
       <NavBarDefault name="Caixinha" backTo="2" />
       <BoxProgressDetails
-        name={data.name}
-        valueCurrent={updateProgress()}
-        valueMax={data.valueMax}
+        name={box?.name}
+        valueCurrent={actualValue}
+        valueMax={finalalValue}
       />
       <BoxDetails
-        valueMax={data.valueMax}
-        onValueBox={(value:number) => handleValueBox(value)}
-        currentValue = {data.valueCurrent}
+        valueMax={finalalValue}
+        description={description}
+        currentValue={actualValue}
+        deposit={deposit}
+        draw={draw}
       />
     </>
   );

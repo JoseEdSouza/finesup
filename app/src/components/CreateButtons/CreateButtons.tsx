@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
 import "./CreateButtons.css"
 
-function CreateButtons(props:{nameButton:string, backTo:string}) {
+function CreateButtons(props:{nameButton:string, backTo:string, buttonClick:(actived:boolean) => void}) {
     return (
         <div id="boxCreateButtons">
-            <Link to={props.backTo}><button id="createButton">{props.nameButton}</button></Link>
+            <button id="createButton" onClick={() => props.buttonClick(true)}>{props.nameButton}</button>
             <Link to={props.backTo} id="linkToCRUD"><label id="cancelButton">Cancelar</label></Link>
         </div>
     )
