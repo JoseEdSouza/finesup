@@ -13,27 +13,26 @@ function BoxContainerHome() {
 
 	const boxController = new BoxController();
 
-	useEffect(() => {
-		const fecthData = async () => {
-			try {
-				const boxes = await boxController.getAll();
-				const boxesElements = boxes.map((box) => createBoxComponent(box))
-				setBoxList(boxesElements)
-				setBoxFlag(true)
+	const fecthData = async () => {
+		try {
+			const boxes = await boxController.getAll();
+			const boxesElements = boxes.map((box) => createBoxComponent(box))
+			setBoxList(boxesElements)
+			setBoxFlag(true)
 
-				const totalFinalValue = sumAllTotalValue(boxes)
-				setSumTotalValue(totalFinalValue)
-				const totalActualValue = sumAllActualValue(boxes)
-				setSumActualValue(totalActualValue)
-			}
-			catch (error) {
-				console.log(error)
-				setBoxFlag(false)
-			}
+			const totalFinalValue = sumAllTotalValue(boxes)
+			setSumTotalValue(totalFinalValue)
+			const totalActualValue = sumAllActualValue(boxes)
+			setSumActualValue(totalActualValue)
 		}
-
+		catch (error) {
+			console.log(error)
+			setBoxFlag(false)
+		}
+	}
+	useEffect(() => {
 		fecthData()
-	}, [boxController])
+	}, [])
 
 	const createBoxComponent = (box: Box) => {
 		return <BoxHome name={box.name} valueCurrent={box.actualValue} valueMax={box.finalValue} />;
