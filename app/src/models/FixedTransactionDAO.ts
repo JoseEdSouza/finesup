@@ -81,7 +81,7 @@ class FixedRevenueDAO {
         return FixedRevenue.fromJson(updatedFixedRevenue)
     }
 
-    async delete(id: number): Promise<Boolean> {
+    async delete(id: number): Promise<boolean> {
         const req: Request = new Request(`${Endpoints.FIXED_REVENUE}/${id}`, {
             method: 'DELETE',
             headers: this.headers
@@ -172,7 +172,7 @@ class FixedExpenseDAO {
         return FixedExpense.fromJson(updatedFixedExpense)
     }
 
-    async delete(id: number): Promise<Boolean> {
+    async delete(id: number): Promise<boolean> {
         const req: Request = new Request(`${Endpoints.FIXED_EXPENSE}/${id}`, {
             method: 'DELETE',
             headers: this.headers

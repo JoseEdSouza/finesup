@@ -2,12 +2,12 @@
 import { Nullable } from "../types";
 
 
-interface AuthHandler {
+interface Handler {
     handle(email: string, password: string): boolean
 }
 
 
-abstract class AuthBaseHandler implements AuthHandler {
+abstract class AuthBaseHandler implements Handler {
     protected next: Nullable<AuthBaseHandler> = null;
     abstract handle(email: string, password: string): boolean;
     setNextHandler(next: AuthBaseHandler): AuthBaseHandler {
@@ -44,19 +44,19 @@ class ValidateLoginPassword extends AuthBaseHandler {
     }
 }
 
-class LoginHandler extends AuthBaseHandler{
-    
+class LoginHandler extends AuthBaseHandler {
+
     handle(email: string, password: string): boolean {
         if (this.next === null)
             return false
-        return this.next.handle(email,password)
+        return this.next.handle(email, password)
     }
 }
 
 
 
-export type { AuthHandler };
-export { ValidateLoginEmail, ValidateLoginPassword, AuthBaseHandler,LoginHandler };
+export type { Handler };
+export { ValidateLoginEmail, ValidateLoginPassword, AuthBaseHandler, LoginHandler };
 
 
 
