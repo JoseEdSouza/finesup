@@ -44,7 +44,7 @@ class UserRoute:
             user_updated = UserRoute.controller.update_password(password_schema)
         except NotFoundError:
             raise HTTPException(404, 'Not Found')
-        return user_updated
+        return Auth.sign(user_updated.user_id, user_updated.email, user_updated.name)
 
     @staticmethod
     @router.put('/api/user', dependencies=[Depends(Bearer())])
@@ -60,7 +60,7 @@ class UserRoute:
             raise HTTPException(404, 'Not found')
         except AlreadyExistsError:
             raise HTTPException(409, 'Already Exists')
-        return user_updated
+        return Auth.sign(user_updated.user_id, user_updated.email, user_updated.name)
 
     @staticmethod
     @router.delete('/api/user', dependencies=[Depends(Bearer())])
