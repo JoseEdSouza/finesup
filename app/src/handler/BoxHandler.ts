@@ -1,12 +1,12 @@
 import Box from "../models/Box";
 import { Nullable } from "../types";
 
-interface BoxHandler {
+interface Handler {
     handle(box: Box): boolean;
 }
 
 
-abstract class BoxBaseHandler implements BoxHandler {
+abstract class BoxBaseHandler implements Handler {
     protected next: Nullable<BoxBaseHandler> = null;
     abstract handle(box: Box): boolean;
     setNextHandler(next: BoxBaseHandler): BoxBaseHandler {
@@ -22,7 +22,7 @@ class ValidateBoxName extends BoxBaseHandler {
             throw new Error('O nome deve ter pelo menos 3 caracteres')
         if (box.name.length > 20)
             throw new Error('O nome deve ter no máximo 20 caracteres')
-        const regex = /^[a-zA-Z\s]+$/
+        const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$ /
         if (!regex.test(box.name))
             throw new Error('O nome deve conter apenas letras')
         if (this.next === null)
@@ -80,7 +80,7 @@ class CreateBoxHandler extends BoxBaseHandler {
 }
 
 
-export type { BoxHandler }
+export type { Handler }
 export {
     BoxBaseHandler,
     ValidateBoxActualValue,

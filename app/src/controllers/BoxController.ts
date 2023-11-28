@@ -1,11 +1,11 @@
 import Box from "../models/Box";
 import BoxDAO from "../models/BoxDAO";
-import { CreateBoxHandler, ValidateBoxFinalValue, ValidateBoxDescription, ValidateBoxName, ValidateBoxActualValue } from "../handler/BoxHandler";
+import { CreateBoxHandler, ValidateBoxFinalValue, ValidateBoxDescription, ValidateBoxName, ValidateBoxActualValue, BoxBaseHandler } from "../handler/BoxHandler";
 import ServerOfflineError from "../utils/Error";
 class BoxController {
 
     private dao: BoxDAO
-    private handler: CreateBoxHandler
+    private handler: BoxBaseHandler
     constructor() {
         this.dao = new BoxDAO()
         this.handler = new CreateBoxHandler()

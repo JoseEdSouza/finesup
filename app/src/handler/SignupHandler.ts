@@ -1,10 +1,10 @@
 import { Nullable } from "../types";
 
-interface SignHandler{
+interface Handler{
     handle(name:string, email:string,password:string,confirmPassword:string):boolean
 }
 
-abstract class SignBaseHandler implements SignHandler {
+abstract class SignBaseHandler implements Handler {
     protected next: Nullable<SignBaseHandler> = null;
     abstract handle(name:string,email: string, password: string,confirmPassword:string): boolean;
     setNextHandler(next: SignBaseHandler): SignBaseHandler {
@@ -16,10 +16,10 @@ abstract class SignBaseHandler implements SignHandler {
 class ValidateSignupName extends SignBaseHandler {
     handle(name: string, email: string, password: string,confirmPassword:string): boolean {
         if (name.length < 3)
-            throw new Error('O nome deve ter pelo menos 3 caracteres')
+            throw new Error('Nome muito curto')
         if (name.length > 20)
-            throw new Error('O nome deve ter no máximo 20 caracteres')
-        const regex = /^[a-zA-Z\s]+$/
+            throw new Error('Nome muito longo')
+        const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$ /
         if (!regex.test(name))
             throw new Error('O nome deve conter apenas letras')
         if (this.next === null)
@@ -76,5 +76,5 @@ class SignupHandler extends SignBaseHandler {
 }
 
 
-export type {SignHandler}
+export type {Handler}
 export { ValidateSignupName, ValidateSignupEmail, ValidateSignupPassword,SignBaseHandler,SignupHandler}
