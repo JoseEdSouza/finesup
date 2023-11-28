@@ -2,7 +2,7 @@
     position: absolute;
     background-color: var(--secondaryColor);
     width: 30.76vw;
-    height: 16.40vh;
+    height: 18.40vh;
     border-radius: 1.2vw;
     bottom: 8.39;
     cursor: pointer;
@@ -51,4 +51,10 @@
     left: 23.68vw;
     top: 1vh;
     cursor: pointer;
+}
+
+.DivBarB{
+    top: 13.52vh;
+    width: 21.875vw;
+    height: 2.83vh;
 }
