@@ -83,7 +83,8 @@ class RevenueDAO {
 
     async delete(id: number): Promise<Boolean> {
         const req: Request = new Request(`${Endpoints.REVENUE}/${id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: this.headers
         })
         const response: Response = await fetch(req).catch(() => {
             throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
@@ -172,7 +173,8 @@ class ExpenseDAO {
 
     async delete(id: number): Promise<Boolean> {
         const req: Request = new Request(`${Endpoints.EXPENSE}/${id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: this.headers
         })
         const response: Response = await fetch(req).catch(() => {
             throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')

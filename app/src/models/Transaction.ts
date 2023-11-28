@@ -37,7 +37,7 @@ class Revenue implements Transaction {
             json.name,
             json.description,
             json.value,
-            json.purchase_date,
+            new Date(json.purchase_date),
             json.cat)
     }
 
@@ -52,7 +52,7 @@ class Revenue implements Transaction {
             name: this.name,
             description: this.description,
             value: this.value,
-            purchase_date: this.purchaseDate,
+            purchase_date: this.purchaseDate.toISOString().slice(0,10),
             cat: this.categoryId
         }
     }
@@ -89,7 +89,7 @@ class Expense implements Transaction {
             json.name,
             json.description,
             json.value,
-            json.purchase_date,
+            new Date(json.purchase_date),
             json.cat)
     }
 
@@ -104,7 +104,7 @@ class Expense implements Transaction {
             name: this.name,
             description: this.description,
             value: this.value,
-            purchase_date: this.purchaseDate,
+            purchase_date: this.purchaseDate.toISOString().slice(0,10),
             cat: this.categoryId
         }
     }
