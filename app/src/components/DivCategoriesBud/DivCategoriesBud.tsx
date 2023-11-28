@@ -36,7 +36,6 @@ function DivCategoriesBud(){
 
     return(
         <>
-        
             {
                 alertbudget ?
 
