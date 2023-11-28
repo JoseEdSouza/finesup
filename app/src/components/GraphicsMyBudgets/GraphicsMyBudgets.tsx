@@ -1,6 +1,7 @@
 import "./GraphicsMyBudgets.css" 
 import {Pie} from "react-chartjs-2"
 import { Chart, ArcElement, Tooltip, Legend } from "chart.js"
+import TopicMyBudget from "../TopicMyBudget/TopicMyBudget"
 Chart.register(ArcElement, Tooltip, Legend)
 
 function GraphicsMyBudgets(props:{GraphicValues : Array<number>}){
@@ -24,6 +25,7 @@ function GraphicsMyBudgets(props:{GraphicValues : Array<number>}){
     return(
         <div style={{position: "absolute", height: "15vw", width: "15vw", top:"15vh"}}>
             <Pie data={data} style={{position: "absolute", width: "15vw", height: "15vw", top: "11vh", left:"4vw"}} options={options}/>
+            <TopicMyBudget/>
         </div>
     )
 }

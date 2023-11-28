@@ -1,0 +1,84 @@
+#deleteAccount {
+    position: absolute;
+    background-color: var(--secondaryColor);
+    height: 44.98vh;
+    width: 58.68vw;
+    border-radius: 10px;
+    z-index: 3;
+    top: -63vh;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 3px solid;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.cancelIcon {
+    position: absolute;
+    height: 2.34vh;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+}
+
+#warining {
+    position: absolute;
+    color: var(--thirdColor);
+    font-size: 4.5vh;
+    width: 40vw;
+    top: 2.73vh;
+    left: 2.84vw;
+}
+
+#warining2 {
+    position: absolute;
+    color: var(--thirdColor);
+    width: 54vw;
+    left: 2.84vw;
+    top: 18.08vh;
+}
+
+#confirm {
+    position: absolute;
+    height: 5.17vh;
+    width: 23.20vw;
+    right: 3.75vw;
+    top: 31.09vh;
+    border-radius: 6px;
+    background-color: #FF1616;
+    box-shadow: 0px 4px 16px 0px rgba(113, 112, 112, 0.16);
+    border-style: none;
+    font-size: 2.3vh;
+    color: var(--secondaryColor);
+    cursor: pointer;
+}
+
+#confirm:hover{
+    transform: scale(1.03);
+    background-color: var(--secondaryColor);
+    color: #FF1616;
+    border: solid 3px #FF1616;
+}
+
+#regreat{
+    position: absolute;
+    height: 5.17vh;
+    width: 23.20vw;
+    left: 3.75vw;
+    top: 31.09vh;
+    border-radius: 6px;
+    background-color: var(--primaryColor);
+    box-shadow: 0px 4px 16px 0px rgba(113, 112, 112, 0.16);
+    border-style: none;
+    font-size: 2.3vh;
+    color: var(--secondaryColor);
+    cursor: pointer;
+}
+
+#regreat:hover{
+    transform: scale(1.03);
+    background-color: var(--secondaryColor);
+    color: var(--primaryColor);
+    border: solid 3px var(--primaryColor);
+}
