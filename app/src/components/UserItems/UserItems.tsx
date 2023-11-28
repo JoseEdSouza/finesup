@@ -1,6 +1,14 @@
+import { useState } from "react"
+import EditableName from "../EditableName/EditableName"
 import "./UserItems.css"
+import EditableEmail from "../EditableEmail/EditableEmail"
+import EditablePassword from "../EditablePassword/EditablePassword"
 
-function UserItems(){
+function UserItems(props:{name:string, email:string, password:string}){
+    const [isEditName, setEditName] = useState(false)
+    const [isEditEmail, setEditEmail] = useState(false)
+    const [isEditPassword, setEditPassword] = useState(false)
+    
     return(
         <>
             <label id="profileLB"><strong>Perfil</strong></label>
@@ -11,9 +19,12 @@ function UserItems(){
             <hr id="hr4"></hr>
             <label id="deleteACC"><strong>Exclusão de conta</strong></label>
             <hr id="hr5"></hr>
-            <img src="/icon_edit.svg" className="EditI" id="EditName"/>
-            <img src="/icon_edit.svg" className="EditI" id="EditEmail"/>
-            <img src="/icon_edit.svg" className="EditI" id="EditPassword"/>
+            <img src="/icon_edit.svg" className="EditI" id="EditName" onClick={() => setEditName(true)}/>
+            <img src="/icon_edit.svg" className="EditI" id="EditEmail" onClick={() => setEditEmail(true)}/>
+            <img src="/icon_edit.svg" className="EditI" id="EditPassword" onClick={() => setEditPassword(true)}/>
+            {isEditName ? <EditableName editname={setEditName} name={props.name}/> : null}
+            {isEditEmail ? <EditableEmail editEmail={setEditEmail} email={props.email}/> : null}
+            {isEditPassword ? <EditablePassword editPassword={setEditPassword} password={props.password}/> : null}
         </>
     )
 }
