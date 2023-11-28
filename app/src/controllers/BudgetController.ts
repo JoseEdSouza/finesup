@@ -1,4 +1,4 @@
-import { CreateBudgetHandler, ValidateBudgetActualValue, ValidateBudgetFinalValue, ValidateBudgetCategory } from "../handler/BudgetHandler";
+import { CreateBudgetHandler, ValidateBudgetFinalValue, ValidateBudgetCategory } from "../handler/BudgetHandler";
 import Budget from "../models/Budget";
 import BudgetDAO from "../models/BudgetDAO";
 
@@ -8,7 +8,6 @@ class BudgetController{
     constructor(){
         this.dao = new BudgetDAO()
         this.handler = new CreateBudgetHandler()
-            .setNextHandler(new ValidateBudgetActualValue())
             .setNextHandler(new ValidateBudgetFinalValue())
             .setNextHandler(new ValidateBudgetCategory())
     }

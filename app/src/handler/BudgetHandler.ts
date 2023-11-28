@@ -14,18 +14,6 @@ abstract class BudgetBaseHandler implements BudgetHandler {
         return this.next;
     }
 }
-
-class ValidateBudgetActualValue extends BudgetBaseHandler {
-    handle(budget: Budget): boolean {
-        if (budget.actualValue < 0) {
-            budget.actualValue = 0
-        }
-        if (this.next === null)
-            return true
-        return this.next.handle(budget)
-    }
-}
-
 class ValidateBudgetFinalValue extends BudgetBaseHandler {
     handle(budget: Budget): boolean {
         if (budget.finalValue < 1)
@@ -59,7 +47,6 @@ class CreateBudgetHandler extends BudgetBaseHandler {
 export type { BudgetHandler }
 export {
     BudgetBaseHandler,
-    ValidateBudgetActualValue,
     ValidateBudgetCategory,
     ValidateBudgetFinalValue,
     CreateBudgetHandler
