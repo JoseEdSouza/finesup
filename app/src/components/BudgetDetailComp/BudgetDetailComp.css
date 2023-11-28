@@ -1,5 +1,16 @@
 #editDiv{
     position: absolute;
+    width: 78.47vw;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 9.76vh;
+    background-color: var(--secondaryColor);
+    top: 25.72vh;
+    border-radius: 1vh;
+}
+
+#editDiv2{
+    position: absolute;
     width: 6.25vh;
     height: 6.25vh;
     background-color: var(--secondaryColor);
