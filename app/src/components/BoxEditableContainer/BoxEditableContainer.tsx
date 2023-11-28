@@ -62,7 +62,7 @@ function BoxEditableContainer() {
 					<BoxNameEditable boxNameCurrent={nameBox} setName={setNameBox} />
 					<BoxValueEditable valueMax={valueBox} setValue={setValueBox} />
 					<BoxDescriptionEditable descriptionCurrent={descriptionBox} setDescription={setDescriptionBox} />
-					<CreateButtons nameButton="Editar caixinha" backTo="/1" functionOnCreate={updateBox} />
+					<CreateButtons nameButton="Editar e salvar caixinha" backTo="/1" functionOnCreate={updateBox} />
 				</>
 			)}
 		</div>

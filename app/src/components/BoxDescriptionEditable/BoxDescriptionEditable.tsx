@@ -7,7 +7,6 @@ function BoxDescriptionEditable(props: { descriptionCurrent: string; setDescript
 		props.setDescription(e.target.value);
 	};
 
-
 	return (
 		<div id="boxDescriptionEditable">
 			<label id="boxlabelDescriptionEditable">
