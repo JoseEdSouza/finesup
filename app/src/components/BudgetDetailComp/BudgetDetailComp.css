@@ -1,10 +1,9 @@
 #editDiv{
-    position: absolute;
-    width: 78.47vw;
+    position: relative;
+    width: 55vw;
     left: 50%;
     transform: translateX(-50%);
-    height: 9.76vh;
-    background-color: var(--secondaryColor);
+    height: 7.76vh;
     top: 25.72vh;
     border-radius: 1vh;
 }

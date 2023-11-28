@@ -7,6 +7,16 @@ function BudgetDetailComp(){
         <>
             <div id="editDiv">
                 <Transaction transactionType={1} transactionValue={900} transactionName="Pizza" category="Alimentation" description="Descriçaõ Teste" date={new Date(14-12-2004)}/>
+                <Transaction transactionType={1} transactionValue={900} transactionName="Pizza" category="Alimentation" description="Descriçaõ Teste" date={new Date(14-12-2004)}/>
+                <Transaction transactionType={1} transactionValue={900} transactionName="Pizza" category="Alimentation" description="Descriçaõ Teste" date={new Date(14-12-2004)}/>
+                <Transaction transactionType={1} transactionValue={900} transactionName="Pizza" category="Alimentation" description="Descriçaõ Teste" date={new Date(14-12-2004)}/>
+                <Transaction transactionType={1} transactionValue={900} transactionName="Pizza" category="Alimentation" description="Descriçaõ Teste" date={new Date(14-12-2004)}/> 
+                <Transaction transactionType={1} transactionValue={900} transactionName="Pizza" category="Alimentation" description="Descriçaõ Teste" date={new Date(14-12-2004)}/>
+                <Transaction transactionType={1} transactionValue={900} transactionName="Pizza" category="Alimentation" description="Descriçaõ Teste" date={new Date(14-12-2004)}/>
+                <Transaction transactionType={1} transactionValue={900} transactionName="Pizza" category="Alimentation" description="Descriçaõ Teste" date={new Date(14-12-2004)}/>
+                <Transaction transactionType={1} transactionValue={900} transactionName="Pizza" category="Alimentation" description="Descriçaõ Teste" date={new Date(14-12-2004)}/>
+                <Transaction transactionType={1} transactionValue={900} transactionName="Pizza" category="Alimentation" description="Descriçaõ Teste" date={new Date(14-12-2004)}/>
+                <Transaction transactionType={1} transactionValue={900} transactionName="Pizza" category="Alimentation" description="Descriçaõ Teste" date={new Date(14-12-2004)}/> 
             </div>
 
             <div id="editDiv2">
