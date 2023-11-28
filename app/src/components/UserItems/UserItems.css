@@ -54,6 +54,27 @@
 
 #deleteACC{
     position: absolute;
-    top: 88.93vh;
+    top: 87.93vh;
     left: 7.77vw;
+    font-size: 2.9vh;
+}
+
+.EditI{
+    position: absolute;
+    width: 1.66vw;
+    cursor: pointer;
+    right: 3.7vw;
+}
+
+
+#EditName{
+    top: 45.83vh;
+}
+
+#EditEmail{
+    top: 67.10vh;
+}
+
+#EditPassword{
+    top: 79.99vh;
 }
