@@ -1,7 +1,10 @@
 #divUserI{
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 38vw;
+    height: 90vh;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #nameUser, #emailUser, #passwordUser{
@@ -36,7 +39,6 @@
 
 #nameU, #emailU, #passwordU{
     position: absolute;
-    left: 7.77vw;
     font-family: "Open Sans";
     font-size: 2.34vh;
 }
