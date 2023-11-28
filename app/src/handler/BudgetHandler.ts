@@ -38,9 +38,9 @@ class ValidateBudgetFinalValue extends BudgetBaseHandler {
 
 class ValidateBudgetCategory extends BudgetBaseHandler {
     handle(budget: Budget): boolean {
-        if (budget.categoryId ) {
-            budget.actualValue = 0
-        }
+        if (!(budget.categoryId >= 1 && budget.categoryId < 16)) {
+            budget.categoryId = 16
+        } 
         if (this.next === null)
             return true
         return this.next.handle(budget)
@@ -60,6 +60,7 @@ export type { BudgetHandler }
 export {
     BudgetBaseHandler,
     ValidateBudgetActualValue,
+    ValidateBudgetCategory,
     ValidateBudgetFinalValue,
     CreateBudgetHandler
 }

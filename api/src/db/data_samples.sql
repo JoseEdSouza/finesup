@@ -60,34 +60,6 @@ VALUES (
         md5('password10'),
         '2023-01-10'
     );
-INSERT INTO revenue_categories (name)
-VALUES ('CashBack'),
-    ('Vendas'),
-    ('Bônus'),
-    ('Estorno'),
-    ('Renda'),
-    ('Rendimento'),
-    ('Correção de Saldo'),
-    ('Investiemnto Entrada'),
-    ('Câmbio Entrada'),
-    ('Outras Entradas');
-INSERT INTO expense_categories (name)
-values ('Alimentação'),
-    ('Lazer'),
-    ('Roupas'),
-    ('Mercado'),
-    ('Transporte'),
-    ('Saúde'),
-    ('Viagem'),
-    ('Pets'),
-    ('Moradia'),
-    ('Contas'),
-    ('Doações'),
-    ('Educação'),
-    ('Imposto'),
-    ('Investimento Saída'),
-    ('Câmbio Saída'),
-    ('Outras Entrada');
 -- Inserir dados na tabela 'fixed_revenues'
 INSERT INTO fixed_revenues (
         name,

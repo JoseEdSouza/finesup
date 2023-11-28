@@ -1,4 +1,4 @@
-import { CreateBudgetHandler, ValidateBudgetActualValue, ValidateBudgetFinalValue } from "../handler/BudgetHandler";
+import { CreateBudgetHandler, ValidateBudgetActualValue, ValidateBudgetFinalValue, ValidateBudgetCategory } from "../handler/BudgetHandler";
 import Budget from "../models/Budget";
 import BudgetDAO from "../models/BudgetDAO";
 
@@ -10,6 +10,7 @@ class BudgetController{
         this.handler = new CreateBudgetHandler()
             .setNextHandler(new ValidateBudgetActualValue())
             .setNextHandler(new ValidateBudgetFinalValue())
+            .setNextHandler(new ValidateBudgetCategory())
     }
 
     createBudget(categoryId:number, renewalDate: Date, actualValue:number, finalValue: number, ): Budget{
