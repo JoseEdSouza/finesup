@@ -36,6 +36,17 @@ class ValidateBudgetFinalValue extends BudgetBaseHandler {
     }
 }
 
+class ValidateBudgetCategory extends BudgetBaseHandler {
+    handle(budget: Budget): boolean {
+        if (budget.categoryId ) {
+            budget.actualValue = 0
+        }
+        if (this.next === null)
+            return true
+        return this.next.handle(budget)
+    }
+}
+
 class CreateBudgetHandler extends BudgetBaseHandler {
     handle(budget: Budget): boolean {
         if (this.next === null)

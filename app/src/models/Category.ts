@@ -1,19 +1,19 @@
-//TODO - IMPLEMENTAR CERTO
-
 class ExpenseCategory {
     constructor(
-        public name: string,
-        public color: string
+        public readonly name: string,
+        public readonly color: string,
+        public readonly id: number
     ){}
 }
-class ReveneuCategory {
+class RevenueCategory {
     constructor(
-        public name: string,
-        public color: string
+        public readonly name: string,
+        public readonly color: string,
+        public readonly id: number
     ){}
 }
 
 export {
-    ReveneuCategory,
+    RevenueCategory,
     ExpenseCategory
 }

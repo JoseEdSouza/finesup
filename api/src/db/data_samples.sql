@@ -68,9 +68,9 @@ VALUES ('CashBack'),
     ('Renda'),
     ('Rendimento'),
     ('Correção de Saldo'),
-    ('Investimento entrada'),
-    ('Câmbio entrada'),
-    ('Outros entrada');
+    ('Investiemnto Entrada'),
+    ('Câmbio Entrada'),
+    ('Outras Entradas');
 INSERT INTO expense_categories (name)
 values ('Alimentação'),
     ('Lazer'),
@@ -82,11 +82,12 @@ values ('Alimentação'),
     ('Pets'),
     ('Moradia'),
     ('Contas'),
+    ('Doações'),
     ('Educação'),
     ('Imposto'),
-    ('Investimento saída'),
-    ('Câmbio saída'),
-    ('Outros saída');
+    ('Investimento Saída'),
+    ('Câmbio Saída'),
+    ('Outras Entrada');
 -- Inserir dados na tabela 'fixed_revenues'
 INSERT INTO fixed_revenues (
         name,
