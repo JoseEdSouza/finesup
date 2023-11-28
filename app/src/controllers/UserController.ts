@@ -2,6 +2,7 @@ import Auth from "../services/Auth"
 import { ValidateLoginEmail, ValidateLoginPassword, LoginHandler } from "../handler/LoginHandler";
 import Session from "../services/Session";
 import { ValidateSignupName, ValidateSignupEmail, ValidateSignupPassword, SignupHandler } from "../handler/SignupHandler";
+import ServerOfflineError from "../utils/Error";
 
 class UserController {
 
@@ -16,6 +17,8 @@ class UserController {
                 Session.createInstance(token, password)
                 return true
             } catch (error) {
+                if(error instanceof ServerOfflineError)
+                    throw new Error(error.message)
                 throw new Error("Email ou senha incorretos")
             }
         }
@@ -34,6 +37,8 @@ class UserController {
                 Session.createInstance(token, password)
                 return true
             } catch (error) {
+                if(error instanceof ServerOfflineError)
+                    throw new Error(error.message)
                 throw new Error("Já existe um cadastro com o email informado")
             }
         }

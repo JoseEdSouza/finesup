@@ -1,6 +1,7 @@
 import Budget from "./Budget";
 import Session from "../services/Session";
 import Endpoints from "../utils/Endpoints";
+import ServerOfflineError from "../utils/Error";
 
 class BudgetDAO {
     private headers = {
@@ -18,7 +19,9 @@ class BudgetDAO {
             headers: this.headers
 
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         if (response.status === 404) {
             throw new Error('Item not found')
         } else if (response.status !== 200) {
@@ -33,7 +36,9 @@ class BudgetDAO {
             method: 'GET',
             headers: this.headers
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         if (response.status === 404) {
             throw new Error('Item not found')
         } else if (response.status !== 200) {
@@ -49,7 +54,9 @@ class BudgetDAO {
             body: budget.toString(),
             headers: this.headers
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         if (response.status !== 200) {
             throw new Error(response.statusText)
         }
@@ -63,7 +70,9 @@ class BudgetDAO {
             body: budget.toString(),
             headers: this.headers
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         if (response.status !== 200) {
             throw new Error(response.statusText)
         }
@@ -76,7 +85,9 @@ class BudgetDAO {
             method: 'DELETE',
             headers: this.headers
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         if (response.status !== 200) {
             throw new Error(response.statusText)
         }

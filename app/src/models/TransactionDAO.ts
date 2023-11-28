@@ -1,6 +1,7 @@
 import { Expense, Revenue } from "./Transaction";
 import Endpoints from "../utils/Endpoints";
 import Session from "../services/Session";
+import ServerOfflineError from "../utils/Error";
 
 
 class RevenueDAO {
@@ -19,7 +20,9 @@ class RevenueDAO {
             method: 'GET',
             headers: this.headers
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         if (response.status === 404) {
             throw new Error('Item not found')
         } else if (response.status !== 200) {
@@ -34,7 +37,9 @@ class RevenueDAO {
             method: 'GET',
             headers: this.headers
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         if (response.status === 404) {
             throw new Error('Item not found')
         } else if (response.status !== 200) {
@@ -50,7 +55,9 @@ class RevenueDAO {
             body: revenue.toString(),
             headers: this.headers
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         if (response.status !== 200) {
             throw new Error(response.statusText)
         }
@@ -64,7 +71,9 @@ class RevenueDAO {
             body: revenue.toString(),
             headers: this.headers
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         if (response.status !== 200) {
             throw new Error(response.statusText)
         }
@@ -76,7 +85,9 @@ class RevenueDAO {
         const req: Request = new Request(`${Endpoints.REVENUE}/${id}`, {
             method: 'DELETE'
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         console.log(response.status, response.statusText);
         return response.status === 200
     }
@@ -98,7 +109,9 @@ class ExpenseDAO {
             method: 'GET',
             headers: this.headers
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         if (response.status === 404) {
             throw new Error('Item not found')
         } else if (response.status !== 200) {
@@ -113,7 +126,9 @@ class ExpenseDAO {
             method: 'GET',
             headers: this.headers
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         if (response.status === 404) {
             throw new Error('Item not found')
         } else if (response.status !== 200) {
@@ -129,7 +144,9 @@ class ExpenseDAO {
             body: expense.toString(),
             headers: this.headers
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         if (response.status !== 200) {
             throw new Error(response.statusText)
         }
@@ -143,7 +160,9 @@ class ExpenseDAO {
             body: expense.toString(),
             headers: this.headers
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         if (response.status !== 200) {
             throw new Error(response.statusText)
         }
@@ -155,7 +174,9 @@ class ExpenseDAO {
         const req: Request = new Request(`${Endpoints.EXPENSE}/${id}`, {
             method: 'DELETE'
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         console.log(response.status, response.statusText);
         return response.status === 200
     }
