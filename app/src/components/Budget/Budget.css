@@ -1,17 +1,14 @@
-#divCategorieBud{
+#div1{
     position: relative;
-    width: 90.76vw;
-    height: 20.40vh;
+    background-color: var(--secondaryColor);
+    width: 27.76vw;
+    height: 18.40vh;
     border-radius: 1.2vw;
-    bottom: 8.39;
+    bottom: 8.39px;
     cursor: pointer;
-    top: 61.52vh;
-    border: 2px solid white;
-    left: 50%;
-    transform: translateX(-50%);
-    justify-content: start;
-    display: flex;
-    flex-wrap: wrap;
+    top: 0vh;
+    left: 0vw;
+    margin: 10px;
 }
 
 #div1{
