@@ -85,9 +85,9 @@ class FixedRevenue implements FixedTransaction{
             new Date(json.purchase_date),
             new Date(json.limit_date),
             json.frequency,
-            json.cat)
+            json.cat,
             json.user_id,
-            json.id,
+            json.id)
     }
 
     static fromJsonArray(json: any[]): FixedRevenue[] {
