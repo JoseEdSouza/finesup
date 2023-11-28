@@ -19,7 +19,7 @@ function DetailedDisplayBox() {
     const effectRan = useRef(false)
 
     useEffect(() => {
-        if(effectRan.current === false){
+        if (effectRan.current === false) {
             const fecthData = async () => {
                 try {
                     const box = await boxController.get(data.name)
@@ -65,11 +65,13 @@ function DetailedDisplayBox() {
                 valueMax={finalalValue}
             />
             <BoxDetails
+                name={box?.name}
                 valueMax={finalalValue}
                 description={description}
                 currentValue={actualValue}
                 deposit={deposit}
                 draw={draw}
+                controller={boxController}
             />
         </>
     );
