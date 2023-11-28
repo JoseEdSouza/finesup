@@ -39,7 +39,7 @@ class TransactionController {
     }
 
     public async add(
-        type: boolean,
+        isRevenue: boolean,
         fixed: boolean,
         name: string,
         description: string,
@@ -53,9 +53,9 @@ class TransactionController {
     ) {
         let controller
         if (fixed) {
-            controller = type ? this.fxRevController : this.fxExController;
+            controller = isRevenue ? this.fxRevController : this.fxExController;
         } else {
-            controller = type ? this.revController : this.expController;
+            controller = isRevenue ? this.revController : this.expController;
         }
 
         return await this.addTransaction(controller, name, description, value, purchase_date, categoryId, userId, id, limitDate, frequency);
