@@ -46,6 +46,11 @@ class UserController {
     }
 
 
+    static async logout(): Promise<void> {
+        Session.endSession()
+    }
+
+
 }
 
 export default UserController

@@ -11,6 +11,9 @@ function UserItems(){
             <hr id="hr4"></hr>
             <label id="deleteACC"><strong>Exclusão de conta</strong></label>
             <hr id="hr5"></hr>
+            <img src="/icon_edit.svg" className="EditI" id="EditName"/>
+            <img src="/icon_edit.svg" className="EditI" id="EditEmail"/>
+            <img src="/icon_edit.svg" className="EditI" id="EditPassword"/>
         </>
     )
 }

@@ -45,6 +45,10 @@ class Session {
         Session.instance = new Session(token, password)
         return Session.instance
     }
+
+    static endSession(){
+        Session.instance = null
+    }
 }
 
 
