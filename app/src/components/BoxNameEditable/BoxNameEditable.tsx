@@ -1,22 +1,17 @@
-import { ChangeEvent, useEffect, useState } from "react"
+import { ChangeEvent, useState } from "react"
 import "./BoxNameEditable.css"
 
 function BoxNameEditable(props: { boxNameCurrent: string, setName: (nameBox: string) => void }) {
-    const [boxName, setBoxName] = useState<string>("")
+    const [nameBox, setNameBox] = useState(props.boxNameCurrent)
 
-    const handleBoxName = (e: ChangeEvent<HTMLInputElement>) => {
-        setBoxName(e.target.value)
-        props.setName(boxName)
+    const handleChangeName = (e:ChangeEvent<HTMLInputElement>) =>{
+        setNameBox(e.target.value)
     }
-
-    useEffect(() =>{
-        setBoxName(props.boxNameCurrent)
-    },[])
-
+    
     return (
         <div id="boxNameEditable">
-            <label id="boxLabelName"><strong>{props.boxNameCurrent}</strong></label>
-            <input type="text" id="boxlabelEditable" value={boxName} onChange={handleBoxName} />
+            <label id="boxLabelName"><strong>Nome:</strong></label>
+            <input type="text" id="boxlabelEditable" value={nameBox} onChange={handleChangeName} />
         </div>
     )
 }

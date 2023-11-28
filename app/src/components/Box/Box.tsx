@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import "./Box.css";
+import BoxController from "../../controllers/BoxController";
 
 function Box(props: { name: string; valueCurrent: number; valueMax: number }) {
+	const [isDelete, setDelete] = useState(false)
+
+	const controllerBox = new BoxController()
+
 	const [DatasForLink] = useState({
 		name: props.name,
 		valueCurrent: props.valueCurrent,
@@ -18,8 +23,26 @@ function Box(props: { name: string; valueCurrent: number; valueMax: number }) {
 		return valueBar;
 	};
 
+	const deleteBox = async () => {
+		try {
+			await controllerBox.remove(DatasForLink.name)
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+	const handleDeleteClick = () =>{
+		setDelete(true)
+	}
+
+	useEffect(() => {
+		if(isDelete){
+			deleteBox()
+		}
+	}, [isDelete])
+
 	return (
-		<div id="box">
+		isDelete ? <></> : (<div id="box">
 			<label id="labelBox">{props.name}</label>
 
 			<Link to="/1/detailedDisplayBox" state={DatasForLink}>
@@ -32,7 +55,7 @@ function Box(props: { name: string; valueCurrent: number; valueMax: number }) {
 			<Link to="/1/updateBox" state={DatasForLink}>
 				<img src="/icon_edit.svg" id="iconEdit" />
 			</Link>
-			<img src="/icon_delete.svg" id="iconDelete" />
+			<img src="/icon_delete.svg" id="iconDelete" onClick={handleDeleteClick} />
 
 			<ProgressBar
 				valueCurrent={props.valueCurrent}
@@ -44,7 +67,7 @@ function Box(props: { name: string; valueCurrent: number; valueMax: number }) {
 				backgroundStyle="var(--primaryColor)"
 				labelStyle=""
 			/>
-		</div>
+		</div>)
 	);
 }
 

@@ -8,7 +8,7 @@ function ProgressBar(props:{valueMax:number, valueCurrent:number, progress:numbe
         if(valueBar >= 100){
             valueBar = 100;
         }
-        if(valueBar <= 0){
+        if(valueBar <= 0 || Number.isNaN(valueBar)){
             valueBar = 0;
         }
 

@@ -7,6 +7,7 @@ import "./BoxEditableContainer.css"
 import { useEffect, useRef, useState } from "react"
 import BoxController from "../../controllers/BoxController"
 import Box from "../../models/Box"
+import { Nullable } from "../../types"
 
 function BoxEditableContainer() {
     const location = useLocation()
@@ -16,26 +17,25 @@ function BoxEditableContainer() {
     const [nameBox, setNameBox] = useState('')
     const [valueBox, setValueBox] = useState(0)
     const [descriptionBox, setDescriptionBox] = useState('')
+    const [descriptionBox2, setDescriptionBox2] = useState('')
+    const [activaded, setActivaded] =useState(false)
 
-    // useStates for box update
-    const [nameNewBox, setNameNewBox] = useState('')
-    const [valueNewBox, setValueNewBox] = useState(0)
-    const [descriptionNewBox, setDescriptionNewBox] = useState('')
-
-    const [activaded, setActivaded] = useState(false)
+    const [getData, setData] = useState<Nullable<Box>>(null)
 
     const boxController = new BoxController()
 
     const refLoadDatas = useRef(false)
 
     useEffect(() => {
-        if(refLoadDatas.current === false){
+        if (refLoadDatas.current === false) {
             const loadDatas = async () => {
                 try {
-                    const actualBox = await boxController.get(data.name)
-                    setNameBox(actualBox.name)
-                    setValueBox(actualBox.finalValue)
-                    setDescriptionBox(actualBox.description)
+                    const box = await boxController.get(data.name)
+                    setData(box)
+                    setNameBox(box.name)
+                    setValueBox(box.finalValue)
+                    setDescriptionBox(box.description)
+                    console.log(nameBox)
                 } catch (error) {
                     console.log(error)
                 }
@@ -45,22 +45,11 @@ function BoxEditableContainer() {
         }
     }, [])
 
-    useEffect(() => {
-        const setUpdate = async () => {
-            try {
-                
-            } catch (error) {
-
-            }
-        }
-    }, [activaded])
-
     return (
         <div id="editableBoxContainer">
-            <BoxNameEditable boxNameCurrent={nameBox} setName={setNameNewBox} />
-            <BoxValueEditable valueMax={valueBox} setValue={setValueNewBox} />
-            <BoxDescriptionEditable descriptionCurrent={descriptionBox} setDescription={setDescriptionNewBox} />
-            <CreateButtons nameButton="Editar caixinha" backTo="/1" buttonClick={setActivaded} />
+            <BoxNameEditable boxNameCurrent={nameBox} setName={setNameBox} />
+            <BoxValueEditable valueMax={valueBox} setValue={setValueBox} />
+            <BoxDescriptionEditable descriptionCurrent={descriptionBox} setDescription={setDescriptionBox2} />
         </div>
     )
 }

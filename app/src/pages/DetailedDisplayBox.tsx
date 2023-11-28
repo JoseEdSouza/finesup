@@ -26,7 +26,7 @@ function DetailedDisplayBox() {
                     setBox(box)
                     setActualValue(box.actualValue === null ? 0 : box.actualValue)
                     setFinalValue(box.finalValue === null ? 0 : box.finalValue)
-                    setDescription(box.description === null ? "" : box.description)
+                    setDescription(box.description)
                 } catch (error) {
                     console.log(error)
                 }
