@@ -23,7 +23,7 @@ class Auth:
             "user_id": id,
             "user_email": email,
             "user_name": name,
-            "expiry": time() + 3600
+            "expiry": time() + 1200
         }
         token = jwt.encode(payload, Auth._SECRET, algorithm=Auth._ALGORITHM)
         return Auth.AuthResponse(access_token=token)
