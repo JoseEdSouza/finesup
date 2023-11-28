@@ -1,22 +1,22 @@
-:root{
-  --primaryColor: #2E1E43;
-  --secondaryColor: #D1D3F1;
-  --thirdColor: #714C9F;
+:root {
+    --primaryColor: #2E1E43;
+    --secondaryColor: #D1D3F1;
+    --thirdColor: #714C9F;
 }
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  user-select: none;
-  font-family: "Open Sans";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: "Open Sans";
 }
 
 body {
-  background-color: var(--primaryColor);
+    background-color: var(--primaryColor);
 }
 
 ::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
+    width: 0px;
+    background: transparent;
 }
