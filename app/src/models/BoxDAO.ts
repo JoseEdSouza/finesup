@@ -67,7 +67,7 @@ export class BoxDAO {
     async update(name: string, box: Box): Promise<Box> {
         const req: Request = new Request(`${Endpoints.BOX}/${name}`, {
             method: 'PUT',
-            body: JSON.stringify(box.toJson()),
+            body: box.toString(),
             headers: this.headers
         })
         const response: Response = await fetch(req).catch(() => {

@@ -1,12 +1,10 @@
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent } from "react"
 import "./BoxValueEditable.css"
 
 function BoxValueEditable(props: { valueMax: number, setValue: (value: number) => void }) {
-    const [valueBox, setValueBox] = useState<number>(props.valueMax)
 
     const handleValueBox = (e: ChangeEvent<HTMLInputElement>) => {
-        setValueBox(+ e.target.value)
-        props.setValue(valueBox)
+        props.setValue(+ e.target.value)
     }
 
     return (

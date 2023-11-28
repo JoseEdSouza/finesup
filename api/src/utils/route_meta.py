@@ -77,10 +77,10 @@ class RouteMeta(type):
                         user = payload['user_id']
                     args = list(filter(lambda x: x is not None, [id, user, m_name, category]))
                     if dao.get(*args) is None:
-                        raise HTTPException(status_code=409, detail="Item not found")
+                        raise HTTPException(status_code=404, detail="Item not found")
                     updated = dao.update(*args, mod)
                     if updated is None:
-                        raise HTTPException(status_code=404, detail="Already Exists")
+                        raise HTTPException(status_code=409, detail="Already Exists")
                     return updated
             if 'remove' in methods:
                 @router.delete(f'/api/{route_base_name}/{key_path_without_user}',

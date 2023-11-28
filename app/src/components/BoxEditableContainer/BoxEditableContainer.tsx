@@ -1,68 +1,72 @@
-import { useLocation } from "react-router-dom"
-import CreateButtons from "../CreateButtons/CreateButtons"
-import BoxDescriptionEditable from "../BoxDescriptionEditable/BoxDescriptionEditable"
-import BoxNameEditable from "../BoxNameEditable/BoxNameEditable"
-import BoxValueEditable from "../BoxValueEditable/BoxValueEditable"
-import "./BoxEditableContainer.css"
-import { useEffect, useRef, useState } from "react"
-import BoxController from "../../controllers/BoxController"
-import Box from "../../models/Box"
+import { useLocation } from "react-router-dom";
+import CreateButtons from "../CreateButtons/CreateButtons";
+import BoxDescriptionEditable from "../BoxDescriptionEditable/BoxDescriptionEditable";
+import BoxNameEditable from "../BoxNameEditable/BoxNameEditable";
+import BoxValueEditable from "../BoxValueEditable/BoxValueEditable";
+import "./BoxEditableContainer.css";
+import { useEffect, useRef, useState } from "react";
+import BoxController from "../../controllers/BoxController";
+import Box from "../../models/Box";
 
 function BoxEditableContainer() {
-    const location = useLocation()
-    const data = location.state
+	const location = useLocation();
+	const data = location.state;
 
-    // useStates for older box
-    const [nameBox, setNameBox] = useState('')
-    const [valueBox, setValueBox] = useState(0)
-    const [descriptionBox, setDescriptionBox] = useState('')
+	// useStates for older box
+	const [nameBox, setNameBox] = useState("");
+	const [valueBox, setValueBox] = useState(0);
+	const [descriptionBox, setDescriptionBox] = useState("");
+	const [isLoading, setIsLoading] = useState(true); // set loading to true on component mount
 
-    // useStates for box update
-    const [nameNewBox, setNameNewBox] = useState('')
-    const [valueNewBox, setValueNewBox] = useState(0)
-    const [descriptionNewBox, setDescriptionNewBox] = useState('')
+	// useStates for box update
+	const [actualBoxName, setActualBoxName] =  useState("");
 
-    const [activaded, setActivaded] = useState(false)
+	const boxController = new BoxController();
 
-    const boxController = new BoxController()
+	const refLoadDatas = useRef(false);
 
-    const refLoadDatas = useRef(false)
+	const loadData = async () => {
+		try {
+			await boxController.get(data.name).then((fetchBox) => {
+				setNameBox(fetchBox.name);
+				setValueBox(fetchBox.finalValue);
+				setDescriptionBox(fetchBox.description);
+                setActualBoxName(fetchBox.name);
+                setIsLoading(false);
+                console.log(actualBoxName);
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
-    useEffect(() => {
-        if(refLoadDatas.current === false){
-            const loadDatas = async () => {
-                try {
-                    const actualBox = await boxController.get(data.name)
-                    setNameBox(actualBox.name)
-                    setValueBox(actualBox.finalValue)
-                    setDescriptionBox(actualBox.description)
-                } catch (error) {
-                    console.log(error)
-                }
-            }
-            loadDatas()
-            refLoadDatas.current = true
-        }
-    }, [])
+	const updateBox = async () => {
+		const box = new Box(nameBox, descriptionBox, valueBox);
+		return await boxController.update(actualBoxName, box);
+	};
 
-    useEffect(() => {
-        const setUpdate = async () => {
-            try {
-                
-            } catch (error) {
+	useEffect(() => {
+		if (refLoadDatas.current === false) {
+			loadData();
+			refLoadDatas.current = true;
+            console.log(actualBoxName);
+		}
+	}, []);
 
-            }
-        }
-    }, [activaded])
-
-    return (
-        <div id="editableBoxContainer">
-            <BoxNameEditable boxNameCurrent={nameBox} setName={setNameNewBox} />
-            <BoxValueEditable valueMax={valueBox} setValue={setValueNewBox} />
-            <BoxDescriptionEditable descriptionCurrent={descriptionBox} setDescription={setDescriptionNewBox} />
-            <CreateButtons nameButton="Editar caixinha" backTo="/1" buttonClick={setActivaded} />
-        </div>
-    )
+	return (
+		<div id="editableBoxContainer">
+			{isLoading ? (
+				<div>Loading...</div>
+			) : (
+				<>
+					<BoxNameEditable boxNameCurrent={nameBox} setName={setNameBox} />
+					<BoxValueEditable valueMax={valueBox} setValue={setValueBox} />
+					<BoxDescriptionEditable descriptionCurrent={descriptionBox} setDescription={setDescriptionBox} />
+					<CreateButtons nameButton="Editar caixinha" backTo="/1" functionOnCreate={updateBox} />
+				</>
+			)}
+		</div>
+	);
 }
 
-export default BoxEditableContainer
+export default BoxEditableContainer;

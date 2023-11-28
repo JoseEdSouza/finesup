@@ -36,7 +36,7 @@ class BoxController {
     }
 
     async get(name: string): Promise<Box> {
-        return this.dao.get(name)
+        return await this.dao.get(name)
     }
 
     async getAll(): Promise<Box[]> {
