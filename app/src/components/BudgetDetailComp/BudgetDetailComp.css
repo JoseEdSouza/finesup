@@ -4,8 +4,16 @@
     left: 50%;
     transform: translateX(-50%);
     height: 7.76vh;
-    top: 25.72vh;
+    top: 30.72vh;
     border-radius: 1vh;
+}
+
+#DivBar{
+    position: relative;
+    width: 49.72vw;
+    height: 6.25vh;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 #editDiv2{
