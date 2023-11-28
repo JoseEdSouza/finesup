@@ -1,10 +1,10 @@
-import { BudgetBaseHandler, BudgetHandler, CreateBudgetHandler, ValidateBudgetActualValue, ValidateBudgetFinalValue } from "../handler/BudgetHandler";
+import { CreateBudgetHandler, ValidateBudgetActualValue, ValidateBudgetFinalValue } from "../handler/BudgetHandler";
 import Budget from "../models/Budget";
 import BudgetDAO from "../models/BudgetDAO";
 
 class BudgetController{
-    dao: BudgetDAO
-    handler: CreateBudgetHandler
+    private dao: BudgetDAO
+    private handler: CreateBudgetHandler
     constructor(){
         this.dao = new BudgetDAO()
         this.handler = new CreateBudgetHandler()
