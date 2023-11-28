@@ -1,12 +1,12 @@
 import Budget from "../models/Budget";
 import { Nullable } from "../types";
 
-interface BudgetHandler {
+interface Handler {
     handle(budget: Budget): boolean;
 }
 
 
-abstract class BudgetBaseHandler implements BudgetHandler {
+abstract class BudgetBaseHandler implements Handler {
     protected next: Nullable<BudgetBaseHandler> = null;
     abstract handle(budget: Budget): boolean;
     setNextHandler(next: BudgetBaseHandler): BudgetBaseHandler {
@@ -28,7 +28,7 @@ class ValidateBudgetCategory extends BudgetBaseHandler {
     handle(budget: Budget): boolean {
         if (!(budget.categoryId >= 1 && budget.categoryId < 16)) {
             budget.categoryId = 16
-        } 
+        }
         if (this.next === null)
             return true
         return this.next.handle(budget)
@@ -44,7 +44,7 @@ class CreateBudgetHandler extends BudgetBaseHandler {
 }
 
 
-export type { BudgetHandler }
+export type { Handler }
 export {
     BudgetBaseHandler,
     ValidateBudgetCategory,
