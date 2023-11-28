@@ -1,6 +1,7 @@
 import Box from './Box'
 import Session from '../services/Session'
 import Endpoints from '../utils/Endpoints'
+import ServerOfflineError from '../utils/Error'
 
 export class BoxDAO {
     private headers = {
@@ -18,7 +19,9 @@ export class BoxDAO {
             headers: this.headers
 
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         if (response.status === 404) {
             throw new Error('Item not found')
         } else if (response.status !== 200) {
@@ -33,7 +36,9 @@ export class BoxDAO {
             method: 'GET',
             headers: this.headers
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         if (response.status === 404) {
             throw new Error('Item not found')
         } else if (response.status !== 200) {
@@ -49,7 +54,9 @@ export class BoxDAO {
             body: box.toString(),
             headers: this.headers
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         if (response.status !== 200) {
             throw new Error(response.statusText)
         }
@@ -60,10 +67,12 @@ export class BoxDAO {
     async update(name: string, box: Box): Promise<Box> {
         const req: Request = new Request(`${Endpoints.BOX}/${name}`, {
             method: 'PUT',
-            body: JSON.stringify(box.toJson()),
+            body: box.toString(),
             headers: this.headers
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         if (response.status !== 200) {
             throw new Error(response.statusText)
         }
@@ -76,7 +85,9 @@ export class BoxDAO {
             method: 'DELETE',
             headers: this.headers
         })
-        const response: Response = await fetch(req)
+        const response: Response = await fetch(req).catch(() => {
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde')
+        })
         console.log(response.status, response.statusText)
         return response.status === 200
     }

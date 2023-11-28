@@ -1,24 +1,21 @@
-import { ChangeEvent, useEffect, useState } from "react"
-import "./BoxDescriptionEditable.css"
+import { ChangeEvent} from "react";
+import "./BoxDescriptionEditable.css";
 
-function BoxDescriptionEditable(props:{descriptionCurrent:string, setDescription: (description: string) => void }){
-    const [boxDescription, setBoxDescription] = useState<string>("")
+function BoxDescriptionEditable(props: { descriptionCurrent: string; setDescription: (description: string) => void }) {
 
-    const handleBoxDescription = (e:ChangeEvent<HTMLTextAreaElement>) =>{
-        setBoxDescription(e.target.value)
-        props.setDescription(boxDescription)
-    }
+	const handleBoxDescription = (e: ChangeEvent<HTMLTextAreaElement>) => {
+		props.setDescription(e.target.value);
+	};
 
-    useEffect(()=>{
-        setBoxDescription(props.descriptionCurrent)
-    },[])
 
-    return (
-        <div id="boxDescriptionEditable">
-            <label id="boxlabelDescriptionEditable"><strong>Descrição:</strong></label>
-            <textarea id="boxInputDescriptionEditable" value={boxDescription} onChange={handleBoxDescription}/>
-        </div>
-        )
+	return (
+		<div id="boxDescriptionEditable">
+			<label id="boxlabelDescriptionEditable">
+				<strong>Descrição:</strong>
+			</label>
+			<textarea id="boxInputDescriptionEditable" value={props.descriptionCurrent} onChange={handleBoxDescription} />
+		</div>
+	);
 }
 
-export default BoxDescriptionEditable
+export default BoxDescriptionEditable;

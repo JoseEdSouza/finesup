@@ -12,7 +12,7 @@
 }
 
 #labelBudget{
-    position: relative;
+    position: absolute;
     font-family: "Open Sans";
     height: 3vh;
     top: 3.90vh;

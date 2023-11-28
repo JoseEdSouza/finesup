@@ -1,4 +1,5 @@
 import Endpoints from "../utils/Endpoints";
+import ServerOfflineError from "../utils/Error";
 
 class Auth {
 
@@ -7,7 +8,7 @@ class Auth {
         const req = new Request(Endpoints.LOGIN, {
             method: 'POST',
             headers: {
-                'accept': 'application/json', 
+                'accept': 'application/json',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
@@ -23,6 +24,8 @@ class Auth {
                 else {
                     throw new Error('Invalid credentials')
                 }
+            },() => { 
+                throw new ServerOfflineError('Servidor offline, tente novamente mais tarde') 
             })
         const res = await response.json()
         return await res.access_token;
@@ -48,6 +51,8 @@ class Auth {
                 else {
                     throw new Error('Already registered')
                 }
+            }, () => { 
+                throw new ServerOfflineError('Servidor offline, tente novamente mais tarde') 
             })
         const res = await response.json()
         return await res.access_token;

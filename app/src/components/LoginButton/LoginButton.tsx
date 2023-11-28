@@ -26,6 +26,7 @@ function LoginButton(props: { login: () => Promise<boolean> }) {
 			<button id="loginButton" onClick={onClickLoginButton}>
 			Fazer Login
 			</button>
+			
 			{error === ""? <></> : <div id = "loginError">{error}</div>}
 		</>
 	);

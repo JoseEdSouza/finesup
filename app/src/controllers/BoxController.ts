@@ -1,6 +1,7 @@
 import Box from "../models/Box";
 import BoxDAO from "../models/BoxDAO";
 import { CreateBoxHandler, ValidateBoxFinalValue, ValidateBoxDescription, ValidateBoxName, ValidateBoxActualValue } from "../handler/BoxHandler";
+import ServerOfflineError from "../utils/Error";
 class BoxController {
 
     private dao: BoxDAO
@@ -28,12 +29,14 @@ class BoxController {
         try {
             return await this.dao.add(box)
         } catch (error) {
+            if (error instanceof ServerOfflineError)
+                throw error
             throw new Error("Nome já existente")
         }
     }
 
     async get(name: string): Promise<Box> {
-        return this.dao.get(name)
+        return await this.dao.get(name)
     }
 
     async getAll(): Promise<Box[]> {
@@ -45,6 +48,8 @@ class BoxController {
             try {
                 return this.dao.update(name, box)
             } catch (error) {
+                if (error instanceof ServerOfflineError)
+                    throw error
                 throw new Error("Nome já existente")
             }
         } else

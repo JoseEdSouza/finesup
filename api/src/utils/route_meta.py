@@ -61,7 +61,7 @@ class RouteMeta(type):
                     mod.user_id = payload['user_id']
                     added = dao.add(mod)
                     if added is None:
-                        raise HTTPException(status_code=404, detail="Item not found or already exists")
+                        raise HTTPException(status_code=409, detail="Item not found or already exists")
                     return added
             if 'update' in methods:
                 @router.put(f'/api/{route_base_name}/{key_path_without_user}', dependencies=[Depends(Bearer())],
@@ -80,7 +80,7 @@ class RouteMeta(type):
                         raise HTTPException(status_code=404, detail="Item not found")
                     updated = dao.update(*args, mod)
                     if updated is None:
-                        raise HTTPException(status_code=404, detail="Already Exists")
+                        raise HTTPException(status_code=409, detail="Already Exists")
                     return updated
             if 'remove' in methods:
                 @router.delete(f'/api/{route_base_name}/{key_path_without_user}',

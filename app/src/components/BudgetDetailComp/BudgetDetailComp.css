@@ -7,3 +7,13 @@
     right: 3.263vw;
     border-radius: 1vh;
 }
+
+.EditBud{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    align-items: center;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+}

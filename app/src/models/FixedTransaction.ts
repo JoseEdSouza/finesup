@@ -45,8 +45,8 @@ class FixedExpense implements FixedTransaction{
             json.name,
             json.description,
             json.value,
-            json.purchase_date,
-            json.limit_date,
+            new Date(json.purchase_date),
+            new Date(json.limit_date),
             json.frequency,
             json.cat)
     }
@@ -62,10 +62,11 @@ class FixedExpense implements FixedTransaction{
             name: this.name,
             description: this.description,
             value: this.value,
-            purchase_date: this.purchaseDate,
-            limit_date: this.limitDate,
-            frequency: this.frequency,
-            cat: this.categoryId
+            cat: this.categoryId,
+            purchase_date: this.purchaseDate.toISOString().slice(0,10),
+            limit_date: this.limitDate.toISOString().slice(0,10),
+            frequency: this.frequency
+            
         }
     }
 
@@ -105,8 +106,8 @@ class FixedRevenue implements FixedTransaction{
             json.name,
             json.description,
             json.value,
-            json.purchase_date,
-            json.limit_date,
+            new Date(json.purchase_date),
+            new Date(json.limit_date),
             json.frequency,
             json.cat)
     }
@@ -122,10 +123,10 @@ class FixedRevenue implements FixedTransaction{
             name: this.name,
             description: this.description,
             value: this.value,
-            purchase_date: this.purchaseDate,
-            limit_date: this.limitDate,
-            frequency: this.frequency,
-            cat: this.categoryId
+            cat: this.categoryId,
+            purchase_date: this.purchaseDate.toISOString().slice(0,10),
+            limit_date: this.limitDate.toISOString().slice(0,10),
+            frequency: this.frequency
         }
     }
 
