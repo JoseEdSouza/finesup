@@ -11,34 +11,26 @@ abstract class Transaction {
 }
 
 class Revenue implements Transaction {
-    id: number
-    userId: number
-    name: string
-    description: string
-    value: number
-    purchaseDate: Date
-    categoryId: number
 
-    constructor(id: number, userId: number, name: string, description: string,
-        value: number, purchaseDate: Date, categoryId: number) {
-        this.id = id
-        this.userId = userId
-        this.name = name
-        this.description = description
-        this.value = value
-        this.purchaseDate = purchaseDate
-        this.categoryId = categoryId
-    }
+    constructor(
+        public name: string, 
+        public description: string,
+        public value: number, 
+        public purchaseDate: Date, 
+        public categoryId: number = 10,
+        public userId: number = 0, 
+        public id: number = 0
+        ) {}
 
     static fromJson(json: any): Revenue {
         return new Revenue(
-            json.id,
-            json.user_id,
             json.name,
             json.description,
             json.value,
             new Date(json.purchase_date),
-            json.cat)
+            json.cat,
+            json.user_id,
+            json.id)
     }
 
     static fromJsonArray(json: any[]): Revenue[] {
@@ -63,34 +55,26 @@ class Revenue implements Transaction {
 }
 
 class Expense implements Transaction {
-    id: number
-    userId: number
-    name: string
-    description: string
-    value: number
-    purchaseDate: Date
-    categoryId: number
 
-    constructor(id: number, userId: number, name: string, description: string,
-        value: number, purchaseDate: Date, categoryId: number) {
-        this.id = id
-        this.userId = userId
-        this.name = name
-        this.description = description
-        this.value = value
-        this.purchaseDate = purchaseDate
-        this.categoryId = categoryId
-    }
+    constructor(
+        public name: string,
+        public description:string, 
+        public value: number,
+        public purchaseDate: Date,
+        public categoryId: number = 16,
+        public userId: number = 0,
+        public id: number = 0
+        ){}
 
     static fromJson(json: any): Expense {
         return new Expense(
-            json.id,
-            json.user_id,
             json.name,
             json.description,
             json.value,
             new Date(json.purchase_date),
-            json.cat)
+            json.cat,
+            json.user_id,
+            json.id)
     }
 
     static fromJsonArray(json: any[]): Expense[] {
