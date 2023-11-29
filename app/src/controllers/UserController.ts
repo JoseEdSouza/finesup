@@ -91,6 +91,18 @@ class UserController {
         }
     }
 
+    static async changeName(newName: string): Promise<boolean> {
+        try {
+            const token = await Auth.changeName(newName)
+            Session.createInstance(token, Session.getInstance().user.password)
+            return true
+        } catch (error) {
+            if(error instanceof ServerOfflineError)
+                throw new Error(error.message)
+            throw new Error("Usuário não encontrado")
+        }
+    }
+
     static async logout(): Promise<void> {
         Session.endSession()
     }

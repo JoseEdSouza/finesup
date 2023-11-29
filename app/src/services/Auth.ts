@@ -141,6 +141,34 @@ class Auth {
         return await res;
 
     }
+
+    static async changeName(newName: string): Promise<any> {
+        const req = new Request(Endpoints.DELETE_ACCOUNT, {
+            method: 'PUT',
+            headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${Session.getInstance().token}`
+            },
+            body: JSON.stringify({
+                    "id": 0,
+                    "name": newName
+            })
+        })
+        const response = await fetch(req)
+        .then(res => {
+            if (res.status === 200)
+                return res
+            else {
+                throw new Error(res.statusText)
+            }
+        }, () => { 
+            throw new ServerOfflineError('Servidor offline, tente novamente mais tarde') 
+        })
+        const res = await response.json()
+        return await res.access_token;
+
+    }
 }
 
 export default Auth;

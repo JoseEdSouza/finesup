@@ -1,6 +1,11 @@
 import "./EditableName.css"
 
 function EditableName(props:{editname:(activaded:boolean)=>void, name: string}) {
+    const changeEmail = () => {
+        
+    }
+    
+    
     return (
         <div style={{position: "absolute", width:"100vw", height: "130vh", left: "50%", transform: "translateX(-50%)", zIndex: "1"}}>
             <div id="editableName">
