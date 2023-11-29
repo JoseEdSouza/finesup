@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import BudgetController from "../../controllers/BudgetController";
 import BudgetClass from "../../models/Budget";
-import { getCategoryByTypeAndId } from "../../models/Category";
 import Budget from "../Budget/Budget";
 
 function DivCategoriesBud(){
@@ -23,7 +22,7 @@ function DivCategoriesBud(){
 
     const createBudget = (budget: BudgetClass) => {
         return(
-            <Budget name={getCategoryByTypeAndId(true,budget.categoryId)} valueCurrent={budget.actualValue} valueMax={budget.finalValue}/>
+            <></>
         )
     }
 

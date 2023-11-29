@@ -22,8 +22,9 @@ function TransactionCreateContainer() {
     const [isRepeat, setRepeat] = useState(false)
     const [date, setdate] = useState("")
     const [infinty, setinfinty] = useState("")
-
+    let catToAdd = 0
     const [typeTransacttion, setTypeTransacttion] = useState(0)
+
 
     const getFactor = (e:Frequency) =>{
         switch (e){
@@ -60,9 +61,13 @@ function TransactionCreateContainer() {
     let type = typeTransacttion === 0
     const controllerTransaction = new TransactionController()
 
-    const createTransaction = () => controllerTransaction.add(
-        type, isRepeat, name, description, value, new Date(date), cat, 0, 0, new Date(calcLimitDate()), period
+    const createTransaction = async () => controllerTransaction.add(
+        !type, isRepeat, name, description, value, new Date(date), catToAdd, 0, 0, new Date(calcLimitDate()), period
     )
+
+    const setCategory = (catN:number) => {
+        catToAdd = catN
+    }
 
     return (
         <div id="containerAux" style={{ height: "125vh" }}>
@@ -74,7 +79,7 @@ function TransactionCreateContainer() {
                 <TransactionCreatePeriod setPeriod={setPeriod}/>
                 <DisplayReveneExpense setTypeTransactions={setTypeTransacttion} bottom="59.5" />
                 <TransactionCreateDescription setDes={setdescription}/>
-                <TransactionCreateCategory categoryType={typeTransacttion} setCat={setcat}/>
+                <TransactionCreateCategory categoryType={typeTransacttion} setCat={setCategory}/>
                 <CreateButtons nameButton="Salvar" backTo="/2/transactionHistory" functionOnCreate={createTransaction}/>
             </div>
         </div>
