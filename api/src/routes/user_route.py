@@ -34,7 +34,7 @@ class UserRoute:
         return Auth.sign(user.user_id, user.email, user.name)
 
     @staticmethod
-    @router.put('/api/user/', dependencies=[Depends(Bearer())])
+    @router.put('/api/user/update_password', dependencies=[Depends(Bearer())])
     def change_password(password_schema: ChangePasswordSchema, authorization: str = Header(None)):
         try:
             token = authorization.split(" ")[1]
@@ -48,7 +48,7 @@ class UserRoute:
         return Auth.sign(user_updated.user_id, user_updated.email, user_updated.name)
 
     @staticmethod
-    @router.put('/api/user', dependencies=[Depends(Bearer())])
+    @router.put('/api/user/update_email', dependencies=[Depends(Bearer())])
     def change_email(email_schema: ChangeEmailSchema, authorization: str = Header(None)):
         try:
             token = authorization.split(" ")[1]
@@ -64,7 +64,7 @@ class UserRoute:
         return Auth.sign(user_updated.user_id, user_updated.email, user_updated.name)
 
     @staticmethod
-    @router.delete('/api/user', dependencies=[Depends(Bearer())])
+    @router.delete('/api/user/delete', dependencies=[Depends(Bearer())])
     def delete_account(account: DeleteAccountSchema, authorization: str = Header(None)):
         token = authorization.split(" ")[1]
         payload = Auth.decode(token)
@@ -75,7 +75,7 @@ class UserRoute:
         return UserRoute.controller.delete(account)
 
     @staticmethod
-    @router.put('/api/user', dependencies=[Depends(Bearer())])
+    @router.put('/api/user/update_name', dependencies=[Depends(Bearer())])
     def change_name(account: ChangeNameSchema, authorization: str = Header(None)):
         try:
             token = authorization.split(" ")[1]
@@ -83,7 +83,7 @@ class UserRoute:
             if payload is None:
                 raise HTTPException(status_code=401, detail="Unauthorized token")
             account.id = payload['user_id']
-            user_updated = UserRoute.controller.update_name(account)
+            user_new_name = UserRoute.controller.update_name(account)
         except NotFoundError:
             raise HTTPException(404, 'Not found')
-        return Auth.sign(user_updated.user_id, user_updated.email, user_updated.name)
+        return Auth.sign(user_new_name.user_id, user_new_name.email, user_new_name.name)
