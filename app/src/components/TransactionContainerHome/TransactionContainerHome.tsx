@@ -8,9 +8,9 @@ function TransactionContainerHome() {
     return (
         <div id="transactionContainerHome">
             <strong id="labelBalanceHome">saldo</strong>
-            <label id="labelValueBalanceHome">R$ 0.00</label>
+            <label id="labelValueBalanceHome">R$ 1586.00</label>
             <div id="RevenueExpenseHome">
-                <RevenueExpense height="6" width="50" revenueValue={0} expenseValue={0.00} />
+                <RevenueExpense height="6" width="50" revenueValue={200} expenseValue={34.00} />
             </div>
             <Link to="/2/transactionHistory" id="linkTransactionHistory"><TransactionButton/></Link>
             <Link to="/2/graphics" id="LinkGraphics"><GraphicsButton /></Link>
