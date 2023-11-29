@@ -71,6 +71,7 @@ class Auth {
             body: JSON.stringify({
                     "id": 0,
                     "email": newEmail,
+                    "password": Session.getInstance().user.password
             })
         })
         const response = await fetch(req)
@@ -98,7 +99,8 @@ class Auth {
             },
             body: JSON.stringify({
                     "id": 0,
-                    "new_password": newPassword
+                    "new_password": newPassword,
+                    "password": Session.getInstance().user.password
             })
         })
         const response = await fetch(req)
@@ -152,7 +154,8 @@ class Auth {
             },
             body: JSON.stringify({
                     "id": 0,
-                    "new_name": newName
+                    "new_name": newName,
+                    "password": Session.getInstance().user.password
             })
         })
         const response = await fetch(req)

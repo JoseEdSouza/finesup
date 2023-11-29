@@ -43,7 +43,7 @@ class UserController(metaclass=Singleton):
         if user2 is not None and user2.user_id != user1.user_id:
             raise AlreadyExistsError()
 
-        return self._DAO.update(schema.id, User(user1.name, schema.new_email, user1.password))
+        return self._DAO.update(schema.id, User(user1.name, schema.new_email, schema.password))
 
     def delete(self, schema: DeleteAccountSchema):
         if self._DAO.get(schema.id) is None:
@@ -54,4 +54,4 @@ class UserController(metaclass=Singleton):
         user1 = self._DAO.get(schema.id)
         if user1 is None:
             raise NotFoundError()
-        return self._DAO.update(schema.id, User(schema.new_name, user1.email, user1.password))
+        return self._DAO.update(schema.id, User(schema.new_name, user1.email, schema.password))

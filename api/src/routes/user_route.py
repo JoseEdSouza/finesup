@@ -22,7 +22,7 @@ class UserRoute:
             user = UserRoute.controller.signup(signup)
         except AlreadyExistsError:
             raise HTTPException(403, 'Already Exists')
-        return Auth.sign(user.user_id, user.email, user.name)
+        return Auth.sign(user.user_id, user.email, user.name, signup.password)
 
     @staticmethod
     @router.post('/api/user/login', response_model=Auth.AuthResponse)
@@ -31,21 +31,21 @@ class UserRoute:
             user = UserRoute.controller.signin(login)
         except NotFoundError:
             raise HTTPException(404, 'Not Found')
-        return Auth.sign(user.user_id, user.email, user.name)
+        return Auth.sign(user.user_id, user.email, user.name, login.password)
 
     @staticmethod
     @router.put('/api/user/update_password', dependencies=[Depends(Bearer())])
-    def change_password(password_schema: ChangePasswordSchema, authorization: str = Header(None)):
+    def change_password(schema: ChangePasswordSchema, authorization: str = Header(None)):
         try:
             token = authorization.split(" ")[1]
             payload = Auth.decode(token)
             if payload is None:
                 raise HTTPException(status_code=401, detail="Unauthorized token")
-            password_schema.id = payload['user_id']
-            user_updated = UserRoute.controller.update_password(password_schema)
+            schema.id = payload['user_id']
+            user_updated = UserRoute.controller.update_password(schema)
         except NotFoundError:
             raise HTTPException(404, 'Not Found')
-        return Auth.sign(user_updated.user_id, user_updated.email, user_updated.name)
+        return Auth.sign(user_updated.user_id, user_updated.email, user_updated.name, schema.new_password)
 
     @staticmethod
     @router.put('/api/user/update_email', dependencies=[Depends(Bearer())])
@@ -61,7 +61,7 @@ class UserRoute:
             raise HTTPException(404, 'Not found')
         except AlreadyExistsError:
             raise HTTPException(409, 'Already Exists')
-        return Auth.sign(user_updated.user_id, user_updated.email, user_updated.name)
+        return Auth.sign(user_updated.user_id, user_updated.email, user_updated.name, email_schema.password)
 
     @staticmethod
     @router.delete('/api/user/delete', dependencies=[Depends(Bearer())])
@@ -86,4 +86,4 @@ class UserRoute:
             user_new_name = UserRoute.controller.update_name(account)
         except NotFoundError:
             raise HTTPException(404, 'Not found')
-        return Auth.sign(user_new_name.user_id, user_new_name.email, user_new_name.name)
+        return Auth.sign(user_new_name.user_id, user_new_name.email, user_new_name.name, account.password)

@@ -18,11 +18,12 @@ class Auth:
         }
 
     @staticmethod
-    def sign(id: int, email: str, name: str):
+    def sign(id: int, email: str, name: str, password: str):
         payload = {
             "user_id": id,
             "user_email": email,
             "user_name": name,
+            "password": password,
             "expiry": time() + 1200
         }
         token = jwt.encode(payload, Auth._SECRET, algorithm=Auth._ALGORITHM)
