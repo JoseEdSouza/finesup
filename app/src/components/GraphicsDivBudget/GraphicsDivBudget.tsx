@@ -1,6 +1,5 @@
 import {Pie} from "react-chartjs-2"
 import { Chart, ArcElement, Tooltip, Legend } from "chart.js"
-import TopicMyBudget from "../TopicMyBudget/TopicMyBudget"
 Chart.register(ArcElement, Tooltip, Legend)
 
 function GraphicsDivBudget(props:{GraphicValues : Array<number>}){

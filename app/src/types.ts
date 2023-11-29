@@ -1,3 +1,6 @@
+import { FixedTransaction } from "./models/FixedTransaction"
+import { Transaction } from "./models/Transaction"
+
 type Nullable<T> = T | null
 
 type DecodedToken = {
@@ -7,4 +10,5 @@ type DecodedToken = {
     expiry: number
 }
 
-export type {Nullable,DecodedToken}
+type TransactionType = Transaction | FixedTransaction
+export type {Nullable,DecodedToken, TransactionType}
