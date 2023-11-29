@@ -19,9 +19,6 @@ class ValidateSignupName extends SignBaseHandler {
             throw new Error('Nome muito curto')
         if (name.length > 20)
             throw new Error('Nome muito longo')
-        const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$ /
-        if (!regex.test(name))
-            throw new Error('O nome deve conter apenas letras')
         if (this.next === null)
             return true
         return this.next.handle(name, email, password,confirmPassword)

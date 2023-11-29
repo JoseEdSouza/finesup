@@ -35,7 +35,7 @@ class ValidateBoxName extends BoxBaseHandler {
 class ValidateBoxDescription extends BoxBaseHandler {
     handle(box: Box): boolean {
         if (box.description.length > 140)
-            throw new Error('O nome deve ter no máximo 140 caracteres')
+            throw new Error('Descrição muito longa')
         if (this.next === null)
             return true
         return this.next.handle(box)
