@@ -1,11 +1,16 @@
 import "./TransactionCreateCategory.css"
 
 function TransactionCreateCategory(props: { categoryType: number, setCat:(cat:number) => void}) {
+    const onChange = async (cat:number) => {
+        console.log(cat);
+        await props.setCat(cat)
+    }
+
     return (
         <div id="transactionCreateCategory">
             <label id="transactionCategoryLabel"><strong>Categoria</strong></label>
             {props.categoryType === 0 ?
-                <select id="transactionSelectCategories" onChange={(e) => props.setCat(Number(e.target.value))}>
+                <select id="transactionSelectCategories" onChange={(e) =>onChange(+ e.target.value)}>
                     <option value="10">Outras Entradas</option>
                     <option value="1">Cashback</option>
                     <option value="2">Vendas</option>
@@ -17,7 +22,7 @@ function TransactionCreateCategory(props: { categoryType: number, setCat:(cat:nu
                     <option value="8">Investimento entrada</option>
                     <option value="9">Câmbio entrada</option>
                 </select>
-                : <select id="transactionSelectCategories" onChange={(e) => {props.setCat(Number( e.target.value))}}>
+                : <select id="transactionSelectCategories" onChange={(e) =>onChange(+ e.target.value)}>
                     <option value="16">Outras Saídas</option>
                     <option value="1">Alimentação</option>
                     <option value="2">Lazer</option>

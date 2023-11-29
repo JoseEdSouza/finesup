@@ -16,7 +16,7 @@ function TransactionContainer() {
             const fecthData = async () => {
                 try {
                     const trasansactions = (await transactionController.getTransactionCollection()).getModels()
-                    setList(trasansactions)
+                    setList(trasansactions)                    
                 } catch (error) {
                     console.log(error)
                 }
@@ -45,6 +45,7 @@ function TransactionContainer() {
         }
         return null;
     }
+    console.log(list )
 
 
     const getType = (transaction: Object) => transaction instanceof Expense ? 0 : 1
