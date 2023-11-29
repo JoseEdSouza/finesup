@@ -1,3 +1,4 @@
+from api.src.auth.change_name_schema import ChangeNameSchema
 from api.src.auth.delete_account_schema import DeleteAccountSchema
 from api.src.auth.login_schema import LoginSchema
 from api.src.auth.change_password_schema import ChangePasswordSchema
@@ -48,3 +49,9 @@ class UserController(metaclass=Singleton):
         if self._DAO.get(schema.id) is None:
             raise NotFoundError()
         return self._DAO.remove(schema.id)
+
+    def update_name(self, schema: ChangeNameSchema):
+        user1 = self._DAO.get(schema.id)
+        if user1 is None:
+            raise NotFoundError()
+        return self._DAO.update(schema.id, User(schema.new_name, user1.email, user1.password))
