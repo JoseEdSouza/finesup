@@ -70,7 +70,7 @@ class Auth {
             },
             body: JSON.stringify({
                     "id": 0,
-                    "email": newEmail,
+                    "new_email": newEmail,
                     "password": Session.getInstance().user.password
             })
         })

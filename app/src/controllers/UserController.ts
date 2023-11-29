@@ -49,7 +49,7 @@ class UserController {
     static async updateEmail(email: string): Promise<boolean> {
         const lowerCaseEmail = email.toLowerCase()
         const handler = new ValidateSignupEmail()
-        if (handler.handle(lowerCaseEmail, "", "", "")) {
+        if (handler.handle("", lowerCaseEmail, "", "")) {
             try {
                 const token = await Auth.changeEmail(lowerCaseEmail)
                 Session.createInstance(token, Session.getInstance().user.password)
