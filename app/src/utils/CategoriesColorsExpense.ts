@@ -14,7 +14,7 @@ enum CategoriesColorsExpenses {
     TAX = "#FFEA28",
     INVESTMENT = "#FF6928",
     EXCHANGE = "#0FBB00",
-    EXITOTHERS = "#28FFBF"
+    EXITOTHERS = "#28FFBFs"
 }
 
 export default CategoriesColorsExpenses

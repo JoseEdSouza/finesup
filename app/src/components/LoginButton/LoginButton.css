@@ -18,3 +18,10 @@
     background-color: #2E1E43;
     color: #D1D3F1;
 }
+
+#loginError{
+    position: absolute;
+    color: #9E1313;
+    font-size: 3vh;
+    bottom: 28%;
+}

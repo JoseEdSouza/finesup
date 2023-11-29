@@ -1,0 +1,62 @@
+#div1{
+    position: relative;
+    background-color: var(--secondaryColor);
+    width: 27.76vw;
+    height: 18.40vh;
+    border-radius: 1.2vw;
+    bottom: 8.39px;
+    cursor: pointer;
+    top: 0vh;
+    left: 0vw;
+    margin: 10px;
+}
+
+#div1{
+    left: 2.77vw;
+}
+
+#div2{
+    left: 34.58vw;
+}
+
+#div3{
+    left: 66.45vw;
+}
+
+#label1, #label2, #label3{
+    position: absolute;
+    color: black;
+    left: 3.83vw;
+    font-size: 2.34vh;
+    font-family: "Open Sans";
+}
+
+.EditIcon{
+    position: absolute;
+    width: 1.25vw;
+    left: 26.28vw;
+    top: 1vh;
+    cursor: pointer;
+}
+
+.DeleteIcon{
+    position: absolute;
+    width: 1.15vw;
+    left: 28.51vw;
+    top: 1vh;
+    cursor: pointer;
+}
+
+.CheckIcon{
+    position: absolute;
+    width: 1.49vw;
+    left: 23.68vw;
+    top: 1vh;
+    cursor: pointer;
+}
+
+.DivBarB{
+    top: 13.52vh;
+    width: 21.875vw;
+    height: 2.83vh;
+}

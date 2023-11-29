@@ -23,7 +23,7 @@
     padding-left: 4vw;
 }
 
-#routeCategories, #routeCalculators, #routeHome{
+#routeCategories, #routeCalculators, #routeHome, #routeUser{
     position: fixed;
     color: #2E1E43;
     font-family: "Open Sans";
@@ -35,13 +35,17 @@
 }
 
 #routeCategories{
-    right: 18%;
+    right: 25%;
 }
 
 #routeCalculators{
-    right: 3%;
+    right: 10%;
 }
 
 #routeHome{
-    right: 31%;
+    right: 38%;
+}
+
+#routeUser{
+    right: 3%;
 }

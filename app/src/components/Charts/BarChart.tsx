@@ -7,7 +7,7 @@ function BarChart(props:{labels:Array<string>, data:Array<number>, colors:Array<
     const data={
         labels: props.labels,
         datasets:[{
-            label: 'testando papai',
+            label: '',
             data: props.data,
             backgroundColor: props.colors,
             borderColor: 'black',

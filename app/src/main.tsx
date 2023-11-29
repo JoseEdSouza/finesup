@@ -20,8 +20,12 @@ import BudgetDetail from './pages/BudgetDetail.tsx'
 import BudgetEdit from './pages/BudgetEdit.tsx'
 import Login from './pages/Login.tsx'
 import NavBarHome from './components/NavBarHome/NavBarHome.tsx'
-import AprensentationScreen from './pages/ApesentationScreen.tsx'
+import RegisterScreen from './pages/RegisterScreen.tsx'
 import ApresentationRoute from './Routes/ApresentationRoute.tsx'
+import UserScreen from './pages/UserScreen.tsx'
+import FixedTransactions from './pages/FixedTransactions.tsx'
+import TransHistory from './pages/TransHistory.tsx'
+import TransactionDetails from './pages/TransactionDetails.tsx'
 
 const router = createBrowserRouter([
   {
@@ -38,7 +42,7 @@ const router = createBrowserRouter([
       }, 
       {
         path: "/register",
-        element: <AprensentationScreen/>
+        element: <RegisterScreen/>
       },
       {
         path: "/home",
@@ -81,6 +85,18 @@ const router = createBrowserRouter([
         element: <AddTransaction/>
       },
       {
+        path: "/2/transactionHistory/transactionDetailed",
+        element: <TransactionDetails/>
+      },
+      {
+        path: "/2/transactionHistory/fixeds",
+        element: <FixedTransactions/>
+      },
+      {
+        path: "/2/transactionHistory/History",
+        element: <TransHistory/>
+      },
+      {
         path: "/2/graphics",
         element: <Graphics/>
       },
@@ -99,6 +115,10 @@ const router = createBrowserRouter([
       {
         path: "/3/budgetedit",
         element: <BudgetEdit/>
+      },
+      {
+        path: "/user",
+        element: <UserScreen/>
       }
     ]
   }

@@ -10,10 +10,14 @@
 
 #boxHomeName{
     position: absolute;
-    font-size: 2.3vh;
     color: var(--primaryColor);
+    font-size: 2vh;
+    width: 7.5vw;
     top: 0;
-
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #boxPercent{

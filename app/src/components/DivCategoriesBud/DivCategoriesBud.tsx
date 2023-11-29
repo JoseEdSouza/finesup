@@ -1,19 +1,50 @@
-import "./DivCategoriesBud.css"
-import { Link } from "react-router-dom"
+import { useEffect, useRef, useState } from "react";
+import BudgetController from "../../controllers/BudgetController";
+import BudgetClass from "../../models/Budget";
+import { getCategoryByTypeAndId } from "../../models/Category";
+import Budget from "../Budget/Budget";
 
 function DivCategoriesBud(){
+    const [budgetlist, setbudgetlist] = useState<JSX.Element[]>()
+    const controllerBudget = new BudgetController()
+    const effectRam = useRef(false)
+    const [alertbudget,setalertbudgetlist] = useState(false)
+
+    const Fetchdata = async () => {
+        try {
+            const auxiliar = await controllerBudget.getAll()
+            const listaBudget = auxiliar.map((e) => createBudget(e))
+            setbudgetlist(listaBudget)
+            setalertbudgetlist(true)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const createBudget = (budget: BudgetClass) => {
+        return(
+            <Budget name={getCategoryByTypeAndId(true,budget.categoryId)} valueCurrent={budget.actualValue} valueMax={budget.finalValue}/>
+        )
+    }
+
+    useEffect(() => {
+        if(!effectRam.current){
+            Fetchdata()
+            effectRam.current = true
+        }
+    },[])
+
     return(
-        <Link to="/3/budgetdetail">
-            <div id="div1">
-                <label id="label1"><strong>Roupas</strong></label>
+        <>
+            {
+                alertbudget ?
+
+            <div id="divCategorieBud">
+                {budgetlist}
             </div>
-            <div id="div2">
-                <label id="label2"><strong>Alimentação</strong></label>
-            </div>
-            <div id="div3">
-                <label id="label3"><strong>Lazer</strong></label>
-            </div>
-        </Link>
+            : <label id="alertMessage">Não possui budget</label>
+            }
+        </>
     )
 }
 

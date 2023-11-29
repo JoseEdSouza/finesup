@@ -1,16 +1,17 @@
+import Frequency from "../../utils/Frequency"
 import "./TransactionCreatePeriod.css"
 
-function TransactionCreatePeriod() {
+function TransactionCreatePeriod(props:{ setPeriod:(num:Frequency) => void}) {
     return (
         <div id="transactionCreatePeriod">
             <label id="transactionPeriodLabel"><strong>Período</strong></label>
-            <select id="transactionPeriodSelect">
-                <option value="Diariamente">Diariamente</option>
-                <option value="Semanalmente">Semanalmente</option>
-                <option value="Mensalmente">Mensalmente</option>
-                <option value="Bimensalmente">Bimensalmente</option>
-                <option value="Semestralmente">Semestralmente</option>
-                <option value="Anualmente">Anualmente</option>
+            <select id="transactionPeriodSelect" onChange={(e) => props.setPeriod(+ e.target.value)}>
+                <option value={Frequency.DAILY}>Diariamente</option>
+                <option value={Frequency.WEEKLY}>Semanalmente</option>
+                <option value={Frequency.MONTHLY}>Mensalmente</option>
+                <option value={Frequency.BIMONTHLY}>Bimensalmente</option>
+                <option value={Frequency.SEMIANNUAL}>Semestralmente</option>
+                <option value={Frequency.ANNUAL}>Anualmente</option>
             </select>
         </div>
     )

@@ -1,0 +1,84 @@
+#divUserButtons{
+    position: absolute;
+    width: 38vw;
+    height: 25%;
+    bottom: 4.29vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+#linkToCancel{
+    position: relative;
+    height: 2.34vh;
+    width: 20vw;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    top: 14vh;
+}
+
+#deleteButton{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 34.54vw;
+    height: 5.95vh;
+    border-radius: 10px;
+    background-color: var(--primaryColor);
+    color: white;
+    box-shadow: 0px 4px 16px 0px rgba(113, 112, 112, 0.16);
+    border-style: none;
+    font-size: 2.3vh;
+    cursor: pointer;
+    bottom: 0px;
+    top: 2vh;
+}
+
+#deleteButton:hover{
+    transform: scale(1.03);
+    background-color: #D1D3F1;
+    color: #2E1E43;
+    border: solid 3px #2E1E43;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#cancelButtonU{
+    position: absolute;
+    font-family: "Open Sans";
+    color: var(--primaryColor);
+    font-size: 2.5vh;
+    top: 0;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#createButtonU{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28.54vw;
+    height: 5.95vh;
+    border-radius: 10px;
+    background-color: var(--primaryColor);
+    color: white;
+    box-shadow: 0px 4px 16px 0px rgba(113, 112, 112, 0.16);
+    border-style: none;
+    font-size: 2.3vh;
+    cursor: pointer;
+    bottom: 0px;
+    top: 12vh;
+}
+
+#createButtonU:hover{
+    transform: scale(1.03);
+    background-color: #D1D3F1;
+    color: #2E1E43;
+    border: solid 3px #2E1E43;
+    left: 50%;
+    transform: translateX(-50%);
+}
+

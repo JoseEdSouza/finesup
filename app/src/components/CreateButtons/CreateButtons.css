@@ -4,7 +4,7 @@
     height: 9.86vh;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 4.29vh;
+    bottom: 3.29vh;
 }
 
 #createButton{
@@ -47,4 +47,14 @@
     top: 0;
     cursor: pointer;
     text-decoration-line: underline;
+}
+
+#createError{
+    position: absolute;
+    left: 50%;
+    width: 50vw;
+    transform: translateX(-50%);
+    bottom: 10.5vh;
+    color: #CB5151;
+    text-align: center;
 }

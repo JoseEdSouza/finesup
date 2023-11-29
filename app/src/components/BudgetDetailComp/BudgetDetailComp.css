@@ -1,4 +1,22 @@
 #editDiv{
+    position: relative;
+    width: 55vw;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 7.76vh;
+    top: 30.72vh;
+    border-radius: 1vh;
+}
+
+#DivBar{
+    position: relative;
+    width: 49.72vw;
+    height: 6.25vh;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+#editDiv2{
     position: absolute;
     width: 6.25vh;
     height: 6.25vh;
@@ -6,4 +24,14 @@
     top: 15.72vh;
     right: 3.263vw;
     border-radius: 1vh;
+}
+
+.EditBud{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    align-items: center;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
 }

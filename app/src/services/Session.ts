@@ -1,4 +1,4 @@
-import * as jwt from 'jsonwebtoken';
+import { jwtDecode } from 'jwt-decode'
 import Auth from './Auth';
 import { Nullable, DecodedToken } from '../types';
 import User from '../models/User';
@@ -26,7 +26,7 @@ class Session {
     static getInstance(): Session {
         if (Session.instance === null)
             throw new Error('Session not initialized');
-        else if (Session.instance.expiry < Date.now()) {
+        else if (Session.instance.expiry < Date.now()/1000) {
             let user = Session.instance.user
             Auth.login(user.email, user.password)
                 .then(token => Session.instance = Session.createInstance(token, user.password))
@@ -37,15 +37,17 @@ class Session {
     }
 
     private decodeJWT() {
-        const decodedToken = jwt.decode(this.token) as DecodedToken
+        const decodedToken = jwtDecode(this.token) as DecodedToken
         return decodedToken
     }
 
     static createInstance(token: string, password: string): Session {
-        if (Session.instance === null) {
-            Session.instance = new Session(token, password)
-        }
+        Session.instance = new Session(token, password)
         return Session.instance
+    }
+
+    static endSession(){
+        Session.instance = null
     }
 }
 

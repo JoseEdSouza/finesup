@@ -1,4 +1,4 @@
- CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE IF NOT EXISTS users (
   id SERIAL NOT NULL,
   name VARCHAR(50) NOT NULL,
   email VARCHAR(255) NOT NULL,
@@ -99,3 +99,32 @@ CREATE TABLE IF NOT EXISTS expenses (
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (ex_cat_id) REFERENCES expense_categories(id)
 );
+-- set Categories
+INSERT INTO revenue_categories (name)
+VALUES ('CashBack'),
+    ('Vendas'),
+    ('Bônus'),
+    ('Estorno'),
+    ('Renda'),
+    ('Rendimento'),
+    ('Correção de Saldo'),
+    ('Investiemnto Entrada'),
+    ('Câmbio Entrada'),
+    ('Outras Entradas');
+INSERT INTO expense_categories (name)
+values ('Alimentação'),
+    ('Lazer'),
+    ('Roupas'),
+    ('Mercado'),
+    ('Transporte'),
+    ('Saúde'),
+    ('Viagem'),
+    ('Pets'),
+    ('Moradia'),
+    ('Contas'),
+    ('Doações'),
+    ('Educação'),
+    ('Imposto'),
+    ('Investimento Saída'),
+    ('Câmbio Saída'),
+    ('Outras Entrada');

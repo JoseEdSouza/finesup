@@ -2,7 +2,7 @@ import ProgressBar from "../ProgressBar/ProgressBar"
 import Box from "../../../public/boxIcon"
 import "./BoxProgressDetails.css"
 
-function BoxProgressDetails(props:{name:string, valueCurrent:number, valueMax:number}) {
+function BoxProgressDetails(props:{name:string | undefined, valueCurrent:number, valueMax:number}) {
     return (
         <div id="BoxProgressDetails">
             <label id="BoxDetailedName"><strong>{props.name}</strong></label>

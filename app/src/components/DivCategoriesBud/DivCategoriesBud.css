@@ -1,12 +1,17 @@
-#div1, #div2, #div3{
-    position: absolute;
-    background-color: var(--secondaryColor);
-    width: 30.76vw;
-    height: 16.40vh;
+#divCategorieBud{
+    position: relative;
+    width: 90.76vw;
+    height: 20.40vh;
     border-radius: 1.2vw;
     bottom: 8.39;
     cursor: pointer;
     top: 61.52vh;
+    border: 2px solid white;
+    left: 50%;
+    transform: translateX(-50%);
+    justify-content: start;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #div1{
@@ -27,4 +32,34 @@
     left: 3.83vw;
     font-size: 2.34vh;
     font-family: "Open Sans";
+}
+
+.EditIcon{
+    position: absolute;
+    width: 1.25vw;
+    left: 26.28vw;
+    top: 1vh;
+    cursor: pointer;
+}
+
+.DeleteIcon{
+    position: absolute;
+    width: 1.15vw;
+    left: 28.51vw;
+    top: 1vh;
+    cursor: pointer;
+}
+
+.CheckIcon{
+    position: absolute;
+    width: 1.49vw;
+    left: 23.68vw;
+    top: 1vh;
+    cursor: pointer;
+}
+
+.DivBarB{
+    top: 13.52vh;
+    width: 21.875vw;
+    height: 2.83vh;
 }

@@ -1,0 +1,56 @@
+#divUserI{
+    position: absolute;
+    width: 38vw;
+    height: 90vh;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#nameUser, #emailUser, #passwordUser{
+    position: absolute;
+    width: 38vw;
+    height: 6.25vh;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Open Sans";
+    font-size: 2.3vh;
+    border-radius: 1.5cqmin;
+    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    border-style: hidden;
+    outline: none;
+    padding: 10px;
+    font-size: 2.5vh;
+    max-width: 588px;
+}
+
+#nameUser{
+    top: 43.83vh;
+}
+
+#emailUser{
+    top: 65.10vh;
+}
+
+#passwordUser{
+    top: 77.99vh;
+}
+
+#nameU, #emailU, #passwordU{
+    position: absolute;
+    font-family: "Open Sans";
+    font-size: 2.34vh;
+}
+
+#nameU{
+    top: 39.83vh;
+}
+
+#emailU{
+    top: 61.9vh;
+}
+
+#passwordU{
+    top: 74.79vh;
+}

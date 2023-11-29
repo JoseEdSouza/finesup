@@ -1,26 +1,20 @@
 export class Box {
-    userId: number
-    name: string
-    description: string
-    actualValue: number
-    finalValue: number
-    concluded: boolean
 
-    constructor(userId: number, name: string, description: string, actualValue: number = 0, finalValue: number, concluded: boolean = false) {
-        this.userId = userId
-        this.name = name
-        this.description = description
-        this.actualValue = actualValue
-        this.finalValue = finalValue
-        this.concluded = concluded
-    }
+    constructor(
+        public name:string,
+        public description:string,
+        public finalValue:number,
+        public userId:number = 0,
+        public actualValue:number = 0,
+        public concluded:boolean = false,
+    ){}
 
     static fromJson(json: any): Box {
         return new Box(
-            json.user_id,
             json.name,
             json.description,
             json.final_value,
+            json.user_id,
             json.actual_value,
             json.concluded)
     }
