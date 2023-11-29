@@ -3,11 +3,9 @@ import { Chart, ArcElement, Tooltip, Legend } from "chart.js"
 
 Chart.register(ArcElement, Tooltip, Legend)
 
-function PieChart(props:{labels:Array<string>, data:Array<number>, colors:Array<string>}) {
-    const data={
-        labels: props.labels,
-        datasets:[{
-            labels: 'testando papai',
+function PieChart(props: { data: Array<number>, colors: Array<string>, othersValues: Array<number>, othersColor: Array<string>, display: number }) {
+    const data = {
+        datasets: [{
             data: props.data,
             backgroundColor: props.colors,
             borderWidth: 0,
@@ -15,26 +13,42 @@ function PieChart(props:{labels:Array<string>, data:Array<number>, colors:Array<
             fill: true
         }],
     }
+
+    const data2 = {
+        datasets: [{
+            data: props.othersValues,
+            backgroundColor: props.othersColor,
+            borderWidth: 0,
+            borderColor: 'black',
+            fill: true
+        }],
+    }
     const options = {
-        plugins:{
-            legend:{
-                display:false
+        plugins: {
+            legend: {
+                display: false
             }
         }
     }
-    
-    const style:React.CSSProperties = {
-        position: "absolute", 
-        height: "39.45vh", 
+
+    const style: React.CSSProperties = {
+        position: "absolute",
+        height: "39.45vh",
         maxHeight: "330px",
-        width: "6vw", 
-        maxWidth: "500px", 
+        width: "6vw",
+        maxWidth: "500px",
         left: "50%",
         transform: "translateX(-50%)"
     }
-    
+
     return (
-        <Pie data={data} style={style} options={options}/>
+        <>
+            {props.display === 0 ?
+                <Pie data={data} style={style} options={options} />
+                :
+                <Pie data={data2} style={style} options={options} />
+            }
+        </>
     )
 }
 
