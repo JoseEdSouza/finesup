@@ -1,0 +1,9 @@
+#transactionsFixedContainer{
+    position: absolute;
+    top: 21.67vh;
+    width: 94.44vh;
+    height: fit-content;
+    display: grid;
+    left: 50%;
+    transform: translateX(-50%);
+}

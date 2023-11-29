@@ -1,8 +1,7 @@
 import NavBarDefault from "../components/NavBarDefault/NavBarDefault"
 import TransactionDetailed from "../components/TransactionDetailed/TransactionDetailed"
 
-function DetailedTransaction() {
-    
+function TransactionDetails() { 
     return (
         <>
             <NavBarDefault name="Detalhes Lançamento" backTo="4"/>
@@ -11,4 +10,4 @@ function DetailedTransaction() {
     )
 }
 
-export default DetailedTransaction
+export default TransactionDetails
