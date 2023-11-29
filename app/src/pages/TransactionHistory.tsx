@@ -11,7 +11,7 @@ function TransactionHistory(){
             <NavBarDefault name="Histórico de Lançamentos" backTo="0"/>
             <div id="valueContainer">
                 <Balance/>
-                <RevenueExpense height="11.5" width="64.6" expenseValue={0} revenueValue={0}/>
+                <RevenueExpense height="11.5" width="64.6" expenseValue={34} revenueValue={200}/>
             </div>
             <Buttons/>
             <TransactionContainer/>

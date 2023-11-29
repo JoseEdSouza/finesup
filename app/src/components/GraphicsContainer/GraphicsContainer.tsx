@@ -34,14 +34,16 @@ function GraphicsContainer(props: { setChartType: (chartType: number) => void, s
                 {
                     display === 0
                         ? <PieChart
-                            labels={['test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7']}
-                            data={[3, 40, 5, 10, 14, 1, 29]}
-                            colors={["red", "blue", "yellow", "green", "orange", "violet", "pink"]} />
+                            data={[898, 1009, 31]}
+                            othersValues={[239, 3290, 45]}
+                            colors={["#EBEE61", "#70B6F6", "#CC2E2E"]}
+                            othersColor={["#CC2E43", "#F7FFA1", "#AD3D3D"]}
+                            display={display}/>
                         : display === 1
                             ? <BarChart
-                                labels={['test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7']}
+                                labels={['alimentação', 'lazer', 'roupas', 'saúde', 'doação', 'viagem', 'pets']}
                                 data={[3, 40, 5, 10, 14, 1, 29]}
-                                colors={["red", "blue", "yellow", "green", "orange", "violet", "pink"]} />
+                                colors={["#CC2E43", "#F7FFA1", "#70B6F6", "#FF6928", "#AD3D3D", "#C728F", "#2D28FF"]} />
                             : <LineChart
                                 // labels={['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb']}
                                 labels={['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30']}
@@ -49,7 +51,7 @@ function GraphicsContainer(props: { setChartType: (chartType: number) => void, s
                                 expenseData={[1, 20, 4, 20, 19, 1, 29.78, 3, 40, 5, 10, 14, 1, 29, 3, 40, 5, 10, 14, 1, 29, 12, 32, 5, 10, 14, 1, 29, 12, 32]}
                                 onValues={(e: { revenue: number, expense: number }) => setValuesTransactions(e)} />
                 }
-                {display === 0 ? <DisplayReveneExpense setTypeTransactions={handleTypePieChart} bottom="2.69"/> : display === 2 ? <LineChartValues valuesTransaction={valuesTransactions} /> : <></>}
+                {display === 0 ? <DisplayReveneExpense setTypeTransactions={handleTypePieChart} bottom="2.69"/> : display === 2 ? <LineChartValues valuesTransaction={{revenue: 229.75, expense:103.5}} /> : <></>}
             </div>
         </>
     )
