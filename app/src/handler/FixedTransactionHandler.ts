@@ -21,7 +21,7 @@ class ValidateFixedTransactionName extends FixedTransactionBaseHandler {
             throw new Error('Digite um nome')
         if (ft.name.length < 3)
             throw new Error('Nome muito curto')
-        const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$ /
+        const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+/
         if (!regex.test(ft.name))
             throw new Error('O nome deve conter apenas letras')
         if (this.next === null)
@@ -64,13 +64,13 @@ class ValidateFixedTransactionPurchaseDate extends FixedTransactionBaseHandler {
 class ValidateFixedTransactionCategory extends FixedTransactionBaseHandler {
     handle(ft: FixedTransaction): boolean {
         if (ft instanceof FixedRevenue){
-             if (!(ft.categoryId <= 9 && ft.categoryId > 0))
+            if (!(ft.categoryId <= 9 && ft.categoryId > 0))
                 ft.categoryId = 10
         } else {
             if (!(ft.categoryId <= 15 && ft.categoryId > 0))
                 ft.categoryId = 16
         }
-       
+        
         if (this.next === null)
             return true
         return this.next.handle(ft)

@@ -48,7 +48,7 @@ function TransactionCreateContainer() {
         }
     }
 
-    const calcLimitDate = () => {
+    const calcLimitDate = (): Date => {
         if(infinty === ""){
             const result = new Date(date);
             result.setDate(result.getDate() + numbRepeat * getFactor(period));
@@ -61,7 +61,7 @@ function TransactionCreateContainer() {
     const controllerTransaction = new TransactionController()
 
     const createTransaction = () => controllerTransaction.add(
-        type, isRepeat, name, description, value, new Date(date), cat, 0, 0, calcLimitDate(), period
+        type, isRepeat, name, description, value, new Date(date), cat, 0, 0, new Date(calcLimitDate()), period
     )
 
     return (
