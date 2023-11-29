@@ -32,9 +32,9 @@ class TransactionController {
         limitDate?: Date,
         frequency?: Frequency) {
         if (controller instanceof FixedExpenseController || controller instanceof FixedRevenueController) {
-            return await controller.add(name, description, value, purchase_date, limitDate ?? new Date("0001-01-01"), frequency, categoryId, userId, id);
+            return await controller.add(name, description, value, purchase_date, limitDate ?? new Date("0001-01-01"),id,userId,categoryId,frequency);
         } else {
-            return await controller.add(name, description, value, purchase_date, categoryId, userId);
+            return await controller.add(name, description, value, purchase_date, categoryId, id);
         }
     }
 

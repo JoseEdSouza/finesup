@@ -1,9 +1,12 @@
 .ContainerOfContainers{
     position: absolute;
-    width: 90%;
+    width: 50%;
     height: fit-content;
-    left: 10%;
+    left: 50%;
+    transform: translateX(-50%);
     top: 51%;
+    align-items: center;
+    justify-content: center;
 }
 
 .Warning{

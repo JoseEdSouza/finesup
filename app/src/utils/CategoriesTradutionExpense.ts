@@ -17,4 +17,5 @@ enum CategoriesTradutionExpense {
     EXITOTHERS = "Outras Entradas"
 }
 
+
 export default CategoriesTradutionExpense

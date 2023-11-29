@@ -43,20 +43,3 @@ export const RevenueCategories = {
     EXCHANGE: new RevenueCategory("Câmbio Entrada", "#0FBB00", 9),
     ENTRYOTHERS: new RevenueCategory("Outras Entradas", "#A6EB15", 10)
 }
-
-export const getCategoryByTypeAndId = (type: boolean, id: number) => {
-    let categories;
-    if (type) {
-        categories = ExpenseCategories;
-    } else {
-        categories = RevenueCategories;
-    }
-
-    for (let category in categories) {
-        if (categories[category].id === id) {
-            return categories[category];
-        }
-    }
-
-    return null;
-}
