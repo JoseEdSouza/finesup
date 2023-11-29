@@ -22,7 +22,7 @@ class ValidateBoxName extends BoxBaseHandler {
             throw new Error('O nome deve ter pelo menos 3 caracteres')
         if (box.name.length > 20)
             throw new Error('O nome deve ter no máximo 20 caracteres')
-        const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$ /
+        const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+/
         if (!regex.test(box.name))
             throw new Error('O nome deve conter apenas letras')
         if (this.next === null)

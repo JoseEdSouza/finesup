@@ -19,7 +19,9 @@ function Graphics() {
     return (
         <>
             <NavBarDefault name="Gráficos" backTo="0" />
-            <DateDisplay/>
+            <div style={{position: "absolute", height: "3vh", width: "4vw", left: "52.5%"}}>
+                <DateDisplay/>
+            </div>
             <GraphicsContainer setChartType={handleChartType} setPieChartType={handlePieChartType} />
             <GraphicDetails chartType={chartType} pieChartType={typePieChart}/>
         </>

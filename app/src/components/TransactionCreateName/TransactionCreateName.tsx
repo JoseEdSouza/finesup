@@ -1,18 +1,12 @@
 import "./TransactionCreateName.css"
 
-function TransactionCreateName(props: { editable: number, name:string }) {
+function TransactionCreateName(props:{setName:(name:string)=>void}) {
     return (
         <>
-            {props.editable === 0 ?
                 <div id="transactionCreateName">
                     <label id="TransactionNameLabel"><strong>Nome</strong></label>
-                    <input type="text" id="TransactionNameInput" placeholder="Inserir Nome" />
+                    <input type="text" id="TransactionNameInput" placeholder="Inserir Nome" onChange={(e) => props.setName(e.target.value)}/>
                 </div>
-                : <div id="transactionCreateName">
-                    <label id="TransactionNameLabel"><strong>Nome</strong></label>
-                    <input type="text" id="TransactionNameInput" placeholder="Inserir Nome" value={props.name}/>
-                </div>
-            }
         </>
     )
 }

@@ -18,7 +18,7 @@ class ValidateTransactionName extends TransactionBaseHandler{
     handle(transaction: Transaction): boolean {
         if(transaction.name.length < 3)
             throw new Error("Nome muito curto")
-        const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$ /
+        const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+/
         if (!regex.test(transaction.name))
             throw new Error('O nome deve conter apenas letras')
         if(this.next===null)
@@ -32,7 +32,7 @@ class ValidateTransactionDescription extends TransactionBaseHandler{
             throw new Error("Descrição muito curta")
         if(transaction.description.length > 100)
             throw new Error("Descrição muito longa")
-        const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$ /
+        const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+/
         if (!regex.test(transaction.description))
             throw new Error('A descrição deve conter apenas letras')
         if(this.next===null)

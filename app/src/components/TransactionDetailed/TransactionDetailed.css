@@ -11,3 +11,143 @@
     transform: translateX(-50%);
     top: 17.96vh;
 }
+
+#detailedName{
+    position: absolute;
+    width: 53.33vw;
+    height: 10.44vh;
+    top: 4.49vh;
+}
+
+#labelDeitaledTransactionName{
+    position: absolute;
+    color: var(--primaryColor);
+    font-size: 2.5vh;
+    top: 0;
+}
+
+#inputDeitaledTransactionName{
+    position: absolute;
+    font-size: 2.5vh;
+    height: 6.25vh;
+    width: 100%;
+    bottom: 0;
+    padding: 12px;
+    border-radius: 2cqmin;
+    outline: none;
+    border-style: none;
+    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+}
+
+#detailedDate{
+    position: absolute;
+    width: 25.69vw;
+    height: 10.44vh;
+    top: 18.06vh;
+    left: 5.9vw;
+}
+
+#labelDeitaledTransactionDate{
+    position: absolute;
+    color: var(--primaryColor);
+    font-size: 2.5vh;
+    top: 0;
+}
+
+#inputDeitaledTransactionDate{
+    position: absolute;
+    font-size: 2.5vh;
+    height: 6.25vh;
+    width: 100%;
+    bottom: 0;
+    border-radius: 1.5cqmin;
+    padding: 12px;
+    border-style: hidden;
+    outline: none;
+    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+#detailedValue{
+    position: absolute;
+    width: 25.69vw;
+    height: 10.44vh;
+    top: 18.06vh;
+    right: 5.9vw;
+}
+
+#labelDeitaledTransactionvalue{
+    position: absolute;
+    color: var(--primaryColor);
+    font-size: 2.5vh;
+    top: 0;
+}
+
+#inputDeitaledTransactionvalue{
+    position: absolute;
+    font-size: 2.5vh;
+    height: 6.25vh;
+    width: 100%;
+    bottom: 0;
+    border-radius: 1.5cqmin;
+    padding: 12px;
+    border-style: hidden;
+    outline: none;
+    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+#detailedDescription{
+    position: absolute;
+    width: 53.33vw;
+    height: 25vh;
+    top: 31.5vh;
+}
+
+#labelDeitaledTransactiondes{
+    position: absolute;
+    color: var(--primaryColor);
+    font-size: 2.5vh;
+    top: 0;
+}
+
+#inputDeitaledTransactiondes{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 20.70vh;
+    border-radius: 2cqmin;
+    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    border-style: none;
+    outline: none;
+    padding: 12px;
+    font-size: 2.5vh;
+    resize: none;
+}
+
+#detailedcategory{
+    position: absolute;
+    height: 10.44vh;
+    width: 53.33vw;
+    top: 58.34vh;
+}
+
+#labelDeitaledTransactioncat{
+    position: absolute;
+    color: var(--primaryColor);
+    font-size: 2.5vh;
+}
+
+#inputDeitaledTransactioncat{
+    position: absolute;
+    font-size: 2.5vh;
+    height: 6.25vh;
+    width: 53.33vw;
+    bottom: 0;
+    border-radius: 1.5cqmin;
+    padding: 6px;
+    border-style: hidden;
+    outline: none;
+    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
