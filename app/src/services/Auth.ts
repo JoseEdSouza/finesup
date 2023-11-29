@@ -143,7 +143,7 @@ class Auth {
     }
 
     static async changeName(newName: string): Promise<any> {
-        const req = new Request(Endpoints.DELETE_ACCOUNT, {
+        const req = new Request(Endpoints.UPDATE_NAME, {
             method: 'PUT',
             headers: {
                 'accept': 'application/json',
@@ -152,7 +152,7 @@ class Auth {
             },
             body: JSON.stringify({
                     "id": 0,
-                    "name": newName
+                    "new_name": newName
             })
         })
         const response = await fetch(req)
