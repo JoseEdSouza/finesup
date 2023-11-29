@@ -3,6 +3,9 @@ import ApiSettings from "../config/ApiSettings";
 enum Endpoints {
     SIGNUP = `${ApiSettings.BASEURL}/user/signup`,
     LOGIN = `${ApiSettings.BASEURL}/user/login`,
+    UPDATE_EMAIL = `${ApiSettings.BASEURL}/user/`,
+    UPDATE_PASSWORD = `${ApiSettings.BASEURL}/user/`,
+    DELETE_ACCOUNT = `${ApiSettings.BASEURL}/user/`,
     BOX = `${ApiSettings.BASEURL}/box`,
     BOX_ALL = `${ApiSettings.BASEURL}/all/box`,
     BUDGET = `${ApiSettings.BASEURL}/budget`,

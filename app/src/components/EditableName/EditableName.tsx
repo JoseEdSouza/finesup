@@ -1,6 +1,13 @@
+import UserController from "../../controllers/UserController"
 import "./EditableName.css"
 
 function EditableName(props:{editname:(activaded:boolean)=>void, name: string}) {
+    const changeName = () => UserController.changeName(props.name)
+    const onClick = () => {
+        changeName()
+        props.editname(false)
+    }
+    
     return (
         <div style={{position: "absolute", width:"100vw", height: "130vh", left: "50%", transform: "translateX(-50%)", zIndex: "1"}}>
             <div id="editableName">
@@ -10,7 +17,7 @@ function EditableName(props:{editname:(activaded:boolean)=>void, name: string}) 
                 <input type="text" id="InputEditName" value={props.name}/>
                 <label id="labelInputEditNameConfirmed"><strong>Novo nome</strong></label>
                 <input type="text" id="InputEditNameConfirmed"/>
-                <button id="ConfirmedButton" onClick={() => props.editname(false)}>Confirmar novo nome</button>
+                <button id="ConfirmedButton" onClick={onClick}>Confirmar novo nome</button>
             </div>
         </div>
     )
